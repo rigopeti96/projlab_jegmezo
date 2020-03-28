@@ -15,8 +15,16 @@ private abstract class Player {
 	private Tile players;
 	
 	/** */
-	private GameController players;
+	private GameController gamecontroller;
+
+	//A játékos inventory-ja
+	private Inventory inventory;
 	
+	//inventory get függvénye
+	public Inventory getInventory(){
+		return inventory;
+	}
+
 	/** */
 	public void takeTurn() {
 	}
@@ -31,6 +39,13 @@ private abstract class Player {
 	
 	/** */
 	public void useWinItems() {
+		if(tile.hasAllPlayers() && inventory.hasAllWinItem()){
+			gamecontroller.win();
+			System.out.println("\nPlayers Win\n");
+			return true;
+		}
+		System.out.println("\Players don't win\n");
+		return false;
 	}
 	
 	/** */

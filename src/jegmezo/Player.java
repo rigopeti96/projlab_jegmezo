@@ -80,7 +80,7 @@ public abstract class Player {
 	/** A j�t�kos megfullad */
 	public void drown() {
 		System.out.println("\nPlayer drown\n");
-		gamecontroller.gameOver();
+		gameController.gameOver();
 	}
 	
 	/** A j�t�kos elhaszn�l egy akci�pontot */

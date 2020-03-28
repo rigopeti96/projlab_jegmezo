@@ -16,6 +16,8 @@ public class Inventory {
 	
 	/** */
 	private int countWinItem = 0;
+
+	
 	
 	/** */
 	public boolean equipFood() {
@@ -30,7 +32,7 @@ public class Inventory {
 		countWinItem = 0;
 	}
 
-	/** */
+	/** Növeli egyel a Win Itemek számát*/
 	public boolean equipWinItem() {
 		return true;
 	}
@@ -55,7 +57,7 @@ public class Inventory {
 		return true;
 	}
 	
-	/** */
+	/** Csökkenti a Win Item-ek számát */
 	public boolean unequipWinItem() {
 		return true;
 	}
@@ -82,6 +84,11 @@ public class Inventory {
 
 	/** */
 	public boolean hasAllWinItem() {
+		if(countWinItem==3){
+			System.out.println("\Has All Win Item\n");
+			return true;
+		}
+		System.out.println("\Doesn't have all Win Item\n");
 		return false;
 	}
 }

@@ -21,6 +21,11 @@ public class GameController {
 	public void win() {
 		System.out.println("\nGameController win\n");
 	}
+
+	/** */
+	public void lose() {
+		System.out.println("\nGameController lose\n");
+	}
 	
 	/** */
 	public void blizzard() {

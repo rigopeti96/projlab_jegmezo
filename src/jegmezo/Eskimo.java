@@ -2,8 +2,8 @@ package jegmezo;
 
 /** */
 public class Eskimo extends Player {
-	public Eskimo(){
-		super();
+	public Eskimo(GameController gameController) {
+		super(gameController);
 	}
 
 	/** */

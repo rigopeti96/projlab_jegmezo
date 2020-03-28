@@ -29,7 +29,7 @@ public class WinItem implements Item {
 	}
 	
 	/** a Player használja a tárgyat */
-	public boolean use(Player p) {
+	public boolean use(Player player) {
 		if (player.useWinItems() ) {
 			System.out.println("\nWin Item used\n");
 			return true;

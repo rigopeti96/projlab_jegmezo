@@ -8,7 +8,8 @@ public class Scientist extends Player {
 
 	/** */
 	public void examine() {
-
+        Tile tile = selectTile();
+        tile.getPlayerLimit();
 	}
 	
 	/** */

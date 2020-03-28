@@ -8,6 +8,7 @@ public class Scientist extends Player {
 
 	/** */
 	public void examine() {
+
 	}
 	
 	/** */

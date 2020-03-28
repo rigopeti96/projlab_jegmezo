@@ -4,7 +4,7 @@ package jegmezo;
 
 
 /** */
-public class Shovel implements Item, DigItem {
+public class Shovel implements Item {
 	/** */
 	private Player shovel;
 	

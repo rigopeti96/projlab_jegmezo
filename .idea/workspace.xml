@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ac13725-90a2-4f5f-8b0d-6f6cdc6e7917" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jegmezo/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jegmezo/Food.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/jegmezo/Hole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jegmezo/Hole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jegmezo/Eskimo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jegmezo/Eskimo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jegmezo/ScubaGear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jegmezo/ScubaGear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jegmezo/Shovel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jegmezo/Shovel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +46,14 @@
       <option name="presentableId" value="Default" />
       <updated>1585328275209</updated>
     </task>
+    <task id="LOCAL-00001" summary="Osztályok és függvényeik létrehozása, konstruktorok megírása">
+      <created>1585387477410</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585387477410</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -58,5 +66,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Osztályok és függvényeik létrehozása, konstruktorok megírása" />
+    <option name="LAST_COMMIT_MESSAGE" value="Osztályok és függvényeik létrehozása, konstruktorok megírása" />
   </component>
 </project>

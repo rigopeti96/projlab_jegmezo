@@ -8,6 +8,8 @@ public class Eskimo extends Player {
 
 	/** */
 	public boolean buildIgloo() {
+	    Tile tile = new Tile();
+	    tile.buildIgloo();
 		return true;
 	}
 	

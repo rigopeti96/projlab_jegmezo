@@ -4,7 +4,7 @@ package jegmezo;
 
 
 /** */
-public class ScubaGear implements ScubaItem, Item {
+public class ScubaGear implements Item {
 	/** */
 	private Player scubaGear;
 	

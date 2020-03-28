@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5ac13725-90a2-4f5f-8b0d-6f6cdc6e7917" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jegmezo/Hole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/jegmezo/Hole.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,7 +12,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1ZiiNS0lZ7kKwx4zXqFmi5G2ut1" />
   <component name="ProjectViewState">
@@ -43,20 +43,12 @@
       <option name="project" value="LOCAL" />
       <updated>1585389030250</updated>
     </task>
-    <task id="LOCAL-00002" summary="nyafogott">
-      <created>1585410355119</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1585410355120</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="IceSheet-controller" />
-    <MESSAGE value="nyafogott" />
-    <option name="LAST_COMMIT_MESSAGE" value="nyafogott" />
+    <option name="LAST_COMMIT_MESSAGE" value="IceSheet-controller" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1585388439460">
@@ -67,14 +59,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="808" y="409" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040/-1280.56.1280.984@0.0.1920.1040" timestamp="1585388558914" />
-    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1585410354485">
+    <state x="614" y="114" key="CommitChangelistDialog2" timestamp="1585389029634">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="614" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1280.56.1280.984@0.0.1920.1040" timestamp="1585410354485" />
-    <state x="747" y="236" key="VCS.ChangeListViewerDialog" timestamp="1585410367795">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="747" y="236" key="VCS.ChangeListViewerDialog/0.0.1920.1040/-1280.56.1280.984@0.0.1920.1040" timestamp="1585410367795" />
+    <state x="614" y="114" key="CommitChangelistDialog2/0.0.1920.1040/-1280.56.1280.984@0.0.1920.1040" timestamp="1585389029634" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585389033015">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -83,10 +71,6 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1280.56.1280.984@0.0.1920.1040" timestamp="1585386743515" />
-    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585410360191">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="769" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1280.56.1280.984@0.0.1920.1040" timestamp="1585410360191" />
     <state x="665" y="311" key="git4idea.merge.GitPullDialog" timestamp="1585387055126">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

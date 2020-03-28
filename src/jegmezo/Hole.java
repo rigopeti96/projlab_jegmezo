@@ -2,6 +2,7 @@ package jegmezo;
 
 
 
+
 /** */
 public class Hole extends Tile {
 	/** */

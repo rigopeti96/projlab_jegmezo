@@ -46,7 +46,16 @@ public abstract class Tile {
 	}
 	
 	/** */
-	public void getNeighbours() {
+	public Tile getNeighbours() {
+		System.out.println("\nTile getNeighbours\n");
+		System.out.println("\nMilyen Tile-ra lépjen?\n1:IceSheet\n2:Hole");
+		String choice =System.console().readLine();
+		if(choice=="2"){
+			return new Hole();
+		}
+		else{
+			return new IceSheet();
+		}
 	}
 	
 	/** */

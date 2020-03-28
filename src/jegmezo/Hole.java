@@ -8,6 +8,16 @@ public class Hole extends Tile {
 	/** */
 	public void stepOnto(Player player, Tile prevTile) {
 		System.out.println("\nHole stepOnto\n");
+		boolean survive=player.canSurvive();
+		if(survive)
+			return;
+		this.neighbours.add(new IceSheet());
+		for(int i=0;i<neighbours.size();i++){
+			boolean save=neighbours[i].canSave();
+			if(save)
+				return;
+		}
+		player.drown();
 	}
 	
 	/** */
@@ -36,6 +46,11 @@ public class Hole extends Tile {
 	/** */
 	public boolean canSave() {
 		System.out.println("\nHole canSave\n");
+		for(int i=0;i<players.size();i++) {
+			boolean save=players[i].canSave();
+			if(save)
+				return true;
+		}
 		return false;
 	}
 	

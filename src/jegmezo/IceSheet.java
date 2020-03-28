@@ -16,6 +16,15 @@ public class IceSheet extends Tile {
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
 		System.out.println("\nIceSheet stepOnto\n");
+		System.out.println("\nÁtfordul-e\n1:Igen\n2.Nem");
+		String choice=System.console().readLine();
+		if(choice=="1"){
+			player.drown();
+		}
+		else{
+			prevTile.stepOff(player);
+			//this.players.add(player);
+		}
 	}
 
 	@Override

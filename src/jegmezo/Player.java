@@ -3,7 +3,7 @@ package jegmezo;
 
 
 
-/** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. Át tud lépni szomszédos mez?re. */
+/** Jï¿½tï¿½kos, lehet eszkimï¿½ ï¿½s kutatï¿½. Birtokolhat tï¿½rgyat, hasznï¿½lhatja azt a tï¿½rgyat ï¿½s ï¿½tadhatja mï¿½sik jï¿½tï¿½kosnak. ï¿½t tud lï¿½pni szomszï¿½dos mez?re. */
 public abstract class Player {
 	private int bodyHeat;
 
@@ -19,33 +19,32 @@ public abstract class Player {
 		this.gameController = gameController;
 	}
 
-	/** A játékos Inventory-ja */
 	public Inventory getInventory(){
 		System.out.println("\nPlayer getInventory\n");
 		return inventory;
 	}
 
-	/** A játékos körét kezeli le */
+	/** A jï¿½tï¿½kos kï¿½rï¿½t kezeli le */
 	public void takeTurn() {
 		System.out.println("\nPlayer takeTurn\n");
 	}
 	
-	/** A játékos egyik nála lév? tárgyat átadhatja egyik játékos társának
+	/** A jï¿½tï¿½kos egyik nï¿½la lï¿½v? tï¿½rgyat ï¿½tadhatja egyik jï¿½tï¿½kos tï¿½rsï¿½nak
 	 * @return true ha sikeres, false ha nem */
 	public boolean trade() {
 		System.out.println("\nPlayer trade\n");
 		return false;
 	}
 	
-	/** A játékos felvesz egy tárgyat
-	 * @return true, ha a játékos eltárolta az adott tárgyat, false ha nem vette fel */
+	/** A jï¿½tï¿½kos felvesz egy tï¿½rgyat
+	 * @return true, ha a jï¿½tï¿½kos eltï¿½rolta az adott tï¿½rgyat, false ha nem vette fel */
 	public boolean takeItem(Item item) {
 		System.out.println("\nPlayer takeItem\n");
 		return false;
 	}
 	
-	/** A játékos használja a gy?zelmi tárgyat
-	 * @return ha minden alkatrész megvan és az összes játékos ugyanazon a mez?n van, akkor megnyerik a játékot és true-t ad vissza, amúgy false*/
+	/** A jï¿½tï¿½kos hasznï¿½lja a gy?zelmi tï¿½rgyat
+	 * @return ha minden alkatrï¿½sz megvan ï¿½s az ï¿½sszes jï¿½tï¿½kos ugyanazon a mez?n van, akkor megnyerik a jï¿½tï¿½kot ï¿½s true-t ad vissza, amï¿½gy false*/
 	public boolean useWinItems() {
 		System.out.println("\nPlayer useWinItems\n");
 		if(tile.hasAllPlayers() && inventory.hasAllWinItem()){
@@ -57,73 +56,87 @@ public abstract class Player {
 		return false;
 	}
 	
-	/** A játékos mozog (tile-t választ és odamozog)
+	/** A jï¿½tï¿½kos mozog (tile-t vï¿½laszt ï¿½s odamozog)
 	 * @return true has sikeres, false ha nem */
 	public boolean move() {
 		System.out.println("\nPlayer move\n");
-		return false;
+		Tile hova=selectTile();
+		hova.stepOnto(this,tile);
+		return true;
 	}
 	
-	/** Megnöveli a játékos testh?jét 1-gyel */
+	/** Megnï¿½veli a jï¿½tï¿½kos testh?jï¿½t 1-gyel */
 	public void increaseBodyHeat() {
 		System.out.println("\nPlayer increaseBodyHeat\n");
 		bodyHeat++;
 	}
 	
-	/** Lecsökkenti a játékos testh?jét 1-gyel */
+	/** Lecsï¿½kkenti a jï¿½tï¿½kos testh?jï¿½t 1-gyel */
 	public void decreaseBodyHeat() {
 		System.out.println("\nPlayer decreaseBodyHeat\n");
 		bodyHeat--;
 	}
 	
-	/** A játékos megfullad */
+	/** A jï¿½tï¿½kos megfullad */
 	public void drown() {
 		System.out.println("\nPlayer drown\n");
-		gameController.lose();
+		gamecontroller.gameOver();
 	}
 	
-	/** A játékos elhasznál egy akciópontot */
+	/** A jï¿½tï¿½kos elhasznï¿½l egy akciï¿½pontot */
 	public void loseAP() {
 		System.out.println("\nPlayer loseAP\n");
 		actions--;
 	}
 	
-	/** A Player kézzel ás és 1 egység havat takarít el a mez?jér?l,
+	/** A Player kï¿½zzel ï¿½s ï¿½s 1 egysï¿½g havat takarï¿½t el a mez?jï¿½r?l,
 	 * @return true ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithHands() {
 		System.out.println("\nPlayer digWithHands\n");
 		return false;
 	}
 
-	/** A Player ásóval ás és 2 egység havat takarít el a mez?jér?l,
+	/** A Player ï¿½sï¿½val ï¿½s ï¿½s 2 egysï¿½g havat takarï¿½t el a mez?jï¿½r?l,
 	 * @return True ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithShovel() {
 		System.out.println("\nPlayer digWithShovel\n");
 		return false;
 	}
 	
-	/** A játékos felveszi a tárgyat a mez?r?l, amin áll
+	/** A jï¿½tï¿½kos felveszi a tï¿½rgyat a mez?r?l, amin ï¿½ll
 	 * @return true ha feltudta venni, false ha nem*/
 	public boolean pickup() {
 		System.out.println("\nPlayer pickup\n");
 		return false;
 	}
 
-	/** A játékos kiválaszthat egy mez?t, amire lépni fog, vagy megnézi sarkkutatóval (menüt dob fel)
-	 * @return kiválasztott tile (tile.getNeighbours eleme) */
+	/** A jï¿½tï¿½kos kivï¿½laszthat egy mez?t, amire lï¿½pni fog, vagy megnï¿½zi sarkkutatï¿½val (menï¿½t dob fel)
+	 * @return kivï¿½lasztott tile (tile.getNeighbours eleme) */
 	public Tile selectTile() {
 		System.out.println("\nPlayer selectTile\n");
+		Tile ret=tile.getNeighbours();
 		return null;
 	}
 	
-	/** A játékos kiválaszt egy tárgyat, amelyet használ (menüt dob fel)
+	/** A jï¿½tï¿½kos kivï¿½laszt egy tï¿½rgyat, amelyet hasznï¿½l (menï¿½t dob fel)
 	 * @return true ha sikeres, false nem */
 	public boolean useItem() {
 		System.out.println("\nPlayer useItem\n");
 		return false;
 	}
 	
-	/** A játékos választ egy akciót, true-val tér vissza
-	 * @return true ha az akció sikeres, false ha nem vagy a játékos nem választott akciót */
+	/** A jï¿½tï¿½kos vï¿½laszt egy akciï¿½t, true-val tï¿½r vissza
+	 * @return true ha az akciï¿½ sikeres, false ha nem vagy a jï¿½tï¿½kos nem vï¿½lasztott akciï¿½t */
 	public abstract boolean selectAction();
+
+	//HozzÃ¡Ã­rtam mert nem kerÃ¼lt bele, illetve mÃ©g ki lehet bÅ‘vÃ­teni az inventory munkÃ¡jÃ¡val is egyenlÅ‘re Ã­gy hagytam hÃ¡tha valami vÃ¡ltozik  -T
+	public boolean canSave(){
+		System.out.println("\nPlayer canSave\n");
+		System.out.println("\nTud menekÃ­teni a jÃ¡tÃ©kos?\n1:Igen\n2:Nem");
+		String choice=System.console().readLine();
+		if(choice=="1")
+			return true;
+		return false;
+	}
 }
+

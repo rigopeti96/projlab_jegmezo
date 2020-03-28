@@ -88,6 +88,18 @@ public abstract class Tile {
 	 * Egy Player-t lehet vele kiválasztani (előzohoz egy kiválasztó menüt)
 	 * @return Player amit választottak
 	 */
+	public Tile getNeighbours() {
+		System.out.println("\nTile getNeighbours\n");
+		System.out.println("\nMilyen Tile-ra lépjen?\n1:IceSheet\n2:Hole");
+		String choice =System.console().readLine();
+		if (choice=="2") {
+			return new Hole();
+		}
+		else {
+			return new IceSheet();
+		}
+	}
+	
 	public Player selectPlayer() {
 		System.out.println("\nTile selectPlayer\n");
 		return null;

@@ -16,11 +16,13 @@ public class GameController {
 	/** A játékosok elvesztik a játékot*/
 	public void gameOver() {
 		System.out.println("GameController gameOver");
+		System.exit(0);
 	}
 	
 	/** A játékosok megnyerik a játékot*/
 	public void win() {
 		System.out.println("GameController win");
+		System.exit(0);
 	}
 	
 	/** A hóvihar lebonyolításáért felel*/

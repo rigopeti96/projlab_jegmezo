@@ -78,14 +78,7 @@ public class IceSheet extends Tile {
 	@Override
 	public boolean buildIgloo(){
 		System.out.println("IceSheet buildIgloo");
-		System.out.println("Can build igloo? (can/can't)");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
-		}
-		return false;
+		return true;
 	}
 
 	/** A hóvihar lefolytatása*/

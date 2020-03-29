@@ -5,13 +5,17 @@ package jegmezo;
 
 /** A lyukat megvalósítítja meg*/
 public class Hole extends Tile {
+	public Hole(GameController gameController) {
+		super(gameController);
+	}
+
 	/** A játékos rálép a mezőre*/
 	public void stepOnto(Player player, Tile prevTile) {
 		System.out.println("Hole stepOnto");
 		boolean survive=player.canSurvive();
 		if(survive)
 			return;
-		this.neighbours.add(new IceSheet(4));
+		this.neighbours.add(new IceSheet(gameController, 4));
 		for (int i=0; i<neighbours.size(); i++){
 			boolean save=neighbours.get(i).canSave();
 			if(save)

@@ -7,9 +7,15 @@ import java.util.*;
  *  specializált osztályok kezelnek le. Tárolja a szomszédait és a rajta álló Player-eket.*/
 public abstract class Tile {
 	private int snow;
+	protected GameController gameController;
 	protected List<Tile> neighbours = new ArrayList<>();
 	protected List<Player> players = new ArrayList<>();
-	
+
+	public Tile(GameController gameController) {
+		this.gameController = gameController;
+		gameController.addTile(this);
+	}
+
 	/** A Player hívja, amikor rálép a Tile-re, hozzáadja a Player-t a players listához
 	 * @param player Player, amelyik rálépett a mezőre
 	 * @param prevTile Az előző mező, amin a Player állt
@@ -28,6 +34,10 @@ public abstract class Tile {
 	 */
 	public abstract int getPlayerLimit();
 
+	/**
+	 * Hozzáad egy Player-t a Player listához
+	 * @param player Player amit hozzáad
+	 */
 	public void addPlayer(Player player) {
 		System.out.println("Tile addPlayer");
 		this.players.add(player);

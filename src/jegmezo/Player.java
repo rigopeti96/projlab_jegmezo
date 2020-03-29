@@ -54,10 +54,8 @@ public abstract class Player {
 		System.out.println("Player useWinItems");
 		if(tile.hasAllPlayers() && inventory.getWinItemCount()==3) {
 			gameController.win();
-			System.out.println("Players Win");
 			return true;
 		}
-		System.out.println("Players don't win");
 		return false;
 	}
 	
@@ -80,6 +78,7 @@ public abstract class Player {
 	public void decreaseBodyHeat() {
 		System.out.println("Player decreaseBodyHeat");
 		bodyHeat--;
+		System.out.println("dead/deadn't?");
 		switch (new Scanner(System.in).nextLine()) {
 			case "dead":
 				gameController.gameOver();
@@ -112,6 +111,7 @@ public abstract class Player {
 	 * @return True ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithShovel() {
 		System.out.println("Player digWithShovel");
+		// TODO: Kibontani
 		return false;
 	}
 	
@@ -131,6 +131,7 @@ public abstract class Player {
 	 * @return kiválasztott tile (tile.getNeighbours eleme) */
 	public Tile selectTile() {
 		System.out.println("Player selectTile");
+		System.out.println("ice sheet/hole?");
 		switch (new Scanner(System.in).nextLine()) {
 			case "ice sheet":
 				return tile.getNeighbours().get(0);
@@ -145,7 +146,7 @@ public abstract class Player {
 	 * @return true ha sikeres, false nem */
 	public boolean useItem() {
 		System.out.println("Player useItem");
-
+		System.out.println("food/shovel/win items");
 		switch (new Scanner(System.in).nextLine()) {
 			case "food":
 				if(0 < inventory.getFoodCount()) {

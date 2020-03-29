@@ -24,9 +24,9 @@ public class IceSheet extends Tile {
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
 		System.out.println("IceSheet stepOnto");
-		System.out.println("Átfordul?");
+		System.out.println("stable/unstable (turns over)?");
 		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("igen")){
+		if(choice.equals("unstable")){
 			player.drown();
 		}
 		else{
@@ -64,7 +64,7 @@ public class IceSheet extends Tile {
 	@Override
 	public boolean canSave() {
 		System.out.println("IceSheet canSave");
-		addPlayer(EskimoCreator.create(this));
+		addPlayer(new Eskimo(gameController, this));
 		for (int i=0; i<players.size(); i++) {
 			boolean save=players.get(i).canSave();
 			if(save)
@@ -78,6 +78,7 @@ public class IceSheet extends Tile {
 	@Override
 	public boolean buildIgloo(){
 		System.out.println("IceSheet buildIgloo");
+		System.out.println("Can build igloo? (can/can't)");
 		switch (new Scanner(System.in).nextLine()) {
 			case "can":
 				return true;
@@ -92,7 +93,7 @@ public class IceSheet extends Tile {
 	public void blizzard(){
 		super.blizzard();
 		System.out.println("IceSheet blizzard");
-
+		System.out.println("Has igloo? (igloo/igloon't)");
 		switch (new Scanner(System.in).nextLine()) {
 			case "igloo":
 				break;

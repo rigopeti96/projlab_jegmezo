@@ -41,6 +41,7 @@ public class GameController {
 	 * @param tile Tile amit hozzáad
 	 */
 	public void addTile(Tile tile) {
+		System.out.println("GameController addTile");
 		tiles.add(tile);
 	}
 
@@ -49,6 +50,7 @@ public class GameController {
 	 * @param player Player amit hozzáad
 	 */
 	public void addPlayer(Player player) {
+		System.out.println("GameController addPlayer");
 		players.add(player);
 	}
 }

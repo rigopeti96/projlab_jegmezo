@@ -52,6 +52,7 @@ public abstract class Tile {
 	}
 
 	public void connectTile(Tile tile) {
+		System.out.println("Tile connectTile");
 		neighbours.add(tile);
 		tile.neighbours.add(tile);
 	}
@@ -99,7 +100,7 @@ public abstract class Tile {
 	 * Növeli a Tile-on lévő hómennyiséget 1-gyel.
 	 */
 	public void increaseSnow() {
-		System.out.println("Tile removeSnow");
+		System.out.println("Tile increaseSnow");
 		snow++;
 	}
 
@@ -117,6 +118,11 @@ public abstract class Tile {
 	 */
 	public boolean hasAllPlayers() {
 		System.out.println("Tile hasAllPlayers");
+		System.out.println("has all/has none?");
+		switch (new Scanner(System.in).nextLine()) {
+			case "has all":
+				return true;
+		}
 		return false;
 	}
 }

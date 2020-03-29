@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Program {
     static GameController gameController = new GameController();
     public static void main(String[] args) {
+        System.out.println("Select action");
         switch (new Scanner(System.in).nextLine()) {
             case "move":
                 move();

@@ -9,12 +9,8 @@ public class ScubaGear implements Item {
 	 *  @return bool - Sikerült-e betenni
 	 * */
 	public boolean equip(Inventory inventory) {
-		if (inventory.equipScubaGear() ) {
-			System.out.println("ScubaGearEquiped");
-			return true;
-		}
-		System.out.println("ScubaGearNotEquiped");
-		return false;
+		System.out.println("ScubaGear equip");
+		return inventory.equipScubaGear();
 	}
 	
 	/** kiveszi egy Player Inventory-jából magát 
@@ -22,33 +18,29 @@ public class ScubaGear implements Item {
 	 *  @return boolean - Sikerült-e kivenni
 	 * */
 	public boolean unequip(Inventory inventory) {
-		if (inventory.unequipScubaGear() ) {
-			System.out.println("ScubaGearUnequiped");
-			return true;
-		}
-		System.out.println("ScubaGearNotUnequiped");
-		return false;
+		System.out.println("ScubaGear unequip");
+		return inventory.unequipScubaGear();
 	}
 	
 	/** Mindig hamisat ad, nem lehet használni (passzív tárgy)
 	 *  @param player - A Player, aki használni akarja a ScubaGeart.
 	 *  @return  false - Nem lehet használni*/
 	public boolean use(Player player) {
-		System.out.println("ScubaGearUseItem");
+		System.out.println("ScubaGear use");
 		return false;
 	}
 	
 	/** Mindig hamisat ad (érvényes specifikáció szerint)
 	 * @return false - Nem tud megmenteni más játékost. */
 	public boolean canSave() {
-		System.out.println("ScubaGearcanSave()");
+		System.out.println("ScubaGear canSave");
 		return false;
 	}
 	
 	/** Mindig igazat ad (érvényes specifikáció szerint)
 	 *  @return true - A viselõje túléli a lyukbaesést. */
 	public boolean canSurvive() {
-		System.out.println("ScubaGearcanSurvive()");
+		System.out.println("ScubaGear canSurvive");
 		return true;
 	}
 }

@@ -8,18 +8,17 @@ public class Eskimo extends Player {
 		super(gameController, tile);
 	}
 
-	/**Meghívja az Tile buildIgloo függvényét
-	 *  @param
+	/** Meghívja az Tile buildIgloo függvényét
 	 *  @return bool - Sikerült-e építeni.  */
 	public boolean buildIgloo() {
+		System.out.println("Eskimo buildIgloo");
 		return tile.buildIgloo();
 	}
 
-	/**Kiválaszja az akciót
-	 *  @param
+	/** Kiválaszja az akciót
 	 *  @return bool - Sikerült-e akciót választani.  */
 	public boolean selectAction() {
-		System.out.println("Action selected");
+		System.out.println("Eskimo selectAction");
 		return false;
 	}
 

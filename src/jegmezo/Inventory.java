@@ -23,6 +23,7 @@ public class Inventory {
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipFood() {
 		System.out.println("Inventory equipFood");
+		System.out.println("Can/can't?");
 		switch (new Scanner(System.in).nextLine()) {
 			case "can":
 				return true;
@@ -37,6 +38,7 @@ public class Inventory {
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipWinItem() {
 		System.out.println("Inventory equipWinItem");
+		System.out.println("Can/can't?");
 		switch (new Scanner(System.in).nextLine()) {
 			case "can":
 				return true;
@@ -51,6 +53,7 @@ public class Inventory {
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipShovel() {
 		System.out.println("Inventory equipShovel");
+		System.out.println("Can/can't?");
 		switch (new Scanner(System.in).nextLine()) {
 			case "can":
 				return true;
@@ -65,6 +68,7 @@ public class Inventory {
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipRope() {
 		System.out.println("Inventory equipRope");
+		System.out.println("Can/can't?");
 		switch (new Scanner(System.in).nextLine()) {
 			case "can":
 				return true;
@@ -79,6 +83,7 @@ public class Inventory {
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipScubaGear() {
 		System.out.println("Inventory equipScubaGear");
+		System.out.println("Can/can't?");
 		switch (new Scanner(System.in).nextLine()) {
 			case "can":
 				return true;
@@ -88,9 +93,8 @@ public class Inventory {
 		return false;
 	}
 
-	/** Növeli eggyel a Win Itemek számát
-	 *  @param
-	 *  @return bool - Sikerült-e felvenni az itemet  */
+	/** Csökkenti a Food-ok számát
+	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat)  */
 	public boolean unequipFood() {
 		return true;
 	}
@@ -134,7 +138,7 @@ public class Inventory {
 	/** Visszaadja a kötél (Rope) számát
 	 *  @return int - az inventoryban levő kötelek száma */
 	public int getRopeCount(){
-		System.out.println("Has rope?");
+		System.out.println("Has rope? (has/hasn't)");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("has"))
 			return 1;
@@ -146,7 +150,7 @@ public class Inventory {
 	/** Visszaadja az étel (Food) számát
 	 *  @return int - az inventoryban levő ételek száma */
 	public int getFoodCount(){
-		System.out.println("Has Food?");
+		System.out.println("Has Food? (has/hasn't)");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("has"))
 			return 1;
@@ -157,7 +161,7 @@ public class Inventory {
 	/** Visszaadja az ásó (Shovel) számát
 	 *  @return int - az inventoryban levő ásók száma */
 	public int getShovelCount(){
-		System.out.println("Has Shovel?");
+		System.out.println("Has Shovel? (has/hasn't)");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("has"))
 			return 1;
@@ -168,7 +172,7 @@ public class Inventory {
 	/** Visszaadja a búvárruha (ScubaGear) számát
 	 *  @return int - az inventoryban levő búvárruhák száma */
 	public int getScubaCount(){
-		System.out.println("Has ScubaGear?");
+		System.out.println("Has ScubaGear? (has/hasn't)");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("has"))
 			return 1;
@@ -179,7 +183,7 @@ public class Inventory {
 	/** Visszaadja a győzelmitárgyak (WinItem) számát
 	 *  @return int - az inventoryban levő győzelmitárgyak száma */
 	public int getWinItemCount(){
-		System.out.println("Has Win Item?");
+		System.out.println("Has Win Item? (has three/has two/has one/has none)");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("has three"))
 			return 3;

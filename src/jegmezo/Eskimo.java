@@ -12,14 +12,8 @@ public class Eskimo extends Player {
 	 *  @param
 	 *  @return bool - Sikerült-e építeni.  */
 	public boolean buildIgloo() {
-		System.out.println("Build Igloo");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
-		}
-		return false;
+		Tile tile = new IceSheet(4);
+		return tile.buildIgloo();
 	}
 
 	/**Kiválaszja az akciót

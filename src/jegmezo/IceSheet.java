@@ -3,20 +3,16 @@ package jegmezo;
 
 
 
-/** */
+/** Jégtábla, tárol egy játékoslétszámot ami felet a jégtábla átfordul, van-e rajta igloo, és ha van rajta tárgy akkor azt is tárolja*/
 public class IceSheet extends Tile {
-	/** */
+
 	private int playerLimit;
-	
-	/** */
+
 	private boolean hasIgloo;
 
 	private Item item;
 
-	public IceSheet(int playerLimit) {
-		this.playerLimit = playerLimit;
-	}
-
+	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
 		System.out.println("\nIceSheet stepOnto\n");
@@ -31,11 +27,14 @@ public class IceSheet extends Tile {
 		}
 	}
 
+	/** A játékoslétszám lekérdezése
+	 * @return játékoslétszám*/
 	@Override
 	public int getPlayerLimit() {
 		System.out.println("\nIceSheet getPlayerLimit\n");
 		return playerLimit;
 	}
+
 
 	@Override
 	public Item getItem() {

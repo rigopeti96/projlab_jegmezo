@@ -19,8 +19,11 @@ public class Rope implements Item {
 		return inventory.unequipRope();
 	}
 
+	/** a Player használja a tárgyat
+	 * @param player Player, aki használja a tárgyat
+	 * @return true ha sikeres, false ha nem */
 	@Override
-	public boolean use(Player p) {
+	public boolean use(Player player) {
 		System.out.println("Rope use");
 		return false;
 	}

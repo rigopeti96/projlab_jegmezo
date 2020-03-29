@@ -51,6 +51,10 @@ public abstract class Tile {
 		return neighbours;
 	}
 
+	/**
+	 * Összeköti ezt a Tile-t egy másikkal (neighbour listákat updateli)
+	 * @param tile Másik Tile
+	 */
 	public void connectTile(Tile tile) {
 		System.out.println("Tile connectTile");
 		neighbours.add(tile);

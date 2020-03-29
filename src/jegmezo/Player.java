@@ -18,6 +18,8 @@ public abstract class Player {
 		this.gameController.addPlayer(this);
 	}
 
+	/**
+	 * @return A Player Inventory-ja */
 	public Inventory getInventory(){
 		System.out.println("Player getInventory");
 		return inventory;

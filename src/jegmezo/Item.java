@@ -11,10 +11,12 @@ public interface Item {
 	/** kiveszi egy Player Inventory-jából magát */
 	public boolean unequip(Inventory inventory);
 	
-	/** a Player használja a tárgyat */
-	public boolean use(Player p);
+	/** a Player használja a tárgyat
+	 * @param player Player, aki használja a tárgyat
+	 * @return true ha sikeres, false ha nem */
+	public boolean use(Player player);
 	
-	/** megnézi, hogy meg lehet-e menteni csapattársát ezzel a tárggyal */
+	/** megnézi, hogy meg lehet-e menteni csapattársát ezzel a tárggyal*/
 	public boolean canSave();
 	
 	/** megnézi, hogy túl lehet-e élni a lyukba esést ezzel a tárggyal*/

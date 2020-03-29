@@ -16,7 +16,9 @@ public class Food implements Item {
 		return inventory.unequipFood();
 	}
 
-	/** */
+	/** a Player használja a tárgyat
+	 * @param player Player, aki használja a tárgyat
+	 * @return true ha sikeres, false ha nem */
 	public boolean use(Player p) {
 		System.out.println("Food use");
 		p.increaseBodyHeat();

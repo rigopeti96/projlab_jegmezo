@@ -146,7 +146,7 @@ public class Inventory {
 	public int getRopeCount(){
 		System.out.println("Van-e nála kötél?");
 		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("van"))
+		if(choice.equals("has"))
 			return 1;
 		else{
 			return 0;
@@ -170,10 +170,10 @@ public class Inventory {
 			return 0;
 		}
 	}
-	public int getScubaGearCount(){
+	public int getScubaCount(){
 		System.out.println("Van-e nála búvárruha?");
 		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("van"))
+		if(choice.equals("has"))
 			return 1;
 		else{
 			return 0;

@@ -24,9 +24,9 @@ public class IceSheet extends Tile {
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
 		System.out.println("IceSheet stepOnto");
-		System.out.println("Átfordul-e\n1:Igen\n2.Nem");
+		System.out.println("Átfordul?");
 		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("1")){
+		if(choice.equals("igen")){
 			player.drown();
 		}
 		else{

@@ -1,12 +1,12 @@
 package jegmezo;
 
 
-/**Passzív tárgy, megmenti a vízbe esett gazdáját. Implementálja az Item interfészt.*/
+/**PasszÃ­v tÃ¡rgy, megmenti a vÃ­zbe esett gazdÃ¡jÃ¡t. ImplementÃ¡lja az Item interfÃ©szt.*/
 public class ScubaGear implements Item {
 	
-	/** Beteszi egy Player Inventory-jába magát 
+	/** Beteszi egy Player Inventory-jÃ¡ba magÃ¡t 
 	 *  @param inventory - A Player inventoryja, amibe be kell tenni a ScubaGeart.
-	 *  @return bool - Sikerült-e betenni
+	 *  @return bool - SikerÃ¼lt-e betenni
 	 * */
 	public boolean equip(Inventory inventory) {
 		if (inventory.equipScubaGear() ) {
@@ -17,9 +17,9 @@ public class ScubaGear implements Item {
 		return false;
 	}
 	
-	/** kiveszi egy Player Inventory-jából magát 
-	 *  @param inventory - A Player inventoryja, amibõl ki kell tenni a ScubaGeart.
-	 *  @return boolean - Sikerült-e kivenni
+	/** kiveszi egy Player Inventory-jÃ¡bÃ³l magÃ¡t 
+	 *  @param inventory - A Player inventoryja, amibÃµl ki kell tenni a ScubaGeart.
+	 *  @return boolean - SikerÃ¼lt-e kivenni
 	 * */
 	public boolean unequip(Inventory inventory) {
 		if (inventory.unequipScubaGear() ) {
@@ -30,23 +30,23 @@ public class ScubaGear implements Item {
 		return false;
 	}
 	
-	/** Mindig hamisat ad, nem lehet használni (passzív tárgy)
-	 *  @param player - A Player, aki használni akarja a ScubaGeart.
-	 *  @return  false - Nem lehet használni*/
+	/** Mindig hamisat ad, nem lehet hasznÃ¡lni (passzÃ­v tÃ¡rgy)
+	 *  @param player - A Player, aki hasznÃ¡lni akarja a ScubaGeart.
+	 *  @return  false - Nem lehet hasznÃ¡lni*/
 	public boolean use(Player player) {
 		System.out.println("\nScubaGearUseItem\n");
 		return false;
 	}
 	
-	/** Mindig hamisat ad (érvényes specifikáció szerint)
-	 * @return false - Nem tud megmenteni más játékost. */
+	/** Mindig hamisat ad (Ã©rvÃ©nyes specifikÃ¡ciÃ³ szerint)
+	 * @return false - Nem tud megmenteni mÃ¡s jÃ¡tÃ©kost. */
 	public boolean canSave() {
 		System.out.println("\nScubaGearcanSave()\n");
 		return false;
 	}
 	
-	/** Mindig igazat ad (érvényes specifikáció szerint)
-	 *  @return true - A viselõje túléli a lyukbaesést. */
+	/** Mindig igazat ad (Ã©rvÃ©nyes specifikÃ¡ciÃ³ szerint)
+	 *  @return true - A viselÃµje tÃºlÃ©li a lyukbaesÃ©st. */
 	public boolean canSurvive() {
 		System.out.println("\nScubaGearcanSurvive()\n");
 		return true;

@@ -3,37 +3,37 @@ package jegmezo;
 
 import java.util.*;
 
-/** Mez?, amire a játékosok léphetnek. Hóréteg kerülhet rá, lehet rajta tárgy, iglu illetve játékosok. Hóvihar hatással lehet a mez?kre, ezen kívül minden viselkedésta
- *  specializált osztályok kezelnek le. Tárolja a szomszédait és a rajta álló Player-eket.*/
+/** MezÅ‘, amire a jÃ¡tÃ©kosok lÃ©phetnek. HÃ³rÃ©teg kerÃ¼lhet rÃ¡, lehet rajta tÃ¡rgy, iglu illetve jÃ¡tÃ©kosok. HÃ³vihar hatÃ¡ssal lehet a mezÅ‘kre, ezen kÃ­vÃ¼l minden viselkedÃ©sta
+ *  specializÃ¡lt osztÃ¡lyok kezelnek le. TÃ¡rolja a szomszÃ©dait Ã©s a rajta Ã¡llÃ³ Player-eket.*/
 public abstract class Tile {
 	private int snow;
 	protected List<Tile> neighbours;
 	protected List<Player> players;
 	
-	/** A Player hívja ,amikor rálép a Tile-re, hozzáadja a Player-t a players listához
-	 * @param player Player, amelyik rálépett a mez?re
-	 * @param prevTile Az el?z? mez?, amin a Player állt
+	/** A Player hÃ­vja, amikor rÃ¡lÃ©p a Tile-re, hozzÃ¡adja a Player-t a players listÃ¡hoz
+	 * @param player Player, amelyik rÃ¡lÃ©pett a mezÅ‘re
+	 * @param prevTile Az elÅ‘zÅ‘ mezÅ‘, amin a Player Ã¡llt
 	 * */
 	public abstract void stepOnto(Player player, Tile prevTile);
 
-	/** A Player hívja, amikor lelép a Tile-r?l, kiszedi a Player-t a players listából
-	 * @param player Player, amelyik lelépett a mez?r?l
+	/** A Player hÃ­vja, amikor lelÃ©p a Tile-rÅ‘l, kiszedi a Player-t a players listÃ¡bÃ³l
+	 * @param player Player, amelyik lelÃ©pett a mezÅ‘rÅ‘l
 	 * */
 	public void stepOff(Player player) {
 		System.out.println("\nTile stepOff\n");
 	}
 
 	/**
-	 * @return A Tile-on álló maximum Player szám, amit után átfordul/Player-ek beleesnek
+	 * @return A Tile-on Ã¡llÃ³ maximum Player szÃ¡m, amit utÃ¡n Ã¡tfordul/Player-ek beleesnek
 	 */
 	public abstract int getPlayerLimit();
 
 	/**
-	 * @return Visszaadja a Tile szomszédjait
+	 * @return Visszaadja a Tile szomszÃ©djait
 	 */
 	public Tile getNeighbours() {
 		System.out.println("\nTile getNeighbours\n");
-		System.out.println("\nMilyen Tile-ra lépjen?\n1:IceSheet\n2:Hole");
+		System.out.println("\nMilyen Tile-ra lÃ©pjen?\n1:IceSheet\n2:Hole");
 		String choice =System.console().readLine();
 		if (choice.equals("2")) {
 			return new Hole();
@@ -44,21 +44,21 @@ public abstract class Tile {
 	}
 
 	/**
-	 * @return Visszadja a Tile-on lév? Item-et
+	 * @return Visszadja a Tile-on lÃ©vÅ‘ Item-et
 	 */
 	public abstract Item getItem();
 
 	/**
-	 * Hóvihar hatása az adott Tile-re, plusz hóréteg sorsolása és a Player-ek megfagyasztása (testh? csökkentése eggyel)
+	 * HÃ³vihar hatÃ¡sa az adott Tile-re, plusz hÃ³rÃ©teg sorsolÃ¡sa Ã©s a Player-ek megfagyasztÃ¡sa (testhÅ‘ csÃ¶kkentÃ©se eggyel)
 	 */
 	public void blizzard() {
 		System.out.println("\nTile blizzard\n");
 	}
 
 	/**
-	 * Leszed egy bizonyos mennyiség? hóréteget a Tile-ról
-	 * @param amount Hóréteg szám, amennyit le kell szedni
-	 * @return true-t ad vissza, ha volt akár egy hóréteg is, amit leszedett
+	 * Leszed egy bizonyos mennyisÃ©gÅ± hÃ³rÃ©teget a Tile-rÃ³l
+	 * @param amount HÃ³rÃ©teg szÃ¡m, amennyit le kell szedni
+	 * @return true-t ad vissza, ha volt akÃ¡r egy hÃ³rÃ©teg is, amit leszedett
 	 */
 	public boolean removeSnow(int amount) {
 		System.out.println("\nTile removeSnow " + amount + "\n");
@@ -66,24 +66,24 @@ public abstract class Tile {
 	}
 
 	/**
-	 * Eskimo hívja iglut épít a mez?re,
-	 * @return true has sikerült false ha nem
+	 * Eskimo hÃ­vja iglut Ã©pÃ­t a mezÅ‘re,
+	 * @return true has sikerÃ¼lt false ha nem
 	 */
 	public abstract boolean buildIgloo();
 
 	/**
-	 * Leszedi a Tile-r?l a rajta lév? Item-et
+	 * Leszedi a Tile-rÅ‘l a rajta lÃ©vÅ‘ Item-et
 	 */
 	public abstract void removeItem();
 
 	/**
-	 * Ezen a Tile-on van e olyan Player, aki megtud menteni valakit (van kötele)
+	 * Ezen a Tile-on van e olyan Player, aki megtud menteni valakit (van kÃ¶tele)
 	 * @return Van true, nincs false
 	 */
 	public abstract boolean canSave();
 
 	/**
-	 * Növeli a Tile-on lév? hómennyiséget 1-gyel.
+	 * NÃ¶veli a Tile-on lÃ©vÅ‘ hÃ³mennyisÃ©get 1-gyel.
 	 */
 	public void increaseSnow() {
 		System.out.println("\nTile removeSnow\n");
@@ -91,8 +91,8 @@ public abstract class Tile {
 	}
 
 	/**
-	 * Egy Player-t lehet vele kiválasztani (el?z?höz egy kiválasztó menüt)
-	 * @return Player amit választottak
+	 * Egy Player-t lehet vele kivÃ¡lasztani (elÅ‘zÅ‘hÃ¶z egy kivÃ¡lasztÃ³ menÃ¼t)
+	 * @return Player amit vÃ¡lasztottak
 	 */
 	public Player selectPlayer() {
 		System.out.println("\nTile selectPlayer\n");
@@ -100,7 +100,7 @@ public abstract class Tile {
 	}
 
 	/**
-	 * @return true-t ad vissza, ha az összes játékos a mez?n tartózkodik, különben false-ot.
+	 * @return true-t ad vissza, ha az Ã¶sszes jÃ¡tÃ©kos a mezÅ‘n tartÃ³zkodik, kÃ¼lÃ¶nben false-ot.
 	 */
 	public boolean hasAllPlayers() {
 		System.out.println("\nTile hasAllPlayers\n");

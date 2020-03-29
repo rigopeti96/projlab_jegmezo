@@ -6,7 +6,7 @@ package jegmezo;
 /** */
 public class Rope implements Item {
 
-	/** beteszi egy Player Inventory-j·ba mag·t */
+	/** beteszi egy Player Inventory-j√°ba mag√°t */
 	public boolean equip(Inventory inventory){
 		if (inventory.equipRope() ) {
 			System.out.println("\nRope equiped\n");
@@ -16,7 +16,7 @@ public class Rope implements Item {
 		return false;
 	}
 	
-	/** kiveszi egy Player Inventory-j·bÛl mag·t */
+	/** kiveszi egy Player Inventory-j√°b√≥l mag√°t */
 	public boolean unequip(Inventory inventory){
 		if (inventory.unequipRope() ) {
 			System.out.println("\nRope unequiped\n");
@@ -31,12 +31,12 @@ public class Rope implements Item {
 		return false;
 	}
 
-	/** megnÈzi, hogy meg lehet-e menteni csapatt·rs·t ezzel a t·rggyal */
+	/** megn√©zi, hogy meg lehet-e menteni csapatt√°rs√°t ezzel a t√°rggyal */
 	public boolean canSave(){
 		return true;
 	}
 	
-	/** megnÈzi, hogy t˙l lehet-e Èlni a lyukba esÈst ezzel a t·rggyal*/
+	/** megn√©zi, hogy t√∫l lehet-e √©lni a lyukba es√©st ezzel a t√°rggyal*/
 	public boolean canSurvive(){
 		return false;
 	}

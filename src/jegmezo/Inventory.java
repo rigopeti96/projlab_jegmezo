@@ -32,7 +32,7 @@ public class Inventory {
 		countWinItem = 0;
 	}
 
-	/** Nˆveli egyel a Win Itemek sz·m·t*/
+	/** N√∂veli egyel a Win Itemek sz√°m√°t*/
 	public boolean equipWinItem() {
 		return true;
 	}
@@ -57,7 +57,7 @@ public class Inventory {
 		return true;
 	}
 	
-	/** Csˆkkenti a Win Item-ek sz·m·t */
+	/** Cs√∂kkenti a Win Item-ek sz√°m√°t */
 	public boolean unequipWinItem() {
 		return true;
 	}
@@ -77,7 +77,7 @@ public class Inventory {
 		return true;
 	}
 
-	/** Egyel?re null a visszatÈrÈsi ÈrtÈke, ez majd v·ltozni fog*/
+	/** Egyel≈ëre null a visszat√©r√©si √©rt√©ke, ez majd v√°ltozni fog*/
 	public Item selectItem() {
 		return null;
 	}

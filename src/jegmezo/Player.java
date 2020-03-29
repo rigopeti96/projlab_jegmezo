@@ -3,7 +3,7 @@ package jegmezo;
 
 
 
-/** J·tÈkos, lehet eszkimÛ Ès kutatÛ. Birtokolhat t·rgyat, haszn·lhatja azt a t·rgyat Ès ·tadhatja m·sik j·tÈkosnak. ·t tud lÈpni szomszÈdos mez?re. */
+/** J√°t√©kos, lehet eszkim√≥ √©s kutat√≥. Birtokolhat t√°rgyat, haszn√°lhatja azt a t√°rgyat √©s √°tadhatja m√°sik j√°t√©kosnak. √°t tud l√©pni szomsz√©dos mez≈ëre. */
 public abstract class Player {
 	private int bodyHeat;
 
@@ -24,27 +24,27 @@ public abstract class Player {
 		return inventory;
 	}
 
-	/** A j·tÈkos kˆrÈt kezeli le */
+	/** A j√°t√©kos k√∂r√©t kezeli le */
 	public void takeTurn() {
 		System.out.println("\nPlayer takeTurn\n");
 	}
 	
-	/** A j·tÈkos egyik n·la lÈv? t·rgyat ·tadhatja egyik j·tÈkos t·rs·nak
+	/** A j√°t√©kos egyik n√°la l√©v≈ë t√°rgyat √°tadhatja egyik j√°t√©kos t√°rs√°nak
 	 * @return true ha sikeres, false ha nem */
 	public boolean trade() {
 		System.out.println("\nPlayer trade\n");
 		return false;
 	}
 	
-	/** A j·tÈkos felvesz egy t·rgyat
-	 * @return true, ha a j·tÈkos elt·rolta az adott t·rgyat, false ha nem vette fel */
+	/** A j√°t√©kos felvesz egy t√°rgyat
+	 * @return true, ha a j√°t√©kos elt√°rolta az adott t√°rgyat, false ha nem vette fel */
 	public boolean takeItem(Item item) {
 		System.out.println("\nPlayer takeItem\n");
 		return false;
 	}
 	
-	/** A j·tÈkos haszn·lja a gy?zelmi t·rgyat
-	 * @return ha minden alkatrÈsz megvan Ès az ˆsszes j·tÈkos ugyanazon a mez?n van, akkor megnyerik a j·tÈkot Ès true-t ad vissza, am˙gy false*/
+	/** A j√°t√©kos haszn√°lja a gy≈ëzelmi t√°rgyat
+	 * @return ha minden alkatr√©sz megvan √©s az √∂sszes j√°t√©kos ugyanazon a mez≈ën van, akkor megnyerik a j√°t√©kot √©s true-t ad vissza, am√∫gy false*/
 	public boolean useWinItems() {
 		System.out.println("\nPlayer useWinItems\n");
 		if(tile.hasAllPlayers() && inventory.hasAllWinItem()){
@@ -56,7 +56,7 @@ public abstract class Player {
 		return false;
 	}
 	
-	/** A j·tÈkos mozog (tile-t v·laszt Ès odamozog)
+	/** A j√°t√©kos mozog (tile-t v√°laszt √©s odamozog)
 	 * @return true has sikeres, false ha nem */
 	public boolean move() {
 		System.out.println("\nPlayer move\n");
@@ -65,73 +65,73 @@ public abstract class Player {
 		return true;
 	}
 	
-	/** Megnˆveli a j·tÈkos testh?jÈt 1-gyel */
+	/** Megn√∂veli a j√°t√©kos testh≈ëj√©t 1-gyel */
 	public void increaseBodyHeat() {
 		System.out.println("\nPlayer increaseBodyHeat\n");
 		bodyHeat++;
 	}
 	
-	/** Lecsˆkkenti a j·tÈkos testh?jÈt 1-gyel */
+	/** Lecs√∂kkenti a j√°t√©kos testh≈ëj√©t 1-gyel */
 	public void decreaseBodyHeat() {
 		System.out.println("\nPlayer decreaseBodyHeat\n");
 		bodyHeat--;
 	}
 	
-	/** A j·tÈkos megfullad */
+	/** A j√°t√©kos megfullad */
 	public void drown() {
 		System.out.println("\nPlayer drown\n");
 		gameController.gameOver();
 	}
 	
-	/** A j·tÈkos elhaszn·l egy akciÛpontot */
+	/** A j√°t√©kos elhaszn√°l egy akci√≥pontot */
 	public void loseAP() {
 		System.out.println("\nPlayer loseAP\n");
 		actions--;
 	}
 	
-	/** A Player kÈzzel Ès Ès 1 egysÈg havat takarÌt el a mez?jÈr?l,
+	/** A Player k√©zzel √©s √©s 1 egys√©g havat takar√≠t el a mez≈ëj√©r≈ël,
 	 * @return true ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithHands() {
 		System.out.println("\nPlayer digWithHands\n");
 		return false;
 	}
 
-	/** A Player ·sÛval Ès Ès 2 egysÈg havat takarÌt el a mez?jÈr?l,
+	/** A Player √°s√≥val √©s √©s 2 egys√©g havat takar√≠t el a mez≈ëj√©r≈ël,
 	 * @return True ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithShovel() {
 		System.out.println("\nPlayer digWithShovel\n");
 		return false;
 	}
 	
-	/** A j·tÈkos felveszi a t·rgyat a mez?r?l, amin ·ll
+	/** A j√°t√©kos felveszi a t√°rgyat a mez≈ër≈ël, amin √°ll
 	 * @return true ha feltudta venni, false ha nem*/
 	public boolean pickup() {
 		System.out.println("\nPlayer pickup\n");
 		return false;
 	}
 
-	/** A j·tÈkos kiv·laszthat egy mez?t, amire lÈpni fog, vagy megnÈzi sarkkutatÛval (men¸t dob fel)
-	 * @return kiv·lasztott tile (tile.getNeighbours eleme) */
+	/** A j√°t√©kos kiv√°laszthat egy mez≈ët, amire l√©pni fog, vagy megn√©zi sarkkutat√≥val (men√ºt dob fel)
+	 * @return kiv√°lasztott tile (tile.getNeighbours eleme) */
 	public Tile selectTile() {
 		System.out.println("\nPlayer selectTile\n");
 		Tile ret=tile.getNeighbours();
 		return null;
 	}
 	
-	/** A j·tÈkos kiv·laszt egy t·rgyat, amelyet haszn·l (men¸t dob fel)
+	/** A j√°t√©kos kiv√°laszt egy t√°rgyat, amelyet haszn√°l (men√ºt dob fel)
 	 * @return true ha sikeres, false nem */
 	public boolean useItem() {
 		System.out.println("\nPlayer useItem\n");
 		return false;
 	}
 	
-	/** A j·tÈkos v·laszt egy akciÛt, true-val tÈr vissza
-	 * @return true ha az akciÛ sikeres, false ha nem vagy a j·tÈkos nem v·lasztott akciÛt */
+	/** A j√°t√©kos v√°laszt egy akci√≥t, true-val t√©r vissza
+	 * @return true ha az akci√≥ sikeres, false ha nem vagy a j√°t√©kos nem v√°lasztott akci√≥t */
 	public abstract boolean selectAction();
 
 	public boolean canSave(){
 		System.out.println("\nPlayer canSave\n");
-		System.out.println("\nTud menekÌteni a j·tÈkos?\n1:Igen\n2:Nem");
+		System.out.println("\nTud menek√≠teni a j√°t√©kos?\n1:Igen\n2:Nem");
 		String choice=System.console().readLine();
 		if (choice.equals("1"))
 			return true;
@@ -140,7 +140,7 @@ public abstract class Player {
 
 	public boolean canSurvive(){
 		System.out.println("\nPlayer canSurvive\n");
-		System.out.println("\nTud menekÌteni a j·tÈkos?\n1:Igen\n2:Nem");
+		System.out.println("\nTud menek√≠teni a j√°t√©kos?\n1:Igen\n2:Nem");
 		String choice=System.console().readLine();
 		if (choice.equals("1"))
 			return true;

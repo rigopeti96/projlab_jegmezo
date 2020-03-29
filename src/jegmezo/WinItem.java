@@ -8,7 +8,7 @@ public class WinItem implements Item {
 	/** */
 	private String name;
 
-	/** beteszi egy Player Inventory-j·ba mag·t */
+	/** beteszi egy Player Inventory-j√°ba mag√°t */
 	public boolean equip(Inventory inventory){
 		if (inventory.equipWinItem() ) {
 			System.out.println("\nWin Item equiped\n");
@@ -18,7 +18,7 @@ public class WinItem implements Item {
 		return false;
 	}
 	
-	/** kiveszi egy Player Inventory-j·bÛl mag·t */
+	/** kiveszi egy Player Inventory-j√°b√≥l mag√°t */
 	public boolean unequip(Inventory inventory){
 		if (inventory.unequipWinItem() ) {
 			System.out.println("\nWin Item unequiped\n");
@@ -28,7 +28,7 @@ public class WinItem implements Item {
 		return false;
 	}
 	
-	/** a Player haszn·lja a t·rgyat */
+	/** a Player haszn√°lja a t√°rgyat */
 	public boolean use(Player player) {
 		if (player.useWinItems() ) {
 			System.out.println("\nWin Item used\n");
@@ -38,12 +38,12 @@ public class WinItem implements Item {
 		return false;
 	}
 	
-	/** megnÈzi, hogy meg lehet-e menteni csapatt·rs·t ezzel a t·rggyal */
+	/** megn√©zi, hogy meg lehet-e menteni csapatt√°rs√°t ezzel a t√°rggyal */
 	public boolean canSave(){
 		return false;
 	}
 	
-	/** megnÈzi, hogy t˙l lehet-e Èlni a lyukba esÈst ezzel a t·rggyal*/
+	/** megn√©zi, hogy t√∫l lehet-e √©lni a lyukba es√©st ezzel a t√°rggyal*/
 	public boolean canSurvive(){
 		return false;
 	}

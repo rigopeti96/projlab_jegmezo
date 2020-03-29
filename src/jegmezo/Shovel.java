@@ -1,13 +1,13 @@
 package jegmezo;
 
 
-/** Ha a Player ezt haszn·lva ·s, akkor 2 havat takarÌt el a v·lasztott mezırıl.
- * Implement·lja az Item interfÈszt. */
+/** Ha a Player ezt haszn√°lva √°s, akkor 2 havat takar√≠t el a v√°lasztott mez√µr√µl.
+ * Implement√°lja az Item interf√©szt. */
 public class Shovel implements Item {
 	
-	/** Beteszi egy Player Inventory-j·ba mag·t
+	/** Beteszi egy Player Inventory-j√°ba mag√°t
 	 *  @param inventory - A Player inventoryja, amibe be kell tenni a Shovelt.
-	 *  @return bool - Siker¸lt-e betenni.  */
+	 *  @return bool - Siker√ºlt-e betenni.  */
 	public boolean equip(Inventory inventory) {
 		if (inventory.equipShovel() ) {
 			System.out.println("\nShovelEquiped\n");
@@ -17,9 +17,9 @@ public class Shovel implements Item {
 		return false;
 	}
 	
-	/** kiveszi egy Player Inventory-j·bÛl mag·t
-	 *  @param inventory - A Player inventoryja, amibıl ki kell tenni a Shovelt.
-	 *  @return boolean - Siker¸lt-e kivenni */
+	/** kiveszi egy Player Inventory-j√°b√≥l mag√°t
+	 *  @param inventory - A Player inventoryja, amib√µl ki kell tenni a Shovelt.
+	 *  @return boolean - Siker√ºlt-e kivenni */
 	public boolean unequip(Inventory inventory) {
 		if (inventory.unequipScubaGear() ) {
 			System.out.println("\nShovelUnequiped\n");
@@ -29,9 +29,9 @@ public class Shovel implements Item {
 		return false;
 	}
 	
-	/** Eltakarit 2 rÈteg havat a mezırıl, amin a Player tartÛzkodik.
-	 * @param player - A j·tÈkos, aki haszn·lja a t·rgyat
-	 * @return boolean - Siker¸lt-e az akciÛ*/
+	/** Eltakarit 2 r√©teg havat a mez√µr√µl, amin a Player tart√≥zkodik.
+	 * @param player - A j√°t√©kos, aki haszn√°lja a t√°rgyat
+	 * @return boolean - Siker√ºlt-e az akci√≥*/
 	public boolean use(Player player) {
 		if (player.digWithShovel() ) {
 			System.out.println("\nShovelUsed\n");
@@ -41,15 +41,15 @@ public class Shovel implements Item {
 		return false;
 	}
 	
-	/** Mindig hamisat ad (ÈrvÈnyes specifik·ciÛ szerint) 
-	 * @return false - A Shovel nem tudja megmenteni j·tÈkos·t*/
+	/** Mindig hamisat ad (√©rv√©nyes specifik√°ci√≥ szerint) 
+	 * @return false - A Shovel nem tudja megmenteni j√°t√©kos√°t*/
 	public boolean canSurvive() {
 		System.out.println("\ncanSurvive()\n");
 		return false;
 	}
 	
-	/** Mindig hamisat ad (ÈrvÈnyes specifik·ciÛ szerint) 
-	 * @return false - A Shovel nem tud megmenteni m·s j·tÈkosokat*/
+	/** Mindig hamisat ad (√©rv√©nyes specifik√°ci√≥ szerint) 
+	 * @return false - A Shovel nem tud megmenteni m√°s j√°t√©kosokat*/
 	public boolean canSave() {
 		System.out.println("\nShovelcanSave()\n");
 		return false;

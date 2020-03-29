@@ -22,7 +22,7 @@ public class IceSheet extends Tile {
 		System.out.println("\nIceSheet stepOnto\n");
 		System.out.println("\nÁtfordul-e\n1:Igen\n2.Nem");
 		String choice=System.console().readLine();
-		if(choice=="1"){
+		if(choice.equals("1")){
 			player.drown();
 		}
 		else{

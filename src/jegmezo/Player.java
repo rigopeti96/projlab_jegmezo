@@ -7,7 +7,7 @@ import java.util.Scanner;
 public abstract class Player {
 	private int bodyHeat;
 	private int actions;
-	private Tile tile;
+	protected Tile tile;
 	private Inventory inventory = new Inventory();
 	private GameController gameController;
 

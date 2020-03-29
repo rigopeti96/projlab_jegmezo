@@ -9,26 +9,26 @@ public class GameController {
 	private Player[] players;
 	/** Elindítja a játékot */
 	public void startGame() {
-		System.out.println("\nGameController startGame\n");
+		System.out.println("GameController startGame");
 	}
 	
 	/** A játékosok elvesztik a játékot*/
 	public void gameOver() {
-		System.out.println("\nGameController gameOver\n");
+		System.out.println("GameController gameOver");
 	}
 	
 	/** A játékosok megnyerik a játékot*/
 	public void win() {
-		System.out.println("\nGameController win\n");
+		System.out.println("GameController win");
 	}
 	
 	/** A hóvihar lebonyolításáért felel*/
 	public void blizzard() {
-		System.out.println("\nGameController blizzard\n");
+		System.out.println("GameController blizzard");
 	}
 	
 	/** A körök kezelése*/
 	public void turn() {
-		System.out.println("\nGameController turn\n");
+		System.out.println("GameController turn");
 	}
 }

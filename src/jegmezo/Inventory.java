@@ -1,5 +1,7 @@
 package jegmezo;
 
+import java.util.Scanner;
+
 /**Minden játékoshoz tartozik egy Inventory, ebben van eltárolva, hogy melyik tárgyból mennyi van. A WinItemeken kívül mindenből csak egy lehet egy játékosnál */
 public class Inventory {
 	private int countShovel = 0;
@@ -34,7 +36,8 @@ public class Inventory {
 	 *  @param
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipShovel() {
-		switch (System.console().readLine()) {
+		System.out.println("Inventory equipShovel");
+		switch (new Scanner(System.in).nextLine()) {
 			case "can":
 				return true;
 			case "can't":
@@ -76,6 +79,7 @@ public class Inventory {
 	 *  @param
 	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat) */
 	public boolean unequipShovel() {
+		System.out.println("Inventory unequipShovel");
 		return true;
 	}
 
@@ -105,10 +109,10 @@ public class Inventory {
 	 *  @return bool - Megvan-e minden item. */
 	public boolean hasAllWinItem() {
 		if(countWinItem==3){
-			System.out.println("\nHas All Win Item\n");
+			System.out.println("Has All Win Item");
 			return true;
 		}
-		System.out.println("\nDoesn't have all Win Item\n");
+		System.out.println("Doesn't have all Win Item");
 		return false;
 	}
 }

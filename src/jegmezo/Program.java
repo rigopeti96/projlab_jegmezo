@@ -1,9 +1,11 @@
 package jegmezo;
 
+import java.util.Scanner;
+
 public class Program {
     static GameController gameController = new GameController();
     public static void main(String[] args) {
-        switch (System.console().readLine()) {
+        switch (new Scanner(System.in).nextLine()) {
             case "move":
                 move();
                 break;

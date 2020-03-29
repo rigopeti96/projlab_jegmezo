@@ -6,20 +6,20 @@ public class Food implements Item {
 	/** beteszi egy Player Inventory-jába magát */
 	public boolean equip(Inventory inventory){
 		if (inventory.equipFood() ) {
-			System.out.println("\nFood equiped\n");
+			System.out.println("Food equiped");
 			return true;
 		}
-		System.out.println("\nFood not equiped\n");
+		System.out.println("Food not equiped");
 		return false;
 	}
 
 	/** kiveszi egy Player Inventory-jából magát */
 	public boolean unequip(Inventory inventory){
 		if (inventory.unequipFood() ) {
-			System.out.println("\nFood unequiped\n");
+			System.out.println("Food unequiped");
 			return true;
 		}
-		System.out.println("\nFood not unequiped\n");
+		System.out.println("Food not unequiped");
 		return false;
 	}
 
@@ -27,10 +27,10 @@ public class Food implements Item {
 	public boolean use(Player p) {
 		p.increaseBodyHeat();
 		if (unequip(p.getInventory())) {
-			System.out.println("\nFood used\n");
+			System.out.println("Food used");
 			return true;
 		}
-		System.out.println("\nFood not used\n");
+		System.out.println("Food not used");
 		return false;
 	}
 

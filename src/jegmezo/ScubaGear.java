@@ -10,10 +10,10 @@ public class ScubaGear implements Item {
 	 * */
 	public boolean equip(Inventory inventory) {
 		if (inventory.equipScubaGear() ) {
-			System.out.println("\nScubaGearEquiped\n");
+			System.out.println("ScubaGearEquiped");
 			return true;
 		}
-		System.out.println("\nScubaGearNotEquiped\n");
+		System.out.println("ScubaGearNotEquiped");
 		return false;
 	}
 	
@@ -23,10 +23,10 @@ public class ScubaGear implements Item {
 	 * */
 	public boolean unequip(Inventory inventory) {
 		if (inventory.unequipScubaGear() ) {
-			System.out.println("\nScubaGearUnequiped\n");
+			System.out.println("ScubaGearUnequiped");
 			return true;
 		}
-		System.out.println("\nScubaGearNotUnequiped\n");
+		System.out.println("ScubaGearNotUnequiped");
 		return false;
 	}
 	
@@ -34,21 +34,21 @@ public class ScubaGear implements Item {
 	 *  @param player - A Player, aki használni akarja a ScubaGeart.
 	 *  @return  false - Nem lehet használni*/
 	public boolean use(Player player) {
-		System.out.println("\nScubaGearUseItem\n");
+		System.out.println("ScubaGearUseItem");
 		return false;
 	}
 	
 	/** Mindig hamisat ad (érvényes specifikáció szerint)
 	 * @return false - Nem tud megmenteni más játékost. */
 	public boolean canSave() {
-		System.out.println("\nScubaGearcanSave()\n");
+		System.out.println("ScubaGearcanSave()");
 		return false;
 	}
 	
 	/** Mindig igazat ad (érvényes specifikáció szerint)
 	 *  @return true - A viselõje túléli a lyukbaesést. */
 	public boolean canSurvive() {
-		System.out.println("\nScubaGearcanSurvive()\n");
+		System.out.println("ScubaGearcanSurvive()");
 		return true;
 	}
 }

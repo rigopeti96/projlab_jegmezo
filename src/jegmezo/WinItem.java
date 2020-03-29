@@ -11,30 +11,30 @@ public class WinItem implements Item {
 	/** beteszi egy Player Inventory-jába magát */
 	public boolean equip(Inventory inventory){
 		if (inventory.equipWinItem() ) {
-			System.out.println("\nWin Item equiped\n");
+			System.out.println("Win Item equiped");
 			return true;
 		}
-		System.out.println("\nWin Item not equiped\n");
+		System.out.println("Win Item not equiped");
 		return false;
 	}
 	
 	/** kiveszi egy Player Inventory-jából magát */
 	public boolean unequip(Inventory inventory){
 		if (inventory.unequipWinItem() ) {
-			System.out.println("\nWin Item unequiped\n");
+			System.out.println("Win Item unequiped");
 			return true;
 		}
-		System.out.println("\nWin Item not unequiped\n");
+		System.out.println("Win Item not unequiped");
 		return false;
 	}
 	
 	/** a Player használja a tárgyat */
 	public boolean use(Player player) {
 		if (player.useWinItems() ) {
-			System.out.println("\nWin Item used\n");
+			System.out.println("Win Item used");
 			return true;
 		}
-		System.out.println("\nShovelNotUsed\n");
+		System.out.println("ShovelNotUsed");
 		return false;
 	}
 	

@@ -7,8 +7,8 @@ import java.util.*;
  *  specializált osztályok kezelnek le. Tárolja a szomszédait és a rajta álló Player-eket.*/
 public abstract class Tile {
 	private int snow;
-	protected List<Tile> neighbours;
-	protected List<Player> players;
+	protected List<Tile> neighbours = new ArrayList<>();
+	protected List<Player> players = new ArrayList<>();
 	
 	/** A Player hívja, amikor rálép a Tile-re, hozzáadja a Player-t a players listához
 	 * @param player Player, amelyik rálépett a mezőre
@@ -20,7 +20,7 @@ public abstract class Tile {
 	 * @param player Player, amelyik lelépett a mezőről
 	 * */
 	public void stepOff(Player player) {
-		System.out.println("\nTile stepOff\n");
+		System.out.println("Tile stepOff");
 	}
 
 	/**
@@ -29,7 +29,7 @@ public abstract class Tile {
 	public abstract int getPlayerLimit();
 
 	public void addPlayer(Player player) {
-		System.out.println("\nTile addPlayer\n");
+		System.out.println("Tile addPlayer");
 		this.players.add(player);
 	}
 
@@ -37,9 +37,9 @@ public abstract class Tile {
 	 * @return Visszaadja a Tile szomszédjait
 	 */
 	public Tile getNeighbours() {
-		System.out.println("\nTile getNeighbours\n");
-		System.out.println("\nMilyen Tile-ra lépjen?\n1:IceSheet\n2:Hole");
-		String choice =System.console().readLine();
+		System.out.println("Tile getNeighbours");
+		System.out.println("Milyen Tile-ra lépjen?\n1:IceSheet\n2:Hole");
+		String choice =new Scanner(System.in).nextLine();
 		if (choice.equals("2")) {
 			return new Hole();
 		}
@@ -62,7 +62,7 @@ public abstract class Tile {
 	 * Hóvihar hatása az adott Tile-re, plusz hóréteg sorsolása és a Player-ek megfagyasztása (testhő csökkentése eggyel)
 	 */
 	public void blizzard() {
-		System.out.println("\nTile blizzard\n");
+		System.out.println("Tile blizzard");
 	}
 
 	/**
@@ -71,7 +71,7 @@ public abstract class Tile {
 	 * @return true-t ad vissza, ha volt akár egy hóréteg is, amit leszedett
 	 */
 	public boolean removeSnow(int amount) {
-		System.out.println("\nTile removeSnow\n");
+		System.out.println("Tile removeSnow");
 		return false;
 	}
 
@@ -96,7 +96,7 @@ public abstract class Tile {
 	 * Növeli a Tile-on lévő hómennyiséget 1-gyel.
 	 */
 	public void increaseSnow() {
-		System.out.println("\nTile removeSnow\n");
+		System.out.println("Tile removeSnow");
 		snow++;
 	}
 
@@ -105,7 +105,7 @@ public abstract class Tile {
 	 * @return Player amit választottak
 	 */
 	public Player selectPlayer() {
-		System.out.println("\nTile selectPlayer\n");
+		System.out.println("Tile selectPlayer");
 		return null;
 	}
 
@@ -113,7 +113,7 @@ public abstract class Tile {
 	 * @return true-t ad vissza, ha az összes játékos a mezőn tartózkodik, különben false-ot.
 	 */
 	public boolean hasAllPlayers() {
-		System.out.println("\nTile hasAllPlayers\n");
+		System.out.println("Tile hasAllPlayers");
 		return false;
 	}
 }

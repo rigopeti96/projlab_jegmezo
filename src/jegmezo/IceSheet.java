@@ -22,7 +22,7 @@ public class IceSheet extends Tile {
 	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
-		System.out.println("IceSheet stepOnto\n");
+		System.out.println("IceSheet stepOnto");
 		System.out.println("Átfordul-e\n1:Igen\n2.Nem");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("1")){
@@ -38,7 +38,7 @@ public class IceSheet extends Tile {
 	 * @return játékoslétszám*/
 	@Override
 	public int getPlayerLimit() {
-		System.out.println("IceSheet getPlayerLimit\n");
+		System.out.println("IceSheet getPlayerLimit");
 		return playerLimit;
 	}
 
@@ -47,14 +47,14 @@ public class IceSheet extends Tile {
 	 * @return a mezőn lévő tárgy vagy null, ha nincs*/
 	@Override
 	public Item getItem() {
-		System.out.println("IceSheet getItem\n");
+		System.out.println("IceSheet getItem");
 		return item;
 	}
 
 	/** A mezőn lévő tárgy levétele*/
 	@Override
 	public void removeItem() {
-		System.out.println("IceSheet removeItem\n");
+		System.out.println("IceSheet removeItem");
 		item=null;
 	}
 
@@ -62,7 +62,7 @@ public class IceSheet extends Tile {
 	 * @return true-t ad, ha van, false-t ha nincs*/
 	@Override
 	public boolean canSave() {
-		System.out.println("IceSheet canSave\n");
+		System.out.println("IceSheet canSave");
 		return false;
 	}
 
@@ -70,20 +70,20 @@ public class IceSheet extends Tile {
 	 * @return true, ha sikeres volt, false, ha nem*/
 	@Override
 	public boolean buildIgloo(){
-		System.out.println("IceSheet buildIgloo\n");
+		System.out.println("IceSheet buildIgloo");
 		if(!hasIgloo) {
 			hasIgloo=true;
-			System.out.println("Épült igloo\n");
+			System.out.println("Épült igloo");
 			return true;
 		}
-		System.out.println("Nem épült igloo\n");
+		System.out.println("Nem épült igloo");
 		return false;
 	}
 
 	/** A hóvihar lefolytatása*/
 	@Override
 	public void blizzard(){
-		System.out.println("IceSheet blizzard\n");
+		System.out.println("IceSheet blizzard");
 	}
 
 }

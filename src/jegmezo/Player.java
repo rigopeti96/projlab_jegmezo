@@ -15,6 +15,7 @@ public abstract class Player {
 		this.gameController = gameController;
 		this.tile = tile;
 		this.tile.addPlayer(this);
+		this.gameController.addPlayer(this);
 	}
 
 	public Inventory getInventory(){
@@ -79,6 +80,13 @@ public abstract class Player {
 	public void decreaseBodyHeat() {
 		System.out.println("Player decreaseBodyHeat");
 		bodyHeat--;
+		switch (new Scanner(System.in).nextLine()) {
+			case "dead":
+				gameController.gameOver();
+				break;
+			case "deadn't":
+				break;
+		}
 	}
 	
 	/** A játékos megfullad */
@@ -137,6 +145,28 @@ public abstract class Player {
 	 * @return true ha sikeres, false nem */
 	public boolean useItem() {
 		System.out.println("Player useItem");
+
+		switch (new Scanner(System.in).nextLine()) {
+			case "food":
+				if(0 < inventory.getFoodCount()) {
+					Food food = new Food();
+					return (food.use(this));
+
+				}
+				break;
+			case "shovel":
+				if(0 < inventory.getShovelCount()) {
+					Shovel shovel = new Shovel();
+					return(shovel.use(this));
+				}
+				break;
+			case "win items":
+				if(0 < inventory.getWinItemCount()) {
+					WinItem winitem = new WinItem();
+					return(winitem.use(this));
+				}
+				break;
+		}
 		return false;
 	}
 	

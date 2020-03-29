@@ -10,11 +10,12 @@ public class IceSheet extends Tile {
 	private boolean hasIgloo;
 	private Item item;
 
-	public IceSheet(int playerLimit) {
-		this(playerLimit, null);
+	public IceSheet(GameController gameController, int playerLimit) {
+		this(gameController, playerLimit, null);
 	}
 
-	public IceSheet(int playerLimit, Item item) {
+	public IceSheet(GameController gameController, int playerLimit, Item item) {
+		super(gameController);
 		this.playerLimit = playerLimit;
 		this.item = item;
 	}
@@ -77,19 +78,30 @@ public class IceSheet extends Tile {
 	@Override
 	public boolean buildIgloo(){
 		System.out.println("IceSheet buildIgloo");
-		if(!hasIgloo) {
-			hasIgloo=true;
-			System.out.println("Épült igloo");
-			return true;
+		switch (new Scanner(System.in).nextLine()) {
+			case "can":
+				return true;
+			case "can't":
+				return false;
 		}
-		System.out.println("Nem épült igloo");
 		return false;
 	}
 
 	/** A hóvihar lefolytatása*/
 	@Override
 	public void blizzard(){
+		super.blizzard();
 		System.out.println("IceSheet blizzard");
+
+		switch (new Scanner(System.in).nextLine()) {
+			case "igloo":
+				break;
+			case "igloon't":
+				for (Player player: players) {
+					player.decreaseBodyHeat();
+				}
+				break;
+		}
 	}
 
 }

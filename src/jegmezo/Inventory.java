@@ -22,14 +22,28 @@ public class Inventory {
 	 *  @param
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipFood() {
-		return true;
+		System.out.println("Inventory equipFood");
+		switch (new Scanner(System.in).nextLine()) {
+			case "can":
+				return true;
+			case "can't":
+				return false;
+		}
+		return false;
 	}
 
 	/** Növeli eggyel a Win Itemek számát
 	 *  @param
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipWinItem() {
-		return true;
+		System.out.println("Inventory equipWinItem");
+		switch (new Scanner(System.in).nextLine()) {
+			case "can":
+				return true;
+			case "can't":
+				return false;
+		}
+		return false;
 	}
 
 	/** Növeli eggyel a Win Itemek számát
@@ -43,7 +57,6 @@ public class Inventory {
 			case "can't":
 				return false;
 		}
-
 		return false;
 	}
 
@@ -51,14 +64,28 @@ public class Inventory {
 	 *  @param
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipRope() {
-		return true;
+		System.out.println("Inventory equipRope");
+		switch (new Scanner(System.in).nextLine()) {
+			case "can":
+				return true;
+			case "can't":
+				return false;
+		}
+		return false;
 	}
 
 	/** Növeli eggyel a Win Itemek számát
 	 *  @param
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipScubaGear() {
-		return true;
+		System.out.println("Inventory equipScubaGear");
+		switch (new Scanner(System.in).nextLine()) {
+			case "can":
+				return true;
+			case "can't":
+				return false;
+		}
+		return false;
 	}
 
 	/** Növeli eggyel a Win Itemek számát

@@ -16,7 +16,7 @@ public class Hole extends Tile {
 		this.neighbours.add(new IceSheet(gameController, 4));
 		for (int i=0; i<neighbours.size(); i++){
 			if (neighbours.get(i).canSave()) {
-				// TODO: Step off
+				neighbours.get(i).stepOnto(player,prevTile);
 			}
 		}
 		player.drown();

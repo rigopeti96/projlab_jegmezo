@@ -135,7 +135,7 @@ public class Inventory {
 	 *  @param
 	 *  @return bool - Megvan-e minden item. */
 	public boolean hasAllWinItem() {
-		if(countWinItem==3){
+		if(getWinItemCount()==3){
 			System.out.println("Has All Win Item");
 			return true;
 		}
@@ -155,7 +155,7 @@ public class Inventory {
 	public int getFoodCount(){
 		System.out.println("Van-e nála étel?");
 		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("van"))
+		if(choice.equals("has"))
 			return 1;
 		else{
 			return 0;
@@ -164,7 +164,7 @@ public class Inventory {
 	public int getShovelCount(){
 		System.out.println("Van-e nála ásó?");
 		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("van"))
+		if(choice.equals("has"))
 			return 1;
 		else{
 			return 0;
@@ -182,11 +182,11 @@ public class Inventory {
 	public int getWinItemCount(){
 		System.out.println("Van-e nála győzelmi tárgy?");
 		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("három"))
+		if(choice.equals("has three"))
 			return 3;
-		if(choice.equals("kettő"))
+		if(choice.equals("has two"))
 			return 2;
-		if(choice.equals("egy"))
+		if(choice.equals("has one"))
 			return 1;
 		else{
 			return 0;

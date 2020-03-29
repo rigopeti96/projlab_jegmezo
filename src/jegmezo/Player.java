@@ -37,7 +37,7 @@ public abstract class Player {
 	}
 	
 	/** A játékos felvesz egy tárgyat
-	 * @return true, ha a játékos elt?rolta az adott tárgyat, false ha nem vette fel */
+	 * @return true, ha a játékos eltárolta az adott tárgyat, false ha nem vette fel */
 	public boolean takeItem(Item item) {
 		System.out.println("\nPlayer takeItem\n");
 		return false;
@@ -103,7 +103,7 @@ public abstract class Player {
 		return false;
 	}
 	
-	/** A játékos felveszi a tárgyat a mez?r?l, amin ?ll
+	/** A játékos felveszi a tárgyat a mez?r?l, amin áll
 	 * @return true ha feltudta venni, false ha nem*/
 	public boolean pickup() {
 		System.out.println("\nPlayer pickup\n");
@@ -118,7 +118,7 @@ public abstract class Player {
 		return null;
 	}
 	
-	/** A játékos kiválaszt egy tárgyat, amelyet haszn?l (menüt dob fel)
+	/** A játékos kiválaszt egy tárgyat, amelyet használ (menüt dob fel)
 	 * @return true ha sikeres, false nem */
 	public boolean useItem() {
 		System.out.println("\nPlayer useItem\n");

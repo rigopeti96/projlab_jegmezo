@@ -13,6 +13,10 @@ public class IceSheet extends Tile {
 
 	private Item item;
 
+	public IceSheet(int playerLimit) {
+		this.playerLimit = playerLimit;
+	}
+
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
 		System.out.println("\nIceSheet stepOnto\n");

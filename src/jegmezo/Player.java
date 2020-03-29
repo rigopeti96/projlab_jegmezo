@@ -15,8 +15,9 @@ public abstract class Player {
 
 	private GameController gameController;
 
-	public Player(GameController gameController) {
+	public Player(GameController gameController, Tile tile) {
 		this.gameController = gameController;
+		this.tile = tile;
 	}
 
 	public Inventory getInventory(){
@@ -47,7 +48,7 @@ public abstract class Player {
 	 * @return ha minden alkatrész megvan és az összes játékos ugyanazon a mezőn van, akkor megnyerik a játékot és true-t ad vissza, amúgy false*/
 	public boolean useWinItems() {
 		System.out.println("\nPlayer useWinItems\n");
-		if(tile.hasAllPlayers() && inventory.hasAllWinItem()){
+		if(tile.hasAllPlayers() && inventory.hasAllWinItem()) {
 			gameController.win();
 			System.out.println("\nPlayers Win\n");
 			return true;

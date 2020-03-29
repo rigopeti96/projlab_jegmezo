@@ -43,6 +43,11 @@ public abstract class Tile {
 		}
 	}
 
+	public void connectTile(Tile tile) {
+		neighbours.add(tile);
+		tile.neighbours.add(tile);
+	}
+
 	/**
 	 * @return Visszadja a Tile-on lévő Item-et
 	 */

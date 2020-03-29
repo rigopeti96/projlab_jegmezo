@@ -2,8 +2,8 @@ package jegmezo;
 
 /** */
 public class Scientist extends Player {
-	public Scientist(GameController gameController) {
-		super(gameController);
+	public Scientist(GameController gameController, Tile tile) {
+		super(gameController, tile);
 	}
 
 	/** */

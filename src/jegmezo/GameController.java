@@ -7,7 +7,7 @@ import java.util.List;
 /** A játék lefolytatásáért felel, tratalmazza a játékosokat és a táblát*/
 public class GameController {
 	private  List<Tile> tiles = new ArrayList<>();;
-	private List<Player> players=new ArrayList<>();
+	private  List<Player> players=new ArrayList<>();
 	/** Elindítja a játékot */
 	public void startGame() {
 		System.out.println("GameController startGame");

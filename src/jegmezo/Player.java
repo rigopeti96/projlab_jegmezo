@@ -168,18 +168,16 @@ public abstract class Player {
 
 	public boolean canSave(){
 		System.out.println("Player canSave");
-		System.out.println("Tud menekíteni a játékos?\n1:Igen\n2:Nem");
-		String choice=new Scanner(System.in).nextLine();
-		if (choice.equals("1"))
+		int r=inventory.getRopeCount();
+		if (r>0)
 			return true;
 		return false;
 	}
 
 	public boolean canSurvive(){
 		System.out.println("Player canSurvive");
-		System.out.println("Tud menekíteni a játékos?\n1:Igen\n2:Nem");
-		String choice=new Scanner(System.in).nextLine();
-		if (choice.equals("1"))
+		int r=inventory.getScubaCount();
+		if (r>0)
 			return true;
 		return false;
 	}

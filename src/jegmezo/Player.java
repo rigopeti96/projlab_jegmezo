@@ -147,20 +147,20 @@ public abstract class Player {
 		System.out.println("Player useItem");
 
 		switch (new Scanner(System.in).nextLine()) {
-			case "Food":
+			case "food":
 				if(0 < inventory.getFoodCount()) {
 					Food food = new Food();
 					return (food.use(this));
 
 				}
 				break;
-			case "Shovel":
+			case "shovel":
 				if(0 < inventory.getShovelCount()) {
 					Shovel shovel = new Shovel();
 					return(shovel.use(this));
 				}
 				break;
-			case "WinItems":
+			case "win items":
 				if(0 < inventory.getWinItemCount()) {
 					WinItem winitem = new WinItem();
 					return(winitem.use(this));

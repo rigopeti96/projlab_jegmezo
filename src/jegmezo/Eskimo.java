@@ -12,8 +12,9 @@ public class Eskimo extends Player {
 	 *  @param
 	 *  @return bool - Sikerült-e építeni.  */
 	public boolean buildIgloo() {
-		System.out.println("Build Igloo");
-		return false;
+		GameController gameController = new GameController();
+		Tile tile = new IceSheet(gameController, 4);
+		return tile.buildIgloo();
 	}
 
 	/**Kiválaszja az akciót

@@ -29,4 +29,5 @@ public class Eskimo extends Player {
 		System.out.println("Action selected");
 		return false;
 	}
+
 }

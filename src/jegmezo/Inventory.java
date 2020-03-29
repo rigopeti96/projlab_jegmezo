@@ -152,4 +152,44 @@ public class Inventory {
 			return 0;
 		}
 	}
+	public int getFoodCount(){
+		System.out.println("Van-e nála étel?");
+		String choice=new Scanner(System.in).nextLine();
+		if(choice.equals("van"))
+			return 1;
+		else{
+			return 0;
+		}
+	}
+	public int getShovelCount(){
+		System.out.println("Van-e nála ásó?");
+		String choice=new Scanner(System.in).nextLine();
+		if(choice.equals("van"))
+			return 1;
+		else{
+			return 0;
+		}
+	}
+	public int getScubaGearCount(){
+		System.out.println("Van-e nála búvárruha?");
+		String choice=new Scanner(System.in).nextLine();
+		if(choice.equals("van"))
+			return 1;
+		else{
+			return 0;
+		}
+	}
+	public int getWinItemCount(){
+		System.out.println("Van-e nála győzelmi tárgy?");
+		String choice=new Scanner(System.in).nextLine();
+		if(choice.equals("három"))
+			return 3;
+		if(choice.equals("kettő"))
+			return 2;
+		if(choice.equals("egy"))
+			return 1;
+		else{
+			return 0;
+		}
+	}
 }

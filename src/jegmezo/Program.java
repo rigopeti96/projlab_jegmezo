@@ -51,8 +51,6 @@ public class Program {
 
     private static void useItem() {
         Tile tile = new IceSheet(4);
-        tile.connectTile(new IceSheet(2));
-        tile.connectTile(new Hole());
         Eskimo eskimo = new Eskimo(gameController, tile);
         eskimo.useItem();
     }

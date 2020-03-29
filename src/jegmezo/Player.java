@@ -137,6 +137,28 @@ public abstract class Player {
 	 * @return true ha sikeres, false nem */
 	public boolean useItem() {
 		System.out.println("Player useItem");
+
+		switch (new Scanner(System.in).nextLine()) {
+			case "Food":
+				if(0 < inventory.getFoodCount()) {
+					Food food = new Food();
+					return (food.use(this));
+
+				}
+				break;
+			case "Shovel":
+				if(0 < inventory.getShovelCount()) {
+					Shovel shovel = new Shovel();
+					return(shovel.use(this));
+				}
+				break;
+			case "WinItems":
+				if(0 < inventory.getWinItemCount()) {
+					WinItem winitem = new WinItem();
+					return(winitem.use(this));
+				}
+				break;
+		}
 		return false;
 	}
 	

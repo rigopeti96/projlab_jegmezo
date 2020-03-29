@@ -32,7 +32,7 @@ public class Inventory {
 		countWinItem = 0;
 	}
 
-	/** N√∂veli egyel a Win Itemek sz√°m√°t*/
+	/** Nˆveli egyel a Win Itemek sz·m·t*/
 	public boolean equipWinItem() {
 		return true;
 	}
@@ -57,7 +57,7 @@ public class Inventory {
 		return true;
 	}
 	
-	/** Cs√∂kkenti a Win Item-ek sz√°m√°t */
+	/** Csˆkkenti a Win Item-ek sz·m·t */
 	public boolean unequipWinItem() {
 		return true;
 	}
@@ -77,7 +77,7 @@ public class Inventory {
 		return true;
 	}
 
-	/** Egyel≈ëre null a visszat√©r√©si √©rt√©ke, ez majd v√°ltozni fog*/
+	/** Egyel?re null a visszatÈrÈsi ÈrtÈke, ez majd v·ltozni fog*/
 	public Item selectItem() {
 		return null;
 	}
@@ -85,10 +85,10 @@ public class Inventory {
 	/** */
 	public boolean hasAllWinItem() {
 		if(countWinItem==3){
-			System.out.println("\Has All Win Item\n");
+			System.out.println("\nHas All Win Item\n");
 			return true;
 		}
-		System.out.println("\Doesn't have all Win Item\n");
+		System.out.println("\nDoesn't have all Win Item\n");
 		return false;
 	}
 }

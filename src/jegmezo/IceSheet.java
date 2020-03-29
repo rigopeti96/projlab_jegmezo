@@ -16,7 +16,7 @@ public class IceSheet extends Tile {
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
 		System.out.println("\nIceSheet stepOnto\n");
-		System.out.println("\n√Åtfordul-e\n1:Igen\n2.Nem");
+		System.out.println("\n¡tfordul-e\n1:Igen\n2.Nem");
 		String choice=System.console().readLine();
 		if(choice=="1"){
 			player.drown();
@@ -51,16 +51,16 @@ public class IceSheet extends Tile {
 		return false;
 	}
 
-	//Valakinek ezt megsp√≥roltam :D -T
+	//Valakinek ezt megspÛroltam :D -T
 	@Override
 	public boolean buildIgloo(){
 		System.out.println("\nIceSheet buildIgloo\n");
 		if(!hasIgloo) {
 			hasIgloo=true;
-			System.out.println("\n√âp√ºlt igloo\n");
+			System.out.println("\n…p¸lt igloo\n");
 			return true;
 		}
-		System.out.println("\nNem √©p√ºlt igloo\n");
+		System.out.println("\nNem Èp¸lt igloo\n");
 		return false;
 	}
 

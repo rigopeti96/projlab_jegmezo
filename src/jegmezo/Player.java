@@ -111,7 +111,7 @@ public abstract class Player {
 	 * @return True ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithShovel() {
 		System.out.println("Player digWithShovel");
-		// TODO: Kibontani
+		tile.removeSnow(2);
 		return false;
 	}
 	

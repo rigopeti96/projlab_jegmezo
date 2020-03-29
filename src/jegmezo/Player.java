@@ -52,7 +52,7 @@ public abstract class Player {
 	 * @return ha minden alkatrész megvan és az összes játékos ugyanazon a mezőn van, akkor megnyerik a játékot és true-t ad vissza, amúgy false*/
 	public boolean useWinItems() {
 		System.out.println("Player useWinItems");
-		if(tile.hasAllPlayers() && inventory.hasAllWinItem()) {
+		if(tile.hasAllPlayers() && inventory.getWinItemCount()==3) {
 			gameController.win();
 			System.out.println("Players Win");
 			return true;

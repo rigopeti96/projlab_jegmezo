@@ -131,29 +131,22 @@ public class Inventory {
 		return null;
 	}
 
-	/** Ellenőrzni, hogy az adott játékosnál megvan-e az összes győzelmi eszköz (WinItem)
-	 *  @param
-	 *  @return bool - Megvan-e minden item. */
-	public boolean hasAllWinItem() {
-		if(getWinItemCount()==3){
-			System.out.println("Has All Win Item");
-			return true;
+	/** Visszaadja a kötél (Rope) számát
+	 *  @return int - az inventoryban levő kötelek száma */
+	public int getRopeCount(){
+		System.out.println("Has rope?");
+		String choice=new Scanner(System.in).nextLine();
+		if(choice.equals("has"))
+			return 1;
+		else{
+			return 0;
 		}
-		System.out.println("Doesn't have all Win Item");
-		return false;
 	}
 
-	public int getRopeCount(){
-		System.out.println("Van-e nála kötél?");
-		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("has"))
-			return 1;
-		else{
-			return 0;
-		}
-	}
+	/** Visszaadja az étel (Food) számát
+	 *  @return int - az inventoryban levő ételek száma */
 	public int getFoodCount(){
-		System.out.println("Van-e nála étel?");
+		System.out.println("Has Food?");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("has"))
 			return 1;
@@ -161,8 +154,10 @@ public class Inventory {
 			return 0;
 		}
 	}
+	/** Visszaadja az ásó (Shovel) számát
+	 *  @return int - az inventoryban levő ásók száma */
 	public int getShovelCount(){
-		System.out.println("Van-e nála ásó?");
+		System.out.println("Has Shovel?");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("has"))
 			return 1;
@@ -170,8 +165,10 @@ public class Inventory {
 			return 0;
 		}
 	}
+	/** Visszaadja a búvárruha (ScubaGear) számát
+	 *  @return int - az inventoryban levő búvárruhák száma */
 	public int getScubaCount(){
-		System.out.println("Van-e nála búvárruha?");
+		System.out.println("Has ScubaGear?");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("has"))
 			return 1;
@@ -179,8 +176,10 @@ public class Inventory {
 			return 0;
 		}
 	}
+	/** Visszaadja a győzelmitárgyak (WinItem) számát
+	 *  @return int - az inventoryban levő győzelmitárgyak száma */
 	public int getWinItemCount(){
-		System.out.println("Van-e nála győzelmi tárgy?");
+		System.out.println("Has Win Item?");
 		String choice=new Scanner(System.in).nextLine();
 		if(choice.equals("has three"))
 			return 3;

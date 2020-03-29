@@ -6,18 +6,15 @@ package jegmezo;
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
 public abstract class Player {
 	private int bodyHeat;
-
 	private int actions;
-
 	private Tile tile;
-
-	private Inventory inventory;
-
+	private Inventory inventory = new Inventory();
 	private GameController gameController;
 
 	public Player(GameController gameController, Tile tile) {
 		this.gameController = gameController;
 		this.tile = tile;
+		this.tile.addPlayer(this);
 	}
 
 	public Inventory getInventory(){
@@ -41,7 +38,7 @@ public abstract class Player {
 	 * @return true, ha a játékos eltárolta az adott tárgyat, false ha nem vette fel */
 	public boolean takeItem(Item item) {
 		System.out.println("\nPlayer takeItem\n");
-		return false;
+		return new Shovel().equip(inventory);
 	}
 	
 	/** A játékos használja a győzelmi tárgyat
@@ -62,7 +59,7 @@ public abstract class Player {
 	public boolean move() {
 		System.out.println("\nPlayer move\n");
 		Tile hova=selectTile();
-		hova.stepOnto(this,tile);
+		hova.stepOnto(this, tile);
 		return true;
 	}
 	
@@ -108,6 +105,11 @@ public abstract class Player {
 	 * @return true ha feltudta venni, false ha nem*/
 	public boolean pickup() {
 		System.out.println("\nPlayer pickup\n");
+		if (this.takeItem(this.tile.getItem())) {
+			this.tile.removeItem();
+			return true;
+		}
+
 		return false;
 	}
 

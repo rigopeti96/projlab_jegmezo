@@ -1,39 +1,97 @@
 package jegmezo;
 
 public class Program {
+    static GameController gameController = new GameController();
     public static void main(String[] args) {
-        String choice=System.console().readLine();
-        GameController gameController = new GameController();
+        switch (System.console().readLine()) {
+            case "move":
+                move();
+                break;
+            case "trade":
+                trade();
+                break;
+            case "use item":
+                useItem();
+                break;
+            case "pickup":
+                pickup();
+                break;
+            case "dig with hands":
+                digWithHands();
+                break;
+            case "blizzard":
+                blizzard();
+                break;
+            case "build igloo":
+                buildIgloo();
+                break;
+            case "examine":
+                examine();
+                break;
+        }
+    }
+
+    private static void move() {
         Tile tile = new IceSheet(4);
         tile.connectTile(new IceSheet(2));
         tile.connectTile(new Hole());
         Eskimo eskimo = new Eskimo(gameController, tile);
-        switch (choice) {
-            case "move":
-                eskimo.move();
-                break;
-            case "trade":
-                eskimo.trade();
-                break;
-            case "use item":
-                eskimo.useItem();
-                break;
-            case "pickup":
-                eskimo.pickup();
-                break;
-            case "dig with hands":
-                eskimo.digWithHands();
-                break;
-            case "blizzard":
-                gameController.blizzard();
-                break;
-            case "build igloo":
-                eskimo.buildIgloo();
-                break;
-            case "examine":
-                Scientist scientist = new Scientist(gameController, tile);
-                scientist.examine();
-                break;
-        }
+        eskimo.move();
+    }
+
+    private static void trade() {
+        Tile tile = new IceSheet(4);
+        tile.connectTile(new IceSheet(2));
+        tile.connectTile(new Hole());
+        Eskimo eskimo = new Eskimo(gameController, tile);
+        eskimo.trade();
+    }
+
+    private static void useItem() {
+        Tile tile = new IceSheet(4);
+        tile.connectTile(new IceSheet(2));
+        tile.connectTile(new Hole());
+        Eskimo eskimo = new Eskimo(gameController, tile);
+        eskimo.useItem();
+    }
+
+    private static void pickup() {
+        Tile tile = new IceSheet(4, new Shovel());
+        tile.connectTile(new IceSheet(2));
+        tile.connectTile(new Hole());
+        Eskimo eskimo = new Eskimo(gameController, tile);
+        eskimo.pickup();
+    }
+
+    private static void digWithHands() {
+        Tile tile = new IceSheet(4);
+        tile.connectTile(new IceSheet(2));
+        tile.connectTile(new Hole());
+        Eskimo eskimo = new Eskimo(gameController, tile);
+        eskimo.digWithHands();
+    }
+
+    private static void blizzard() {
+        Tile tile = new IceSheet(4);
+        tile.connectTile(new IceSheet(2));
+        tile.connectTile(new Hole());
+        Eskimo eskimo = new Eskimo(gameController, tile);
+        gameController.blizzard();
+    }
+
+    private static void buildIgloo() {
+        Tile tile = new IceSheet(4);
+        tile.connectTile(new IceSheet(2));
+        tile.connectTile(new Hole());
+        Eskimo eskimo = new Eskimo(gameController, tile);
+        eskimo.buildIgloo();
+    }
+
+    private static void examine() {
+        Tile tile = new IceSheet(4);
+        tile.connectTile(new IceSheet(2));
+        tile.connectTile(new Hole());
+        Scientist scientist = new Scientist(gameController, tile);
+        scientist.examine();
     }
 }

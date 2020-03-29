@@ -28,6 +28,11 @@ public abstract class Tile {
 	 */
 	public abstract int getPlayerLimit();
 
+	public void addPlayer(Player player) {
+		System.out.println("\nTile addPlayer\n");
+		this.players.add(player);
+	}
+
 	/**
 	 * @return Visszaadja a Tile szomszédjait
 	 */
@@ -39,7 +44,7 @@ public abstract class Tile {
 			return new Hole();
 		}
 		else {
-			return new IceSheet();
+			return new IceSheet(4);
 		}
 	}
 

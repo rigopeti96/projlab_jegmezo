@@ -39,7 +39,14 @@ public class Inventory {
 	
 	/** */
 	public boolean equipShovel() {
-		return true;
+		switch (System.console().readLine()) {
+			case "can":
+				return true;
+			case "can't":
+				return false;
+		}
+
+		return false;
 	}
 	
 	/** */

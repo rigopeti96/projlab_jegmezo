@@ -7,14 +7,19 @@ package jegmezo;
 public class IceSheet extends Tile {
 	/** */
 	private int playerLimit;
-	
+
 	/** */
 	private boolean hasIgloo;
 
 	private Item item;
 
 	public IceSheet(int playerLimit) {
+		this(playerLimit, null);
+	}
+
+	public IceSheet(int playerLimit, Item item) {
 		this.playerLimit = playerLimit;
+		this.item = item;
 	}
 
 	@Override

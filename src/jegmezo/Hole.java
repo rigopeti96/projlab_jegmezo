@@ -50,11 +50,6 @@ public class Hole extends Tile {
 	 * @return mindig false, mert a lyukon nem lehet több játékos*/
 	public boolean canSave() {
 		System.out.println("Hole canSave");
-		/*for (int i=0; i<players.size(); i++) {
-			boolean save=players.get(i).canSave();
-			if(save)
-				return true;
-		}*/
 		return false;
 	}
 	

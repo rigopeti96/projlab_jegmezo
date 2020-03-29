@@ -142,4 +142,14 @@ public class Inventory {
 		System.out.println("Doesn't have all Win Item");
 		return false;
 	}
+
+	public int getRopeCount(){
+		System.out.println("Van-e nála kötél?");
+		String choice=new Scanner(System.in).nextLine();
+		if(choice.equals("van"))
+			return 1;
+		else{
+			return 0;
+		}
+	}
 }

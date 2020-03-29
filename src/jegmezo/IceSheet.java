@@ -30,7 +30,7 @@ public class IceSheet extends Tile {
 		}
 		else{
 			prevTile.stepOff(player);
-			//this.players.add(player);
+			this.players.add(player);
 		}
 	}
 
@@ -63,6 +63,12 @@ public class IceSheet extends Tile {
 	@Override
 	public boolean canSave() {
 		System.out.println("IceSheet canSave");
+		addPlayer(EskimoCreator.create(this));
+		for (int i=0; i<players.size(); i++) {
+			boolean save=players.get(i).canSave();
+			if(save)
+				return true;
+		}
 		return false;
 	}
 

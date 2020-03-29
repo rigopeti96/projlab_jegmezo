@@ -3,7 +3,9 @@ package jegmezo;
 
 
 
-/** */
+/** Ha a Player ezt használja, nála van az összes győzelmi tárgy és az összes játékos egy helyen van,
+ *  akkor megnyerik a játékot
+ * Implementálja az Item interfészt. */
 public class WinItem implements Item {
 	private String name;
 

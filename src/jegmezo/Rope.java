@@ -3,7 +3,8 @@ package jegmezo;
 
 
 
-/** */
+/** A Player ennek használatával ki tud menteni egy játékost egy szomszédos lyukból.
+ * Implementálja az Item interfészt. */
 public class Rope implements Item {
 
 	/** beteszi egy Player Inventory-jába magát */

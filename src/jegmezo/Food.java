@@ -1,6 +1,7 @@
 package jegmezo;
 
-/** */
+/** Ha a Player ezt használja, akkor egyel több testhője lesz.
+ * Implementálja az Item interfészt. */
 public class Food implements Item {
 
 	/** beteszi egy Player Inventory-jába magát */

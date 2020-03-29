@@ -7,18 +7,16 @@ public class Scientist extends Player {
 	}
 
 	/**A kutató kiválasztja, hogy melyik Tile-t vizsgálja, majd megkapja az eredményt
-	 * @param
 	 */
 	public void examine() {
-        Tile tile = selectTile();
-        tile.getPlayerLimit();
+		System.out.println("Scientist examine");
+		selectTile().getPlayerLimit();
 	}
 
 	/**Kiválaszja az akciót
-	 *  @param
 	 *  @return bool - Sikerült-e akciót választani.  */
 	public boolean selectAction() {
-		System.out.println("Action selected");
-		return false;
+		System.out.println("Scientist selectAction");
+		return true;
 	}
 }

@@ -123,7 +123,13 @@ public abstract class Player {
 	 * @return kiválasztott tile (tile.getNeighbours eleme) */
 	public Tile selectTile() {
 		System.out.println("Player selectTile");
-		Tile ret=tile.getNeighbours();
+		switch (new Scanner(System.in).nextLine()) {
+			case "ice sheet":
+				return tile.getNeighbours().get(0);
+			case "hole":
+				return tile.getNeighbours().get(1);
+		}
+
 		return null;
 	}
 	

@@ -36,16 +36,9 @@ public abstract class Tile {
 	/**
 	 * @return Visszaadja a Tile szomszédjait
 	 */
-	public Tile getNeighbours() {
+	public List<Tile> getNeighbours() {
 		System.out.println("Tile getNeighbours");
-		System.out.println("Milyen Tile-ra lépjen?\n1:IceSheet\n2:Hole");
-		String choice =new Scanner(System.in).nextLine();
-		if (choice.equals("2")) {
-			return new Hole();
-		}
-		else {
-			return new IceSheet(4);
-		}
+		return neighbours;
 	}
 
 	public void connectTile(Tile tile) {

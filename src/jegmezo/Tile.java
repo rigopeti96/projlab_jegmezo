@@ -61,7 +61,7 @@ public abstract class Tile {
 	 * @return true-t ad vissza, ha volt akár egy hóréteg is, amit leszedett
 	 */
 	public boolean removeSnow(int amount) {
-		System.out.println("\nTile removeSnow " + amount + "\n");
+		System.out.println("\nTile removeSnow\n");
 		return false;
 	}
 

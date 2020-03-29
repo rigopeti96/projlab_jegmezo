@@ -25,7 +25,8 @@ public class Food implements Item {
 
 	/** */
 	public boolean use(Player p) {
-	if (p.increaseBodyHeat() && unequip(p.getInventory())) {
+		p.increaseBodyHeat();
+		if (unequip(p.getInventory())) {
 			System.out.println("\nFood used\n");
 			return true;
 		}

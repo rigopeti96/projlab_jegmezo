@@ -6,10 +6,9 @@ import java.util.*;
 /** Mez?, amire a játékosok léphetnek. Hóréteg kerülhet rá, lehet rajta tárgy, iglu illetve játékosok. Hóvihar hatással lehet a mez?kre, ezen kívül minden viselkedésta
  *  specializált osztályok kezelnek le. Tárolja a szomszédait és a rajta álló Player-eket.*/
 public abstract class Tile {
-	/** */
 	private int snow;
-	private List<Tile> neighbours;
-	private List<Player> players;
+	protected List<Tile> neighbours;
+	protected List<Player> players;
 	
 	/** A Player hívja ,amikor rálép a Tile-re, hozzáadja a Player-t a players listához
 	 * @param player Player, amelyik rálépett a mez?re
@@ -32,9 +31,16 @@ public abstract class Tile {
 	/**
 	 * @return Visszaadja a Tile szomszédjait
 	 */
-	public List<Tile> getNeighbours() {
+	public Tile getNeighbours() {
 		System.out.println("\nTile getNeighbours\n");
-		return null;
+		System.out.println("\nMilyen Tile-ra lépjen?\n1:IceSheet\n2:Hole");
+		String choice =System.console().readLine();
+		if (choice.equals("2")) {
+			return new Hole();
+		}
+		else {
+			return new IceSheet();
+		}
 	}
 
 	/**
@@ -85,21 +91,9 @@ public abstract class Tile {
 	}
 
 	/**
-	 * Egy Player-t lehet vele kiválasztani (el?zohoz egy kiválasztó menüt)
+	 * Egy Player-t lehet vele kiválasztani (el?z?höz egy kiválasztó menüt)
 	 * @return Player amit választottak
 	 */
-	public Tile getNeighbours() {
-		System.out.println("\nTile getNeighbours\n");
-		System.out.println("\nMilyen Tile-ra lépjen?\n1:IceSheet\n2:Hole");
-		String choice =System.console().readLine();
-		if (choice=="2") {
-			return new Hole();
-		}
-		else {
-			return new IceSheet();
-		}
-	}
-	
 	public Player selectPlayer() {
 		System.out.println("\nTile selectPlayer\n");
 		return null;

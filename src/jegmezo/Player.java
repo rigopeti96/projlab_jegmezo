@@ -129,12 +129,20 @@ public abstract class Player {
 	 * @return true ha az akció sikeres, false ha nem vagy a játékos nem választott akciót */
 	public abstract boolean selectAction();
 
-	//Hozzáírtam mert nem került bele, illetve még ki lehet b?víteni az inventory munkájával is egyenl?re így hagytam hátha valami változik  -T
 	public boolean canSave(){
 		System.out.println("\nPlayer canSave\n");
 		System.out.println("\nTud menekíteni a játékos?\n1:Igen\n2:Nem");
 		String choice=System.console().readLine();
-		if(choice=="1")
+		if (choice.equals("1"))
+			return true;
+		return false;
+	}
+
+	public boolean canSurvive(){
+		System.out.println("\nPlayer canSurvive\n");
+		System.out.println("\nTud menekíteni a játékos?\n1:Igen\n2:Nem");
+		String choice=System.console().readLine();
+		if (choice.equals("1"))
 			return true;
 		return false;
 	}

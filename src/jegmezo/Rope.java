@@ -25,7 +25,12 @@ public class Rope implements Item {
 		System.out.println("\nRope not unequiped\n");
 		return false;
 	}
-	
+
+	@Override
+	public boolean use(Player p) {
+		return false;
+	}
+
 	/** megnézi, hogy meg lehet-e menteni csapattársát ezzel a tárggyal */
 	public boolean canSave(){
 		return true;

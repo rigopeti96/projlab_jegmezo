@@ -12,8 +12,8 @@ public class Hole extends Tile {
 		if(survive)
 			return;
 		this.neighbours.add(new IceSheet());
-		for(int i=0;i<neighbours.size();i++){
-			boolean save=neighbours[i].canSave();
+		for (int i=0; i<neighbours.size(); i++){
+			boolean save=neighbours.get(i).canSave();
 			if(save)
 				return;
 		}
@@ -46,8 +46,8 @@ public class Hole extends Tile {
 	/** */
 	public boolean canSave() {
 		System.out.println("\nHole canSave\n");
-		for(int i=0;i<players.size();i++) {
-			boolean save=players[i].canSave();
+		for (int i=0; i<players.size(); i++) {
+			boolean save=players.get(i).canSave();
 			if(save)
 				return true;
 		}

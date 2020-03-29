@@ -51,7 +51,6 @@ public class IceSheet extends Tile {
 		return false;
 	}
 
-	//Valakinek ezt megspóroltam :D -T
 	@Override
 	public boolean buildIgloo(){
 		System.out.println("\nIceSheet buildIgloo\n");

@@ -15,6 +15,7 @@ public abstract class Player {
 		this.gameController = gameController;
 		this.tile = tile;
 		this.tile.addPlayer(this);
+		this.gameController.addPlayer(this);
 	}
 
 	public Inventory getInventory(){
@@ -79,6 +80,13 @@ public abstract class Player {
 	public void decreaseBodyHeat() {
 		System.out.println("Player decreaseBodyHeat");
 		bodyHeat--;
+		switch (new Scanner(System.in).nextLine()) {
+			case "dead":
+				gameController.gameOver();
+				break;
+			case "deadn't":
+				break;
+		}
 	}
 	
 	/** A játékos megfullad */

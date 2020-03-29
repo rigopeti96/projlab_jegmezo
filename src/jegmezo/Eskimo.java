@@ -13,12 +13,6 @@ public class Eskimo extends Player {
 	 *  @return bool - Sikerült-e építeni.  */
 	public boolean buildIgloo() {
 		System.out.println("Build Igloo");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
-		}
 		return false;
 	}
 

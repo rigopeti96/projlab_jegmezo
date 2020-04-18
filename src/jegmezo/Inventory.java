@@ -4,11 +4,13 @@ import java.util.Scanner;
 
 /**Minden játékoshoz tartozik egy Inventory, ebben van eltárolva, hogy melyik tárgyból mennyi van. A WinItemeken kívül mindenből csak egy lehet egy játékosnál */
 public class Inventory {
-	private int countShovel = 0;
-	private int countFood = 0;
-	private int countRope = 0;
-	private int countScubaGear = 0;
-	private int countWinItem = 0;
+	private int countShovel;
+	private int countFood;
+	private int countRope;
+	private int countScubaGear;
+	private int countWinItem;
+	private int countBreakableShovel;
+	private int countTent;
 
 	public Inventory(){
 		countShovel = 0;
@@ -16,6 +18,8 @@ public class Inventory {
 		countRope = 0;
 		countScubaGear = 0;
 		countWinItem = 0;
+		countBreakableShovel= 0;
+		countTent = 0;
 	}
 
 	/** Növeli eggyel a Win Itemek számát
@@ -128,9 +132,49 @@ public class Inventory {
 		return true;
 	}
 
-	/** Csökkenti a búvárruhát (ScubaGear) számát
-	 *  @param
-	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat) */
+	public boolean equipBreakableShovel() {
+		System.out.println("Inventory equipBreakableShovel");
+		System.out.println("Can/can't?");
+		switch (new Scanner(System.in).nextLine()) {
+			case "can":
+				return true;
+			case "can't":
+				return false;
+		}
+		return false;
+	}
+
+	public boolean unequipBreakableShovel() {
+		System.out.println("Inventory unequipBreakableShovel");
+		return true;
+	}
+
+	public boolean equipTent() {
+		System.out.println("Inventory equipTent");
+		System.out.println("Can/can't?");
+		switch (new Scanner(System.in).nextLine()) {
+			case "can":
+				return true;
+			case "can't":
+				return false;
+		}
+		return false;
+	}
+
+	public boolean unequipTent() {
+		System.out.println("Inventory unequipTent");
+		return true;
+	}
+
+	public boolean hasAllWinItems() {
+
+		return false;
+	}
+
+	public void serialize() {
+
+	}
+
 	public Item selectItem() {
 		return null;
 	}

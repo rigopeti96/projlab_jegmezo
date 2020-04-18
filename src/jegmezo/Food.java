@@ -19,10 +19,10 @@ public class Food implements Item {
 	/** a Player használja a tárgyat
 	 * @param player Player, aki használja a tárgyat
 	 * @return true ha sikeres, false ha nem */
-	public boolean use(Player p) {
+	public boolean use(Player player) {
 		System.out.println("Food use");
-		p.increaseBodyHeat();
-		return unequip(p.getInventory());
+		player.increaseBodyHeat();
+		return unequip(player.getInventory());
 	}
 
 	/** megnézi, hogy meg lehet-e menteni csapattársát ezzel a tárggyal */

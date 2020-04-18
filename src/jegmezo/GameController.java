@@ -8,6 +8,7 @@ import java.util.List;
 public class GameController {
 	private  List<Tile> tiles = new ArrayList<>();;
 	private List<Player> players = new ArrayList<>();
+
 	/** Elindítja a játékot */
 	public void startGame() {
 		System.out.println("GameController startGame");
@@ -54,5 +55,9 @@ public class GameController {
 	public void addPlayer(Player player) {
 		System.out.println("GameController addPlayer");
 		players.add(player);
+	}
+
+	public void serialize() {
+
 	}
 }

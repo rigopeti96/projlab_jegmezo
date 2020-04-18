@@ -35,11 +35,9 @@ public class Hole extends Tile {
 		System.out.println("Hole getItem");
 		return null;
 	}
-	
-	/** Lehet-e igloot építeni a mezőre
-	 * @return true, ha lehet, false, ha nem*/
-	public boolean buildIgloo() {
-		System.out.println("Hole buildIgloo");
+
+	@Override
+	public boolean build(Building building) {
 		return false;
 	}
 

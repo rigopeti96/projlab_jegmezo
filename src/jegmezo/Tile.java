@@ -9,7 +9,8 @@ public abstract class Tile {
 	private int snow;
 	protected GameController gameController;
 	protected List<Tile> neighbours = new ArrayList<>();
-	protected List<Player> players = new ArrayList<>();
+	protected List<Entity> entities = new ArrayList<>();
+	protected int ID;
 
 	public Tile(GameController gameController) {
 		this.gameController = gameController;
@@ -18,14 +19,13 @@ public abstract class Tile {
 
 	/** A Player hívja, amikor rálép a Tile-re, hozzáadja a Player-t a players listához
 	 * @param player Player, amelyik rálépett a mezőre
-	 * @param prevTile Az előző mező, amin a Player állt
-	 * */
+	 * @param prevTile Az előző mező, amin a Player állt */
 	public abstract void stepOnto(Player player, Tile prevTile);
 
-	/** A Player hívja, amikor lelép a Tile-ről, kiszedi a Player-t a players listából
-	 * @param player Player, amelyik lelépett a mezőről
+	/** Egy Entity hívja, amikor lelép a Tile-ről, kiszedi az entity-t az entities listából
+	 * @param entity Entity, amelyik lelépett a mezőről
 	 * */
-	public void stepOff(Player player) {
+	public void stepOff(Entity entity) {
 		System.out.println("Tile stepOff");
 	}
 
@@ -35,12 +35,12 @@ public abstract class Tile {
 	public abstract int getPlayerLimit();
 
 	/**
-	 * Hozzáad egy Player-t a Player listához
+	 * Hozzáad egy Player-t az entities listához
 	 * @param player Player amit hozzáad
 	 */
 	public void addPlayer(Player player) {
-		System.out.println("Tile addPlayer");
-		this.players.add(player);
+		System.out.println("Tile addEntity");
+		this.entities.add(player);
 	}
 
 	/**
@@ -84,10 +84,10 @@ public abstract class Tile {
 	}
 
 	/**
-	 * Eskimo hívja iglut épít a mezőre,
+	 * A kapott épületet megépíti a mezőre,
 	 * @return true has sikerült false ha nem
 	 */
-	public abstract boolean buildIgloo();
+	public abstract boolean build(Building building);
 
 	/**
 	 * Leszedi a Tile-ről a rajta lévő Item-et
@@ -128,5 +128,13 @@ public abstract class Tile {
 				return true;
 		}
 		return false;
+	}
+
+	public void stepOnPolarBear(PolarBear pb, Tile prevTile){
+
+	}
+
+	public void serialize() {
+
 	}
 }

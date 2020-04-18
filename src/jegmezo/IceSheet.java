@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class IceSheet extends Tile {
 
 	private int playerLimit;
-	private boolean hasIgloo;
 	private Item item;
+	protected Building building = Building.NONE;
 
 	public IceSheet(GameController gameController, int playerLimit) {
 		this(gameController, playerLimit, null);
@@ -31,7 +31,7 @@ public class IceSheet extends Tile {
 		}
 		else{
 			prevTile.stepOff(player);
-			this.players.add(player);
+			this.entities.add(player);
 		}
 	}
 
@@ -65,19 +65,19 @@ public class IceSheet extends Tile {
 	public boolean canSave() {
 		System.out.println("IceSheet canSave");
 		addPlayer(new Eskimo(gameController, this));
-		for (int i=0; i<players.size(); i++) {
-			boolean save=players.get(i).canSave();
+		for (int i=0; i<entities.size(); i++) {
+			boolean save=entities.get(i).canSave();
 			if(save)
 				return true;
 		}
 		return false;
 	}
 
-	/** A mezőre épül igloo
+	/** A mezőre épül egy épület
 	 * @return true, ha sikeres volt, false, ha nem*/
 	@Override
-	public boolean buildIgloo(){
-		System.out.println("IceSheet buildIgloo");
+	public boolean build(Building building){
+		System.out.println("IceSheet buildSthing");
 		return true;
 	}
 
@@ -91,11 +91,28 @@ public class IceSheet extends Tile {
 			case "igloo":
 				break;
 			case "igloon't":
-				for (Player player: players) {
-					player.decreaseBodyHeat();
+				for (Entity entity: entities) {
+					entity.decreaseBodyHeat();
 				}
 				break;
 		}
+	}
+
+	public boolean hasBuilding() {
+
+		return false;
+	}
+
+	public void destroyTent() {
+
+	}
+
+	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
+
+	}
+
+	public void serialize() {
+
 	}
 
 }

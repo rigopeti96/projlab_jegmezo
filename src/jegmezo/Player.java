@@ -4,7 +4,7 @@ package jegmezo;
 import java.util.Scanner;
 
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
-public abstract class Player {
+public abstract class Player extends Entity{
 	private int bodyHeat;
 	private int actions;
 	protected Tile tile;
@@ -177,6 +177,7 @@ public abstract class Player {
 	 * @return true ha az akció sikeres, false ha nem vagy a játékos nem választott akciót */
 	public abstract boolean selectAction();
 
+	@Override
 	public boolean canSave(){
 		System.out.println("Player canSave");
 		int r=inventory.getRopeCount();
@@ -191,6 +192,15 @@ public abstract class Player {
 		if (r>0)
 			return true;
 		return false;
+	}
+
+	public boolean buildTent() {
+
+		return true;
+	}
+
+	public void serialize() {
+
 	}
 }
 

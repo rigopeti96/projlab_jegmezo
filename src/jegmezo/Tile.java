@@ -14,7 +14,6 @@ public abstract class Tile {
 
 	public Tile(GameController gameController) {
 		this.gameController = gameController;
-		gameController.addTile(this);
 	}
 
 	/** A Player hívja, amikor rálép a Tile-re, hozzáadja a Player-t a players listához

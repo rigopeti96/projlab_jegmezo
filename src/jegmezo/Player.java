@@ -6,16 +6,17 @@ import java.util.Scanner;
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
 public abstract class Player extends Entity{
 	private int bodyHeat;
-	private int actions;
+	protected int actions;
+	protected int number;
 	protected Tile tile;
 	private Inventory inventory = new Inventory();
 	private GameController gameController;
 
-	public Player(GameController gameController, Tile tile) {
+	public Player(GameController gameController, int number, Tile tile) {
 		this.gameController = gameController;
+		this.number = number;
 		this.tile = tile;
 		this.tile.addPlayer(this);
-		this.gameController.addPlayer(this);
 	}
 
 	/**
@@ -27,20 +28,18 @@ public abstract class Player extends Entity{
 
 	/** A játékos körét kezeli le */
 	public void takeTurn() {
-		System.out.println("Player takeTurn");
+		actions = 4;
+		while (actions > 0) {
+			if (selectAction()) actions--;
+			if (gameController.getGameState() != GameState.Running) return;
+		}
 	}
 	
 	/** A játékos egyik nála lévő tárgyat átadhatja egyik játékos társának
 	 * @return true ha sikeres, false ha nem */
 	public boolean trade() {
 		System.out.println("Player trade");
-		Eskimo otherPlayer = new Eskimo(gameController, tile);
-		Shovel shovel = new Shovel();
-		if (otherPlayer.takeItem(shovel)) {
-			shovel.unequip(inventory);
-			return true;
-		}
-		return false;
+		return true;
 	}
 	
 	/** A játékos felvesz egy tárgyat
@@ -176,6 +175,21 @@ public abstract class Player extends Entity{
 	/** A játékos választ egy akciót, true-val tér vissza
 	 * @return true ha az akció sikeres, false ha nem vagy a játékos nem választott akciót */
 	public abstract boolean selectAction();
+
+	/**
+	 * A többi játékos implementáció hívja, a közös akciókat implementálja
+	 * @param command Parancs
+	 * @return true ha az akció sikeres, false ha nem vagy a játékos nem választott akciót
+	 */
+	protected boolean selectActionCommon(String command) {
+		switch (command) {
+			case "trade":
+				return this.trade();
+			default:
+				gameController.handleControlCommand(command);
+				return false;
+		}
+	}
 
 	@Override
 	public boolean canSave(){

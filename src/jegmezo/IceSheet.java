@@ -64,7 +64,7 @@ public class IceSheet extends Tile {
 	@Override
 	public boolean canSave() {
 		System.out.println("IceSheet canSave");
-		addPlayer(new Eskimo(gameController, this));
+		addPlayer(new Eskimo(gameController, 1, this));
 		for (int i=0; i<entities.size(); i++) {
 			boolean save=entities.get(i).canSave();
 			if(save)

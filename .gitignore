@@ -21,3 +21,6 @@ fabric.properties
 
 .idea
 .vs
+
+# Build
+class/

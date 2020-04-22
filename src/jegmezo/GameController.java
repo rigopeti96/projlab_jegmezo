@@ -30,9 +30,11 @@ public class GameController {
 
 	public void handleControlCommand(String command) {
 		if (gameState == GameState.Creating && command.equals("init game")) {
-			System.out.println("init game command ran");
+			// TODO: Sets up flags (controlledRandomness)
 		} else if (gameState == GameState.Creating && command.equals("start game")) {
 			System.out.println("start game command ran");
+			// TODO: Creates players
+			// TODO: Generates hexagonal map
 			tiles.add(new IceSheet(this, 4));
 			players.add(new Eskimo(this, 1, tiles.get(0)));
 			players.add(new Scientist(this, 2, tiles.get(0)));

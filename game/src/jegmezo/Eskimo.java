@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 /**A Player egy típusa, speciális képessége, hogy tud iglut építeni az aktuális mezőre (ha még nincs rajta iglu) */
 public class Eskimo extends Player {
-	public Eskimo(GameController gameController, int number, Tile tile) {
-		super(gameController, number, tile);
+	public Eskimo(GameController gameController, int number) {
+		super(gameController, number);
 	}
 
 	/** Meghívja az Tile buildIgloo függvényét

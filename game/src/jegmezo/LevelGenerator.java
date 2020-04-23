@@ -1,16 +1,19 @@
 package jegmezo;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class LevelGenerator {
+    private GameController gameController;
     private LevelTile[][] tiles;
+    private Map<LevelTile, Tile> gameTiles = new HashMap<>();
+    private List<IceSheet> iceSheets = new ArrayList<>();
     private int rx;
     private int ry;
+    private int playerCount;
     private static final double CHANCE = 0.3;
     private static final double MIN_FRAGMENT = 0.3;
     private Random random;
+    private PolarBear polarBear;
 
     private class LevelTile {
         private int x;
@@ -26,6 +29,10 @@ public class LevelGenerator {
 
         public boolean isSelected() {
             return selected;
+        }
+
+        public boolean isHole() {
+            return hole;
         }
 
         public void select() {
@@ -47,14 +54,14 @@ public class LevelGenerator {
 
         public List<LevelTile> getNeighbours() {
             List<LevelTile> ret = new ArrayList<>();
-            if (x > -rx) ret.add(tiles[x - 1][y]);
-            if (x < rx) ret.add(tiles[x + 1][y]);
-            if (y > -ry) ret.add(tiles[x][y - 1]);
-            if (y < ry) ret.add(tiles[x][y + 1]);
-            if (x % 2 == 0 && x > -rx && y < ry) ret.add(tiles[x - 1][y + 1]);
-            if (x % 2 == 0 && x < rx && y < ry) ret.add(tiles[x + 1][y + 1]);
-            if (Math.abs(x % 2) == 1 && x > -rx && y > -ry) ret.add(tiles[x - 1][y - 1]);
-            if (Math.abs(x % 2) == 1 && x < rx && y > -ry) ret.add(tiles[x + 1][y - 1]);
+            if (x > -rx) ret.add(tiles[x + rx - 1][y + ry]);
+            if (x < rx) ret.add(tiles[x + rx + 1][y + ry]);
+            if (y > -ry) ret.add(tiles[x + rx][y + ry - 1]);
+            if (y < ry) ret.add(tiles[x + rx][y + ry + 1]);
+            if (x % 2 == 0 && x > -rx && y < ry) ret.add(tiles[x + rx - 1][y + ry + 1]);
+            if (x % 2 == 0 && x < rx && y < ry) ret.add(tiles[x + rx + 1][y + ry + 1]);
+            if (Math.abs(x % 2) == 1 && x > -rx && y > -ry) ret.add(tiles[x + rx - 1][y + ry - 1]);
+            if (Math.abs(x % 2) == 1 && x < rx && y > -ry) ret.add(tiles[x + rx + 1][y + ry - 1]);
             return ret;
         }
 
@@ -94,20 +101,27 @@ public class LevelGenerator {
         }
     }
 
-    public LevelGenerator(int playerCount) {
-        random = new Random();
-        rx = playerCount * 5;
-        ry = playerCount * 3;
+    public LevelGenerator(GameController gameController, int playerCount) {
+        this.gameController = gameController;
+        this.playerCount = playerCount;
+        random = new Random(0);
+        rx = /*playerCount **/ 3;
+        ry = /*playerCount */ 2;
         tiles = new LevelTile[rx * 2 + 1][ry * 2 + 1];
     }
 
-    public void generate() {
+    public List<Tile> generate() {
         generateLevelTiles();
-        
-        // TODO: Convert to game tiles
-        // TODO: Win item spawn
-        // TODO: Item spawns
-        // TODO: Spawn polar bear
+        generateGameTiles();
+        generateGameTileConnections();
+        placePolarBear();
+        generateItems();
+
+        return new ArrayList<>(gameTiles.values());
+    }
+
+    public PolarBear getPolarBear() {
+        return polarBear;
     }
 
     private void generateLevelTiles() {
@@ -129,13 +143,12 @@ public class LevelGenerator {
                 openableList.clear();
                 for (LevelTile tile: iterated) {
                     if (!tile.isSelected()) generated++;
-                    else tile.select();
+                    tile.select();
                     tile.openNeighbours(openableList);
                 }
             }
 
             if (generated < min) {
-                LevelTile newPivot = null;
                 for (int x = -rx; x <= rx; x++) {
                     for (int y = -ry; y <= ry; y++) {
                         tiles[rx + x][ry + y].skipped = false;
@@ -158,11 +171,128 @@ public class LevelGenerator {
 
         for (int x = -rx; x <= rx; x++) {
             for (int y = -ry; y <= ry; y++) {
-                if (tiles[rx + x][ry + y].isSelected()) continue;
+                if (!tiles[rx + x][ry + y].isSelected()) continue;
                 for (LevelTile tile: tiles[rx + x][ry + y].getNeighbours()) {
                     tile.hole();
                 }
             }
+        }
+    }
+
+    private void generateGameTiles() {
+        int counter = 0;
+        for (int x = -rx; x <= rx; x++) {
+            for (int y = -ry; y <= ry; y++) {
+                if (tiles[rx + x][ry + y].isSelected()) {
+                    IceSheet sheet = new IceSheet(gameController, counter++, random.nextInt(playerCount) + 1, getSnowAmmount());
+                    gameTiles.put(tiles[rx + x][ry + y], sheet);
+                    iceSheets.add(sheet);
+                }
+                else if (tiles[rx + x][ry + y].isHole()) {
+                    gameTiles.put(tiles[rx + x][ry + y], new Hole(gameController, counter++, getSnowAmmount()));
+                }
+            }
+        }
+    }
+
+    private void placePolarBear() {
+        List<Tile> polarBearSpawns = new ArrayList<>();
+
+        for (int distance = rx; distance > 0 && polarBearSpawns.size() == 0; distance--) {
+            for (int x = -rx; x <= rx; x++) {
+                for (int y = -ry; y <= ry; y++) {
+                    if (x + y >= distance && tiles[x + rx][y + ry].isSelected()) {
+                        polarBearSpawns.add(gameTiles.get(tiles[rx + x][ry + y]));
+                    }
+                }
+            }
+        }
+
+        if (polarBearSpawns.size() > 0) {
+            polarBear = new PolarBear();
+            polarBear.spawnOnto(polarBearSpawns.get(random.nextInt(polarBearSpawns.size())));
+        }
+    }
+
+    private int getSnowAmmount() {
+        return random.nextInt(2) + 1;
+    }
+
+    private void generateGameTileConnections() {
+        for (LevelTile tile: gameTiles.keySet()) {
+            Tile gameTile = gameTiles.get(tile);
+            for (LevelTile neighbour: tile.getNeighbours()) {
+                Tile otherTile = gameTiles.get(neighbour);
+                if (otherTile != null) gameTile.connectTile(otherTile);
+            }
+        }
+    }
+
+    private void generateItems() {
+        IceSheet picked = iceSheets.get(random.nextInt(iceSheets.size()));
+        picked.setItem(new WinItem("cartridge"));
+        iceSheets.remove(picked);
+
+        picked = iceSheets.get(random.nextInt(iceSheets.size()));
+        picked.setItem(new WinItem("flare"));
+        iceSheets.remove(picked);
+
+        picked = iceSheets.get(random.nextInt(iceSheets.size()));
+        picked.setItem(new WinItem("flare gun"));
+        iceSheets.remove(picked);
+
+        int count = random.nextInt((int)(iceSheets.size() / 4.0)) + (int)(iceSheets.size() / 2.0);
+
+        int shovel = 0; // 2/16
+        int breakableShovel = 0; // 3/16
+        int rope = 0; // 1/16
+        int scubaGear = 0; // 1/16
+        int food = 0; // 6/16
+        int tent = 0; // 3/16
+
+        for (int i = 0; i < count; i++) {
+            if (random.nextDouble() < 6.0 / 16.0) food++;
+            else if (random.nextDouble() < 9.0 / 16.0) breakableShovel++;
+            else if (random.nextDouble() < 12.0 / 16.0) tent++;
+            else if (random.nextDouble() < 14.0 / 16.0) shovel++;
+            else if (random.nextDouble() < 15.0 / 16.0) rope++;
+            else scubaGear++;
+        }
+
+        for (int i = 0; i < shovel; i++) {
+            picked = iceSheets.get(random.nextInt(iceSheets.size()));
+            picked.setItem(new Shovel());
+            iceSheets.remove(picked);
+        }
+
+        for (int i = 0; i < breakableShovel; i++) {
+            picked = iceSheets.get(random.nextInt(iceSheets.size()));
+            picked.setItem(new Shovel());
+            iceSheets.remove(picked);
+        }
+
+        for (int i = 0; i < rope; i++) {
+            picked = iceSheets.get(random.nextInt(iceSheets.size()));
+            picked.setItem(new Shovel());
+            iceSheets.remove(picked);
+        }
+
+        for (int i = 0; i < scubaGear; i++) {
+            picked = iceSheets.get(random.nextInt(iceSheets.size()));
+            picked.setItem(new Shovel());
+            iceSheets.remove(picked);
+        }
+
+        for (int i = 0; i < food; i++) {
+            picked = iceSheets.get(random.nextInt(iceSheets.size()));
+            picked.setItem(new Food());
+            iceSheets.remove(picked);
+        }
+
+        for (int i = 0; i < tent; i++) {
+            picked = iceSheets.get(random.nextInt(iceSheets.size()));
+            picked.setItem(new Tent());
+            iceSheets.remove(picked);
         }
     }
 }

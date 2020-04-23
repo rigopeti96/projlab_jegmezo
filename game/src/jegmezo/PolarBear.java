@@ -2,6 +2,15 @@ package jegmezo;
 
 public class PolarBear extends Entity{
 
+    /**
+     * Ráteszi a Jegemedvét egy mezőre (kezdetben)
+     * @param tile Mező, amire tesszük
+     */
+    @Override
+    public void spawnOnto(Tile tile) {
+        this.tile = tile;
+        tile.addPolarBear(this);
+    }
 
     @Override
     public boolean move() {
@@ -14,16 +23,6 @@ public class PolarBear extends Entity{
     }
 
     public void serialize() {
-
-    }
-
-    @Override
-    public boolean canSave() {
-        return false;
-    }
-
-    @Override
-    public void decreaseBodyHeat() {
 
     }
 }

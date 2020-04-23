@@ -9,11 +9,14 @@ public abstract class Tile {
 	private int snow;
 	protected GameController gameController;
 	protected List<Tile> neighbours = new ArrayList<>();
-	protected List<Entity> entities = new ArrayList<>();
-	protected int ID;
+	protected List<Player> players = new ArrayList<>();
+	protected PolarBear polarBear;
+	protected int id;
 
-	public Tile(GameController gameController) {
+	public Tile(GameController gameController, int id, int snow) {
 		this.gameController = gameController;
+		this.id = id;
+		this.snow = snow;
 	}
 
 	/** A Player hívja, amikor rálép a Tile-re, hozzáadja a Player-t a players listához
@@ -34,19 +37,25 @@ public abstract class Tile {
 	public abstract int getPlayerLimit();
 
 	/**
-	 * Hozzáad egy Player-t az entities listához
+	 * Hozzáad egy Player-t a players listához
 	 * @param player Player amit hozzáad
 	 */
 	public void addPlayer(Player player) {
-		System.out.println("Tile addEntity");
-		this.entities.add(player);
+		this.players.add(player);
+	}
+
+	/**
+	 * Beállítja a tile jegesmedvéjét (csak egy lehet)
+	 * @param bear PolarBear amit hozzáad
+	 */
+	public void addPolarBear(PolarBear bear) {
+		this.polarBear = bear;
 	}
 
 	/**
 	 * @return Visszaadja a Tile szomszédjait
 	 */
 	public List<Tile> getNeighbours() {
-		System.out.println("Tile getNeighbours");
 		return neighbours;
 	}
 
@@ -55,9 +64,8 @@ public abstract class Tile {
 	 * @param tile Másik Tile
 	 */
 	public void connectTile(Tile tile) {
-		System.out.println("Tile connectTile");
-		neighbours.add(tile);
-		tile.neighbours.add(tile);
+		if (!neighbours.contains(tile)) neighbours.add(tile);
+		if (!tile.neighbours.contains(this)) tile.neighbours.add(this);
 	}
 
 	/**

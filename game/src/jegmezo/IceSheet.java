@@ -10,29 +10,16 @@ public class IceSheet extends Tile {
 	private Item item;
 	protected Building building = Building.NONE;
 
-	public IceSheet(GameController gameController, int playerLimit) {
-		this(gameController, playerLimit, null);
-	}
-
-	public IceSheet(GameController gameController, int playerLimit, Item item) {
-		super(gameController);
+	public IceSheet(GameController gameController, int id, int playerLimit, int snow)
+	{
+		super(gameController, id, snow);
 		this.playerLimit = playerLimit;
-		this.item = item;
 	}
 
 	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
 		System.out.println("IceSheet stepOnto");
-		System.out.println("stable/unstable (turns over)?");
-		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("unstable")){
-			player.drown();
-		}
-		else{
-			prevTile.stepOff(player);
-			this.entities.add(player);
-		}
 	}
 
 	/** A játékoslétszám lekérdezése
@@ -52,6 +39,14 @@ public class IceSheet extends Tile {
 		return item;
 	}
 
+	/**
+	 * A mezőn található item beállítása (spawn-nál)
+	 * @param item a mezőn lévő tárgy vagy null, ha nincs
+	 */
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
 	/** A mezőn lévő tárgy levétele*/
 	@Override
 	public void removeItem() {
@@ -64,12 +59,6 @@ public class IceSheet extends Tile {
 	@Override
 	public boolean canSave() {
 		System.out.println("IceSheet canSave");
-		addPlayer(new Eskimo(gameController, 1, this));
-		for (int i=0; i<entities.size(); i++) {
-			boolean save=entities.get(i).canSave();
-			if(save)
-				return true;
-		}
 		return false;
 	}
 
@@ -91,8 +80,8 @@ public class IceSheet extends Tile {
 			case "igloo":
 				break;
 			case "igloon't":
-				for (Entity entity: entities) {
-					entity.decreaseBodyHeat();
+				for (Player player: players) {
+					player.decreaseBodyHeat();
 				}
 				break;
 		}

@@ -8,6 +8,10 @@ package jegmezo;
 public class WinItem implements Item {
 	private String name;
 
+	public WinItem(String name) {
+		this.name = name;
+	}
+
 	/** beteszi egy Player Inventory-jába magát */
 	public boolean equip(Inventory inventory){
 		System.out.println("WinItem canSave");

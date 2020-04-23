@@ -12,9 +12,17 @@ public abstract class Player extends Entity{
 	private Inventory inventory = new Inventory();
 	private GameController gameController;
 
-	public Player(GameController gameController, int number, Tile tile) {
+	public Player(GameController gameController, int number) {
 		this.gameController = gameController;
 		this.number = number;
+	}
+
+	/**
+	 * Ráteszi a Player-t egy mezőre (kezdetben)
+	 * @param tile Mező, amire tesszük
+	 */
+	@Override
+	public void spawnOnto(Tile tile) {
 		this.tile = tile;
 		this.tile.addPlayer(this);
 	}
@@ -147,29 +155,7 @@ public abstract class Player extends Entity{
 	 * @return true ha sikeres, false nem */
 	public boolean useItem() {
 		System.out.println("Player useItem");
-		System.out.println("food/shovel/win items");
-		switch (new Scanner(System.in).nextLine()) {
-			case "food":
-				if(0 < inventory.getFoodCount()) {
-					Food food = new Food();
-					return (food.use(this));
-
-				}
-				break;
-			case "shovel":
-				if(0 < inventory.getShovelCount()) {
-					Shovel shovel = new Shovel();
-					return(shovel.use(this));
-				}
-				break;
-			case "win items":
-				if(0 < inventory.getWinItemCount()) {
-					WinItem winitem = new WinItem();
-					return(winitem.use(this));
-				}
-				break;
-		}
-		return false;
+		return true;
 	}
 	
 	/** A játékos választ egy akciót, true-val tér vissza
@@ -191,7 +177,6 @@ public abstract class Player extends Entity{
 		}
 	}
 
-	@Override
 	public boolean canSave(){
 		System.out.println("Player canSave");
 		int r=inventory.getRopeCount();

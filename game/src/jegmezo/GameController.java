@@ -33,19 +33,19 @@ public class GameController {
 			// TODO: Sets up flags (controlledRandomness)
 		} else if (gameState == GameState.Creating && command.equals("start game")) {
 			System.out.println("start game command ran");
-			// TODO: Creates players
-			// TODO: Generates hexagonal map
-			tiles.add(new IceSheet(this, 4));
-			players.add(new Eskimo(this, 1, tiles.get(0)));
-			players.add(new Scientist(this, 2, tiles.get(0)));
+			players.clear();
+			// TODO: Set players up from input
+			players.add(new Eskimo(this, 1));
+			players.add(new Scientist(this, 2));
+			players.add(new Eskimo(this, 3));
+			LevelGenerator generator = new LevelGenerator(this, players.size());
+			tiles = generator.generate();
+			polarBear = generator.getPolarBear();
 			gameState = GameState.Stopped;
 		} else if (command.equals("load game")) {
 			System.out.println("load game command ran");
 			tiles.clear();
 			players.clear();
-			tiles.add(new IceSheet(this, 4));
-			players.add(new Eskimo(this, 1, tiles.get(0)));
-			players.add(new Scientist(this, 2, tiles.get(0)));
 			gameState = GameState.Stopped;
 		} else if (command.equals("save game")) {
 			System.out.println("save game command ran");

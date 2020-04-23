@@ -135,9 +135,24 @@ public abstract class Tile {
 	 *
 	 * @return Player amit választottak
 	 */
-	public Player selectPlayer() {
-		System.out.println("Tile selectPlayer");
-		return null;
+	public Player selectPlayer(Player excluding) {
+		System.out.println("Close players:");
+		ArrayList<Player> sortedPlayers = new ArrayList<>(players);
+		sortedPlayers.sort(Comparator.comparingInt(Player::getNumber));
+		for (Player player: sortedPlayers) {
+			if (player != excluding) System.out.println("Player " + player.getNumber());
+		}
+		while (true) {
+			System.out.println("Select player (<number/cancel>):" );
+			String line = new Scanner(System.in).nextLine().trim();
+
+			if (line.equals("cancel")) return null;
+			for (Player player: sortedPlayers) {
+				if (player != excluding && (String.valueOf(player.getNumber()).equals(line) || ("Player " + player.getNumber()).equals(line))) return player;
+			}
+
+			System.out.println("No player with number'" + line + "'.");
+		}
 	}
 
 	/**

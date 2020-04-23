@@ -54,8 +54,18 @@ public abstract class Player extends Entity{
 	/** A játékos egyik nála lévő tárgyat átadhatja egyik játékos társának
 	 * @return true ha sikeres, false ha nem */
 	public boolean trade() {
-		System.out.println("Player trade");
-		return true;
+		Player player = tile.selectPlayer(this);
+		if (player == null) return false;
+		Item item = inventory.selectItem();
+		if (item == null) return false;
+		if (player.takeItem(item)) {
+			System.out.println("Player " + number + " traded their " + item.getName() + " to Player " + player.getNumber());
+			item.unequip(inventory);
+			return true;
+		} else {
+			System.out.println("Player " + number + " can't trade their " + item.getName() + " to Player " + player.getNumber() + " (Player " + player.getNumber() + " can't take it).");
+			return false;
+		}
 	}
 	
 	/** A játékos felvesz egy tárgyat
@@ -110,12 +120,6 @@ public abstract class Player extends Entity{
 		gameController.gameOver();
 	}
 	
-	/** A játékos elhasznál egy akciópontot */
-	public void loseAP() {
-		System.out.println("Player loseAP");
-		actions--;
-	}
-	
 	/** A Player kézzel és és 1 egység havat takarít el a mezőjéről,
 	 * @return true ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithHands() {
@@ -161,8 +165,10 @@ public abstract class Player extends Entity{
 	/** A játékos kiválaszt egy tárgyat, amelyet használ (menüt dob fel)
 	 * @return true ha sikeres, false nem */
 	public boolean useItem() {
-		System.out.println("Player useItem");
-		return true;
+		System.out.println("Player " + number + "'s items:");
+		Item item = inventory.selectItem();
+		if (item == null) return false;
+		return item.use(this);
 	}
 	
 	/** A játékos választ egy akciót, true-val tér vissza
@@ -176,8 +182,12 @@ public abstract class Player extends Entity{
 	 */
 	protected boolean selectActionCommon(String command) {
 		switch (command) {
+			case "pass":
+				return true;
 			case "trade":
 				return this.trade();
+			case "use item":
+				return this.useItem();
 			default:
 				gameController.handleControlCommand(command);
 				return false;

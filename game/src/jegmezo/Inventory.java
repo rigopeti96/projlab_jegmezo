@@ -48,7 +48,7 @@ public class Inventory {
 	public boolean equipShovel(Shovel item) {
 		if (countShovel > 0 || countBreakableShovel > 0) return false;
 		items.add(item);
-		countWinItem++;
+		countShovel++;
 		return true;
 	}
 
@@ -80,15 +80,10 @@ public class Inventory {
 	}
 
 	public boolean equipTent(Item item) {
-		System.out.println("Inventory equipTent");
-		System.out.println("Can/can't?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
-		}
-		return false;
+		if (countTent > 0) return false;
+		items.add(item);
+		countTent++;
+		return true;
 	}
 
 	/** Csökkenti a Food-ok számát
@@ -163,7 +158,25 @@ public class Inventory {
 	}
 
 	public Item selectItem() {
-		return null;
+		if (countFood > 0) {
+			System.out.println(countFood + "x food");
+		}
+		for (Item item: items) {
+			System.out.println("1x " + item.getName());
+		}
+
+		while (true) {
+			System.out.println("Select item (<name>/cancel): ");
+			String line = new Scanner(System.in).nextLine().trim();
+			if (line.equals("food")) return new Food();
+			else if (line.equals("cancel")) return null;
+
+			for (Item item: items) {
+				if (item.getName().equals(line)) return item;
+			}
+
+			System.out.println("No such item '" + line + "'.");
+		}
 	}
 
 	/** Visszaadja a kötél (Rope) számát

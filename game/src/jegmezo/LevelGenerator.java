@@ -104,9 +104,9 @@ public class LevelGenerator {
     public LevelGenerator(GameController gameController, int playerCount) {
         this.gameController = gameController;
         this.playerCount = playerCount;
-        random = new Random(0);
-        rx = /*playerCount **/ 3;
-        ry = /*playerCount */ 2;
+        random = new Random();
+        rx = playerCount * 3;
+        ry = playerCount * 2;
         tiles = new LevelTile[rx * 2 + 1][ry * 2 + 1];
     }
 
@@ -180,11 +180,11 @@ public class LevelGenerator {
     }
 
     private void generateGameTiles() {
-        int counter = 0;
+        int counter = 1;
         for (int x = -rx; x <= rx; x++) {
             for (int y = -ry; y <= ry; y++) {
                 if (tiles[rx + x][ry + y].isSelected()) {
-                    IceSheet sheet = new IceSheet(gameController, counter++, random.nextInt(playerCount) + 1, getSnowAmmount());
+                    IceSheet sheet = new IceSheet(gameController, (x == 0 && y == 0) ? 0 : counter++, random.nextInt(playerCount) + 1, getSnowAmmount());
                     gameTiles.put(tiles[rx + x][ry + y], sheet);
                     iceSheets.add(sheet);
                 }

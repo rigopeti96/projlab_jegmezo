@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
 public abstract class Player extends Entity{
-	private int bodyHeat;
+	protected int bodyHeat;
 	protected int actions;
 	protected int number;
 	protected Tile tile;
@@ -13,8 +13,17 @@ public abstract class Player extends Entity{
 	private GameController gameController;
 
 	public Player(GameController gameController, int number) {
+		this(gameController, number, 4);
+	}
+
+	public Player(GameController gameController, int number, int bodyHeat) {
 		this.gameController = gameController;
 		this.number = number;
+		this.bodyHeat = bodyHeat;
+	}
+
+	public int getNumber() {
+		return number;
 	}
 
 	/**
@@ -30,7 +39,6 @@ public abstract class Player extends Entity{
 	/**
 	 * @return A Player Inventory-ja */
 	public Inventory getInventory(){
-		System.out.println("Player getInventory");
 		return inventory;
 	}
 
@@ -53,8 +61,7 @@ public abstract class Player extends Entity{
 	/** A játékos felvesz egy tárgyat
 	 * @return true, ha a játékos eltárolta az adott tárgyat, false ha nem vette fel */
 	public boolean takeItem(Item item) {
-		System.out.println("Player takeItem");
-		return new Shovel().equip(inventory);
+		return item.equip(inventory);
 	}
 	
 	/** A játékos használja a győzelmi tárgyat
@@ -196,10 +203,6 @@ public abstract class Player extends Entity{
 	public boolean buildTent() {
 
 		return true;
-	}
-
-	public void serialize() {
-
 	}
 }
 

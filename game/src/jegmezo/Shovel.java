@@ -9,16 +9,14 @@ public class Shovel implements Item {
 	 *  @param inventory - A Player inventoryja, amibe be kell tenni a Shovelt.
 	 *  @return bool - Sikerült-e betenni.  */
 	public boolean equip(Inventory inventory) {
-		System.out.println("Shovel equip");
-		return inventory.equipShovel();
+		return inventory.equipShovel(this);
 	}
 	
 	/** kiveszi egy Player Inventory-jából magát
 	 *  @param inventory - A Player inventoryja, amibõl ki kell tenni a Shovelt.
 	 *  @return boolean - Sikerült-e kivenni */
 	public boolean unequip(Inventory inventory) {
-		System.out.println("Shovel unequip");
-		return inventory.unequipShovel();
+		return inventory.unequipShovel(this);
 	}
 	
 	/** Eltakarit 2 réteg havat a mezõrõl, amin a Player tartózkodik.
@@ -41,5 +39,14 @@ public class Shovel implements Item {
 	public boolean canSave() {
 		System.out.println("Shovel canSave");
 		return false;
+	}
+
+	/**
+	 * Visszaadja a tárgy nevét
+	 * @return A tárgy neve
+	 */
+	@Override
+	public String getName() {
+		return "shovel";
 	}
 }

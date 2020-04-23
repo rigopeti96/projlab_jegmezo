@@ -6,7 +6,7 @@ import java.util.*;
 /** Mező, amire a játékosok léphetnek. Hóréteg kerülhet rá, lehet rajta tárgy, iglu illetve játékosok. Hóvihar hatással lehet a mezőkre, ezen kívül minden viselkedésta
  *  specializált osztályok kezelnek le. Tárolja a szomszédait és a rajta álló Player-eket.*/
 public abstract class Tile {
-	private int snow;
+	protected int snow;
 	protected GameController gameController;
 	protected List<Tile> neighbours = new ArrayList<>();
 	protected List<Player> players = new ArrayList<>();
@@ -19,14 +19,23 @@ public abstract class Tile {
 		this.snow = snow;
 	}
 
-	/** A Player hívja, amikor rálép a Tile-re, hozzáadja a Player-t a players listához
-	 * @param player Player, amelyik rálépett a mezőre
-	 * @param prevTile Az előző mező, amin a Player állt */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * A Player hívja, amikor rálép a Tile-re, hozzáadja a Player-t a players listához
+	 *
+	 * @param player   Player, amelyik rálépett a mezőre
+	 * @param prevTile Az előző mező, amin a Player állt
+	 */
 	public abstract void stepOnto(Player player, Tile prevTile);
 
-	/** Egy Entity hívja, amikor lelép a Tile-ről, kiszedi az entity-t az entities listából
+	/**
+	 * Egy Entity hívja, amikor lelép a Tile-ről, kiszedi az entity-t az entities listából
+	 *
 	 * @param entity Entity, amelyik lelépett a mezőről
-	 * */
+	 */
 	public void stepOff(Entity entity) {
 		System.out.println("Tile stepOff");
 	}
@@ -38,6 +47,7 @@ public abstract class Tile {
 
 	/**
 	 * Hozzáad egy Player-t a players listához
+	 *
 	 * @param player Player amit hozzáad
 	 */
 	public void addPlayer(Player player) {
@@ -46,6 +56,7 @@ public abstract class Tile {
 
 	/**
 	 * Beállítja a tile jegesmedvéjét (csak egy lehet)
+	 *
 	 * @param bear PolarBear amit hozzáad
 	 */
 	public void addPolarBear(PolarBear bear) {
@@ -61,6 +72,7 @@ public abstract class Tile {
 
 	/**
 	 * Összeköti ezt a Tile-t egy másikkal (neighbour listákat updateli)
+	 *
 	 * @param tile Másik Tile
 	 */
 	public void connectTile(Tile tile) {
@@ -82,6 +94,7 @@ public abstract class Tile {
 
 	/**
 	 * Leszed egy bizonyos mennyiségű hóréteget a Tile-ról
+	 *
 	 * @param amount Hóréteg szám, amennyit le kell szedni
 	 * @return true-t ad vissza, ha volt akár egy hóréteg is, amit leszedett
 	 */
@@ -92,6 +105,7 @@ public abstract class Tile {
 
 	/**
 	 * A kapott épületet megépíti a mezőre,
+	 *
 	 * @return true has sikerült false ha nem
 	 */
 	public abstract boolean build(Building building);
@@ -103,6 +117,7 @@ public abstract class Tile {
 
 	/**
 	 * Ezen a Tile-on van e olyan Player, aki megtud menteni valakit (van kötele)
+	 *
 	 * @return Van true, nincs false
 	 */
 	public abstract boolean canSave();
@@ -117,6 +132,7 @@ public abstract class Tile {
 
 	/**
 	 * Egy Player-t lehet vele kiválasztani (előzőhöz egy kiválasztó menüt)
+	 *
 	 * @return Player amit választottak
 	 */
 	public Player selectPlayer() {
@@ -137,11 +153,12 @@ public abstract class Tile {
 		return false;
 	}
 
-	public void stepOnPolarBear(PolarBear pb, Tile prevTile){
+	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
 
 	}
 
-	public void serialize() {
-
-	}
+	/**
+	 * Kiírja a Tile egy reprezentációját a standard outputra
+	 */
+	public abstract void serialize();
 }

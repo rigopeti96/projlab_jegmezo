@@ -6,14 +6,12 @@ public class Food implements Item {
 
 	/** beteszi egy Player Inventory-jába magát */
 	public boolean equip(Inventory inventory){
-		System.out.println("Food equip");
-		return inventory.equipFood();
+		return inventory.equipFood(this);
 	}
 
 	/** kiveszi egy Player Inventory-jából magát */
 	public boolean unequip(Inventory inventory){
-		System.out.println("Food unequip");
-		return inventory.unequipFood();
+		return inventory.unequipFood(this);
 	}
 
 	/** a Player használja a tárgyat
@@ -35,5 +33,12 @@ public class Food implements Item {
 		return false;
 	}
 
-
+	/**
+	 * Visszaadja a tárgy nevét
+	 * @return A tárgy neve
+	 */
+	@Override
+	public String getName() {
+		return "food";
+	}
 }

@@ -16,7 +16,8 @@ public abstract class Entity {
 
     public abstract Tile selectTile();
 
-    public void serialize() {
-
-    }
+    /**
+     * Kiírja az entitás egy reprezentációját a standard outputra
+     */
+    public abstract void serialize();
 }

@@ -4,12 +4,12 @@ public class Tent implements Item{
 
     @Override
     public boolean equip(Inventory inventory) {
-        return inventory.equipTent();
+        return inventory.equipTent(this);
     }
 
     @Override
     public boolean unequip(Inventory inventory) {
-        return inventory.unequipTent();
+        return inventory.unequipTent(this);
     }
 
     @Override
@@ -26,5 +26,14 @@ public class Tent implements Item{
     @Override
     public boolean canSurvive() {
         return false;
+    }
+
+    /**
+     * Visszaadja a tárgy nevét
+     * @return A tárgy neve
+     */
+    @Override
+    public String getName() {
+        return "tent";
     }
 }

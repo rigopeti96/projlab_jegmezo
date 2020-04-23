@@ -9,14 +9,12 @@ public class Rope implements Item {
 
 	/** beteszi egy Player Inventory-jába magát */
 	public boolean equip(Inventory inventory){
-		System.out.println("Rope equip");
-		return inventory.equipRope();
+		return inventory.equipRope(this);
 	}
 	
 	/** kiveszi egy Player Inventory-jából magát */
 	public boolean unequip(Inventory inventory){
-		System.out.println("Rope unequip");
-		return inventory.unequipRope();
+		return inventory.unequipRope(this);
 	}
 
 	/** a Player használja a tárgyat
@@ -38,5 +36,14 @@ public class Rope implements Item {
 	public boolean canSurvive(){
 		System.out.println("Rope canSurvive");
 		return false;
+	}
+
+	/**
+	 * Visszaadja a tárgy nevét
+	 * @return A tárgy neve
+	 */
+	@Override
+	public String getName() {
+		return "rope";
 	}
 }

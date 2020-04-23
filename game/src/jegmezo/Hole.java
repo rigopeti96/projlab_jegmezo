@@ -44,5 +44,13 @@ public class Hole extends Tile {
 		System.out.println("Hole canSave");
 		return false;
 	}
-	
+
+	/**
+	 * Kiírja a Tile egy reprezentációját a standard outputra
+	 */
+	@Override
+	public void serialize() {
+		System.out.println("Hole(ID=" + id + ",snow=" + snow + ")");
+	}
+
 }

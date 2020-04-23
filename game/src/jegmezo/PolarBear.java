@@ -23,6 +23,6 @@ public class PolarBear extends Entity{
     }
 
     public void serialize() {
-
+        System.out.println("PolarBear(tile=" + tile.getId() + ")");
     }
 }

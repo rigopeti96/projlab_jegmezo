@@ -8,18 +8,19 @@ public class BreakableShovel extends Shovel implements Item{
      *  @param inventory - A Player inventoryja, amibe be kell tenni a Shovelt.
      *  @return bool - Sikerült-e betenni.  */
     public boolean equip(Inventory inventory) {
-        System.out.println("BreakableShovel equip");
-        return inventory.equipBreakableShovel();
+        return inventory.equipBreakableShovel(this);
     }
 
     /** kiveszi egy Player Inventory-jából magát
      *  @param inventory - A Player inventoryja, amibõl ki kell tenni a Shovelt.
      *  @return boolean - Sikerült-e kivenni */
     public boolean unequip(Inventory inventory) {
-        System.out.println("Shovel unequip");
-        return inventory.unequipBreakableShovel();
+        return inventory.unequipBreakableShovel(this);
     }
 
+    /** a Player használja a tárgyat
+     * @param player Player, aki használja a tárgyat
+     * @return true ha sikeres, false ha nem */
     public boolean use(Player player) {
 
         return false;
@@ -37,5 +38,14 @@ public class BreakableShovel extends Shovel implements Item{
     public boolean canSave() {
         System.out.println("BreakableShovel canSave");
         return false;
+    }
+
+    /**
+     * Visszaadja a tárgy nevét
+     * @return A tárgy neve
+     */
+    @Override
+    public String getName() {
+        return "breakable shovel";
     }
 }

@@ -9,8 +9,7 @@ public class ScubaGear implements Item {
 	 *  @return bool - Sikerült-e betenni
 	 * */
 	public boolean equip(Inventory inventory) {
-		System.out.println("ScubaGear equip");
-		return inventory.equipScubaGear();
+		return inventory.equipScubaGear(this);
 	}
 	
 	/** kiveszi egy Player Inventory-jából magát 
@@ -18,8 +17,7 @@ public class ScubaGear implements Item {
 	 *  @return boolean - Sikerült-e kivenni
 	 * */
 	public boolean unequip(Inventory inventory) {
-		System.out.println("ScubaGear unequip");
-		return inventory.unequipScubaGear();
+		return inventory.unequipScubaGear(this);
 	}
 	
 	/** Mindig hamisat ad, nem lehet használni (passzív tárgy)
@@ -42,5 +40,14 @@ public class ScubaGear implements Item {
 	public boolean canSurvive() {
 		System.out.println("ScubaGear canSurvive");
 		return true;
+	}
+
+	/**
+	 * Visszaadja a tárgy nevét
+	 * @return A tárgy neve
+	 */
+	@Override
+	public String getName() {
+		return "scuba gear";
 	}
 }

@@ -8,6 +8,10 @@ public class Eskimo extends Player {
 		super(gameController, number);
 	}
 
+	public Eskimo(GameController gameController, int number, int bodyHeat) {
+		super(gameController, number, bodyHeat);
+	}
+
 	/** Meghívja az Tile buildIgloo függvényét
 	 *  @return bool - Sikerült-e építeni.  */
 	public boolean buildIgloo() {
@@ -25,4 +29,11 @@ public class Eskimo extends Player {
 		} else return this.selectActionCommon(command);
 	}
 
+	/**
+	 * Kiírja az entitás egy reprezentációját a standard outputra
+	 */
+	@Override
+	public void serialize() {
+		System.out.println("Eskimo(number=" + number + ",heat=" + bodyHeat + ",tile=" + tile.getId() + ")");
+	}
 }

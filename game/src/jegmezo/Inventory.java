@@ -1,9 +1,12 @@
 package jegmezo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**Minden játékoshoz tartozik egy Inventory, ebben van eltárolva, hogy melyik tárgyból mennyi van. A WinItemeken kívül mindenből csak egy lehet egy játékosnál */
 public class Inventory {
+	private List<Item> items = new ArrayList<>();
 	private int countShovel;
 	private int countFood;
 	private int countRope;
@@ -23,70 +26,61 @@ public class Inventory {
 	}
 
 	/** Növeli eggyel a Win Itemek számát
-	 *  @param
+	 *  @param item Item, amit felveszünk
 	 *  @return bool - Sikerült-e felvenni az itemet  */
-	public boolean equipFood() {
-		System.out.println("Inventory equipFood");
-		System.out.println("Can/can't?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
-		}
-		return false;
+	public boolean equipFood(Food item) {
+		countFood++;
+		return true;
+	}
+
+	/** Növeli eggyel a Win Itemek számát
+	 *  @param item Item, amit felveszünk
+	 *  @return bool - Sikerült-e felvenni az itemet  */
+	public boolean equipWinItem(WinItem item) {
+		items.add(item);
+		countWinItem++;
+		return true;
+	}
+
+	/** Növeli eggyel a Win Itemek számát
+	 *  @param item Item, amit felveszünk
+	 *  @return bool - Sikerült-e felvenni az itemet  */
+	public boolean equipShovel(Shovel item) {
+		if (countShovel > 0 || countBreakableShovel > 0) return false;
+		items.add(item);
+		countWinItem++;
+		return true;
+	}
+
+	/** Növeli eggyel a Win Itemek számát
+	 *  @param item Item, amit felveszünk
+	 *  @return bool - Sikerült-e felvenni az itemet  */
+	public boolean equipRope(Item item) {
+		if (countRope > 0) return false;
+		items.add(item);
+		countRope++;
+		return true;
 	}
 
 	/** Növeli eggyel a Win Itemek számát
 	 *  @param
 	 *  @return bool - Sikerült-e felvenni az itemet  */
-	public boolean equipWinItem() {
-		System.out.println("Inventory equipWinItem");
-		System.out.println("Can/can't?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
-		}
-		return false;
+	public boolean equipScubaGear(Item item) {
+		if (countScubaGear > 0) return false;
+		items.add(item);
+		countScubaGear++;
+		return true;
 	}
 
-	/** Növeli eggyel a Win Itemek számát
-	 *  @param
-	 *  @return bool - Sikerült-e felvenni az itemet  */
-	public boolean equipShovel() {
-		System.out.println("Inventory equipShovel");
-		System.out.println("Can/can't?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
-		}
-		return false;
+	public boolean equipBreakableShovel(Item item) {
+		if (countShovel > 0 || countBreakableShovel > 0) return false;
+		items.add(item);
+		countBreakableShovel++;
+		return true;
 	}
 
-	/** Növeli eggyel a Win Itemek számát
-	 *  @param
-	 *  @return bool - Sikerült-e felvenni az itemet  */
-	public boolean equipRope() {
-		System.out.println("Inventory equipRope");
-		System.out.println("Can/can't?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
-		}
-		return false;
-	}
-
-	/** Növeli eggyel a Win Itemek számát
-	 *  @param
-	 *  @return bool - Sikerült-e felvenni az itemet  */
-	public boolean equipScubaGear() {
-		System.out.println("Inventory equipScubaGear");
+	public boolean equipTent(Item item) {
+		System.out.println("Inventory equipTent");
 		System.out.println("Can/can't?");
 		switch (new Scanner(System.in).nextLine()) {
 			case "can":
@@ -99,80 +93,73 @@ public class Inventory {
 
 	/** Csökkenti a Food-ok számát
 	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat)  */
-	public boolean unequipFood() {
+	public boolean unequipFood(Item item) {
+		if (countFood < 1) return false;
+		countFood--;
 		return true;
 	}
 
 	/** Csökkenti a Win Item-ek számát
 	 *  @param
 	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat) */
-	public boolean unequipWinItem() {
+	public boolean unequipWinItem(Item item) {
+		if (countWinItem < 1) return false;
+		items.remove(item);
+		countWinItem--;
 		return true;
 	}
 
 	/** Csökkenti a lapátok(Shovel) számát
 	 *  @param
 	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat) */
-	public boolean unequipShovel() {
-		System.out.println("Inventory unequipShovel");
+	public boolean unequipShovel(Item item) {
+		if (countShovel < 1) return false;
+		items.remove(item);
+		countShovel--;
 		return true;
 	}
 
 	/** Csökkenti a kötelek (Rope) számát
 	 *  @param
 	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat) */
-	public boolean unequipRope() {
+	public boolean unequipRope(Item item) {
+		if (countRope < 1) return false;
+		items.remove(item);
+		countRope--;
 		return true;
 	}
 
 	/** Csökkenti a búvárruhát (ScubaGear) számát
 	 *  @param
 	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat) */
-	public boolean unequipScubaGear() {
+	public boolean unequipScubaGear(Item item) {
+		if (countScubaGear < 1) return false;
+		items.remove(item);
+		countScubaGear--;
 		return true;
 	}
 
-	public boolean equipBreakableShovel() {
-		System.out.println("Inventory equipBreakableShovel");
-		System.out.println("Can/can't?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
+	public boolean unequipBreakableShovel(Item item) {
+		if (countBreakableShovel < 1) return false;
+		items.remove(item);
+		countBreakableShovel--;
+		return true;
+	}
+
+	public boolean unequipTent(Item item) {
+		if (countTent < 1) return false;
+		items.remove(item);
+		countTent--;
+		return true;
+	}
+
+	public void serialize(int number) {
+		if (countFood > 0) {
+			System.out.println("Player-Item(number=" + number + ",item=food,count=" + countFood +")");
 		}
-		return false;
-	}
-
-	public boolean unequipBreakableShovel() {
-		System.out.println("Inventory unequipBreakableShovel");
-		return true;
-	}
-
-	public boolean equipTent() {
-		System.out.println("Inventory equipTent");
-		System.out.println("Can/can't?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "can":
-				return true;
-			case "can't":
-				return false;
+		for (Item item: items) {
+			System.out.println("Player-Item(number=" + number + ",item=" + item.getName() + ",count=1)");
 		}
-		return false;
-	}
-
-	public boolean unequipTent() {
-		System.out.println("Inventory unequipTent");
-		return true;
-	}
-
-	public boolean hasAllWinItems() {
-
-		return false;
-	}
-
-	public void serialize() {
-
 	}
 
 	public Item selectItem() {
@@ -191,28 +178,6 @@ public class Inventory {
 		}
 	}
 
-	/** Visszaadja az étel (Food) számát
-	 *  @return int - az inventoryban levő ételek száma */
-	public int getFoodCount(){
-		System.out.println("Has Food? (has/hasn't)");
-		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("has"))
-			return 1;
-		else{
-			return 0;
-		}
-	}
-	/** Visszaadja az ásó (Shovel) számát
-	 *  @return int - az inventoryban levő ásók száma */
-	public int getShovelCount(){
-		System.out.println("Has Shovel? (has/hasn't)");
-		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("has"))
-			return 1;
-		else{
-			return 0;
-		}
-	}
 	/** Visszaadja a búvárruha (ScubaGear) számát
 	 *  @return int - az inventoryban levő búvárruhák száma */
 	public int getScubaCount(){

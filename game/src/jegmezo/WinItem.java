@@ -14,14 +14,12 @@ public class WinItem implements Item {
 
 	/** beteszi egy Player Inventory-jába magát */
 	public boolean equip(Inventory inventory){
-		System.out.println("WinItem canSave");
-		return inventory.equipWinItem();
+		return inventory.equipWinItem(this);
 	}
 	
 	/** kiveszi egy Player Inventory-jából magát */
 	public boolean unequip(Inventory inventory){
-		System.out.println("WinItem unequip");
-		return inventory.unequipWinItem();
+		return inventory.unequipWinItem(this);
 	}
 	
 	/** a Player használja a tárgyat */
@@ -40,5 +38,14 @@ public class WinItem implements Item {
 	public boolean canSurvive(){
 		System.out.println("WinItem canSurvive");
 		return false;
+	}
+
+	/**
+	 * Visszaadja a tárgy nevét
+	 * @return A tárgy neve
+	 */
+	@Override
+	public String getName() {
+		return name;
 	}
 }

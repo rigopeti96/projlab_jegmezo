@@ -100,8 +100,11 @@ public class IceSheet extends Tile {
 
 	}
 
+	/**
+	 * Kiírja a Tile egy reprezentációját a standard outputra
+	 */
+	@Override
 	public void serialize() {
-
+		System.out.println("Sheet(ID=" + id + ",playerLimit=" + playerLimit + ",snow=" + snow + ",item=" + (item != null ? item.getName() : "none") + ")");
 	}
-
 }

@@ -8,6 +8,10 @@ public class Scientist extends Player {
 		super(gameController, number);
 	}
 
+	public Scientist(GameController gameController, int number, int bodyHeat) {
+		super(gameController, number, bodyHeat);
+	}
+
 	/**A kutató kiválasztja, hogy melyik Tile-t vizsgálja, majd megkapja az eredményt
 	 */
 	public boolean examine() {
@@ -24,5 +28,13 @@ public class Scientist extends Player {
 		if (command.equals("examine")) {
 			return this.examine();
 		} else return this.selectActionCommon(command);
+	}
+
+	/**
+	 * Kiírja az entitás egy reprezentációját a standard outputra
+	 */
+	@Override
+	public void serialize() {
+		System.out.println("Scientist(number=" + number + ",heat=" + bodyHeat + ",tile=" + tile.getId() + ")");
 	}
 }

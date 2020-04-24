@@ -217,9 +217,12 @@ public abstract class Player extends Entity{
 		return false;
 	}
 
+	/**
+	 * Épít egy Tent-et a mezőre amin áll.
+	 * @return
+	 */
 	public boolean buildTent() {
-
-		return true;
+		return tile.build(Building.TENT);
 	}
 }
 

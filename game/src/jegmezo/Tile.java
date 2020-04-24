@@ -105,9 +105,10 @@ public abstract class Tile {
 	 */
 	public boolean removeSnow(int amount) {
 		System.out.println("Tile removeSnow");
-		if(snow < amount) return false; //a legkevesebb hó mennyiség a 0, az alá nem lehet csökkenteni
-		snow = snow - amount;
-		return false;
+		if(snow == 0) return false; //a legkevesebb hó mennyiség a 0, az alá nem lehet csökkenteni
+		if(snow < amount) snow = 0;
+		else snow = snow - amount;
+		return true;
 	}
 
 	/**

@@ -137,8 +137,7 @@ public abstract class Player extends Entity{
 	 * @return True ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithShovel() {
 		System.out.println("Player digWithShovel");
-		tile.removeSnow(2);
-		return false;
+		return tile.removeSnow(2);
 	}
 	
 	/** A játékos felveszi a tárgyat a mezőről, amin áll

@@ -29,7 +29,6 @@ public class Inventory {
 	 *  @param item Item, amit felveszünk
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipFood(Food item) {
-		items.add(item);
 		countFood++;
 		return true;
 	}

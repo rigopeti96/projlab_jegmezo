@@ -30,14 +30,12 @@ public class Shovel implements Item {
 	/** Mindig hamisat ad (érvényes specifikáció szerint) 
 	 * @return false - A Shovel nem tudja megmenteni játékosát*/
 	public boolean canSurvive() {
-		System.out.println("Shovel canSurvive");
 		return false;
 	}
 	
 	/** Mindig hamisat ad (érvényes specifikáció szerint) 
 	 * @return false - A Shovel nem tud megmenteni más játékosokat*/
 	public boolean canSave() {
-		System.out.println("Shovel canSave");
 		return false;
 	}
 

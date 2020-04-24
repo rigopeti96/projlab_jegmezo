@@ -90,7 +90,6 @@ public class Inventory {
 	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat)  */
 	public boolean unequipFood(Item item) {
 		if (countFood < 1) return false;
-		items.remove(item);
 		countFood--;
 		return true;
 	}

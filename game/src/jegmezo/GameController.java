@@ -187,7 +187,7 @@ public class GameController {
 				System.out.println("Invalid input format!");
 				System.exit(0);
 			}
-			deseralizePlayerItemConnection(desLine);
+			deserializePlayerItemConnection(desLine);
 			line = scanner.nextLine().trim();
 		}
 		line = scanner.nextLine().trim();
@@ -285,7 +285,7 @@ public class GameController {
 		}
 	}
 
-	private void deseralizePlayerItemConnection(DeserializedLine line) {
+	private void deserializePlayerItemConnection(DeserializedLine line) {
 		try {
 			int num = Integer.parseInt(line.getParameters().get("number"));
 			int count = Integer.parseInt(line.getParameters().get("count"));

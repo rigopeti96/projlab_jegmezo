@@ -175,7 +175,6 @@ public abstract class Tile {
 	 * @return true-t ad vissza, ha az összes játékos a mezőn tartózkodik, különben false-ot.
 	 */
 	public boolean hasAllPlayers() {
-		System.out.println("Tile hasAllPlayers");
 		if(gameController.getPlayerCount() == players.size()) return true;
 		return false;
 	}

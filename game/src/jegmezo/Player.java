@@ -135,8 +135,12 @@ public abstract class Player extends Entity{
 	/** A Player kézzel és és 1 egység havat takarít el a mezőjéről,
 	 * @return true ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithHands() {
-		System.out.println("Player digWithHands");
-		return tile.removeSnow(1);
+		if(tile.removeSnow(1)){
+			System.out.println("Player "+number+" removes 1 snow from Sheet(ID="+tile.getId()+").");
+			return true;
+		}
+		System.out.println("Player "+number+" can’t remove snow from Sheet(ID="+tile.getId()+").");
+		return false;
 	}
 
 	/** A Player ásóval és és 2 egység havat takarít el a mezőjéről,

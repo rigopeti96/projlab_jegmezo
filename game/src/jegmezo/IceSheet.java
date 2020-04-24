@@ -114,7 +114,7 @@ public class IceSheet extends Tile {
 			return;
 		}
 		polarBear=pb;
-		prevTile.stepOff(pb);
+		prevTile.steOffPolarBear();
 
 	}
 

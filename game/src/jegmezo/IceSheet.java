@@ -19,7 +19,17 @@ public class IceSheet extends Tile {
 	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
-		System.out.println("IceSheet stepOnto");
+		if(players.size()==playerLimit){
+			player.drown();
+			return;
+		}
+		if(pb!=null&&(building==Building.NONE||building==Building.TENT)){
+			player.eaten();
+			return;
+		}
+		players.add(player);
+		prevTile.stepOff(player);
+
 	}
 
 	/** A játékoslétszám lekérdezése
@@ -97,6 +107,12 @@ public class IceSheet extends Tile {
 	}
 
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
+		if((building==Building.NONE||building==Building.TENT)&&!players.isempty()){
+			player.eaten();
+			return;
+		}
+		polarBear=pb;
+		prevTile.stepOff(pb);
 
 	}
 

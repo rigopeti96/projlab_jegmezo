@@ -11,7 +11,15 @@ public class Hole extends Tile {
 
 	/** A játékos rálép a mezőre*/
 	public void stepOnto(Player player, Tile prevTile) {
-		System.out.println("Hole stepOnto");
+		if(player.canSurvive())
+			return;
+		for(int i=0;i<neighbours.size();i++){
+			if(neighbours[i].canSave) {
+				neighbours[i].stepOnto(player, prevTile);
+				return;
+			}
+		}
+		player.drown();
 	}
 	
 	/** A játékoslétszám lekérdezése

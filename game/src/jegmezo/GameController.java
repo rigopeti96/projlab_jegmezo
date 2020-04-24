@@ -74,8 +74,8 @@ public class GameController {
 
 	/** A játékosok elvesztik a játékot*/
 	public void gameOver() {
-		System.out.println("GameController gameOver");
-		System.exit(0);
+		System.out.println("You lost");
+		gameState=GameState.Stopped;
 	}
 	
 	/** A játékosok megnyerik a játékot*/

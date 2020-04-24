@@ -32,13 +32,18 @@ public abstract class Tile {
 	public abstract void stepOnto(Player player, Tile prevTile);
 
 	/**
-	 * Egy Entity hívja, amikor lelép a Tile-ről, kiszedi az entity-t az entities listából
+	 * Egy Tile hívja, amikor egy Entity lelép egy Tile-ről, kiszedi az entity-t a megfelelő listából
 	 *
 	 * @param entity Entity, amelyik lelépett a mezőről
 	 */
 	public void stepOff(Entity entity) {
-		System.out.println("Tile stepOff");
+		if(entity instanceof PolarBear)
+			polarBear=null;
+		else{
+			players.remove((Player) entity);
+		}
 	}
+
 
 	/**
 	 * @return A Tile-on álló maximum Player szám, amit után átfordul/Player-ek beleesnek

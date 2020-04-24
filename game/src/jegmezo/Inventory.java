@@ -29,7 +29,6 @@ public class Inventory {
 	 *  @param item Item, amit felveszünk
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipFood(Food item) {
-		items.add(item);
 		countFood++;
 		return true;
 	}
@@ -91,7 +90,6 @@ public class Inventory {
 	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat)  */
 	public boolean unequipFood(Item item) {
 		if (countFood < 1) return false;
-		items.remove(item);
 		countFood--;
 		return true;
 	}

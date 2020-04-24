@@ -130,7 +130,7 @@ public abstract class Player extends Entity{
 	 * @return true ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithHands() {
 		System.out.println("Player digWithHands");
-		return false;
+		return tile.removeSnow(1);
 	}
 
 	/** A Player ásóval és és 2 egység havat takarít el a mezőjéről,
@@ -193,6 +193,8 @@ public abstract class Player extends Entity{
 				return this.trade();
 			case "use item":
 				return this.useItem();
+			case "dig":
+				return this.digWithHands();
 			default:
 				gameController.handleControlCommand(command);
 				return false;

@@ -78,11 +78,14 @@ public abstract class Player extends Entity{
 	/** A játékos használja a győzelmi tárgyat
 	 * @return ha minden alkatrész megvan és az összes játékos ugyanazon a mezőn van, akkor megnyerik a játékot és true-t ad vissza, amúgy false*/
 	public boolean useWinItems() {
-		System.out.println("Player useWinItems");
+		//System.out.println("Player useWinItems");
 		if(tile.hasAllPlayers() && inventory.getWinItemCount()==3) {
+			System.out.println("Player " + number+ " assembles and uses the flare gun.");
 			gameController.win();
 			return true;
 		}
+		if(!tile.hasAllPlayers()) System.out.println("Player " + number+ " can’t assemble the flare gun (not all players present).");
+		if(!(inventory.getWinItemCount()==3)) System.out.println("Player " + number+ " can’t assemble the flare gun (parts missing).");
 		return false;
 	}
 	

@@ -85,7 +85,7 @@ public class GameController {
 	
 	/** A játékosok megnyerik a játékot*/
 	public void win() {
-		System.out.println("Players win");
+		System.out.println("The players win the game.");
 		System.exit(0);
 	}
 	

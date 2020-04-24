@@ -68,7 +68,10 @@ public class IceSheet extends Tile {
 	 * @return true-t ad, ha van, false-t ha nincs*/
 	@Override
 	public boolean canSave() {
-		System.out.println("IceSheet canSave");
+		for(int i=0;i<players.size();i++){
+			if(players.get(i).canSave())
+				return true;
+		}
 		return false;
 	}
 

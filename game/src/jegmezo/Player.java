@@ -253,7 +253,12 @@ public abstract class Player extends Entity{
 	 * @return
 	 */
 	public boolean buildTent() {
-		return tile.build(Building.TENT);
+		if(tile.build(Building.TENT)){
+			System.out.println("Player "+number+" places a tent on Sheet(ID="+tile.getId()+").");
+			return true;
+		}
+		System.out.println("Player "+number+" can’t places a tent Sheet(ID="+tile.getId()+") already has one.");
+		return false;
 	}
 }
 

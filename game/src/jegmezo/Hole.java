@@ -49,7 +49,6 @@ public class Hole extends Tile {
 	/** Van-e olyan játékos a mezőn, aki meg tud menteni másik játékost (van kötele)
 	 * @return mindig false, mert a lyukon nem lehet több játékos*/
 	public boolean canSave() {
-		System.out.println("Hole canSave");
 		return false;
 	}
 
@@ -60,5 +59,7 @@ public class Hole extends Tile {
 	public void serialize() {
 		System.out.println("Hole(ID=" + id + ",snow=" + snow + ")");
 	}
+
+	public void stepOnPolarBear(PolarBear pb,Tile prevTile){return;}
 
 }

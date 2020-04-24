@@ -79,7 +79,8 @@ public class IceSheet extends Tile {
 	 * @return true, ha sikeres volt, false, ha nem*/
 	@Override
 	public boolean build(Building building){
-		System.out.println("IceSheet buildSthing");
+		if(this.building != Building.NONE) return false;
+		this.building = building;
 		return true;
 	}
 

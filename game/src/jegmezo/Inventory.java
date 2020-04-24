@@ -62,8 +62,8 @@ public class Inventory {
 		return true;
 	}
 
-	/** Növeli eggyel a Win Itemek számát
-	 *  @param
+	/** Növeli eggyel a ScubaGear-ek számát
+	 *  @param item - ScubaGear item
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipScubaGear(Item item) {
 		if (countScubaGear > 0) return false;
@@ -79,6 +79,9 @@ public class Inventory {
 		return true;
 	}
 
+	/** Növeli egyel a Tent-ek számát és felveszi a Tent-et az item-ek közé
+	 * @param item - maga a Tent
+	 * @return bool - Sikerült-e felvenni az itemet. */
 	public boolean equipTent(Item item) {
 		if (countTent > 0) return false;
 		items.add(item);
@@ -125,8 +128,8 @@ public class Inventory {
 	}
 
 	/** Csökkenti a búvárruhát (ScubaGear) számát
-	 *  @param
-	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat) */
+	 *  @param item - a ScubaGear
+	 *  @return bool - Sikerült-e kivenni az itemet az Inventory-ból. */
 	public boolean unequipScubaGear(Item item) {
 		if (countScubaGear < 1) return false;
 		items.remove(item);
@@ -134,6 +137,9 @@ public class Inventory {
 		return true;
 	}
 
+	/** Csökkenti a BreakableShovel-ek számát
+	 * @param item - BreakableShovel
+	 * @return bool - Sikerült-e kivenni az itemet az Inventory-ból. */
 	public boolean unequipBreakableShovel(Item item) {
 		if (countBreakableShovel < 1) return false;
 		items.remove(item);
@@ -141,6 +147,9 @@ public class Inventory {
 		return true;
 	}
 
+	/** Csökkenti a Tent-ek számát
+	 * @param item - a Tent
+	 * @return bool - Sikerült-e kivenni az itemet az Inventory-ból. */
 	public boolean unequipTent(Item item) {
 		if (countTent < 1) return false;
 		items.remove(item);

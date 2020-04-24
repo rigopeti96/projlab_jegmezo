@@ -35,7 +35,7 @@ public class BreakableShovel extends Shovel{
 
     /**
      * Visszaadja a tárgy nevét
-     * @return A tárgy neve
+     * @return A tárgy neve .
      */
     @Override
     public String getName() {

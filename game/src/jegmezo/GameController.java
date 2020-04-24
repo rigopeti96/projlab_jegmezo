@@ -10,6 +10,11 @@ public class GameController {
 	private PolarBear polarBear = new PolarBear();
 	private GameState gameState = GameState.Creating;
 
+	/** Ez a függvény visszaadja az összes játékosok számát*/
+	public int getPlayerCount(){
+		return players.size();
+	}
+
 	/** Elindítja a játékot */
 	public void startGame() {
 		Scanner scanner = new Scanner(System.in);
@@ -80,7 +85,7 @@ public class GameController {
 	
 	/** A játékosok megnyerik a játékot*/
 	public void win() {
-		System.out.println("GameController win");
+		System.out.println("Players win");
 		System.exit(0);
 	}
 	

@@ -165,11 +165,7 @@ public abstract class Tile {
 	 */
 	public boolean hasAllPlayers() {
 		System.out.println("Tile hasAllPlayers");
-		System.out.println("has all/has none?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "has all":
-				return true;
-		}
+		if(gameController.getPlayerCount() == players.size()) return true;
 		return false;
 	}
 

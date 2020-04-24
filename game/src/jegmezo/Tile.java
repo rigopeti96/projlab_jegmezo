@@ -202,7 +202,4 @@ public abstract class Tile {
 	 * Kiírja a Tile adatait.
 	 */
 	public abstract void toLongString();
-
-	/** Ez a függvény hívódik meg minden kör végén, hogy a mezőn lévő sátor letörlődjön, ha van a mezőn. */
-	public abstract void turnEnd();
 }

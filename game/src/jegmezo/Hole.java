@@ -68,12 +68,7 @@ public class Hole extends Tile {
 	@Override
 	public void toLongString() {
 		System.out.println("Hole(ID=" + id + ", snow=" + snow + ")");
-
-	public void stepOnPolarBear(PolarBear pb,Tile prevTile){return;}
-
-	@Override
-	public void turnEnd() {
-		//a lyuk nem csinál semmit a kör végén
 	}
+	public void stepOnPolarBear(PolarBear pb, Tile prevTile){return;}
 
 }

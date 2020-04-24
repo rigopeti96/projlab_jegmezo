@@ -184,25 +184,13 @@ public class Inventory {
 	/** Visszaadja a kötél (Rope) számát
 	 *  @return int - az inventoryban levő kötelek száma */
 	public int getRopeCount(){
-		System.out.println("Has rope? (has/hasn't)");
-		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("has"))
-			return 1;
-		else{
-			return 0;
-		}
+		return countRope;
 	}
 
 	/** Visszaadja a búvárruha (ScubaGear) számát
 	 *  @return int - az inventoryban levő búvárruhák száma */
 	public int getScubaCount(){
-		System.out.println("Has ScubaGear? (has/hasn't)");
-		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("has"))
-			return 1;
-		else{
-			return 0;
-		}
+		return countScubaGear;
 	}
 	/** Visszaadja a győzelmitárgyak (WinItem) számát
 	 *  @return int - az inventoryban levő győzelmitárgyak száma */

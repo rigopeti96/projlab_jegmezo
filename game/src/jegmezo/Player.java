@@ -1,6 +1,7 @@
 package jegmezo;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
@@ -88,8 +89,10 @@ public abstract class Player extends Entity{
 	/** A játékos mozog (tile-t választ és odamozog)
 	 * @return true has sikeres, false ha nem */
 	public boolean move() {
-		System.out.println("Player move");
 		Tile hova=selectTile();
+		if(hova == null)
+			return false;
+
 		hova.stepOnto(this, tile);
 		return true;
 	}
@@ -144,28 +147,49 @@ public abstract class Player extends Entity{
 	/** A játékos felveszi a tárgyat a mezőről, amin áll
 	 * @return true ha feltudta venni, false ha nem*/
 	public boolean pickup() {
-		System.out.println("Player pickup");
-		if (this.takeItem(this.tile.getItem())) {
-			this.tile.removeItem();
-			return true;
+		Item item;
+		if (tile.getSnow() != 0){
+			System.out.println("Can't attempt to pick up item (Sheet is covered by snow.)");
+			return false;
 		}
-
-		return false;
+		item= this.tile.getItem();
+		if(item == null) {
+			System.out.println("There is nothing to pick up");
+			return false;
+		}
+		if (this.takeItem(item) ) {
+			this.tile.removeItem();
+			System.out.print("Player " + number + " picks up "+ item.getName() + " from "); tile.toShortString();
+			return true;
+		}else{
+			System.out.println("Cant pick up "+ item.getName() + " (Already has too much.)");
+			return false;
+		}
 	}
 
 	/** A játékos kiválaszthat egy mezőt, amire lépni fog, vagy megnézi sarkkutatóval (menüt dob fel)
-	 * @return kiválasztott tile (tile.getNeighbours eleme) */
+	 * @return kiválasztott tile (tile.getNeighbours eleme)
+	 * visszalépés esetén null-lal tér vissza*/
 	public Tile selectTile() {
-		System.out.println("Player selectTile");
-		System.out.println("ice sheet/hole?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "ice sheet":
-				return tile.getNeighbours().get(0);
-			case "hole":
-				return tile.getNeighbours().get(1);
+		System.out.println("Neighbouring tiles: ");
+		ArrayList<Tile> neighbourTiles= new ArrayList<Tile>();
+		neighbourTiles.addAll(this.tile.getNeighbours());
+		for (Tile tile: neighbourTiles){
+			tile.toLongString();
 		}
 
-		return null;
+		while (true){
+			System.out.println("Select tile (<ID>/cancel)");
+			String line = new Scanner(System.in).nextLine().trim();
+
+			if(line.equals("cancel")) return null;
+			for (Tile tile : neighbourTiles) {
+				if (String.valueOf(tile.getId()).equals(line)) {
+					return tile;
+				}
+			}
+			System.out.println("No tile with " + line + " ID.");
+		}
 	}
 	
 	/** A játékos kiválaszt egy tárgyat, amelyet használ (menüt dob fel)

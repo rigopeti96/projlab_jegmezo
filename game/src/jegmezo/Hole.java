@@ -61,4 +61,14 @@ public class Hole extends Tile {
 		System.out.println("Hole(ID=" + id + ",snow=" + snow + ")");
 	}
 
+	@Override
+	public void toShortString() {
+		System.out.println("Hole(ID=" + id + ")");
+	}
+
+	@Override
+	public void toLongString() {
+		System.out.println("Hole(ID=" + id + ", snow=" + snow + ")");
+	}
+
 }

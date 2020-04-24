@@ -15,9 +15,12 @@ public class Scientist extends Player {
 	/**A kutató kiválasztja, hogy melyik Tile-t vizsgálja, majd megkapja az eredményt
 	 */
 	public boolean examine() {
-		System.out.println("Scientist examine");
-		selectTile().getPlayerLimit();
-		return true;
+		Tile examined = selectTile();
+		int limit = examined.getPlayerLimit();
+
+		System.out.print("Player "+ number + " checked the stability of "); examined.toShortString();
+		System.out.println("It can take " + limit + " players.");
+		return true; //TODO: Sztem tök fölösleges a boolean
 	}
 
 	/**Kiválaszja az akciót

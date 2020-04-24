@@ -30,6 +30,8 @@ public class IceSheet extends Tile {
 		players.add(player);
 		prevTile.stepOff(player);
 
+		// TODO: Item felfedezés, ha még nincs felfedezve
+
 	}
 
 	/** A játékoslétszám lekérdezése
@@ -124,5 +126,20 @@ public class IceSheet extends Tile {
 	@Override
 	public void serialize() {
 		System.out.println("Sheet(ID=" + id + ",playerLimit=" + playerLimit + ",snow=" + snow + ",item=" + (item != null ? item.getName() : "none") + ")");
+	}
+
+	@Override
+	public void toShortString() {
+		System.out.println("Sheet(ID=" + id + ")");
+	}
+
+	@Override
+	public void toLongString() {
+
+		String itemname= (snow == 0 ? (item != null ? item.getName() : "none")  : "?");
+		String buildingname= building.toString();
+
+		System.out.println("Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
+				", item=" + itemname + ", building=" + buildingname + ")" );
 	}
 }

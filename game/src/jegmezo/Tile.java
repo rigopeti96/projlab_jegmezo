@@ -51,6 +51,12 @@ public abstract class Tile {
 	public abstract int getPlayerLimit();
 
 	/**
+	 * Visszaadja a mezőn lévő hóréteg számát.
+	 * @return A hóréteg száma
+	 */
+	public int getSnow() {return snow;}
+
+	/**
 	 * Hozzáad egy Player-t a players listához
 	 *
 	 * @param player Player amit hozzáad
@@ -181,4 +187,14 @@ public abstract class Tile {
 	 * Kiírja a Tile egy reprezentációját a standard outputra
 	 */
 	public abstract void serialize();
+
+	/**
+	 * Kiirja az id-t (ID=<>) formában
+	 */
+	public abstract void toShortString();
+
+	/**
+	 * Kiírja a Tile adatait.
+	 */
+	public abstract void toLongString();
 }

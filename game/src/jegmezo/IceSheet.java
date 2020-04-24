@@ -23,7 +23,7 @@ public class IceSheet extends Tile {
 			player.drown();
 			return;
 		}
-		if(pb!=null&&(building==Building.NONE||building==Building.TENT)){
+		if(polarBear!=null && (building==Building.NONE||building==Building.TENT)){
 			player.eaten();
 			return;
 		}
@@ -107,8 +107,10 @@ public class IceSheet extends Tile {
 	}
 
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
-		if((building==Building.NONE||building==Building.TENT)&&!players.isempty()){
-			player.eaten();
+		if((building==Building.NONE||building==Building.TENT)&&!players.isEmpty()){
+			for (Player player: players) {
+				player.eaten();
+			}
 			return;
 		}
 		polarBear=pb;

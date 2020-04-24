@@ -14,8 +14,8 @@ public class Hole extends Tile {
 		if(player.canSurvive())
 			return;
 		for(int i=0;i<neighbours.size();i++){
-			if(neighbours[i].canSave) {
-				neighbours[i].stepOnto(player, prevTile);
+			if(neighbours.get(i).canSave()) {
+				neighbours.get(i).stepOnto(player, prevTile);
 				return;
 			}
 		}

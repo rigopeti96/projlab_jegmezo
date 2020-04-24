@@ -29,6 +29,7 @@ public class Inventory {
 	 *  @param item Item, amit felveszünk
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipFood(Food item) {
+		items.add(item);
 		countFood++;
 		return true;
 	}
@@ -90,6 +91,7 @@ public class Inventory {
 	 *  @return bool - Sikerült-e átadni/használni az itemet (sikeres használat)  */
 	public boolean unequipFood(Item item) {
 		if (countFood < 1) return false;
+		items.remove(item);
 		countFood--;
 		return true;
 	}
@@ -205,16 +207,6 @@ public class Inventory {
 	/** Visszaadja a győzelmitárgyak (WinItem) számát
 	 *  @return int - az inventoryban levő győzelmitárgyak száma */
 	public int getWinItemCount(){
-		System.out.println("Has Win Item? (has three/has two/has one/has none)");
-		String choice=new Scanner(System.in).nextLine();
-		if(choice.equals("has three"))
-			return 3;
-		if(choice.equals("has two"))
-			return 2;
-		if(choice.equals("has one"))
-			return 1;
-		else{
-			return 0;
-		}
+		return countWinItem;
 	}
 }

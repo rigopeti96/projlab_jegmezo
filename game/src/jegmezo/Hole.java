@@ -62,4 +62,9 @@ public class Hole extends Tile {
 
 	public void stepOnPolarBear(PolarBear pb,Tile prevTile){return;}
 
+	@Override
+	public void turnEnd() {
+		//a lyuk nem csinál semmit a kör végén
+	}
+
 }

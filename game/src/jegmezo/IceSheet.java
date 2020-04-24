@@ -129,4 +129,10 @@ public class IceSheet extends Tile {
 	public void serialize() {
 		System.out.println("Sheet(ID=" + id + ",playerLimit=" + playerLimit + ",snow=" + snow + ",item=" + (item != null ? item.getName() : "none") + ")");
 	}
+
+	/** Ez a függvény hívódik meg minden kör végén, hogy a mezőn lévő sátor letörlődjön, ha van a mezőn. */
+	@Override
+	public void turnEnd(){
+		building = Building.NONE;
+	}
 }

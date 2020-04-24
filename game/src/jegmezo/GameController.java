@@ -105,6 +105,11 @@ public class GameController {
 		}
 		blizzard();
 		polarBear.move();
+
+		//a kör végén minden sátor törlődik, ami fel volt építve
+		for( Map.Entry<Integer, Tile> tile: tiles.entrySet()){
+			tile.getValue().turnEnd();
+		}
 	}
 
 	public void saveGame() {

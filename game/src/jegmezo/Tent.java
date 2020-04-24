@@ -1,29 +1,35 @@
 package jegmezo;
 
+/**
+ * Player megépítheti egy mezőn és védelmet nyújt a kör végéig
+ * Implementálja az Item interfészt. */
 public class Tent implements Item{
 
-    @Override
-    public boolean equip(Inventory inventory) {
-        return inventory.equipTent(this);
-    }
+    /** Beteszi egy Player Inventory-jába magát
+     * @param inventory - A Player inventoryja, amibe be kell tenni a Tent-et.
+     * @return bool - Sikerült-e betenni. */
+    public boolean equip(Inventory inventory) { return inventory.equipTent(this); }
 
-    @Override
-    public boolean unequip(Inventory inventory) {
-        return inventory.unequipTent(this);
-    }
+    /** Kiveszi egy Player Inventory-jából magát
+     * @param inventory - A Player inventoryja, amiből ki kell venni a Tent-et.
+     * @return bool - Sikerült-e kivenni. */
+    public boolean unequip(Inventory inventory) { return inventory.unequipTent(this); }
 
-    @Override
+    /** A Player használja a Tent-et, akkor megépíti a mezőre, amin áll.
+     * @param player Player, aki használja a tárgyat
+     * @return bool - Sikerült-e használni a tárgyat. */
     public boolean use(Player player) {
-
-        return false;
+        return player.buildTent();
     }
 
-    @Override
+    /** Mindig hamisat ad (érvényes specifikáció szerint)
+     @return false - A Tent nem tud megmenteni más játékosokat*/
     public boolean canSave() {
         return false;
     }
 
-    @Override
+    /** Mindig hamisat ad (érvényes specifikáció szerint)
+     * @return false - A Tent nem tudja megmenteni játékosát*/
     public boolean canSurvive() {
         return false;
     }
@@ -32,7 +38,6 @@ public class Tent implements Item{
      * Visszaadja a tárgy nevét
      * @return A tárgy neve
      */
-    @Override
     public String getName() {
         return "tent";
     }

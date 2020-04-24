@@ -10,6 +10,11 @@ public class GameController {
 	private PolarBear polarBear = new PolarBear();
 	private GameState gameState = GameState.Creating;
 
+	/** Ez a függvény visszaadja az összes játékosok számát*/
+	public int getPlayerCount(){
+		return players.size();
+	}
+
 	/** Elindítja a játékot */
 	public void startGame() {
 		Scanner scanner = new Scanner(System.in);
@@ -74,13 +79,13 @@ public class GameController {
 
 	/** A játékosok elvesztik a játékot*/
 	public void gameOver() {
-		System.out.println("You lost");
-		gameState=GameState.Stopped;
+		System.out.println("Game over.");
+		System.exit(0);
 	}
 	
 	/** A játékosok megnyerik a játékot*/
 	public void win() {
-		System.out.println("GameController win");
+		System.out.println("Players win");
 		System.exit(0);
 	}
 	
@@ -100,6 +105,11 @@ public class GameController {
 		}
 		blizzard();
 		polarBear.move();
+
+		//a kör végén minden sátor törlődik, ami fel volt építve
+		for(Tile tile: tiles.values()){
+			tile.turnEnd();
+		}
 	}
 
 	public void saveGame() {
@@ -182,7 +192,7 @@ public class GameController {
 				System.out.println("Invalid input format!");
 				System.exit(0);
 			}
-			deseralizePlayerItemConnection(desLine);
+			deserializePlayerItemConnection(desLine);
 			line = scanner.nextLine().trim();
 		}
 		line = scanner.nextLine().trim();
@@ -280,7 +290,7 @@ public class GameController {
 		}
 	}
 
-	private void deseralizePlayerItemConnection(DeserializedLine line) {
+	private void deserializePlayerItemConnection(DeserializedLine line) {
 		try {
 			int num = Integer.parseInt(line.getParameters().get("number"));
 			int count = Integer.parseInt(line.getParameters().get("count"));

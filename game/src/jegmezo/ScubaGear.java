@@ -46,7 +46,6 @@ public class ScubaGear implements Item {
 	 * Visszaadja a tárgy nevét
 	 * @return A tárgy neve
 	 */
-	@Override
 	public String getName() {
 		return "scuba gear";
 	}

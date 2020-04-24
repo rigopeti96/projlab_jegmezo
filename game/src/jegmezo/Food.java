@@ -18,7 +18,7 @@ public class Food implements Item {
 	 * @param player Player, aki használja a tárgyat
 	 * @return true ha sikeres, false ha nem */
 	public boolean use(Player player) {
-		System.out.println("Food use");
+		System.out.println("Player " + player.getNumber() + " eats a food.");
 		player.increaseBodyHeat();
 		return unequip(player.getInventory());
 	}
@@ -37,7 +37,6 @@ public class Food implements Item {
 	 * Visszaadja a tárgy nevét
 	 * @return A tárgy neve
 	 */
-	@Override
 	public String getName() {
 		return "food";
 	}

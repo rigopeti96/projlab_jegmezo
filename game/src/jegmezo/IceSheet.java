@@ -70,7 +70,10 @@ public class IceSheet extends Tile {
 	 * @return true-t ad, ha van, false-t ha nincs*/
 	@Override
 	public boolean canSave() {
-		System.out.println("IceSheet canSave");
+		for(int i=0;i<players.size();i++){
+			if(players.get(i).canSave())
+				return true;
+		}
 		return false;
 	}
 
@@ -78,7 +81,8 @@ public class IceSheet extends Tile {
 	 * @return true, ha sikeres volt, false, ha nem*/
 	@Override
 	public boolean build(Building building){
-		System.out.println("IceSheet buildSthing");
+		if(this.building != Building.NONE) return false;
+		this.building = building;
 		return true;
 	}
 
@@ -116,7 +120,7 @@ public class IceSheet extends Tile {
 			return;
 		}
 		polarBear=pb;
-		prevTile.stepOff(pb);
+		prevTile.steOffPolarBear();
 
 	}
 
@@ -141,5 +145,10 @@ public class IceSheet extends Tile {
 
 		System.out.println("Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
 				", item=" + itemname + ", building=" + buildingname + ")" );
+
+	/** Ez a függvény hívódik meg minden kör végén, hogy a mezőn lévő sátor letörlődjön, ha van a mezőn. */
+	@Override
+	public void turnEnd(){
+		building = Building.NONE;
 	}
 }

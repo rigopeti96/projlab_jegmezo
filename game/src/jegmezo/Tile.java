@@ -32,18 +32,20 @@ public abstract class Tile {
 	public abstract void stepOnto(Player player, Tile prevTile);
 
 	/**
-	 * Egy Tile hívja, amikor egy Entity lelép egy Tile-ről, kiszedi az entity-t a megfelelő listából
+	 * Egy Tile hívja, amikor egy Player lelép egy Tile-ről, kiszedi az player-t a megfelelő listából
 	 *
-	 * @param entity Entity, amelyik lelépett a mezőről
+	 * @param player Player, amelyik lelépett a mezőről
 	 */
-	public void stepOff(Entity entity) {
-		if(entity instanceof PolarBear)
-			polarBear=null;
-		else{
-			players.remove((Player) entity);
-		}
+	public void stepOff(Player player) {
+			players.remove(player);
 	}
 
+    /**
+     * A medve lelép a mezőről.
+     */
+	public void steOffPolarBear(){
+	    polarBear=null;
+    }
 
 	/**
 	 * @return A Tile-on álló maximum Player szám, amit után átfordul/Player-ek beleesnek
@@ -111,7 +113,10 @@ public abstract class Tile {
 	 */
 	public boolean removeSnow(int amount) {
 		System.out.println("Tile removeSnow");
-		return false;
+		if(snow == 0) return false; //a legkevesebb hó mennyiség a 0, az alá nem lehet csökkenteni
+		if(snow < amount) snow = 0;
+		else snow = snow - amount;
+		return true;
 	}
 
 	/**
@@ -171,22 +176,22 @@ public abstract class Tile {
 	 */
 	public boolean hasAllPlayers() {
 		System.out.println("Tile hasAllPlayers");
-		System.out.println("has all/has none?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "has all":
-				return true;
-		}
+		if(gameController.getPlayerCount() == players.size()) return true;
 		return false;
 	}
 
-	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
-
-	}
+	/**
+	 *  A medve rálép a Tile-ra.
+	 * @param pb A medve
+	 * @param prevTile A medve előző Tile-ja
+	 */
+	public abstract void stepOnPolarBear(PolarBear pb, Tile prevTile);
 
 	/**
 	 * Kiírja a Tile egy reprezentációját a standard outputra
 	 */
 	public abstract void serialize();
+
 
 	/**
 	 * Kiirja az id-t (ID=<>) formában
@@ -197,4 +202,7 @@ public abstract class Tile {
 	 * Kiírja a Tile adatait.
 	 */
 	public abstract void toLongString();
+
+	/** Ez a függvény hívódik meg minden kör végén, hogy a mezőn lévő sátor letörlődjön, ha van a mezőn. */
+	public abstract void turnEnd();
 }

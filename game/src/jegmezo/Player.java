@@ -133,15 +133,14 @@ public abstract class Player extends Entity{
 	 * @return true ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithHands() {
 		System.out.println("Player digWithHands");
-		return false;
+		return tile.removeSnow(1);
 	}
 
 	/** A Player ásóval és és 2 egység havat takarít el a mezőjéről,
 	 * @return True ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithShovel() {
 		System.out.println("Player digWithShovel");
-		tile.removeSnow(2);
-		return false;
+		return tile.removeSnow(2);
 	}
 	
 	/** A játékos felveszi a tárgyat a mezőről, amin áll
@@ -218,6 +217,8 @@ public abstract class Player extends Entity{
 				return this.trade();
 			case "use item":
 				return this.useItem();
+			case "dig":
+				return this.digWithHands();
 			default:
 				gameController.handleControlCommand(command);
 				return false;
@@ -240,9 +241,12 @@ public abstract class Player extends Entity{
 		return false;
 	}
 
+	/**
+	 * Épít egy Tent-et a mezőre amin áll.
+	 * @return
+	 */
 	public boolean buildTent() {
-
-		return true;
+		return tile.build(Building.TENT);
 	}
 }
 

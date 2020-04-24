@@ -105,6 +105,7 @@ public class IceSheet extends Tile {
 		return false;
 	}
 
+	@Override
 	public void destroyTent() {
 		if(this.building == Building.TENT)
 			this.building = Building.NONE;

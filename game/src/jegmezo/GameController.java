@@ -108,7 +108,7 @@ public class GameController {
 
 		//a kör végén minden sátor törlődik, ami fel volt építve
 		for(Tile tile: tiles.values()){
-			tile.
+			tile.destroyTent();
 		}
 	}
 

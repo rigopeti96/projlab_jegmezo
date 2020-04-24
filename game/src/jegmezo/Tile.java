@@ -202,4 +202,6 @@ public abstract class Tile {
 	 * Kiírja a Tile adatait.
 	 */
 	public abstract void toLongString();
+
+	public abstract void destroyTent();
 }

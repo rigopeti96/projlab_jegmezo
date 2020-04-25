@@ -18,6 +18,11 @@ public class DeserializedLine {
         return parameters;
     }
 
+    /**
+     *
+     * @param name J
+     * @param parameters
+     */
     public DeserializedLine(String name, Map<String, String> parameters) {
         this.name = name;
         this.parameters = parameters;

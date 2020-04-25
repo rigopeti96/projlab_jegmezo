@@ -54,13 +54,14 @@ public class GameController {
 			int number_of_player;
 			do{
 				number_of_player = scanner.nextInt();
+				scanner.nextLine();
 				if(number_of_player < 3 || number_of_player > 8)
 					System.out.println("Invalid value, try again!");
 			} while(number_of_player < 3 || number_of_player > 8);
 			for(int i = 0; i< number_of_player; i++){
-				System.out.println("Player "+ i + " class (eskimo/scientist): ");
-				String type = scanner.nextLine();
-				type.toLowerCase();
+				int playernumber = i+1;
+				System.out.println("Player "+ playernumber + " class (eskimo/scientist): ");
+				String type = scanner.nextLine().toLowerCase();
 				if(type.equals("eskimo")){
 					players.add(new Eskimo(this, i));
 				} else if (type.equals("scientist")){

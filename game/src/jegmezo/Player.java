@@ -9,9 +9,8 @@ public abstract class Player extends Entity{
 	protected int bodyHeat;
 	protected int actions;
 	protected int number;
-	protected Tile tile;
+	//protected Tile tile;
 	private Inventory inventory = new Inventory();
-	private GameController gameController;
 
 	public Player(GameController gameController, int number) {
 		this(gameController, number, 4);
@@ -229,15 +228,13 @@ public abstract class Player extends Entity{
 	}
 
 	public boolean canSave(){
-		int r=inventory.getRopeCount();
-		if (r>0)
+		if (inventory.getRopeCount()>0)
 			return true;
 		return false;
 	}
 
 	public boolean canSurvive(){
-		int r=inventory.getScubaCount();
-		if (r>0)
+		if (inventory.getScubaCount()>0)
 			return true;
 		return false;
 	}

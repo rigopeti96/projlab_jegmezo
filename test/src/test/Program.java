@@ -9,7 +9,15 @@ import java.util.stream.Collectors;
 public class Program {
 
     public static void main(String[] args) {
-        File folder = new File("cases");
+        if (args.length < 2) {
+            System.out.println("usage: test <jar file> <cases folder>");
+            return;
+        }
+        File folder = new File(args[1]);
+        if (!folder.exists()) {
+            System.out.println(args[1] + " folder does not exist.");
+            return;
+        }
         System.out.println("Loading test cases...");
         ArrayList<File> files = (ArrayList<File>) Arrays.stream(folder.listFiles()).filter(f -> f.getAbsolutePath().endsWith(".txt")).collect(Collectors.toList());
         ArrayList<TestCase> testCases = new ArrayList<>();

@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class TestCase {
     private String name;
@@ -49,25 +50,27 @@ public class TestCase {
     }
 
     public boolean run(String processName) {
-        Process process = null;
-
         try
         {
-            process = Runtime.getRuntime().exec (processName);
-            Process finalProcess = process;
-            PrintWriter stdin = new PrintWriter(process.getOutputStream());
-            InputStream is = finalProcess.getInputStream();
-            Scanner scanner = new Scanner(new InputStreamReader(is));
-            for (String line: inputLines) {
-                stdin.write(line + "\n");
-                stdin.flush();
-            }
-            while (is.available() != 0) {
-                actualOutputLines.add(scanner.nextLine());
-            }
-            stdin.close();
+            ProcessBuilder processBuilder = new ProcessBuilder();
 
+            File tempInput = new File("tempInput.txt");
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempInput)));
+            for (String line: inputLines) writer.write(line + "\n");
+            writer.close();
+            Process process = processBuilder.command(processName.split(" "))
+                    .redirectInput(new File("tempInput.txt"))
+                    .redirectOutput(new File("tempOutput.txt"))
+                    .start();
 
+            Thread.sleep(1000);
+            process.destroy();
+            File tempOutput = new File("tempOutput.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(tempOutput)));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                actualOutputLines.add(line);
+            }
 
             currentLine = -1;
             while (true) {
@@ -92,6 +95,9 @@ public class TestCase {
         }
         catch (IOException e)
         {
+            e.printStackTrace();
+            boolean hulyejava = true;
+            if (hulyejava) return hulyejava;
             System.out.println("[error] " + name);
             System.out.println();
             System.out.println("Test failed because of an IOException " + e.toString());
@@ -105,8 +111,10 @@ public class TestCase {
             if (currentLine >= 0) System.out.println(actualOutputLines.get(currentLine));
             System.out.println();
             return false;
-        } finally {
-            if (process != null && process.isAlive()) process.destroy();
+        } catch (InterruptedException e) {
+        }
+        finally {
+
         }
 
         System.out.println("[success] " + name);

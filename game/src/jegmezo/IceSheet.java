@@ -14,6 +14,7 @@ public class IceSheet extends Tile {
 	{
 		super(gameController, id, snow);
 		this.playerLimit = new Discoverable<>(playerLimit);
+		this.item = new Discoverable<>(null, "none");
 	}
 
 	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
@@ -34,13 +35,13 @@ public class IceSheet extends Tile {
 		prevTile.stepOff(player);
 
 
-		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.getElement().toString()));
+		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString()));
 	}
 
 	@Override
 	public boolean removeSnow(int amount) {
 		boolean ret = super.removeSnow(amount);
-		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.getElement().toString()));
+		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString() ) );
 		return ret;
 	}
 
@@ -65,7 +66,7 @@ public class IceSheet extends Tile {
 	 * @param item a mezőn lévő tárgy vagy null, ha nincs
 	 */
 	public void setItem(Item item) {
-		this.item = new Discoverable<>(item, "none");
+		this.item.setElement(item);
 	}
 
 	/**

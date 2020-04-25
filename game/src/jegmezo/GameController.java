@@ -91,7 +91,7 @@ public class GameController {
 	
 	/** A hóvihar lebonyolításáért felel*/
 	public void blizzard() {
-		System.out.println("GameController blizzard");
+		System.out.println("Blizzard");
 		for (Tile tile : tiles.values()) {
 			tile.blizzard();
 		}

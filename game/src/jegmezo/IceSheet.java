@@ -107,8 +107,10 @@ public class IceSheet extends Tile {
 
 	@Override
 	public void destroyTent() {
-		if(this.building == Building.TENT)
+		if(this.building == Building.TENT) {
 			this.building = Building.NONE;
+			System.out.println("All tents destroyed");
+		}
 	}
 
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {

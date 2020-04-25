@@ -147,10 +147,22 @@ public class GameController {
 				blizzard();
 			}
 		} else {
-			System.out.println("For blizzard type 'blizzard'");
-			String isBlizzard = scanner.nextLine().toLowerCase();
-			if(isBlizzard.equals("blizzard"))
-				blizzard();
+			boolean sikeres_command = false;
+			while(!sikeres_command){
+				System.out.println("Blizzard (yes / no)");
+				String isBlizzard = scanner.nextLine().toLowerCase();
+				if(isBlizzard.equals("yes")){
+					blizzard();
+					sikeres_command = true;
+				}
+				if(isBlizzard.equals("no")){
+					sikeres_command = true;
+				}
+				else if ( !isBlizzard.equals("yes") ){
+					System.out.println("Please type 'yes' for blizzard and 'no' for no blizzard.");
+				}
+			}
+
 		}
 
 		polarBear.move();

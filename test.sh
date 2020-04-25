@@ -1,3 +1,6 @@
+cd game
+sh ./compile
+cd ..
 cd test
 sh ./compile
 cd ..

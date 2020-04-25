@@ -1,3 +1,6 @@
+cd game
+call compile.bat
+cd ..
 cd test
 call compile.bat
 cd ..

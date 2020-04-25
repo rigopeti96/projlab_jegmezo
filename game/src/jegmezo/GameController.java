@@ -32,6 +32,10 @@ public class GameController {
 		}
 	}
 
+	/**
+	 * Kézi vezérlést ad a játéknak
+	 * @param command a beérkező parancs
+	 */
 	public void handleControlCommand(String command) {
 		if (gameState == GameState.Creating && command.equals("init game")) {
 			boolean valid = false;
@@ -46,10 +50,26 @@ public class GameController {
 		} else if (gameState == GameState.Creating && command.equals("start game")) {
 			players.clear();
 			tiles.clear();
-			// TODO: Set players up from input
-			players.add(new Eskimo(this, 1));
-			players.add(new Scientist(this, 2));
-			players.add(new Eskimo(this, 3));
+			System.out.println("Number of players (3-8): ");
+			int number_of_player;
+			do{
+				number_of_player = scanner.nextInt();
+				if(number_of_player < 3 || number_of_player > 8)
+					System.out.println("Invalid value, try again!");
+			} while(number_of_player < 3 || number_of_player > 8);
+			for(int i = 0; i< number_of_player; i++){
+				System.out.println("Player "+ i + " class (eskimo/scientist): ");
+				String type = scanner.nextLine();
+				type.toLowerCase();
+				if(type.equals("eskimo")){
+					players.add(new Eskimo(this, i));
+				} else if (type.equals("scientist")){
+					players.add(new Scientist(this, i));
+				} else {
+					System.out.println("Wrong class, try again!");
+					i--;
+				}
+			}
 			LevelGenerator generator = new LevelGenerator(this, players.size());
 
 			for (Tile tile: generator.generate()) {
@@ -80,6 +100,10 @@ public class GameController {
 		}
 	}
 
+	/**
+	 * Visszaadja, hogy a játék random vagy kézi
+	 * @return controlledRandomness értéke
+	 */
 	public boolean isControlledRandomness() {
 		return this.controlledRandomness;
 	}
@@ -113,7 +137,19 @@ public class GameController {
 			player.takeTurn();
 			if (gameState != GameState.Running) return;
 		}
-		blizzard();
+		if(isControlledRandomness()){
+			Random r = new Random();
+			int blizzard_is_coming = r.nextInt(2);
+			if(blizzard_is_coming == 1){
+				blizzard();
+			}
+		} else {
+			String isBlizzard = scanner.nextLine();
+			isBlizzard.toLowerCase();
+			if(isBlizzard.equals("blizzard"))
+				blizzard();
+		}
+
 		polarBear.move();
 
 		//a kör végén minden sátor törlődik, ami fel volt építve
@@ -122,6 +158,9 @@ public class GameController {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public void saveGame() {
 		ArrayList<Tile> sortedTiles = new ArrayList<>(tiles.values());
 		sortedTiles.sort(Comparator.comparingInt(Tile::getId));

@@ -14,6 +14,7 @@ public class IceSheet extends Tile {
 	{
 		super(gameController, id, snow);
 		this.playerLimit = new Discoverable<>(playerLimit);
+		this.item = new Discoverable<>(null, "none");
 	}
 
 	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
@@ -34,13 +35,13 @@ public class IceSheet extends Tile {
 		prevTile.stepOff(player);
 
 
-		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.getElement().toString()));
+		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString()));
 	}
 
 	@Override
 	public boolean removeSnow(int amount) {
 		boolean ret = super.removeSnow(amount);
-		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.getElement().toString()));
+		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString() ) );
 		return ret;
 	}
 
@@ -65,7 +66,7 @@ public class IceSheet extends Tile {
 	 * @param item a mezőn lévő tárgy vagy null, ha nincs
 	 */
 	public void setItem(Item item) {
-		this.item = new Discoverable<>(item, "none");
+		this.item.setElement(item);
 	}
 
 	/**
@@ -113,20 +114,27 @@ public class IceSheet extends Tile {
 	/** A hóvihar lefolytatása*/
 	@Override
 	public void blizzard(){
-		super.blizzard();
 		if(this.building == Building.NONE) {
 			for (Player player : super.players) {
 				player.decreaseBodyHeat();
+				super.increaseSnow();
 			}
 		}
 	}
 
+	/**
+	 * Ellenőrzi, hogy van-e valami építmény a tile-on
+	 * @return ha van építmény TRUE egyébként false
+	 */
 	public boolean hasBuilding() {
 		if(this.building != Building.NONE)
 			return true;
 		return false;
 	}
 
+	/**
+	 * Megvalósítja a Tile destroyTent függvényét, ha a mezőn egy TENT egység áll, akkor azt eltörli
+	 */
 	@Override
 	public void destroyTent() {
 		if(this.building == Building.TENT) {
@@ -135,6 +143,11 @@ public class IceSheet extends Tile {
 		}
 	}
 
+	/**
+	 *
+	 * @param pb A medve
+	 * @param prevTile A medve előző Tile-ja
+	 */
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
 		System.out.println("Polar bear moved to "+toShortString());
 		if((building==Building.NONE||building==Building.TENT)&&!players.isEmpty()){

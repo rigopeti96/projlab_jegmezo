@@ -17,13 +17,13 @@ examine
 2
 save game
 # Output
-Player 1 please select an action (eskimo, actions remaining (4)): 
+Player 1 please select an action (move/dig/pick up/use item/trade/ use ability, actions remaining (4)): 
 Neighbouring tiles: 
 Tile(ID=2)
 Select tile (<ID>/cancel)
 2
 Player 1 checked the stability of Hole(ID=2)It can take 0 players.
-Player 1 please select an action (scientist actions remaining (3)): 
+Player 1 please select an action (move/dig/pick up/use item/trade/ use ability, actions remaining (3)): 
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=null,itemDiscovered=false,building=igloo)
 Hole(ID=2,snow=2)
 Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
@@ -36,4 +36,4 @@ Scientist(number=1,heat=1,tile=1)
 
 PolarBear(tile=4)
 
-Player 1 please select an action (scientist actions remaining (3)): 
+Player 1 please select an action (move/dig/pick up/use item/trade/ use ability, actions remaining (3)): 

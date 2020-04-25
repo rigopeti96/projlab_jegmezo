@@ -19,8 +19,10 @@ public class IceSheet extends Tile {
 	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
+		System.out.println("Player "+player.getNumber()+" moved to "+toLongString());
 		if(players.size()==playerLimit.getElement()){
-			player.drown();
+			System.out.println("Sheet "+id+" turned over.\nAll players on it drowned.");
+			gameController.gameOver();
 			return;
 		}
 		if(polarBear!=null && (building==Building.NONE||building==Building.TENT)){

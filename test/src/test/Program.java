@@ -13,13 +13,19 @@ public class Program {
             System.out.println("usage: test <jar file> <cases folder>");
             return;
         }
-        File folder = new File(args[1]);
-        if (!folder.exists()) {
-            System.out.println(args[1] + " folder does not exist.");
+        File argFile = new File(args[1]);
+        if (!argFile.exists()) {
+            System.out.println(args[1] + " file does not exist.");
             return;
         }
         System.out.println("Loading test cases...");
-        ArrayList<File> files = (ArrayList<File>) Arrays.stream(folder.listFiles()).filter(f -> f.getAbsolutePath().endsWith(".txt")).collect(Collectors.toList());
+        ArrayList<File> files;
+        if (argFile.isDirectory()) {
+            files = (ArrayList<File>) Arrays.stream(argFile.listFiles()).filter(f -> f.getAbsolutePath().endsWith(".txt")).collect(Collectors.toList());
+        } else {
+            files = new ArrayList<>();
+            files.add(argFile);
+        }
         ArrayList<TestCase> testCases = new ArrayList<>();
         for (File file: files) {
             try {
@@ -34,7 +40,7 @@ public class Program {
         }
         System.out.println("Running test cases...");
         for (TestCase tc: testCases) {
-            tc.run("java -cp ../game/class/jegmezo.jar jegmezo.Program");
+            tc.run("java -cp ../game/class/jegmezo.jar jegmezo.Program -Dfile.encoding=UTF-8");
         }
     }
 }

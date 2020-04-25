@@ -4,9 +4,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 public class TestCase {
     private String name;
@@ -56,7 +54,7 @@ public class TestCase {
             ProcessBuilder processBuilder = new ProcessBuilder();
 
             File tempInput = new File("tempInput.txt");
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempInput)));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempInput), StandardCharsets.UTF_8));
             for (String line: inputLines) writer.write(line + "\n");
             writer.close();
             Process process = processBuilder.command(processName.split(" "))
@@ -67,11 +65,13 @@ public class TestCase {
             process.waitFor(5000, TimeUnit.MILLISECONDS);
 
             File tempOutput = new File("tempOutput.txt");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(tempOutput)));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(tempOutput), StandardCharsets.UTF_8));
             String line;
             while ((line = reader.readLine()) != null) {
                 actualOutputLines.add(line);
             }
+            tempInput.delete();
+            tempOutput.delete();
 
             currentLine = -1;
             while (true) {
@@ -96,9 +96,6 @@ public class TestCase {
         }
         catch (IOException e)
         {
-            e.printStackTrace();
-            boolean hulyejava = true;
-            if (hulyejava) return hulyejava;
             System.out.println("[error] " + name);
             System.out.println();
             System.out.println("Test failed because of an IOException " + e.toString());

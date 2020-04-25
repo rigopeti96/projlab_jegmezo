@@ -1,7 +1,7 @@
 cd game
-sh ./compile
+./compile.sh
 cd ..
 cd test
-sh ./compile
+./compile.sh
+java -cp ./class/test.jar test.Program ../game/class/jegmezo.jar cases/$1 -Dfile.encoding=UTF-8
 cd ..
-java -cp test/class/test.jar test.Program game/class/jegmezo.jar

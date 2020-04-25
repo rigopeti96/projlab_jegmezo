@@ -2,6 +2,7 @@ package jegmezo;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
@@ -171,8 +172,7 @@ public abstract class Player extends Entity{
 	 * visszalépés esetén null-lal tér vissza*/
 	public Tile selectTile() {
 		System.out.println("Neighbouring tiles: ");
-		ArrayList<Tile> neighbourTiles= new ArrayList<Tile>();
-		neighbourTiles.addAll(this.tile.getNeighbours());
+		List<Tile> neighbourTiles = this.tile.getNeighbours();
 		for (Tile tile: neighbourTiles){
 			tile.toLongString();
 		}

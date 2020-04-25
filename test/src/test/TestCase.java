@@ -75,7 +75,7 @@ public class TestCase {
                 if (currentLine == actualOutputLines.size() && currentLine == outputLines.size()) break;
                 String actualLine = currentLine < actualOutputLines.size() ? actualOutputLines.get(currentLine): null;
                 if (currentLine >= outputLines.size() || !outputLines.get(currentLine).equals(actualLine)) {
-                    System.out.println("❌ " + name);
+                    System.out.println("[error] " + name);
                     System.out.println();
                     System.out.println("Expected output:");
                     if (currentLine - 2 >= 0  && currentLine - 2 < outputLines.size()) System.out.println(outputLines.get(currentLine - 2));
@@ -92,7 +92,7 @@ public class TestCase {
         }
         catch (IOException e)
         {
-            System.out.println("❌ " + name);
+            System.out.println("[error] " + name);
             System.out.println();
             System.out.println("Test failed because of an IOException " + e.toString());
             if (currentLine >= 0) System.out.println("Expected output:");
@@ -111,7 +111,7 @@ public class TestCase {
             if (process != null && process.isAlive()) process.destroy();
         }
 
-        System.out.println("✔ " + name);
+        System.out.println("[success] " + name);
         return true;
     }
 }

@@ -17,11 +17,11 @@ public class Program {
             try {
                 TestCase tc = new TestCase(file);
                 testCases.add(tc);
-                System.out.println("✔ Loaded test case " + tc.getName() + " (" + file.getName() + ").");
+                System.out.println("[success] Loaded test case " + tc.getName() + " (" + file.getName() + ").");
             } catch (InvalidTestCaseFormatException e) {
-                System.out.println("❌ Test case " + file.getName() + " invalid format.");
+                System.out.println("[error] Test case " + file.getName() + " invalid format.");
             } catch (IOException e) {
-                System.out.println("❌ Test case " + file.getName() + " failed to load.");
+                System.out.println("[error] Test case " + file.getName() + " failed to load.");
             }
         }
         System.out.println("Running test cases...");

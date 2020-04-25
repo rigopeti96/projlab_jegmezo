@@ -84,8 +84,6 @@ public class GameController {
 			tiles.get(0).snow=20;
 
 			players.get(0).takeItem(new Food());
-			players.get(0).takeItem(new Tent());
-			players.get(0).takeItem(new BreakableShovel());
 			players.get(0).takeItem(new Shovel());
 			players.get(1).takeItem(new Shovel());
 			players.get(2).takeItem(new Food());
@@ -149,6 +147,7 @@ public class GameController {
 				blizzard();
 			}
 		} else {
+			System.out.println("For blizzard type 'blizzard'");
 			String isBlizzard = scanner.nextLine();
 			isBlizzard.toLowerCase();
 			if(isBlizzard.equals("blizzard"))

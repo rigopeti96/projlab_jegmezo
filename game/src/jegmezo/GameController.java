@@ -82,6 +82,10 @@ public class GameController {
 		}
 	}
 
+	public boolean isControlledRandomness() {
+		return this.controlledRandomness;
+	}
+
 	public GameState getGameState() {
 		return gameState;
 	}

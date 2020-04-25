@@ -66,11 +66,10 @@ public class Hole extends Tile {
 	@Override
 	public String toLongString() {	return "Hole(ID=" + id + ", snow=" + snow + ")"; }
 
-	public void stepOnPolarBear(PolarBear pb,Tile prevTile){return;}
+
+	public void stepOnPolarBear(PolarBear pb, Tile prevTile){return;}
 
 	@Override
-	public void turnEnd() {
-		//a lyuk nem csinál semmit a kör végén
-	}
+	public void destroyTent(){return;}
 
 }

@@ -27,7 +27,10 @@ public class BreakableShovel extends Shovel{
     public boolean use(Player player) {
         if(super.use(player)){
             durability--;
-            if(durability == 0) unequip(player.getInventory());
+            if(durability == 0) {
+                unequip(player.getInventory());
+                System.out.println("The shovel breaks.");
+            }
             return true;
         }
         return false;

@@ -24,19 +24,16 @@ public class WinItem implements Item {
 	
 	/** a Player használja a tárgyat */
 	public boolean use(Player player) {
-		System.out.println("WinItem use");
 		return player.useWinItems();
 	}
 	
 	/** megnézi, hogy meg lehet-e menteni csapattársát ezzel a tárggyal */
 	public boolean canSave() {
-		System.out.println("WinItem canSave");
 		return false;
 	}
 	
 	/** megnézi, hogy túl lehet-e élni a lyukba esést ezzel a tárggyal*/
 	public boolean canSurvive(){
-		System.out.println("WinItem canSurvive");
 		return false;
 	}
 

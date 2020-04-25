@@ -81,8 +81,10 @@ public class IceSheet extends Tile {
 	 * @return true, ha sikeres volt, false, ha nem*/
 	@Override
 	public boolean build(Building building){
-		if(this.building != Building.NONE) return false;
+		if(!hasBuilding())
+			return false;
 		this.building = building;
+		System.out.println();
 		return true;
 	}
 
@@ -90,26 +92,25 @@ public class IceSheet extends Tile {
 	@Override
 	public void blizzard(){
 		super.blizzard();
-		System.out.println("IceSheet blizzard");
-		System.out.println("Has igloo? (igloo/igloon't)");
-		switch (new Scanner(System.in).nextLine()) {
-			case "igloo":
-				break;
-			case "igloon't":
-				for (Player player: players) {
-					player.decreaseBodyHeat();
-				}
-				break;
+		if(this.building == Building.NONE) {
+			for (Player player : super.players) {
+				player.decreaseBodyHeat();
+			}
 		}
 	}
 
 	public boolean hasBuilding() {
-
+		if(this.building != Building.NONE)
+			return true;
 		return false;
 	}
 
+	@Override
 	public void destroyTent() {
-
+		if(this.building == Building.TENT) {
+			this.building = Building.NONE;
+			System.out.println("All tents destroyed");
+		}
 	}
 
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {

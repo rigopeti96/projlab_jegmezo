@@ -85,13 +85,13 @@ public class GameController {
 	
 	/** A játékosok megnyerik a játékot*/
 	public void win() {
-		System.out.println("Players win");
+		System.out.println("The players win the game.");
 		System.exit(0);
 	}
 	
 	/** A hóvihar lebonyolításáért felel*/
 	public void blizzard() {
-		System.out.println("GameController blizzard");
+		System.out.println("Blizzard");
 		for (Tile tile : tiles.values()) {
 			tile.blizzard();
 		}
@@ -108,7 +108,7 @@ public class GameController {
 
 		//a kör végén minden sátor törlődik, ami fel volt építve
 		for(Tile tile: tiles.values()){
-			tile.turnEnd();
+			tile.destroyTent();
 		}
 	}
 

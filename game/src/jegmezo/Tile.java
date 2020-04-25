@@ -175,7 +175,6 @@ public abstract class Tile {
 	 * @return true-t ad vissza, ha az összes játékos a mezőn tartózkodik, különben false-ot.
 	 */
 	public boolean hasAllPlayers() {
-		System.out.println("Tile hasAllPlayers");
 		if(gameController.getPlayerCount() == players.size()) return true;
 		return false;
 	}
@@ -204,6 +203,5 @@ public abstract class Tile {
 	 */
 	public abstract String toLongString();
 
-	/** Ez a függvény hívódik meg minden kör végén, hogy a mezőn lévő sátor letörlődjön, ha van a mezőn. */
-	public abstract void turnEnd();
+	public abstract void destroyTent();
 }

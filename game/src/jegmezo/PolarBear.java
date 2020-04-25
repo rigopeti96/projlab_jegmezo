@@ -63,7 +63,7 @@ public class PolarBear extends Entity{
      */
     public Tile selectTile() {
 
-        System.out.println("Neighbouring tiles: ");
+        System.out.println("Neighbouring tiles:");
         ArrayList<Tile> neighbourTiles= new ArrayList<Tile>();
         neighbourTiles.addAll(this.tile.getNeighbours());
         for (Tile tile: neighbourTiles){

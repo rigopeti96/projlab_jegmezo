@@ -177,7 +177,7 @@ public class Inventory {
 		}
 
 		while (true) {
-			System.out.println("Select item (<name>/cancel): ");
+			System.out.println("Select item (<name>/cancel):");
 			String line = gameController.getScanner().nextLine().trim();
 			if (line.equals("food")) return new Food();
 			else if (line.equals("cancel")) return null;

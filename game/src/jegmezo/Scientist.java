@@ -27,7 +27,7 @@ public class Scientist extends Player {
 	/**Kiválaszja az akciót
 	 *  @return bool - Sikerült-e akciót választani.  */
 	public boolean selectAction() {
-		System.out.print("Player " + number + " please select an action (scientist actions remaining (" + actions + ")): ");
+		System.out.println("Player " + number + " select an action (move/dig/pickup/use item/trade/examine) [" + actions + " remaining]:");
 		String command = gameController.getScanner().nextLine().trim();
 		if (command.equals("examine")) {
 			return this.examine();

@@ -155,7 +155,7 @@ public abstract class Tile {
 			if (player != excluding) System.out.println("Player " + player.getNumber());
 		}
 		while (true) {
-			System.out.println("Select player (<number/cancel>):" );
+			System.out.println("Select player (<number/cancel>):");
 			String line = gameController.getScanner().nextLine().trim();
 
 			if (line.equals("cancel")) return null;

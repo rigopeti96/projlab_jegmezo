@@ -45,7 +45,7 @@ public class GameController {
 			boolean valid = false;
 			while (!valid) {
 				valid = true;
-				System.out.println("Type of randomness (controlled/random): ");
+				System.out.println("Type of randomness (controlled/random):");
 				String type = scanner.nextLine();
 				if (type.equals("controlled")) controlledRandomness = true;
 				else if (type.equals("random")) controlledRandomness = false;
@@ -54,7 +54,7 @@ public class GameController {
 		} else if (gameState == GameState.Creating && command.equals("start game")) {
 			players.clear();
 			tiles.clear();
-			System.out.println("Number of players (3-8): ");
+			System.out.println("Number of players (3-8):");
 			int number_of_player;
 			do{
 				number_of_player = scanner.nextInt();
@@ -64,7 +64,7 @@ public class GameController {
 			} while(number_of_player < 3 || number_of_player > 8);
 			for(int i = 0; i< number_of_player; i++){
 				int playernumber = i+1;
-				System.out.println("Player "+ playernumber + " class (eskimo/scientist): ");
+				System.out.println("Player "+ playernumber + " class (eskimo/scientist):");
 				String type = scanner.nextLine().toLowerCase();
 				if(type.equals("eskimo")){
 					players.add(new Eskimo(this, i));

@@ -57,10 +57,11 @@ public abstract class Player extends Entity{
 	public boolean trade() {
 		Player player = tile.selectPlayer(this);
 		if (player == null) return false;
+		System.out.println("Player " + number + "'s items:");
 		Item item = inventory.selectItem();
 		if (item == null) return false;
 		if (player.takeItem(item)) {
-			System.out.println("Player " + number + " traded their " + item.getName() + " to Player " + player.getNumber());
+			System.out.println("Player " + number + " traded their " + item.getName() + " to Player " + player.getNumber() + ".");
 			item.unequip(inventory);
 			return true;
 		} else {
@@ -176,7 +177,7 @@ public abstract class Player extends Entity{
 	 * @return kiválasztott tile (tile.getNeighbours eleme)
 	 * visszalépés esetén null-lal tér vissza*/
 	public Tile selectTile() {
-		System.out.println("Neighbouring tiles: ");
+		System.out.println("Neighbouring tiles:");
 		List<Tile> neighbourTiles = this.tile.getNeighbours();
 		for (Tile tile: neighbourTiles) {
 			System.out.println(tile.toLongString() );

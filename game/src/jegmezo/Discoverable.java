@@ -6,12 +6,12 @@ public class Discoverable<T> {
     T element;
 
     public Discoverable(T element) {
-        this.element = element;
-        this.nullString = "";
+        this(element, "");
     }
 
     public Discoverable(T element, String nullString) {
         this.element = element;
+        this.nullString = nullString;
     }
 
     public String toString() {

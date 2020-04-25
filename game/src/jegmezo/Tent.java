@@ -19,7 +19,11 @@ public class Tent implements Item{
      * @param player Player, aki használja a tárgyat
      * @return bool - Sikerült-e használni a tárgyat. */
     public boolean use(Player player) {
-        return player.buildTent();
+        if(player.buildTent()){
+            unequip(player.getInventory());
+            return true;
+        }
+        return false;
     }
 
     /** Mindig hamisat ad (érvényes specifikáció szerint)

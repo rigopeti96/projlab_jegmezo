@@ -81,7 +81,11 @@ public class GameController {
 			}
 			polarBear = generator.getPolarBear();
 
+			tiles.get(0).snow=20;
+
 			players.get(0).takeItem(new Food());
+			players.get(0).takeItem(new Tent());
+			players.get(0).takeItem(new BreakableShovel());
 			players.get(0).takeItem(new Shovel());
 			players.get(1).takeItem(new Shovel());
 			players.get(2).takeItem(new Food());

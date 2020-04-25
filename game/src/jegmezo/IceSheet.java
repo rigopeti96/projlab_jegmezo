@@ -171,7 +171,7 @@ public class IceSheet extends Tile {
 				+ ",playerLimitDiscovered=" + (playerLimit.isDiscovered() ? "true" : "false")
 				+ ",snow=" + snow
 				+ ",item=" + item.toDiscoveredString() + ",itemDiscovered="+ (item.isDiscovered() ? "true" : "false")
-				+ ",building=" + building.toString());
+				+ ",building=" + building.toString() + ")");
 	}
 
 	@Override

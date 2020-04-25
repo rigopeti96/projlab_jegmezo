@@ -32,6 +32,10 @@ public class GameController {
 		}
 	}
 
+	/**
+	 * Kézi vezérlést ad a játéknak
+	 * @param command a beérkező parancs
+	 */
 	public void handleControlCommand(String command) {
 		if (gameState == GameState.Creating && command.equals("init game")) {
 			boolean valid = false;
@@ -96,6 +100,10 @@ public class GameController {
 		}
 	}
 
+	/**
+	 * Visszaadja, hogy a játék random vagy kézi
+	 * @return controlledRandomness értéke
+	 */
 	public boolean isControlledRandomness() {
 		return this.controlledRandomness;
 	}
@@ -150,6 +158,9 @@ public class GameController {
 		}
 	}
 
+	/**
+	 *
+	 */
 	public void saveGame() {
 		ArrayList<Tile> sortedTiles = new ArrayList<>(tiles.values());
 		sortedTiles.sort(Comparator.comparingInt(Tile::getId));

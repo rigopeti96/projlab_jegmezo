@@ -101,8 +101,7 @@ public abstract class Tile {
 	/**
 	 * Hóvihar hatása az adott Tile-re, plusz hóréteg sorsolása és a Player-ek megfagyasztása (testhő csökkentése eggyel)
 	 */
-	public void blizzard() {
-	}
+	public abstract void blizzard();
 
 	/**
 	 * Leszed egy bizonyos mennyiségű hóréteget a Tile-ról

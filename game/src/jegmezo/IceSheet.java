@@ -113,20 +113,27 @@ public class IceSheet extends Tile {
 	/** A hóvihar lefolytatása*/
 	@Override
 	public void blizzard(){
-		super.blizzard();
 		if(this.building == Building.NONE) {
 			for (Player player : super.players) {
 				player.decreaseBodyHeat();
+				super.increaseSnow();
 			}
 		}
 	}
 
+	/**
+	 * Ellenőrzi, hogy van-e valami építmény a tile-on
+	 * @return ha van építmény TRUE egyébként false
+	 */
 	public boolean hasBuilding() {
 		if(this.building != Building.NONE)
 			return true;
 		return false;
 	}
 
+	/**
+	 * Megvalósítja a Tile destroyTent függvényét, ha a mezőn egy TENT egység áll, akkor azt eltörli
+	 */
 	@Override
 	public void destroyTent() {
 		if(this.building == Building.TENT) {
@@ -135,6 +142,11 @@ public class IceSheet extends Tile {
 		}
 	}
 
+	/**
+	 *
+	 * @param pb A medve
+	 * @param prevTile A medve előző Tile-ja
+	 */
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
 		System.out.println("Polar bear moved to "+toShortString());
 		if((building==Building.NONE||building==Building.TENT)&&!players.isEmpty()){

@@ -22,10 +22,10 @@ save game
 Player 1 select an action (move/dig/pickup/use item/trade) [4 remaining]:
 Close players:
 Player 2
-Select player :
+Select player (<number/cancel>):
 Player 1’s items:
 1x rope
-Select item:
+Select item (<name>/cancel):
 Player 1 can’t trade their rope to Player 2 (Player 2 can’t take it).
 Player 1 select an action (move/dig/pickup/use item/trade/useability) [4 remaining]:
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)

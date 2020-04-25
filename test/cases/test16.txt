@@ -1,5 +1,5 @@
 # Name
-Egy játékos szeretne egy győzelmi itemet átadni egy másik játékosnak, akinél már van egy.
+Egy játékos szeretne egy tetszőleges itemet átadni egy másik játékosnak, aki nek még nincs ilyen.
 # Input
 load game
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
@@ -9,14 +9,14 @@ Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscov
 Eskimo(number=1,heat=4,tile=0)
 Eskimo(number=2,heat=4,tile=0)
 
-Player-Item(number=1,item=flare,count=1)
-Player-Item(number=2,item=cartridge,count=1)
+Player-Item(number=1,item=rope,count=1)
+Player-Item(number=2,item=shovel,count=1)
 
 PolarBear(tile=2)
 
 trade
 2
-flare
+rope
 save game
 # Output
 Player 1 select an action (move/dig/pickup/use item/trade) [4 remaining]:
@@ -24,9 +24,9 @@ Close players:
 Player 2
 Select player (<number/cancel>):
 Player 1’s items:
-1x flare
+1x rope
 Select item (<name>/cancel):
-Player 1 traded their flare to Player 2.
+Player 1 traded their rope to Player 2.
 Player 1 select an action (move/dig/pickup/use item/trade/useability) [4 remaining]:
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
 Sheet(ID=2,playerLimit=0,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
@@ -35,7 +35,7 @@ Sheet(ID=2,playerLimit=0,playerLimitDiscovered=false,snow=0,item=none,itemDiscov
 Eskimo(number=1,heat=4,tile=0)
 Eskimo(number=2,heat=4,tile=0)
 
-Player-Item(number=2,item=cartridge,count=1)
-Player-Item(number=2,item=flare,count=1)
+Player-Item(number=2,item=shovel,count=1)
+Player-Item(number=2,item=rope,count=1)
 
 PolarBear(tile=2)

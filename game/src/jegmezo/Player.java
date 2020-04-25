@@ -228,15 +228,13 @@ public abstract class Player extends Entity{
 	}
 
 	public boolean canSave(){
-		int r=inventory.getRopeCount();
-		if (r>0)
+		if (inventory.getRopeCount()>0)
 			return true;
 		return false;
 	}
 
 	public boolean canSurvive(){
-		int r=inventory.getScubaCount();
-		if (r>0)
+		if (inventory.getScubaCount()>0)
 			return true;
 		return false;
 	}

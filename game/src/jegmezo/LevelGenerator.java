@@ -209,7 +209,7 @@ public class LevelGenerator {
         }
 
         if (polarBearSpawns.size() > 0) {
-            polarBear = new PolarBear();
+            polarBear = new PolarBear(gameController);
             polarBear.spawnOnto(polarBearSpawns.get(random.nextInt(polarBearSpawns.size())));
         }
     }

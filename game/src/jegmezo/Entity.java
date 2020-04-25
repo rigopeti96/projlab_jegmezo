@@ -5,6 +5,7 @@ import java.util.Scanner;
 public abstract class Entity {
 
     protected Tile tile;
+    protected GameController gameController;
 
     /**
      * Ráteszi az entitást egy mezőre (kezdetben)

@@ -9,9 +9,8 @@ public abstract class Player extends Entity{
 	protected int bodyHeat;
 	protected int actions;
 	protected int number;
-	protected Tile tile;
+	//protected Tile tile;
 	private Inventory inventory = new Inventory();
-	private GameController gameController;
 
 	public Player(GameController gameController, int number) {
 		this(gameController, number, 4);

@@ -7,7 +7,7 @@ import java.util.*;
 public class GameController {
 	private  Map<Integer, Tile> tiles = new HashMap<>();;
 	private List<Player> players = new ArrayList<>();
-	private PolarBear polarBear = new PolarBear();
+	private PolarBear polarBear = new PolarBear(this);
 	private GameState gameState = GameState.Creating;
 	private boolean controlledRandomness = false;
 	private Scanner scanner = new Scanner(System.in);
@@ -322,7 +322,7 @@ public class GameController {
 		String tileIdStr = line.getParameters().get("tile");
 		try {
 			int tileId = Integer.parseInt(tileIdStr);
-			polarBear = new PolarBear();
+			polarBear = new PolarBear(this);
 			if (tiles.get(tileId) == null) {
 				System.out.println("Invalid input format!");
 				System.exit(0);

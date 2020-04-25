@@ -227,12 +227,20 @@ public abstract class Player extends Entity{
 		}
 	}
 
+	/**
+	 * Meg tudja-e menteni a játékos egy másik játékost a lyukba lépés után
+	 * @return TRUE ha megmenthető, egyébként FALSE
+	 */
 	public boolean canSave(){
 		if (inventory.getRopeCount()>0)
 			return true;
 		return false;
 	}
 
+	/**
+	 * Túl tud-e élni a jákékos lyukba lépés után (van-e nála búvárruha)
+	 * @return TRUE ha megmenthető, egyébként FALSE
+	 */
 	public boolean canSurvive(){
 		if (inventory.getScubaCount()>0)
 			return true;

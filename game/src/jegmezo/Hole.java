@@ -75,4 +75,7 @@ public class Hole extends Tile {
 	@Override
 	public void destroyTent(){return;}
 
+	@Override
+	public void blizzard(){return;}
+
 }

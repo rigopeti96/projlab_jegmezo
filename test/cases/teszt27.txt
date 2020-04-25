@@ -1,0 +1,30 @@
+# Name
+A játékos kezét használja, hogy eltakarítson egy réteg havat a mezőről, azonban a mezőn nincsen hó. (Negative)
+# Input
+load game
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false, building=none)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false, building=none)
+
+
+Eskimo(number=1,heat=1,tile=1)
+
+
+PolarBear(tile=4)
+
+dig
+save game
+# Output
+Player 1 please select an action (eskimo, actions remaining (4)): 
+Found item null
+Player 1 can’t remove snow from Sheet(ID=1).
+Player 1 please select an action (eskimo, actions remaining (4)): 
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=null,itemDiscovered=true,building=none)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+
+
+Eskimo(number=1,heat=1,tile=1)
+
+
+PolarBear(tile=4)
+
+Player 1 please select an action (eskimo, actions remaining (4)): 

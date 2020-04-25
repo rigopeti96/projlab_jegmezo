@@ -1,0 +1,29 @@
+# Name
+Az eszkimó megpróbál felépíteni egy iglut egy olyan mezőn, ahová még nem építettek korábban. (Positive)
+# Input
+load game
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false, building=none)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false, building=none)
+
+
+Eskimo(number=1,heat=1,tile=1)
+
+
+PolarBear(tile=4)
+
+build igloo
+save game
+# Output
+Player 1 please select an action (eskimo, actions remaining (4)): 
+Player 1 builds igloo to Sheet (ID=1)
+Player 1 please select an action (eskimo, actions remaining (3)):  
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=null,itemDiscovered=false,building=igloo)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+
+
+Eskimo(number=1,heat=1,tile=1)
+
+
+PolarBear(tile=4)
+
+Player 1 please select an action (eskimo, actions remaining (3)): 

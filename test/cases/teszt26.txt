@@ -2,8 +2,8 @@
 A játékos kezét használja, hogy eltakarítson egy réteg havat a mezőről.
 # Input
 load game
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
 
 
 Eskimo(number=1,heat=1,tile=1)
@@ -17,8 +17,8 @@ save game
 Player 1 please select an action (eskimo, actions remaining (4)): 
 Player 1 removes 1 snow from Sheet(ID=1).
 Player 1 please select an action (eskimo, actions remaining (3)): 
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=1,item=shovel,itemDiscovered=false)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=1,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
 
 
 Eskimo(number=1,heat=1,tile=1)

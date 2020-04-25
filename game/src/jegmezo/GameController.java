@@ -17,6 +17,10 @@ public class GameController {
 		return players.size();
 	}
 
+	public Scanner getScanner() {
+		return this.scanner;
+	}
+
 	/** Elindítja a játékot */
 	public void startGame() {
 		while (gameState == GameState.Creating) {

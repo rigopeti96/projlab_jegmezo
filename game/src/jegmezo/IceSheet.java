@@ -147,7 +147,6 @@ public class IceSheet extends Tile {
 	}
 
 	/** Ez a függvény hívódik meg minden kör végén, hogy a mezőn lévő sátor letörlődjön, ha van a mezőn. */
-	@Override
 	public void turnEnd(){
 		building = Building.NONE;
 	}

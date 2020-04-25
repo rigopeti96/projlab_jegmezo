@@ -5,7 +5,7 @@ import java.util.*;
 
 /** A játék lefolytatásáért felel, tratalmazza a játékosokat és a táblát*/
 public class GameController {
-	private  Map<Integer, Tile> tiles = new HashMap<>();;
+	private  Map<Integer, Tile> tiles = new HashMap<>();
 	private List<Player> players = new ArrayList<>();
 	private PolarBear polarBear = new PolarBear(this);
 	private GameState gameState = GameState.Creating;
@@ -148,8 +148,7 @@ public class GameController {
 			}
 		} else {
 			System.out.println("For blizzard type 'blizzard'");
-			String isBlizzard = scanner.nextLine();
-			isBlizzard.toLowerCase();
+			String isBlizzard = scanner.nextLine().toLowerCase();
 			if(isBlizzard.equals("blizzard"))
 				blizzard();
 		}

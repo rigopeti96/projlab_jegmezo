@@ -26,11 +26,10 @@ public class IceSheet extends Tile {
 			gameController.gameOver();
 			return;
 		}
-		if(polarBear!=null && (building==Building.NONE||building==Building.TENT)){
+		if(polarBear!=null && (building==Building.NONE||building==Building.TENT)) {
 			player.eaten();
 			return;
 		}
-
 		players.add(player);
 		prevTile.stepOff(player);
 

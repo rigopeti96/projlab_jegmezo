@@ -96,6 +96,7 @@ public abstract class Player extends Entity{
 			return false;
 
 		hova.stepOnto(this, tile);
+		tile=hova;
 		return true;
 	}
 	
@@ -261,5 +262,6 @@ public abstract class Player extends Entity{
 		System.out.println("Player "+number+" can’t places a tent Sheet(ID="+tile.getId()+") already has one.");
 		return false;
 	}
+
 }
 

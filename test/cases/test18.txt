@@ -3,13 +3,14 @@ Egy játékos szeretne egy tetszőleges itemet átadni egy másik játékosnak, 
 # Input
 load game
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=0,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered7false,building=none)
+Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
 
-Eskimo(num=1,tile=0)
-Eskimo(num=2,tile=0)
 
-Player-Item(num=1,item=rope,count=1)
-Player-Item(num=2,item=rope,count=1)
+Eskimo(number=1,heat=4,tile=0)
+Eskimo(number=2,heat=4,tile=0)
+
+Player-Item(number=1,item=rope,count=1)
+Player-Item(number=2,item=rope,count=1)
 
 PolarBear(tile=2)
 
@@ -28,14 +29,13 @@ Select item:
 Player 1 can’t trade their rope to Player 2 (Player 2 can’t take it).
 Player 1 select an action (move/dig/pickup/use item/trade/useability) [4 remaining]:
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=0,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered7false,building=none)
+Sheet(ID=2,playerLimit=0,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
 
 
+Eskimo(number=1,heat=4,tile=0)
+Eskimo(number=2,heat=4,tile=0)
 
-Player(num=1,heat=4,tile=0)
-Player(num=2,heat=4,tile=0)
-
-Player-Item(num=1,item=rope,count=1)
-Player-Item(num=2,item=rope,count=1)
+Player-Item(number=1,item=rope,count=1)
+Player-Item(number=2,item=rope,count=1)
 
 PolarBear(tile=2)

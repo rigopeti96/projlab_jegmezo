@@ -9,15 +9,16 @@ public class GameController {
 	private List<Player> players = new ArrayList<>();
 	private PolarBear polarBear = new PolarBear();
 	private GameState gameState = GameState.Creating;
+	private boolean controlledRandomness = false;
+	private Scanner scanner = new Scanner(System.in);
 
-	/** Ez a függvény visszaadja az összes játékosok számát*/
+	/** Ez a függvény visszaadja az összes játékos számát*/
 	public int getPlayerCount(){
 		return players.size();
 	}
 
 	/** Elindítja a játékot */
 	public void startGame() {
-		Scanner scanner = new Scanner(System.in);
 		while (gameState == GameState.Creating) {
 			String command = scanner.nextLine();
 			handleControlCommand(command);
@@ -33,7 +34,15 @@ public class GameController {
 
 	public void handleControlCommand(String command) {
 		if (gameState == GameState.Creating && command.equals("init game")) {
-			// TODO: Sets up flags (controlledRandomness)
+			boolean valid = false;
+			while (!valid) {
+				valid = true;
+				System.out.println("Type of randomness (controlled/random): ");
+				String type = scanner.nextLine();
+				if (type.equals("controlled")) controlledRandomness = true;
+				else if (type.equals("random")) controlledRandomness = false;
+				else valid = false;
+			}
 		} else if (gameState == GameState.Creating && command.equals("start game")) {
 			System.out.println("start game command ran");
 			players.clear();

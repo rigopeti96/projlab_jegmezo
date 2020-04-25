@@ -16,10 +16,9 @@ public class Scientist extends Player {
 	 */
 	public boolean examine() {
 		Tile examined = selectTile();
-		int limit = examined.examinePlayerLimit();
-
 		if(examined == null)
 			return false;
+		int limit = examined.examinePlayerLimit();
 
 		System.out.println("Player "+ number + " checked the stability of "+ examined.toShortString() + "It can take " + limit + " players.");
 		return true;

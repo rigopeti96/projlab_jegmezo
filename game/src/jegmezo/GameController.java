@@ -253,7 +253,6 @@ public class GameController {
 		line = scanner.nextLine().trim();
 		while (!line.equals("")) {
 			if (line.startsWith("#")) continue;
-			System.out.println(line);
 			DeserializedLine desLine = DeserializedLine.fromLine(line, new String[] { "Hole", "Sheet" });
 			if (desLine == null) {
 				System.out.println("Invalid input format (tile)!");

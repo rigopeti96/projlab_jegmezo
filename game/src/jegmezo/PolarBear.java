@@ -57,6 +57,10 @@ public class PolarBear extends Entity{
         }
     }
 
+    /**
+     * Kiválaszt egy szomszédos tile-t
+     * @return a kiválasztott tile vagy cancel esetén NULL
+     */
     public Tile selectTile() {
 
         System.out.println("Neighbouring tiles: ");

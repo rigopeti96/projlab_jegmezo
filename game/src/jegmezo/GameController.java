@@ -142,7 +142,7 @@ public class GameController {
 			player.takeTurn();
 			if (gameState != GameState.Running) return;
 		}
-		if(isControlledRandomness()){
+		if(!isControlledRandomness()){
 			Random r = new Random();
 			int blizzard_is_coming = r.nextInt(2);
 			if(blizzard_is_coming == 1){

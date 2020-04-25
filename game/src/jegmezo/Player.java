@@ -1,7 +1,6 @@
 package jegmezo;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -255,7 +254,7 @@ public abstract class Player extends Entity{
 	 * @return
 	 */
 	public boolean buildTent() {
-		if(tile.build(Building.TENT)){
+		if(tile.build(Building.tent)){
 			System.out.println("Player "+number+" places a tent on Sheet(ID="+tile.getId()+").");
 			return true;
 		}

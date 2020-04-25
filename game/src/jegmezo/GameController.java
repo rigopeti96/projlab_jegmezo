@@ -319,11 +319,13 @@ public class GameController {
 				String playerLimit = line.getParameters().get("playerLimit");
 				boolean itemDiscovered = line.getParameters().get("itemDiscovered").equals("true");
 				boolean playerLimitDiscovered = line.getParameters().get("playerLimitDiscovered").equals("true");
+				Building building = Enum.valueOf(Building.class, line.getParameters().get("building"));
 				IceSheet sheet = new IceSheet(this, id, Integer.parseInt(playerLimit), Integer.parseInt(snow));
 				tiles.put(id, sheet);
 				sheet.setItem(item);
 				if (itemDiscovered) sheet.discoverItem();
 				if (playerLimitDiscovered) sheet.discoverPlayerLimit();
+				if (building != Building.none) sheet.build(building);
 			}
 		}
 		catch (NumberFormatException e) {

@@ -15,7 +15,7 @@ public class Eskimo extends Player {
 	/** Meghívja az Tile buildIgloo függvényét
 	 *  @return bool - Sikerült-e építeni.  */
 	public boolean buildIgloo() {
-		if(tile.build(Building.IGLOO)) {
+		if(tile.build(Building.igloo)) {
 			System.out.println("Player "+ number +" builds igloo to Sheet (ID="+ tile.getId()+")");
 			return true;
 		}

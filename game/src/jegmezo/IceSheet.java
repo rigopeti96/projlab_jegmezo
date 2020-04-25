@@ -1,14 +1,12 @@
 package jegmezo;
 
 
-import java.util.Scanner;
-
 /** Jégtábla, tárol egy játékoslétszámot ami felet a jégtábla átfordul, van-e rajta igloo, és ha van rajta tárgy akkor azt is tárolja*/
 public class IceSheet extends Tile {
 
 	private Discoverable<Integer> playerLimit;
 	private Discoverable<Item> item;
-	protected Building building = Building.NONE;
+	protected Building building = Building.none;
 
 	public IceSheet(GameController gameController, int id, int playerLimit, int snow)
 	{
@@ -27,7 +25,7 @@ public class IceSheet extends Tile {
 			gameController.gameOver();
 			return;
 		}
-		if(polarBear!=null && (building==Building.NONE||building==Building.TENT)) {
+		if(polarBear!=null && (building==Building.none ||building==Building.tent)) {
 			player.eaten();
 			return;
 		}
@@ -114,7 +112,7 @@ public class IceSheet extends Tile {
 	/** A hóvihar lefolytatása*/
 	@Override
 	public void blizzard(){
-		if(this.building == Building.NONE) {
+		if(this.building == Building.none) {
 			for (Player player : super.players) {
 				player.decreaseBodyHeat();
 				super.increaseSnow();
@@ -128,7 +126,7 @@ public class IceSheet extends Tile {
 	 * @return ha van építmény TRUE egyébként false
 	 */
 	public boolean hasBuilding() {
-		if(this.building != Building.NONE)
+		if(this.building != Building.none)
 			return true;
 		return false;
 	}
@@ -138,8 +136,8 @@ public class IceSheet extends Tile {
 	 */
 	@Override
 	public void destroyTent() {
-		if(this.building == Building.TENT) {
-			this.building = Building.NONE;
+		if(this.building == Building.tent) {
+			this.building = Building.none;
 			System.out.println("All tents destroyed");
 		}
 	}
@@ -151,7 +149,7 @@ public class IceSheet extends Tile {
 	 */
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
 		System.out.println("Polar bear moved to "+toShortString());
-		if((building==Building.NONE||building==Building.TENT)&&!players.isEmpty()){
+		if((building==Building.none ||building==Building.tent)&&!players.isEmpty()){
 			for (Player player: players) {
 				System.out.println("Player "+player.getNumber()+" was not in an igloo.");
 				player.eaten();
@@ -172,7 +170,8 @@ public class IceSheet extends Tile {
 				+ ",playerLimit=" + playerLimit.toDiscoveredString()
 				+ ",playerLimitDiscovered=" + (playerLimit.isDiscovered() ? "true" : "false")
 				+ ",snow=" + snow
-				+ ",item=" + item.toDiscoveredString() + ",itemDiscovered="+ (item.isDiscovered() ? "true" : "false") + ")");
+				+ ",item=" + item.toDiscoveredString() + ",itemDiscovered="+ (item.isDiscovered() ? "true" : "false")
+				+ ",building=" + building.toString());
 	}
 
 	@Override

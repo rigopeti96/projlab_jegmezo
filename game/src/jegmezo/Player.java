@@ -158,7 +158,7 @@ public abstract class Player extends Entity{
 		}
 		if (this.takeItem(item) ) {
 			this.tile.removeItem();
-			System.out.print("Player " + number + " picks up "+ item.getName() + " from "); tile.toShortString();
+			System.out.println("Player " + number + " picks up "+ item.getName() + " from "+ tile.toShortString() );
 			return true;
 		}else{
 			System.out.println("Cant pick up "+ item.getName() + " (Already has too much.)");

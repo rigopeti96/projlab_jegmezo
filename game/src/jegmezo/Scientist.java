@@ -18,8 +18,7 @@ public class Scientist extends Player {
 		Tile examined = selectTile();
 		int limit = examined.getPlayerLimit();
 
-		System.out.print("Player "+ number + " checked the stability of "); examined.toShortString();
-		System.out.println("It can take " + limit + " players.");
+		System.out.println("Player "+ number + " checked the stability of "+ examined.toShortString() + "It can take " + limit + " players.");
 		return true; //TODO: Sztem tök fölösleges a boolean
 	}
 

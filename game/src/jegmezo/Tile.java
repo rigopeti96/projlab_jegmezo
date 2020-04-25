@@ -194,14 +194,15 @@ public abstract class Tile {
 
 
 	/**
-	 * Kiirja az id-t (ID=<>) formában
+	 * Visszaadja a mező tipusát és az id-t (ID=<>) formában
+	 * Kiíráshoz
 	 */
-	public abstract void toShortString();
+	public abstract String toShortString();
 
 	/**
 	 * Kiírja a Tile adatait.
 	 */
-	public abstract void toLongString();
+	public abstract String toLongString();
 
 	/** Ez a függvény hívódik meg minden kör végén, hogy a mezőn lévő sátor letörlődjön, ha van a mezőn. */
 	public abstract void turnEnd();

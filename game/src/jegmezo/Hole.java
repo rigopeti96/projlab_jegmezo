@@ -61,13 +61,10 @@ public class Hole extends Tile {
 	}
 
 	@Override
-	public void toShortString() {
-		System.out.println("Hole(ID=" + id + ")");
-	}
+	public String toShortString() { return "Hole(ID=" + id + ")"; }
 
 	@Override
-	public void toLongString() {
-		System.out.println("Hole(ID=" + id + ", snow=" + snow + ")");
+	public String toLongString() {	return "Hole(ID=" + id + ", snow=" + snow + ")"; }
 
 	public void stepOnPolarBear(PolarBear pb,Tile prevTile){return;}
 

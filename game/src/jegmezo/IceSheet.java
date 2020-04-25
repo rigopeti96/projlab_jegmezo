@@ -133,18 +133,17 @@ public class IceSheet extends Tile {
 	}
 
 	@Override
-	public void toShortString() {
-		System.out.println("Sheet(ID=" + id + ")");
-	}
+	public String toShortString() {	return "Sheet(ID=" + id + ")";	}
 
 	@Override
-	public void toLongString() {
+	public String toLongString() {
 
-		String itemname= (snow == 0 ? (item != null ? item.getName() : "none")  : "?");
-		String buildingname= building.toString();
+		String itemname = (snow == 0 ? (item != null ? item.getName() : "none") : "?");
+		String buildingname = building.toString();
 
-		System.out.println("Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
-				", item=" + itemname + ", building=" + buildingname + ")" );
+		return "Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
+				", item=" + itemname + ", building=" + buildingname + ")";
+	}
 
 	/** Ez a függvény hívódik meg minden kör végén, hogy a mezőn lévő sátor letörlődjön, ha van a mezőn. */
 	@Override

@@ -138,8 +138,10 @@ public class IceSheet extends Tile {
 	}
 
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
+		System.out.println("Polar bear moved to "+toShortString());
 		if((building==Building.NONE||building==Building.TENT)&&!players.isEmpty()){
 			for (Player player: players) {
+				System.out.println("Player "+player.getNumber()+" was not in an igloo.");
 				player.eaten();
 			}
 			return;

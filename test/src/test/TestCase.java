@@ -1,6 +1,7 @@
 package test;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class TestCase {
     private int currentLine = 0;
 
     public TestCase(File file) throws IOException, InvalidTestCaseFormatException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8));
         try {
             String line;
             while ((line = reader.readLine()) != null && !line.equals("# Input")) {

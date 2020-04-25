@@ -16,10 +16,10 @@ public class Scientist extends Player {
 	 */
 	public boolean examine() {
 		Tile examined = selectTile();
-		int limit = examined.getPlayerLimit();
+		int limit = examined.examinePlayerLimit();
 
 		System.out.println("Player "+ number + " checked the stability of "+ examined.toShortString() + "It can take " + limit + " players.");
-		return true; //TODO: Sztem tök fölösleges a boolean
+		return true;
 	}
 
 	/**Kiválaszja az akciót

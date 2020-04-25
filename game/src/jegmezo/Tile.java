@@ -50,7 +50,7 @@ public abstract class Tile {
 	/**
 	 * @return A Tile-on álló maximum Player szám, amit után átfordul/Player-ek beleesnek
 	 */
-	public abstract int getPlayerLimit();
+	public abstract int examinePlayerLimit();
 
 	/**
 	 * Visszaadja a mezőn lévő hóréteg számát.
@@ -164,7 +164,7 @@ public abstract class Tile {
 
 			if (line.equals("cancel")) return null;
 			for (Player player: sortedPlayers) {
-				if (player != excluding && (String.valueOf(player.getNumber()).equals(line) || ("Player " + player.getNumber()).equals(line))) return player;
+				if (player != excluding && (String.valueOf(player.getNumber()).equals(line) || ("player " + player.getNumber()).equals(line.toLowerCase()))) return player;
 			}
 
 			System.out.println("No player with number'" + line + "'.");

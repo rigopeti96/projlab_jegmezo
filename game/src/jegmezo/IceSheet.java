@@ -6,40 +6,50 @@ import java.util.Scanner;
 /** Jégtábla, tárol egy játékoslétszámot ami felet a jégtábla átfordul, van-e rajta igloo, és ha van rajta tárgy akkor azt is tárolja*/
 public class IceSheet extends Tile {
 
-	private int playerLimit;
-	private Item item;
+	private Discoverable<Integer> playerLimit;
+	private Discoverable<Item> item;
 	protected Building building = Building.NONE;
 
 	public IceSheet(GameController gameController, int id, int playerLimit, int snow)
 	{
 		super(gameController, id, snow);
-		this.playerLimit = playerLimit;
+		this.playerLimit = new Discoverable<>(playerLimit);
 	}
 
 	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
-		if(players.size()==playerLimit){
-			player.drown();
+		System.out.println("Player "+player.getNumber()+" moved to "+toLongString());
+		if(players.size()==playerLimit.getElement()){
+			System.out.println("Sheet "+id+" turned over.\nAll players on it drowned.");
+			gameController.gameOver();
 			return;
 		}
 		if(polarBear!=null && (building==Building.NONE||building==Building.TENT)){
 			player.eaten();
 			return;
 		}
+
 		players.add(player);
 		prevTile.stepOff(player);
 
-		// TODO: Item felfedezés, ha még nincs felfedezve
 
+		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.getElement().toString()));
+	}
+
+	@Override
+	public boolean removeSnow(int amount) {
+		boolean ret = super.removeSnow(amount);
+		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.getElement().toString()));
+		return ret;
 	}
 
 	/** A játékoslétszám lekérdezése
 	 * @return játékoslétszám*/
 	@Override
-	public int getPlayerLimit() {
-		System.out.println("IceSheet getPlayerLimit");
-		return playerLimit;
+	public int examinePlayerLimit() {
+		playerLimit.discover();
+		return playerLimit.getElement();
 	}
 
 
@@ -48,7 +58,7 @@ public class IceSheet extends Tile {
 	@Override
 	public Item getItem() {
 		System.out.println("IceSheet getItem");
-		return item;
+		return item.getElement();
 	}
 
 	/**
@@ -56,7 +66,7 @@ public class IceSheet extends Tile {
 	 * @param item a mezőn lévő tárgy vagy null, ha nincs
 	 */
 	public void setItem(Item item) {
-		this.item = item;
+		this.item = new Discoverable<>(item);
 	}
 
 	/** A mezőn lévő tárgy levétele*/
@@ -130,7 +140,7 @@ public class IceSheet extends Tile {
 	 */
 	@Override
 	public void serialize() {
-		System.out.println("Sheet(ID=" + id + ",playerLimit=" + playerLimit + ",snow=" + snow + ",item=" + (item != null ? item.getName() : "none") + ")");
+		System.out.println("Sheet(ID=" + id + ",playerLimit=" + playerLimit + ",snow=" + snow + ",item=" + (item != null ? item.getElement().getName() : "none") + ")");
 	}
 
 	@Override
@@ -138,11 +148,7 @@ public class IceSheet extends Tile {
 
 	@Override
 	public String toLongString() {
-
-		String itemname = (snow == 0 ? (item != null ? item.getName() : "none") : "?");
-		String buildingname = building.toString();
-
 		return "Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
-				", item=" + itemname + ", building=" + buildingname + ")";
+				", item=" + item.toString("none") + ", building=" + building.toString() + ")";
 	}
 }

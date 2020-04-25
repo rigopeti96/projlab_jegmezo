@@ -11,20 +11,25 @@ public class Hole extends Tile {
 
 	/** A játékos rálép a mezőre*/
 	public void stepOnto(Player player, Tile prevTile) {
-		if(player.canSurvive())
+		System.out.println("Player "+player.getNumber()+" fell into "+this.toLongString());
+		if(player.canSurvive()) {
+			System.out.println("Player "+player.getNumber()+" had Scuba Gear, survived, went back to the original Sheet");
 			return;
+		}
 		for(int i=0;i<neighbours.size();i++){
 			if(neighbours.get(i).canSave()) {
+				System.out.println("Someone on "+neighbours.get(i).toShortString()+" has a rope.");
 				neighbours.get(i).stepOnto(player, prevTile);
 				return;
 			}
 		}
+		System.out.println("No neighbouring players with rope.");
 		player.drown();
 	}
 	
 	/** A játékoslétszám lekérdezése
 	 * @return játékoslétszám*/
-	public int getPlayerLimit() {
+	public int examinePlayerLimit() {
 		System.out.println("Hole getPlayerLimit");
 		return 0;
 	}

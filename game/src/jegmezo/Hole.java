@@ -30,14 +30,12 @@ public class Hole extends Tile {
 	/** A játékoslétszám lekérdezése
 	 * @return játékoslétszám*/
 	public int examinePlayerLimit() {
-		System.out.println("Hole getPlayerLimit");
 		return 0;
 	}
 
 	/** A mezőn található tárgy lekérdezése
 	 * @return a mezőn lévő tárgy vagy null, ha nincs*/
 	public Item getItem() {
-		System.out.println("Hole getItem");
 		return null;
 	}
 
@@ -48,7 +46,7 @@ public class Hole extends Tile {
 
 	/** A mezőn lévő tárgy levétele*/
 	public void removeItem() {
-		System.out.println("Hole removeItem");
+
 	}
 	
 	/** Van-e olyan játékos a mezőn, aki meg tud menteni másik játékost (van kötele)

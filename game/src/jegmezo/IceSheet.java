@@ -57,7 +57,6 @@ public class IceSheet extends Tile {
 	 * @return a mezőn lévő tárgy vagy null, ha nincs*/
 	@Override
 	public Item getItem() {
-		System.out.println("IceSheet getItem");
 		return item.getElement();
 	}
 
@@ -86,8 +85,7 @@ public class IceSheet extends Tile {
 	/** A mezőn lévő tárgy levétele*/
 	@Override
 	public void removeItem() {
-		System.out.println("IceSheet removeItem");
-		item=null;
+		item.setElement(null);
 	}
 
 	/** Van-e olyan játékos a mezőn, aki meg tud menteni másik játékost (van kötele)

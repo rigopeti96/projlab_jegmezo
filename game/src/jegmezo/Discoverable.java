@@ -26,6 +26,10 @@ public class Discoverable<T> {
         return this.element;
     }
 
+    public void setElement(T element) {
+        this.element = element;
+    }
+
     public void discover() {
         discovered = true;
     }

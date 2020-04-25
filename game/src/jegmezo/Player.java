@@ -9,9 +9,8 @@ public abstract class Player extends Entity{
 	protected int bodyHeat;
 	protected int actions;
 	protected int number;
-	protected Tile tile;
+	//protected Tile tile;
 	private Inventory inventory = new Inventory();
-	private GameController gameController;
 
 	public Player(GameController gameController, int number) {
 		this(gameController, number, 4);
@@ -78,7 +77,6 @@ public abstract class Player extends Entity{
 	/** A játékos használja a győzelmi tárgyat
 	 * @return ha minden alkatrész megvan és az összes játékos ugyanazon a mezőn van, akkor megnyerik a játékot és true-t ad vissza, amúgy false*/
 	public boolean useWinItems() {
-		//System.out.println("Player useWinItems");
 		if(tile.hasAllPlayers() && inventory.getWinItemCount()==3) {
 			System.out.println("Player " + number+ " assembles and uses the flare gun.");
 			gameController.win();
@@ -108,16 +106,7 @@ public abstract class Player extends Entity{
 	
 	/** Lecsökkenti a játékos testhőjét 1-gyel */
 	public void decreaseBodyHeat() {
-		System.out.println("Player decreaseBodyHeat");
 		bodyHeat--;
-		System.out.println("dead/deadn't?");
-		switch (new Scanner(System.in).nextLine()) {
-			case "dead":
-				gameController.gameOver();
-				break;
-			case "deadn't":
-				break;
-		}
 	}
 	
 	/** A játékos megfullad */
@@ -230,6 +219,8 @@ public abstract class Player extends Entity{
 				return this.useItem();
 			case "dig":
 				return this.digWithHands();
+			case "pickup":
+				return pickup();
 			default:
 				gameController.handleControlCommand(command);
 				return false;
@@ -237,7 +228,6 @@ public abstract class Player extends Entity{
 	}
 
 	public boolean canSave(){
-		System.out.println("Player canSave");
 		int r=inventory.getRopeCount();
 		if (r>0)
 			return true;
@@ -245,7 +235,6 @@ public abstract class Player extends Entity{
 	}
 
 	public boolean canSurvive(){
-		System.out.println("Player canSurvive");
 		int r=inventory.getScubaCount();
 		if (r>0)
 			return true;

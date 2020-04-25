@@ -7,7 +7,7 @@ import java.util.*;
 public class GameController {
 	private  Map<Integer, Tile> tiles = new HashMap<>();;
 	private List<Player> players = new ArrayList<>();
-	private PolarBear polarBear = new PolarBear();
+	private PolarBear polarBear = new PolarBear(this);
 	private GameState gameState = GameState.Creating;
 	private boolean controlledRandomness = false;
 	private Scanner scanner = new Scanner(System.in);
@@ -44,7 +44,6 @@ public class GameController {
 				else valid = false;
 			}
 		} else if (gameState == GameState.Creating && command.equals("start game")) {
-			System.out.println("start game command ran");
 			players.clear();
 			tiles.clear();
 			System.out.println("Number of players (3-8): ");
@@ -86,7 +85,6 @@ public class GameController {
 
 			gameState = GameState.Stopped;
 		} else if (command.equals("load game")) {
-			System.out.println("load game command ran");
 			tiles.clear();
 			players.clear();
 			this.loadGame();
@@ -120,7 +118,6 @@ public class GameController {
 	
 	/** A hóvihar lebonyolításáért felel*/
 	public void blizzard() {
-		System.out.println("Blizzard");
 		for (Tile tile : tiles.values()) {
 			tile.blizzard();
 		}
@@ -354,7 +351,7 @@ public class GameController {
 		String tileIdStr = line.getParameters().get("tile");
 		try {
 			int tileId = Integer.parseInt(tileIdStr);
-			polarBear = new PolarBear();
+			polarBear = new PolarBear(this);
 			if (tiles.get(tileId) == null) {
 				System.out.println("Invalid input format!");
 				System.exit(0);

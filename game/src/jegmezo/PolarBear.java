@@ -29,7 +29,7 @@ public class PolarBear extends Entity{
 
         boolean moveDone= false;
         while( !moveDone || !neighbourTiles.isEmpty() ){
-            if (neighbourTiles.get(random_mezo).getPlayerLimit() ==0){
+            if (neighbourTiles.get(random_mezo).examinePlayerLimit() ==0){
                 neighbourTiles.remove(random_mezo);
             }else{
                 System.out.println("Polarbear moved to" + neighbourTiles.get(random_mezo).toShortString() );

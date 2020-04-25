@@ -145,9 +145,4 @@ public class IceSheet extends Tile {
 		return "Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
 				", item=" + itemname + ", building=" + buildingname + ")";
 	}
-
-	/** Ez a függvény hívódik meg minden kör végén, hogy a mezőn lévő sátor letörlődjön, ha van a mezőn. */
-	public void turnEnd(){
-		building = Building.NONE;
-	}
 }

@@ -109,6 +109,10 @@ public abstract class Player extends Entity{
 	/** Lecsökkenti a játékos testhőjét 1-gyel */
 	public void decreaseBodyHeat() {
 		bodyHeat--;
+		System.out.println("Player " + number + "’s body heat decrease by 1 to " + bodyHeat + ".");
+		if(bodyHeat == 0) {
+			gameController.gameOver();
+		}
 	}
 	
 	/** A játékos megfullad */

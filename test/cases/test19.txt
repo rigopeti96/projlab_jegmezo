@@ -1,5 +1,5 @@
 # Name
-Egy játékos szeretne egy tetszőleges itemet átadni egy másik játékosnak, aki az adott itemből már tárol egyet.
+Egy játékos szeretne egy győzelmi itemet átadni egy másik játékosnak, aki az adott itemből már tárol egyet.
 
 # Input
 load game

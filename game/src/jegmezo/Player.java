@@ -122,13 +122,13 @@ public abstract class Player extends Entity{
 	
 	/** A játékos megfullad */
 	public void drown() {
-		System.out.println("Player drowned");
+		System.out.println("Player "+number+" drowned");
 		gameController.gameOver();
 	}
 
 	/** A játékost megette a medve*/
 	public void eaten(){
-		System.out.println("Player has been eaten");
+		System.out.println("Player "+number+" has been eaten");
 		gameController.gameOver();
 	}
 	

@@ -20,6 +20,7 @@ public class IceSheet extends Tile {
 	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
+		discovered=true;
 		System.out.println("Player "+player.getNumber()+" moved to "+toLongString());
 		if(players.size()==playerLimit.getElement()){
 			System.out.println("Sheet "+id+" turned over.\nAll players on it drowned.");
@@ -49,6 +50,7 @@ public class IceSheet extends Tile {
 	@Override
 	public int examinePlayerLimit() {
 		playerLimit.discover();
+		discovered=true;
 		return playerLimit.getElement();
 	}
 
@@ -177,6 +179,8 @@ public class IceSheet extends Tile {
 
 	@Override
 	public String toLongString() {
+		if(!discovered)
+			return "Tile(ID="+id+")";
 		return "Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
 				", item=" + item.toString() + ", building=" + building.toString() + ")";
 	}

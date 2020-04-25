@@ -12,7 +12,7 @@ public abstract class Tile {
 	protected List<Player> players = new ArrayList<>();
 	protected PolarBear polarBear;
 	protected int id;
-
+	protected boolean discovered=false;
 	public Tile(GameController gameController, int id, int snow) {
 		this.gameController = gameController;
 		this.id = id;

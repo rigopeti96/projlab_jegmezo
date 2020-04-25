@@ -173,8 +173,8 @@ public abstract class Player extends Entity{
 	public Tile selectTile() {
 		System.out.println("Neighbouring tiles: ");
 		List<Tile> neighbourTiles = this.tile.getNeighbours();
-		for (Tile tile: neighbourTiles){
-			tile.toLongString();
+		for (Tile tile: neighbourTiles) {
+			System.out.println(tile.toLongString() );
 		}
 
 		while (true){

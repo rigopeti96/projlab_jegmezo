@@ -131,9 +131,43 @@ public class GameController {
 	
 	/** A hóvihar lebonyolításáért felel*/
 	public void blizzard() {
-		for (Tile tile : tiles.values()) {
-			tile.blizzard();
+		int blizzard_tiles = 0;
+		int isBlizzardOnTile;
+		Random r = new Random();
+		if(!isControlledRandomness()){ //random
+			for (Tile tile : tiles.values()) {
+				isBlizzardOnTile = r.nextInt(2);
+				if(isBlizzardOnTile == 1){
+					tile.blizzard();
+					System.out.println("Snowfall on Tile(ID=" + tile.getId() + ").");
+					blizzard_tiles++;
+				}
+				if(blizzard_tiles == tiles.size())
+					break;
+			}
+		} else {
+			for (Tile tile : tiles.values()) {
+				boolean sikeres_command = false;
+				while(!sikeres_command){
+					System.out.println("Snowfall on Tile(ID=" + tile.getId() + ") (yes/no):");
+					String isBlizzard = scanner.nextLine().toLowerCase();
+					if(isBlizzard.equals("yes")){
+						sikeres_command = true;
+						tile.blizzard();
+						blizzard_tiles++;
+					}
+					if(isBlizzard.equals("no")){
+						sikeres_command = true;
+					}
+					else if ( !isBlizzard.equals("yes") ){
+						System.out.println("Please type 'yes' for snowfall and 'no' for no snowfall.");
+					}
+				}
+				if (blizzard_tiles == tiles.size())
+					break;
+			}
 		}
+
 	}
 	
 	/** A körök kezelése*/

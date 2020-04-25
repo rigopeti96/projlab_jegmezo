@@ -118,6 +118,7 @@ public class IceSheet extends Tile {
 			for (Player player : super.players) {
 				player.decreaseBodyHeat();
 				super.increaseSnow();
+				System.out.println("Blizzard is coming.");
 			}
 		}
 	}

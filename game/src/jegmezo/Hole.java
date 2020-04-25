@@ -24,7 +24,7 @@ public class Hole extends Tile {
 	
 	/** A játékoslétszám lekérdezése
 	 * @return játékoslétszám*/
-	public int getPlayerLimit() {
+	public int examinePlayerLimit() {
 		System.out.println("Hole getPlayerLimit");
 		return 0;
 	}

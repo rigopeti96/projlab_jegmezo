@@ -50,7 +50,7 @@ public abstract class Tile {
 	/**
 	 * @return A Tile-on álló maximum Player szám, amit után átfordul/Player-ek beleesnek
 	 */
-	public abstract int getPlayerLimit();
+	public abstract int examinePlayerLimit();
 
 	/**
 	 * Visszaadja a mezőn lévő hóréteg számát.

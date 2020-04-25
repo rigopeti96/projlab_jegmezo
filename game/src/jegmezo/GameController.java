@@ -250,13 +250,13 @@ public class GameController {
 
 	public void loadGame() {
 		String line;
-		Scanner scanner = new Scanner(System.in);
 		line = scanner.nextLine().trim();
 		while (!line.equals("")) {
 			if (line.startsWith("#")) continue;
+			System.out.println(line);
 			DeserializedLine desLine = DeserializedLine.fromLine(line, new String[] { "Hole", "Sheet" });
 			if (desLine == null) {
-				System.out.println("Invalid input format!");
+				System.out.println("Invalid input format (tile)!");
 				System.exit(0);
 			}
 			deserializeTile(desLine);
@@ -267,7 +267,7 @@ public class GameController {
 			if (line.startsWith("#")) continue;
 			DeserializedLine desLine = DeserializedLine.fromLine(line, new String[] { "Tile-Tile" });
 			if (desLine == null) {
-				System.out.println("Invalid input format!");
+				System.out.println("Invalid input format (tile-tile)!");
 				System.exit(0);
 			}
 			deserializeTileConnection(desLine);
@@ -278,7 +278,7 @@ public class GameController {
 			if (line.startsWith("#")) continue;
 			DeserializedLine desLine = DeserializedLine.fromLine(line, new String[] { "Eskimo", "Scientist" });
 			if (desLine == null) {
-				System.out.println("Invalid input format!");
+				System.out.println("Invalid input format (player)!");
 				System.exit(0);
 			}
 			deserializePlayer(desLine);
@@ -289,7 +289,7 @@ public class GameController {
 			if (line.startsWith("#")) continue;
 			DeserializedLine desLine = DeserializedLine.fromLine(line, new String[] { "Player-Item" });
 			if (desLine == null) {
-				System.out.println("Invalid input format!");
+				System.out.println("Invalid input format (player-item)!");
 				System.exit(0);
 			}
 			deserializePlayerItemConnection(desLine);
@@ -300,7 +300,7 @@ public class GameController {
 			if (line.startsWith("#")) continue;
 			DeserializedLine desLine = DeserializedLine.fromLine(line, new String[] { "PolarBear" });
 			if (desLine == null) {
-				System.out.println("Invalid input format!");
+				System.out.println("Invalid input format (polar bear)!");
 				System.exit(0);
 			}
 			deserializePolarBear(desLine);
@@ -329,7 +329,8 @@ public class GameController {
 			}
 		}
 		catch (NumberFormatException e) {
-			System.out.println("Invalid input format!");
+			System.out.println("Invalid input format (tile)!");
+			e.printStackTrace();
 			System.exit(0);
 		}
 	}
@@ -369,7 +370,7 @@ public class GameController {
 			tiles.get(id1).connectTile(tiles.get(id2));
 		}
 		catch (NumberFormatException e) {
-			System.out.println("Invalid input format!");
+			System.out.println("Invalid input format (tile-tile)!");
 			System.exit(0);
 		}
 	}
@@ -384,14 +385,14 @@ public class GameController {
 			int tileId = Integer.parseInt(tileIdStr);
 			Player player = line.getName().equals("Scientist") ? new Scientist(this, num, heat) : new Eskimo(this, num, heat);
 			if (tiles.get(tileId) == null) {
-				System.out.println("Invalid input format!");
+				System.out.println("Invalid input format (player)!");
 				System.exit(0);
 			}
 			players.add(player);
 			player.spawnOnto(tiles.get(tileId));
 		}
 		catch (NumberFormatException e) {
-			System.out.println("Invalid input format!");
+			System.out.println("Invalid input format (player)!");
 			System.exit(0);
 		}
 	}
@@ -406,7 +407,7 @@ public class GameController {
 			}
 		}
 		catch (NumberFormatException e) {
-			System.out.println("Invalid input format!");
+			System.out.println("Invalid input format (player-item)!");
 			System.exit(0);
 		}
 	}
@@ -417,13 +418,13 @@ public class GameController {
 			int tileId = Integer.parseInt(tileIdStr);
 			polarBear = new PolarBear(this);
 			if (tiles.get(tileId) == null) {
-				System.out.println("Invalid input format!");
+				System.out.println("Invalid input format (polar bear)!");
 				System.exit(0);
 			}
 			polarBear.spawnOnto(tiles.get(tileId));
 		}
 		catch (NumberFormatException e) {
-			System.out.println("Invalid input format!");
+			System.out.println("Invalid input format (polar bear)!");
 			System.exit(0);
 		}
 	}

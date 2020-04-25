@@ -23,7 +23,6 @@ public class Shovel implements Item {
 	 * @param player - A játékos, aki használja a tárgyat
 	 * @return boolean - Sikerült-e az akció*/
 	public boolean use(Player player) {
-		System.out.println("Shovel use");
 		return player.digWithShovel();
 	}
 	

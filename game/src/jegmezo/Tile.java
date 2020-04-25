@@ -102,7 +102,6 @@ public abstract class Tile {
 	 * Hóvihar hatása az adott Tile-re, plusz hóréteg sorsolása és a Player-ek megfagyasztása (testhő csökkentése eggyel)
 	 */
 	public void blizzard() {
-		System.out.println("Tile blizzard");
 	}
 
 	/**
@@ -112,7 +111,6 @@ public abstract class Tile {
 	 * @return true-t ad vissza, ha volt akár egy hóréteg is, amit leszedett
 	 */
 	public boolean removeSnow(int amount) {
-		System.out.println("Tile removeSnow");
 		if(snow == 0) return false; //a legkevesebb hó mennyiség a 0, az alá nem lehet csökkenteni
 		if(snow < amount) snow = 0;
 		else snow = snow - amount;
@@ -142,7 +140,6 @@ public abstract class Tile {
 	 * Növeli a Tile-on lévő hómennyiséget 1-gyel.
 	 */
 	public void increaseSnow() {
-		System.out.println("Tile increaseSnow");
 		snow++;
 	}
 

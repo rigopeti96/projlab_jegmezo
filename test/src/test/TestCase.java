@@ -61,10 +61,9 @@ public class TestCase {
             for (String line: inputLines) {
                 stdin.write(line + "\n");
                 stdin.flush();
-                Thread.sleep(100);
-                while (is.available() != 0) {
-                    actualOutputLines.add(scanner.nextLine());
-                }
+            }
+            while (is.available() != 0) {
+                actualOutputLines.add(scanner.nextLine());
             }
             stdin.close();
 
@@ -106,8 +105,6 @@ public class TestCase {
             if (currentLine >= 0) System.out.println(actualOutputLines.get(currentLine));
             System.out.println();
             return false;
-        } catch (InterruptedException e) {
-
         } finally {
             if (process != null && process.isAlive()) process.destroy();
         }

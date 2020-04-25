@@ -5,7 +5,7 @@ import java.util.*;
 
 /** A játék lefolytatásáért felel, tratalmazza a játékosokat és a táblát*/
 public class GameController {
-	private  Map<Integer, Tile> tiles = new HashMap<>();;
+	private  Map<Integer, Tile> tiles = new HashMap<>();
 	private List<Player> players = new ArrayList<>();
 	private PolarBear polarBear = new PolarBear(this);
 	private GameState gameState = GameState.Creating;
@@ -54,13 +54,14 @@ public class GameController {
 			int number_of_player;
 			do{
 				number_of_player = scanner.nextInt();
+				scanner.nextLine();
 				if(number_of_player < 3 || number_of_player > 8)
 					System.out.println("Invalid value, try again!");
 			} while(number_of_player < 3 || number_of_player > 8);
 			for(int i = 0; i< number_of_player; i++){
-				System.out.println("Player "+ i + " class (eskimo/scientist): ");
-				String type = scanner.nextLine();
-				type.toLowerCase();
+				int playernumber = i+1;
+				System.out.println("Player "+ playernumber + " class (eskimo/scientist): ");
+				String type = scanner.nextLine().toLowerCase();
 				if(type.equals("eskimo")){
 					players.add(new Eskimo(this, i));
 				} else if (type.equals("scientist")){
@@ -79,6 +80,8 @@ public class GameController {
 				player.spawnOnto(tiles.get(0));
 			}
 			polarBear = generator.getPolarBear();
+
+			tiles.get(0).snow=20;
 
 			players.get(0).takeItem(new Food());
 			players.get(0).takeItem(new Shovel());
@@ -139,17 +142,29 @@ public class GameController {
 			player.takeTurn();
 			if (gameState != GameState.Running) return;
 		}
-		if(isControlledRandomness()){
+		if(!isControlledRandomness()){
 			Random r = new Random();
 			int blizzard_is_coming = r.nextInt(2);
 			if(blizzard_is_coming == 1){
 				blizzard();
 			}
 		} else {
-			String isBlizzard = scanner.nextLine();
-			isBlizzard.toLowerCase();
-			if(isBlizzard.equals("blizzard"))
-				blizzard();
+			boolean sikeres_command = false;
+			while(!sikeres_command){
+				System.out.println("Blizzard (yes / no)");
+				String isBlizzard = scanner.nextLine().toLowerCase();
+				if(isBlizzard.equals("yes")){
+					blizzard();
+					sikeres_command = true;
+				}
+				if(isBlizzard.equals("no")){
+					sikeres_command = true;
+				}
+				else if ( !isBlizzard.equals("yes") ){
+					System.out.println("Please type 'yes' for blizzard and 'no' for no blizzard.");
+				}
+			}
+
 		}
 
 		polarBear.move();

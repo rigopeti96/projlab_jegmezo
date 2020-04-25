@@ -96,6 +96,7 @@ public abstract class Player extends Entity{
 			return false;
 
 		hova.stepOnto(this, tile);
+		tile=hova;
 		return true;
 	}
 	
@@ -173,8 +174,8 @@ public abstract class Player extends Entity{
 	public Tile selectTile() {
 		System.out.println("Neighbouring tiles: ");
 		List<Tile> neighbourTiles = this.tile.getNeighbours();
-		for (Tile tile: neighbourTiles){
-			tile.toLongString();
+		for (Tile tile: neighbourTiles) {
+			System.out.println(tile.toLongString() );
 		}
 
 		while (true){
@@ -221,18 +222,28 @@ public abstract class Player extends Entity{
 				return this.digWithHands();
 			case "pickup":
 				return pickup();
+			case "move":
+				return move();
 			default:
 				gameController.handleControlCommand(command);
 				return false;
 		}
 	}
 
+	/**
+	 * Meg tudja-e menteni a játékos egy másik játékost a lyukba lépés után
+	 * @return TRUE ha megmenthető, egyébként FALSE
+	 */
 	public boolean canSave(){
 		if (inventory.getRopeCount()>0)
 			return true;
 		return false;
 	}
 
+	/**
+	 * Túl tud-e élni a jákékos lyukba lépés után (van-e nála búvárruha)
+	 * @return TRUE ha megmenthető, egyébként FALSE
+	 */
 	public boolean canSurvive(){
 		if (inventory.getScubaCount()>0)
 			return true;
@@ -251,5 +262,6 @@ public abstract class Player extends Entity{
 		System.out.println("Player "+number+" can’t places a tent Sheet(ID="+tile.getId()+") already has one.");
 		return false;
 	}
+
 }
 

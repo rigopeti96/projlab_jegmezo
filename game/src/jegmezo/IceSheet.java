@@ -20,17 +20,17 @@ public class IceSheet extends Tile {
 	/** A játékos rálép a jégtáblára, ha több játékos lenne a táblán akkor átfordul*/
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
+		discovered=true;
 		System.out.println("Player "+player.getNumber()+" moved to "+toLongString());
 		if(players.size()==playerLimit.getElement()){
 			System.out.println("Sheet "+id+" turned over.\nAll players on it drowned.");
 			gameController.gameOver();
 			return;
 		}
-		if(polarBear!=null && (building==Building.NONE||building==Building.TENT)){
+		if(polarBear!=null && (building==Building.NONE||building==Building.TENT)) {
 			player.eaten();
 			return;
 		}
-
 		players.add(player);
 		prevTile.stepOff(player);
 
@@ -50,6 +50,7 @@ public class IceSheet extends Tile {
 	@Override
 	public int examinePlayerLimit() {
 		playerLimit.discover();
+		discovered=true;
 		return playerLimit.getElement();
 	}
 
@@ -104,10 +105,9 @@ public class IceSheet extends Tile {
 	 * @return true, ha sikeres volt, false, ha nem*/
 	@Override
 	public boolean build(Building building){
-		if(!hasBuilding())
+		if(hasBuilding())
 			return false;
 		this.building = building;
-		System.out.println();
 		return true;
 	}
 
@@ -179,6 +179,8 @@ public class IceSheet extends Tile {
 
 	@Override
 	public String toLongString() {
+		if(!discovered)
+			return "Tile(ID="+id+")";
 		return "Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
 				", item=" + item.toString() + ", building=" + building.toString() + ")";
 	}

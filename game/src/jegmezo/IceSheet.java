@@ -138,7 +138,7 @@ public class IceSheet extends Tile {
 	 */
 	@Override
 	public void serialize() {
-		System.out.println("Sheet(ID=" + id + ",playerLimit=" + playerLimit + ",snow=" + snow + ",item=" + (item != null ? item.getName() : "none") + ")");
+		System.out.println("Sheet(ID=" + id + ",playerLimit=" + playerLimit + ",snow=" + snow + ",item=" + (item != null ? item.getElement().getName() : "none") + ")");
 	}
 
 	@Override

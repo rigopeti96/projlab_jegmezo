@@ -33,18 +33,18 @@ public class PolarBear extends Entity{
             Random rand = new Random();
             int random_mezo = rand.nextInt(3);
 
-            boolean moveDone= false;
-            while( !moveDone || !neighbourTiles.isEmpty() ){
+            while( true ){
                 if (neighbourTiles.get(random_mezo).examinePlayerLimit() ==0){
                     neighbourTiles.remove(random_mezo);
+                    if ( neighbourTiles.isEmpty() ){
+                         System.out.println("Polarbear can't move");
+                         return false;
+                    }
                 }else{
-                    System.out.println("Polarbear moved to" + neighbourTiles.get(random_mezo).toShortString() );
                     neighbourTiles.get(random_mezo).stepOnPolarBear(this, tile);
+                    return true;
                 }
             }
-
-                System.out.println("Polarbear can't move");
-                return false;
         }else{
             //ha van controlled randomness
             System.out.println("Move Polarbear to new tile");

@@ -1,9 +1,7 @@
 # Name
 Empty test case
-
 # Input
 init game
 controlled
-
 # Output
 Type of randomness (controlled/random): 

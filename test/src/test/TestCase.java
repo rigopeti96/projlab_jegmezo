@@ -16,21 +16,21 @@ public class TestCase {
         BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         try {
             String line;
-            while ((line = reader.readLine()) != null && !line.equals("")) {
+            while ((line = reader.readLine()) != null && !line.equals("# Input")) {
                 if (line.startsWith("#")) continue;
                 name = line;
                 reader.readLine();
                 break;
             }
 
-            while ((line = reader.readLine()) != null && !line.equals("")) {
+            while ((line = reader.readLine()) != null && !line.equals("# Output")) {
                 if (line.startsWith("#")) continue;
                 inputLines.add(line);
             }
 
             if (line == null) throw new InvalidTestCaseFormatException();
 
-            while ((line = reader.readLine()) != null && !line.equals("")) {
+            while ((line = reader.readLine()) != null) {
                 if (line.startsWith("#")) continue;
                 outputLines.add(line);
             }

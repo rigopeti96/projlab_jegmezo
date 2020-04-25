@@ -13,6 +13,7 @@ PolarBear(tile=4)
 
 build igloo
 save game
+exit
 # Output
 Player 1 please select an action (eskimo, actions remaining (4)): 
 Player 1 can't build igloo to Sheet (ID=1)

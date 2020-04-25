@@ -5,6 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class TestCase {
@@ -63,8 +64,8 @@ public class TestCase {
                     .redirectOutput(new File("tempOutput.txt"))
                     .start();
 
-            Thread.sleep(1000);
-            process.destroy();
+            process.waitFor(5000, TimeUnit.MILLISECONDS);
+
             File tempOutput = new File("tempOutput.txt");
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(tempOutput)));
             String line;

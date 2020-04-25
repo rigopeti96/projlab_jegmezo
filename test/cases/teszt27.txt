@@ -13,6 +13,7 @@ PolarBear(tile=4)
 
 dig
 save game
+exit
 # Output
 Player 1 please select an action (eskimo, actions remaining (4)): 
 Found item null

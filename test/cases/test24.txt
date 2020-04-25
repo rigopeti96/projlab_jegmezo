@@ -19,6 +19,7 @@ PolarBear(tile=2)
 use item
 flare
 save game
+exit
 # Output
 Player 1 select an action (move/dig/pickup/use item/trade) [4 remaining]:
 Player 1’s items:

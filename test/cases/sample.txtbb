@@ -3,5 +3,6 @@ Empty test case
 # Input
 init game
 controlled
+exit
 # Output
 Type of randomness (controlled/random): 

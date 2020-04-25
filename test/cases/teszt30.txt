@@ -15,6 +15,7 @@ PolarBear(tile=4)
 examine
 4
 save game
+exit
 # Output
 Player 1 please select an action (eskimo, actions remaining (4)): 
 Neighbouring tiles: 

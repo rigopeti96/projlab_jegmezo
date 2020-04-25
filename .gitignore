@@ -25,3 +25,6 @@ fabric.properties
 
 # Build
 class/
+
+tempInput.txt
+tempOutput.txt

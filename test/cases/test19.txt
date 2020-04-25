@@ -18,6 +18,7 @@ trade
 2
 flare
 save game
+exit
 # Output
 Player 1 select an action (move/dig/pickup/use item/trade) [4 remaining]:
 Close players:

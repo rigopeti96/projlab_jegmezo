@@ -221,6 +221,8 @@ public abstract class Player extends Entity{
 				return this.digWithHands();
 			case "pickup":
 				return pickup();
+			case "move":
+				return move();
 			default:
 				gameController.handleControlCommand(command);
 				return false;

@@ -35,4 +35,8 @@ public class Discoverable<T> {
         callback.run();
         discover();
     }
+
+    public boolean isDiscovered() {
+        return discovered;
+    }
 }

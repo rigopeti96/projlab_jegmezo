@@ -69,6 +69,20 @@ public class IceSheet extends Tile {
 		this.item = new Discoverable<>(item, "none");
 	}
 
+	/**
+	 * Felfedezi a mezőn található item-et
+	 */
+	public void discoverItem() {
+		item.discover();
+	}
+
+	/**
+	 * Felfedezi a mező playerLimit-jét
+	 */
+	public void discoverPlayerLimit() {
+		playerLimit.discover();
+	}
+
 	/** A mezőn lévő tárgy levétele*/
 	@Override
 	public void removeItem() {
@@ -140,7 +154,11 @@ public class IceSheet extends Tile {
 	 */
 	@Override
 	public void serialize() {
-		System.out.println("Sheet(ID=" + id + ",playerLimit=" + playerLimit.toDiscoveredString() + ",snow=" + snow + ",item=" + item.toDiscoveredString() + ")");
+		System.out.println("Sheet(ID=" + id
+				+ ",playerLimit=" + playerLimit.toDiscoveredString()
+				+ ",playerLimitDiscovered=" + (playerLimit.isDiscovered() ? "true" : "false")
+				+ ",snow=" + snow
+				+ ",item=" + item.toDiscoveredString() + ",itemDiscovered="+ (item.isDiscovered() ? "true" : "false") + ")");
 	}
 
 	@Override

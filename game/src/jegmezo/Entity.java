@@ -1,7 +1,5 @@
 package jegmezo;
 
-import java.util.Scanner;
-
 public abstract class Entity {
 
     protected Tile tile;

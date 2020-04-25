@@ -31,9 +31,9 @@ public class PolarBear extends Entity{
             ArrayList<Tile> neighbourTiles= new ArrayList<Tile>();
             neighbourTiles.addAll(this.tile.getNeighbours());
             Random rand = new Random();
-            int random_mezo = rand.nextInt(3);
 
             while( true ){
+                int random_mezo = rand.nextInt(neighbourTiles.size() );
                 if (neighbourTiles.get(random_mezo).examinePlayerLimit() ==0){
                     neighbourTiles.remove(random_mezo);
                     if ( neighbourTiles.isEmpty() ){
@@ -63,7 +63,7 @@ public class PolarBear extends Entity{
         ArrayList<Tile> neighbourTiles= new ArrayList<Tile>();
         neighbourTiles.addAll(this.tile.getNeighbours());
         for (Tile tile: neighbourTiles){
-            tile.toLongString();
+            System.out.println(tile.toLongString() );
         }
 
         while (true){

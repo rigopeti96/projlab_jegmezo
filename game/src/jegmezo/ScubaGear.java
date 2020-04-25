@@ -24,21 +24,18 @@ public class ScubaGear implements Item {
 	 *  @param player - A Player, aki használni akarja a ScubaGeart.
 	 *  @return  false - Nem lehet használni*/
 	public boolean use(Player player) {
-		System.out.println("ScubaGear use");
 		return false;
 	}
 	
 	/** Mindig hamisat ad (érvényes specifikáció szerint)
 	 * @return false - Nem tud megmenteni más játékost. */
 	public boolean canSave() {
-		System.out.println("ScubaGear canSave");
 		return false;
 	}
 	
 	/** Mindig igazat ad (érvényes specifikáció szerint)
 	 *  @return true - A viselõje túléli a lyukbaesést. */
 	public boolean canSurvive() {
-		System.out.println("ScubaGear canSurvive");
 		return true;
 	}
 

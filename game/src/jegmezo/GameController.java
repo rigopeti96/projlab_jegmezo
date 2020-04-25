@@ -44,7 +44,6 @@ public class GameController {
 				else valid = false;
 			}
 		} else if (gameState == GameState.Creating && command.equals("start game")) {
-			System.out.println("start game command ran");
 			players.clear();
 			tiles.clear();
 			// TODO: Set players up from input
@@ -70,7 +69,6 @@ public class GameController {
 
 			gameState = GameState.Stopped;
 		} else if (command.equals("load game")) {
-			System.out.println("load game command ran");
 			tiles.clear();
 			players.clear();
 			this.loadGame();
@@ -104,7 +102,6 @@ public class GameController {
 	
 	/** A hóvihar lebonyolításáért felel*/
 	public void blizzard() {
-		System.out.println("Blizzard");
 		for (Tile tile : tiles.values()) {
 			tile.blizzard();
 		}

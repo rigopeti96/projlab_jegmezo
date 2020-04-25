@@ -22,19 +22,16 @@ public class Rope implements Item {
 	 * @return true ha sikeres, false ha nem */
 	@Override
 	public boolean use(Player player) {
-		System.out.println("Rope use");
 		return false;
 	}
 
 	/** megnézi, hogy meg lehet-e menteni csapattársát ezzel a tárggyal */
 	public boolean canSave(){
-		System.out.println("Rope canSave");
 		return true;
 	}
 	
 	/** megnézi, hogy túl lehet-e élni a lyukba esést ezzel a tárggyal*/
 	public boolean canSurvive(){
-		System.out.println("Rope canSurvive");
 		return false;
 	}
 

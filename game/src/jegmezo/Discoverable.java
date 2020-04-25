@@ -1,15 +1,25 @@
 package jegmezo;
 
 public class Discoverable<T> {
+    String nullString;
     boolean discovered;
     T element;
 
     public Discoverable(T element) {
         this.element = element;
+        this.nullString = "";
     }
 
-    public String toString(String nullString) {
-        return discovered ? (element != null ? element.toString() : nullString) : "?";
+    public Discoverable(T element, String nullString) {
+        this.element = element;
+    }
+
+    public String toString() {
+        return discovered ? toDiscoveredString() : "?";
+    }
+
+    public String toDiscoveredString() {
+        return element != null ? element.toString() : this.nullString;
     }
 
     public T getElement() {

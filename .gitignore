@@ -19,7 +19,7 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-game/.idea
+.idea
 .vs
 .DS_STORE
 

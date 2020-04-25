@@ -44,4 +44,11 @@ public class WinItem implements Item {
 	public String getName() {
 		return name;
 	}
+
+	/**
+	 * Meghívja a getName függvényt, hogy rendes nevet adjon vissza
+	 * @return - a tárgy neve
+	 */
+	@Override
+	public String toString(){return getName();}
 }

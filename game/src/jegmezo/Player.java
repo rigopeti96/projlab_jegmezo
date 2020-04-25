@@ -100,8 +100,8 @@ public abstract class Player extends Entity{
 	
 	/** Megnöveli a játékos testhőjét 1-gyel */
 	public void increaseBodyHeat() {
-		System.out.println("Player " + number + "’s body heat increases by 1 to " + bodyHeat + ".");
 		bodyHeat++;
+		System.out.println("Player " + number + "’s body heat increases by 1 to " + bodyHeat + ".");
 	}
 	
 	/** Lecsökkenti a játékos testhőjét 1-gyel */

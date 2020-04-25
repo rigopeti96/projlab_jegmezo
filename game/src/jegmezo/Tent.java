@@ -41,4 +41,11 @@ public class Tent implements Item{
     public String getName() {
         return "tent";
     }
+
+    /**
+     * Meghívja a getName függvényt, hogy rendes nevet adjon vissza
+     * @return - a tárgy neve
+     */
+    @Override
+    public String toString(){return getName();}
 }

@@ -46,4 +46,11 @@ public class ScubaGear implements Item {
 	public String getName() {
 		return "scuba gear";
 	}
+
+	/**
+	 * Meghívja a getName függvényt, hogy rendes nevet adjon vissza
+	 * @return - a tárgy neve
+	 */
+	@Override
+	public String toString(){return getName();}
 }

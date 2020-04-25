@@ -1,5 +1,5 @@
 # Name
-Hóvihar esemény következik be bizonyos tile-okon. (Positive)
+32. Hóvihar esemény következik be bizonyos tile-okon. (Positive)
 # Input
 init game
 controlled

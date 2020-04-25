@@ -1,5 +1,5 @@
 # Name
-Egy játékos szeretne egy győzelmi itemet átadni egy másik játékosnak, akinél már van egy.
+19. Egy játékos szeretne egy győzelmi itemet átadni egy másik játékosnak, akinél már van egy.
 # Input
 load game
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
@@ -40,4 +40,5 @@ Player-Item(number=2,item=cartridge,count=1)
 Player-Item(number=2,item=flare,count=1)
 
 PolarBear(tile=2)
+
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:

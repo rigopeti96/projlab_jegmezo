@@ -1,5 +1,5 @@
 # Name
-A tudós (Scientist) felméri a kiválasztott mező teherbírási képességét. (Positive)
+30. A tudós (Scientist) felméri a kiválasztott mező teherbírási képességét. (Positive)
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=igloo)

@@ -1,5 +1,5 @@
 # Name
-A játékos használná a nála lévő győzelmi itemet, azonban nincs nála mind három.
+25. A játékos használná a nála lévő győzelmi itemet, azonban nincs nála mind három.
 # Input
 load game
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)

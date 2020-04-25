@@ -1,5 +1,5 @@
 # Name
-Hóvihar esemény alatt a játékosok egy építményben vannak (iglu/sátor), így a testhőjük nem csökken. (Negative)
+33. Hóvihar esemény alatt a játékosok egy építményben vannak (iglu/sátor), így a testhőjük nem csökken. (Negative)
 # Input
 init game
 controlled

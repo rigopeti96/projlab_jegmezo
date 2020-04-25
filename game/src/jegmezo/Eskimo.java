@@ -27,7 +27,7 @@ public class Eskimo extends Player {
 	 *  @return bool - Sikerült-e akciót választani.  */
 	public boolean selectAction() {
 		System.out.print("Player " + number + " please select an action (eskimo, actions remaining (" + actions + ")): ");
-		String command = new Scanner(System.in).nextLine();
+		String command = gameController.getScanner().nextLine();
 		if (command.equals("build igloo")) {
 			return this.buildIgloo();
 		} else return this.selectActionCommon(command);

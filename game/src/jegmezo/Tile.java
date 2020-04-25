@@ -156,7 +156,7 @@ public abstract class Tile {
 		}
 		while (true) {
 			System.out.println("Select player (<number/cancel>):" );
-			String line = new Scanner(System.in).nextLine().trim();
+			String line = gameController.getScanner().nextLine().trim();
 
 			if (line.equals("cancel")) return null;
 			for (Player player: sortedPlayers) {

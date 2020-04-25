@@ -10,7 +10,7 @@ public abstract class Player extends Entity{
 	protected int actions;
 	protected int number;
 	//protected Tile tile;
-	private Inventory inventory = new Inventory();
+	private Inventory inventory;
 
 	public Player(GameController gameController, int number) {
 		this(gameController, number, 4);
@@ -18,6 +18,7 @@ public abstract class Player extends Entity{
 
 	public Player(GameController gameController, int number, int bodyHeat) {
 		this.gameController = gameController;
+		this.inventory = new Inventory(gameController);
 		this.number = number;
 		this.bodyHeat = bodyHeat;
 	}
@@ -179,7 +180,7 @@ public abstract class Player extends Entity{
 
 		while (true){
 			System.out.println("Select tile (<ID>/cancel)");
-			String line = new Scanner(System.in).nextLine().trim();
+			String line = gameController.getScanner().nextLine().trim();
 
 			if(line.equals("cancel")) return null;
 			for (Tile tile : neighbourTiles) {

@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 /**Minden játékoshoz tartozik egy Inventory, ebben van eltárolva, hogy melyik tárgyból mennyi van. A WinItemeken kívül mindenből csak egy lehet egy játékosnál */
 public class Inventory {
+	private GameController gameController;
 	private List<Item> items = new ArrayList<>();
 	private int countShovel;
 	private int countFood;
@@ -15,7 +16,8 @@ public class Inventory {
 	private int countBreakableShovel;
 	private int countTent;
 
-	public Inventory(){
+	public Inventory(GameController gameController){
+		this.gameController = gameController;
 		countShovel = 0;
 		countFood = 0;
 		countRope = 0;
@@ -176,7 +178,7 @@ public class Inventory {
 
 		while (true) {
 			System.out.println("Select item (<name>/cancel): ");
-			String line = new Scanner(System.in).nextLine().trim();
+			String line = gameController.getScanner().nextLine().trim();
 			if (line.equals("food")) return new Food();
 			else if (line.equals("cancel")) return null;
 

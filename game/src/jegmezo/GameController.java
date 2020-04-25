@@ -224,15 +224,19 @@ public class GameController {
 	private void deserializeTile(DeserializedLine line) {
 		String idStr = line.getParameters().get("ID");
 		String snow = line.getParameters().get("snow");
-		String playerLimit = line.getParameters().get("playerLimit");
 		try {
 			int id = Integer.parseInt(idStr);
 			if (line.getName().equals("Hole")) tiles.put(id, new Hole(this, id, Integer.parseInt(snow)));
 			else {
 				Item item = deserializeItem(line.getParameters().get("item"));
+				String playerLimit = line.getParameters().get("playerLimit");
+				boolean itemDiscovered = line.getParameters().get("itemDiscovered").equals("true");
+				boolean playerLimitDiscovered = line.getParameters().get("playerLimitDiscovered").equals("true");
 				IceSheet sheet = new IceSheet(this, id, Integer.parseInt(playerLimit), Integer.parseInt(snow));
 				tiles.put(id, sheet);
 				sheet.setItem(item);
+				if (itemDiscovered) sheet.discoverItem();
+				if (playerLimitDiscovered) sheet.discoverPlayerLimit();
 			}
 		}
 		catch (NumberFormatException e) {

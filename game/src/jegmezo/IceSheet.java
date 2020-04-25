@@ -66,7 +66,21 @@ public class IceSheet extends Tile {
 	 * @param item a mezőn lévő tárgy vagy null, ha nincs
 	 */
 	public void setItem(Item item) {
-		this.item = new Discoverable<>(item);
+		this.item = new Discoverable<>(item, "none");
+	}
+
+	/**
+	 * Felfedezi a mezőn található item-et
+	 */
+	public void discoverItem() {
+		item.discover();
+	}
+
+	/**
+	 * Felfedezi a mező playerLimit-jét
+	 */
+	public void discoverPlayerLimit() {
+		playerLimit.discover();
 	}
 
 	/** A mezőn lévő tárgy levétele*/
@@ -142,7 +156,11 @@ public class IceSheet extends Tile {
 	 */
 	@Override
 	public void serialize() {
-		System.out.println("Sheet(ID=" + id + ",playerLimit=" + playerLimit + ",snow=" + snow + ",item=" + (item != null ? item.getElement().getName() : "none") + ")");
+		System.out.println("Sheet(ID=" + id
+				+ ",playerLimit=" + playerLimit.toDiscoveredString()
+				+ ",playerLimitDiscovered=" + (playerLimit.isDiscovered() ? "true" : "false")
+				+ ",snow=" + snow
+				+ ",item=" + item.toDiscoveredString() + ",itemDiscovered="+ (item.isDiscovered() ? "true" : "false") + ")");
 	}
 
 	@Override
@@ -151,6 +169,6 @@ public class IceSheet extends Tile {
 	@Override
 	public String toLongString() {
 		return "Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
-				", item=" + item.toString("none") + ", building=" + building.toString() + ")";
+				", item=" + item.toString() + ", building=" + building.toString() + ")";
 	}
 }

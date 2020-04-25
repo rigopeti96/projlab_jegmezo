@@ -95,6 +95,8 @@ public class GameController {
 			gameState = GameState.Stopped;
 		} else if (command.equals("save game")) {
 			saveGame();
+		} else if (command.equals("exit")) {
+			System.exit(0);
 		} else {
 			System.out.println("No such command '" + command + "'");
 		}

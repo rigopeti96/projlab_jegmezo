@@ -17,18 +17,20 @@ shovel
 save game
 exit
 # Output
-Player 1 select an action (move/dig/pickup/use item/trade) [4 remaining]:
-Player 1’s items:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
+Player 1's items:
 1x shovel
 Select item (<name>/cancel):
 Player 1 removes 2 snow from Sheet(ID=0).
-Player 1 select an action (move/dig/pickup/use item/trade/useability) [4 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=2,item=none,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=0,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
+Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
 
 
 Eskimo(number=1,heat=4,tile=0)
 
-Player-Item(number=1,item=rope,count=1)
+Player-Item(number=1,item=shovel,count=1)
 
 PolarBear(tile=2)
+
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:

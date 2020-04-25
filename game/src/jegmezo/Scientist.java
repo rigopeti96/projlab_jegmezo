@@ -20,7 +20,7 @@ public class Scientist extends Player {
 			return false;
 		int limit = examined.examinePlayerLimit();
 
-		System.out.println("Player "+ number + " checked the stability of "+ examined.toShortString() + "It can take " + limit + " players.");
+		System.out.println("Player "+ number + " checked the stability of "+ examined.toShortString() + ". It can take " + limit + " players.");
 		return true;
 	}
 

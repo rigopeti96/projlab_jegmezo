@@ -71,7 +71,7 @@ public class PolarBear extends Entity{
         }
 
         while (true){
-            System.out.println("Select tile (<ID>/cancel)");
+            System.out.println("Select tile (<ID>/cancel):");
             String line = gameController.getScanner().nextLine().trim();
 
             if(line.equals("cancel")) return null;

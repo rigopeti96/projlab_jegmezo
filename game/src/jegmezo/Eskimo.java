@@ -16,10 +16,10 @@ public class Eskimo extends Player {
 	 *  @return bool - Sikerült-e építeni.  */
 	public boolean buildIgloo() {
 		if(tile.build(Building.igloo)) {
-			System.out.println("Player "+ number +" builds igloo to Sheet (ID="+ tile.getId()+")");
+			System.out.println("Player "+ number +" builds igloo on " + tile.toShortString() + ".");
 			return true;
 		}
-		System.out.println("Player "+ number +" can't build igloo to Sheet (ID="+ tile.getId()+")");
+		System.out.println("Player "+ number +" can't build igloo on " + tile.toShortString() + ".");
 		return false;
 	}
 

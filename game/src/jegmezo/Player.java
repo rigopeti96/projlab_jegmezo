@@ -84,8 +84,8 @@ public abstract class Player extends Entity{
 			gameController.win();
 			return true;
 		}
-		if(!tile.hasAllPlayers()) System.out.println("Player " + number+ " can’t assemble the flare gun (not all players present).");
-		if(!(inventory.getWinItemCount()==3)) System.out.println("Player " + number+ " can’t assemble the flare gun (parts missing).");
+		if(!tile.hasAllPlayers()) System.out.println("Player " + number+ " can't assemble the flare gun (not all players present).");
+		if(!(inventory.getWinItemCount()==3)) System.out.println("Player " + number+ " can't assemble the flare gun (parts missing).");
 		return false;
 	}
 	
@@ -104,13 +104,13 @@ public abstract class Player extends Entity{
 	/** Megnöveli a játékos testhőjét 1-gyel */
 	public void increaseBodyHeat() {
 		bodyHeat++;
-		System.out.println("Player " + number + "’s body heat increases by 1 to " + bodyHeat + ".");
+		System.out.println("Player " + number + "'s body heat increases by 1 to " + bodyHeat + ".");
 	}
 	
 	/** Lecsökkenti a játékos testhőjét 1-gyel */
 	public void decreaseBodyHeat() {
 		bodyHeat--;
-		System.out.println("Player " + number + "’s body heat decrease by 1 to " + bodyHeat + ".");
+		System.out.println("Player " + number + "'s body heat decrease by 1 to " + bodyHeat + ".");
 		if(bodyHeat == 0) {
 			gameController.gameOver();
 		}
@@ -132,10 +132,10 @@ public abstract class Player extends Entity{
 	 * @return true ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithHands() {
 		if(tile.removeSnow(1)){
-			System.out.println("Player "+number+" removes 1 snow from Sheet(ID="+tile.getId()+").");
+			System.out.println("Player "+number+" removes 1 snow from " + tile.toShortString() + ".");
 			return true;
 		}
-		System.out.println("Player "+number+" can’t remove snow from Sheet(ID="+tile.getId()+").");
+		System.out.println("Player "+number+" can't remove snow from " + tile.toShortString() + ".");
 		return false;
 	}
 
@@ -143,10 +143,10 @@ public abstract class Player extends Entity{
 	 * @return True ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithShovel() {
 		if(tile.removeSnow(2)){
-			System.out.println("Player "+number+" removes 2 snow from Sheet(ID="+tile.getId()+").");
+			System.out.println("Player "+number+" removes 2 snow from " + tile.toShortString() + ".");
 					return true;
 		}
-		System.out.println("Player "+number+" can’t remove 2 snow from Sheet(ID="+tile.getId()+").");
+		System.out.println("Player "+number+" can't remove 2 snow from " + tile.toShortString() + ".");
 		return false;
 	}
 	
@@ -184,7 +184,7 @@ public abstract class Player extends Entity{
 		}
 
 		while (true){
-			System.out.println("Select tile (<ID>/cancel)");
+			System.out.println("Select tile (<ID>/cancel):");
 			String line = gameController.getScanner().nextLine().trim();
 
 			if(line.equals("cancel")) return null;
@@ -261,10 +261,10 @@ public abstract class Player extends Entity{
 	 */
 	public boolean buildTent() {
 		if(tile.build(Building.tent)){
-			System.out.println("Player "+number+" places a tent on Sheet(ID="+tile.getId()+").");
+			System.out.println("Player "+number+" places a tent on " + tile.toShortString() + ".");
 			return true;
 		}
-		System.out.println("Player "+number+" can’t places a tent Sheet(ID="+tile.getId()+") already has one.");
+		System.out.println("Player "+number+" can't place a tent " + tile.toShortString() + " already has one.");
 		return false;
 	}
 

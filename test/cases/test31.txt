@@ -1,0 +1,39 @@
+# Name
+A tudós egy ismeretlen lyukat talál. (Positive)
+# Input
+load game
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=igloo)
+Hole(ID=2,snow=2)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+
+Tile-Tile(ID1=1,ID2=2)
+
+Scientist(number=1,heat=1,tile=1)
+
+
+PolarBear(tile=4)
+
+examine
+2
+save game
+exit
+# Output
+Player 1 select an action (move/dig/pickup/use item/trade/examine) [4 remaining]:
+Neighbouring tiles:
+Tile(ID=2)
+Select tile (<ID>/cancel):
+Player 1 checked the stability of Hole(ID=2). It can take 0 players.
+Player 1 select an action (move/dig/pickup/use item/trade/examine) [3 remaining]:
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=igloo)
+Hole(ID=2,snow=2)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+
+Tile-Tile(ID1=1,ID2=2)
+Tile-Tile(ID1=2,ID2=1)
+
+Scientist(number=1,heat=1,tile=1)
+
+
+PolarBear(tile=4)
+
+Player 1 select an action (move/dig/pickup/use item/trade/examine) [3 remaining]:

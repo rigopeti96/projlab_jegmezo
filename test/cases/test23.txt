@@ -17,8 +17,8 @@ PolarBear(tile=2)
 use item
 flare
 # Output
-Player 1 select an action (move/dig/pickup/use item/trade) [4 remaining]:
-Player 1’s items:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
+Player 1's items:
 1x flare
 1x flare gun
 1x cartridge

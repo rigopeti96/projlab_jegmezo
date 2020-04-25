@@ -1,0 +1,32 @@
+# Name
+Hóvihar esemény következik be bizonyos tile-okon. (Positive)
+# Input
+init game
+controlled
+load game
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+
+Tile-Tile(ID1=1,ID2=4)
+
+Scientist(number=1,heat=1,tile=1)
+
+
+PolarBear(tile=4)
+
+pass
+pass
+pass
+pass
+yes
+yes
+# Output
+Type of randomness (controlled/random):
+Player 1 select an action (move/dig/pickup/use item/trade/examine) [4 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/examine) [3 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/examine) [2 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/examine) [1 remaining]:
+[controlled randomness] Blizzard (yes/no):
+[controlled randomness] Snowfall on Tile(ID=1) (yes/no):
+Player 1's body heat decrease by 1 to 0.
+Game over.

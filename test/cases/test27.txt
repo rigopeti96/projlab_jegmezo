@@ -15,11 +15,10 @@ dig
 save game
 exit
 # Output
-Player 1 please select an action (move/dig/pick up/use item/trade/ use ability, actions remaining (4)): 
-Found item null
-Player 1 can’t remove snow from Sheet(ID=1).
-Player 1 please select an action (move/dig/pick up/use item/trade/ use ability, actions remaining (4)): 
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=null,itemDiscovered=true,building=none)
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
+Player 1 can't remove snow from Sheet(ID=1).
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
 Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
 
 
@@ -28,4 +27,4 @@ Eskimo(number=1,heat=1,tile=1)
 
 PolarBear(tile=4)
 
-Player 1 please select an action (move/dig/pick up/use item/trade/ use ability, actions remaining (4)): 
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:

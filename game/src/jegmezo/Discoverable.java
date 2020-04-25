@@ -35,7 +35,7 @@ public class Discoverable<T> {
     }
 
     public void discover(Runnable callback) {
-        if (discovered) return;
+        if (discovered || element == null) return;
         callback.run();
         discover();
     }

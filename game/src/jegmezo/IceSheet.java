@@ -39,8 +39,9 @@ public class IceSheet extends Tile {
 
 	@Override
 	public boolean removeSnow(int amount) {
+		if (snow > 0) System.out.println(" removes " + amount + " snow from " + toShortString() + ".");
+		else System.out.println(" can't remove snow from " + toShortString() + ".");
 		boolean ret = super.removeSnow(amount);
-		System.out.println(" removes " + amount + " snow from " + toShortString() + ".");
 		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString() + "."));
 		return ret;
 	}

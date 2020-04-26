@@ -1,5 +1,5 @@
 # Name
-A jegesmedve egy mezőt arréb lép
+37. A jegesmedve egy mezőt arréb lép
 # Input
 init game
 controlled

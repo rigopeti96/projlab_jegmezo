@@ -21,7 +21,7 @@ Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remain
 Player 1's items:
 1x shovel
 Select item (<name>/cancel):
-Player 1 can't remove 2 snow from Sheet(ID=0).
+Player 1 can't remove snow from Sheet(ID=0).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
 Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=false)

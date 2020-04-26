@@ -1,5 +1,5 @@
 #Name
-Jegesmedve megtámadja a sátorban lévő embereket
+41. Jegesmedve megtámadja a sátorban lévő embereket
 # Input
 init game
 controlled
@@ -21,7 +21,7 @@ pass
 no
 0
 # Output
-Loaded map.
+Type of randomness (controlled/random):
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [2 remaining]:

@@ -1,19 +1,14 @@
 package jegmezo;
 
 /**
- * A belépési pontja a programnak
+ * A program
  */
 public class Program {
     /**
-     * A gameController
-     */
-    static GameController gameController = new GameController();
-
-    /**
-     * A main függvénye a programnak
-     * @param args
+     * A belépési pontja a programnak
+     * @param args program agrugmentumok (a program nem vár el illetve használ paramétert)
      */
     public static void main(String[] args) {
-        gameController.startGame();
+        new GameController().startGame();
     }
 }

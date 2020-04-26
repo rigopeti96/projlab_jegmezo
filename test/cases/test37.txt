@@ -22,15 +22,12 @@ pass
 no
 2
 # Output
-Type of randomness (controlled/random)
+Type of randomness (controlled/random):
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [2 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [1 remaining]:
-Blizzard (yes / no)
-Move Polarbear to new tile
-Neighbouring tiles:
-Tile(ID=2)
-Select tile (<ID>/cancel):
-Polar bear moved to Sheet(ID=2)
+[controlled randomness] Blizzard (yes/no):
+[controlled randomness] Polar bear moves to tile (<ID>):
+Polar bear moved to Sheet(ID=2).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:

@@ -27,7 +27,7 @@ public class PolarBear extends Entity{
     @Override
     public boolean move() {
         if( !gameController.isControlledRandomness() ) {
-        //ha nincs conttolled randomness
+        //ha nincs controlled randomness
             ArrayList<Tile> neighbourTiles= new ArrayList<Tile>();
             neighbourTiles.addAll(this.tile.getNeighbours());
             Random rand = new Random();
@@ -37,7 +37,7 @@ public class PolarBear extends Entity{
                 if (neighbourTiles.get(random_mezo).examinePlayerLimit() ==0){
                     neighbourTiles.remove(random_mezo);
                     if ( neighbourTiles.isEmpty() ){
-                         System.out.println("Polarbear can't move");
+                         System.out.println("Polar bear can't move.");
                          return false;
                     }
                 }else{
@@ -49,6 +49,7 @@ public class PolarBear extends Entity{
             //ha van controlled randomness
             System.out.println("[controlled randomness] Polar bear moves to tile (<ID>):");
             Tile hova = gameController.getTileById(gameController.getScanner().nextInt() );
+            gameController.getScanner().nextLine();
             if(hova == null)
                 return false;
             hova.stepOnPolarBear(this, tile);

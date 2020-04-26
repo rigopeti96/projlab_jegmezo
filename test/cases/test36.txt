@@ -22,19 +22,20 @@ use item
 breakable shovel
 # Output
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
-Player 1’s items:
+Player 1's items:
 1x breakable shovel
-Select item (<name>/cancel)
-Player 1 removes 2 snow from Sheet(ID=1)
+Select item (<name>/cancel):
+Player 1 removes 2 snow from Sheet(ID=1).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
-Player 1’s items:
+Player 1's items:
 1x breakable shovel
-Select item (<name>/cancel)
-Player 1 removes 2 snow from Sheet(ID=1)
+Select item (<name>/cancel):
+Player 1 removes 2 snow from Sheet(ID=1).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [2 remaining]:
-Player 1’s items:
+Player 1's items:
 1x breakable shovel
-Select item (<name>/cancel)
-Player 1 removes 2 snow from Sheet(ID=1)
-The shovel breaks
+Select item (<name>/cancel):
+Player 1 removes 2 snow from Sheet(ID=1).
+Found item shovel.
+The shovel breaks.
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [1 remaining]:

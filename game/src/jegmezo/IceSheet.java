@@ -34,13 +34,14 @@ public class IceSheet extends Tile {
 
 
 		player.movedToTile(this);
-		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString()));
+		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString() + "."));
 	}
 
 	@Override
 	public boolean removeSnow(int amount) {
 		boolean ret = super.removeSnow(amount);
-		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString() ) );
+		System.out.println(" removes " + amount + " snow from " + toShortString() + ".");
+		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString() + "."));
 		return ret;
 	}
 
@@ -116,9 +117,9 @@ public class IceSheet extends Tile {
 		if(this.building == Building.none) {
 			for (Player player : super.players) {
 				player.decreaseBodyHeat();
-				super.increaseSnow();
 			}
 		}
+		increaseSnow();
 	}
 
 	/**
@@ -138,7 +139,7 @@ public class IceSheet extends Tile {
 	public void destroyTent() {
 		if(this.building == Building.tent) {
 			this.building = Building.none;
-			System.out.println("All tents destroyed");
+			System.out.println("All tents destroyed.");
 		}
 	}
 
@@ -148,7 +149,7 @@ public class IceSheet extends Tile {
 	 * @param prevTile A medve előző Tile-ja
 	 */
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
-		System.out.println("Polar bear moved to "+toShortString());
+		System.out.println("Polar bear moved to "+toShortString() + ".");
 		if((building==Building.none ||building==Building.tent)&&!players.isEmpty()){
 			for (Player player: players) {
 				System.out.println("Player "+player.getNumber()+" was not in an igloo.");
@@ -157,6 +158,7 @@ public class IceSheet extends Tile {
 			return;
 		}
 		polarBear=pb;
+		polarBear.movedToTile(this);
 		prevTile.steOffPolarBear();
 
 	}

@@ -40,9 +40,11 @@ Player 1's body heat decrease by 1 to 2.
 [controlled randomness] Snowfall on Tile(ID=4) (yes/no):
 [controlled randomness] Snowfall on Tile(ID=5) (yes/no):
 [controlled randomness] Polar bear moves to tile (<ID>):
+Polar bear moved to Sheet(ID=5).
+Player 1 select an action (move/dig/pickup/use item/trade/examine) [4 remaining]:
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=1,item=none,itemDiscovered=false,building=none,discovered=true)
 Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=3,item=shovel,itemDiscovered=false,building=none,discovered=false)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
+Sheet(ID=5,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 Tile-Tile(ID1=4,ID2=5)
 Tile-Tile(ID1=5,ID2=4)
@@ -50,6 +52,6 @@ Tile-Tile(ID1=5,ID2=4)
 Scientist(number=1,heat=2,tile=1)
 
 
-PolarBear(tile=4)
+PolarBear(tile=5)
 
 Player 1 select an action (move/dig/pickup/use item/trade/examine) [4 remaining]:

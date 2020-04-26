@@ -85,6 +85,7 @@ public class Hole extends Tile {
 
 	@Override
 	public void blizzard(){
+		increaseSnow();
 	}
 
 }

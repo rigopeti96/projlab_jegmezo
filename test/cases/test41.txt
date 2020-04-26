@@ -1,37 +1,34 @@
 #Name
 Jegesmedve megtámadja a sátorban lévő embereket
 # Input
+init game
+controlled
 load game
-Sheet(ID=0,playerLimit=4,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=0,playerLimit=4,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=tent,discovered=true)
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=none,itemDiscovered=false,building=none,discovered=false)
 
 Tile-Tile(ID1=0,ID2=1)
 
 Eskimo(number=1,heat=4,tile=0)
 
-Player-Item(number=1,item=tent,count=1)
 
 PolarBear(tile=1)
 
 pass
 pass
 pass
-use-item
-tent
-
-
-
+pass
+no
+0
 # Output
 Loaded map.
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [2 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [1 remaining]:
-Player 1’s items:
-1x tent
-Select item (<name>/cancel)
-Player 1 places a tent on Sheet(ID=0)
-Polar bear moved to Sheet(ID=0)
+[controlled randomness] Blizzard (yes/no):
+[controlled randomness] Polar bear moves to tile (<ID>):
+Polar bear moved to Sheet(ID=0).
 Player 1 was not in an igloo.
 Player 1 was eaten by the polar bear.
 Game over.

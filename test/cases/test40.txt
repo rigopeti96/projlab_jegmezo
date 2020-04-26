@@ -1,9 +1,9 @@
 # Name
-Sátor felépítése
+40. Sátor felépítése
 # Input
 load game
 Sheet(ID=0,playerLimit=4,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=none,itemDiscovered=false,building=none,discovered=false)
+Sheet(ID=4,playerLimit=4,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=5,tile=0)
@@ -17,16 +17,16 @@ tent
 save game
 # Output
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
-Player 1’s items:
+Player 1's items:
 1x tent
-Select item (<name>/cancel)
-Player 1 places a tent on Sheet(ID=0)
+Select item (<name>/cancel):
+Player 1 places a tent on Sheet(ID=0).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
-Sheet(ID=0,playerLimit=4,playerLimitDiscovered=false,snow=0,item=null,itemDiscovered=false,building=tent,discovered=true)
-Sheet(ID=4,playerLimit=4,playerLimitDiscovered=false,snow=0,item=null,itemDiscovered=false,building=none,discovered=false)
+Sheet(ID=0,playerLimit=4,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=tent,discovered=true)
+Sheet(ID=4,playerLimit=4,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=false)
 
 
-Eskimo(num=1,heat=5,tile=0)
+Eskimo(number=1,heat=5,tile=0)
 
 
 PolarBear(tile=4)

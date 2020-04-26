@@ -1,27 +1,32 @@
 # Name
-A jegesmedve megtámadna igluban lévő embereket
+39. A jegesmedve megtámadna igluban lévő embereket
 # Input
+init game
+controlled
 load game
-Sheet(ID=0,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=true)
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=igloo,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
-Tile-Tile(ID1=1,ID2=0)
+Tile-Tile(ID1=1,ID2=4)
 
-Eskimo(number=1,heat=4,tile=0)
+Eskimo(number=1,heat=4,tile=1)
 
 
-PolarBear(tile=1)
+PolarBear(tile=4)
 
 pass
 pass
 pass
-use ability
+pass
+no
+1
 # Output
-Loaded map.
+Type of randomness (controlled/random):
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [2 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [1 remaining]:
-Player 1 builds igloo on Sheet(ID=0).
-Polar bear moved to Sheet(ID=0)
+[controlled randomness] Blizzard (yes/no):
+[controlled randomness] Polar bear moves to tile (<ID>):
+Polar bear moved to Sheet(ID=1).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:

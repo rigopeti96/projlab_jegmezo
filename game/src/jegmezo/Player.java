@@ -122,17 +122,15 @@ public abstract class Player extends Entity{
 
 	/** A játékost megette a medve*/
 	public void eaten(){
-		System.out.println("Player "+number+" has been eaten by polar bear.");
+		System.out.println("Player "+number+" was eaten by the polar bear.");
 		gameController.gameOver();
 	}
 	
 	/** A Player kézzel és és 1 egység havat takarít el a mezőjéről,
 	 * @return true ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithHands() {
-		if(tile.removeSnow(1)){
-			System.out.println("Player "+number+" removes 1 snow from " + tile.toShortString() + ".");
-			return true;
-		}
+		System.out.print("Player " + number);
+		if (tile.removeSnow(1)) return true;
 		System.out.println("Player "+number+" can't remove snow from " + tile.toShortString() + ".");
 		return false;
 	}
@@ -140,10 +138,8 @@ public abstract class Player extends Entity{
 	/** A Player ásóval és és 2 egység havat takarít el a mezőjéről,
 	 * @return True ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithShovel() {
-		if(tile.removeSnow(2)){
-			System.out.println("Player "+number+" removes 2 snow from " + tile.toShortString() + ".");
-					return true;
-		}
+		System.out.print("Player " + number);
+		if (tile.removeSnow(2)) return true;
 		System.out.println("Player "+number+" can't remove 2 snow from " + tile.toShortString() + ".");
 		return false;
 	}

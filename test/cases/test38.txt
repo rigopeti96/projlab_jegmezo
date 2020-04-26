@@ -1,6 +1,8 @@
 # Name
-A jegesmedve megtámad egy embert
+38. A jegesmedve megtámad egy embert
 # Input
+init game
+controlled
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=true)
 Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
@@ -16,12 +18,17 @@ pass
 pass
 pass
 pass
+no
+1
 # Output
+Type of randomness (controlled/random):
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [2 remaining]:
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [1 remaining]:
-Polar bear moved to Sheet(ID=1)
+[controlled randomness] Blizzard (yes/no):
+[controlled randomness] Polar bear moves to tile (<ID>):
+Polar bear moved to Sheet(ID=1).
 Player 1 was not in an igloo.
 Player 1 was eaten by the polar bear.
 Game over.

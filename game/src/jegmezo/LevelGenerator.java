@@ -6,17 +6,17 @@ import java.util.*;
  * Pálya generálásért felelős (hexagonal)
  */
 public class LevelGenerator {
-    private GameController gameController;
-    private LevelTile[][] tiles;
-    private Map<LevelTile, Tile> gameTiles = new HashMap<>();
-    private List<IceSheet> iceSheets = new ArrayList<>();
-    private int rx;
-    private int ry;
-    private int playerCount;
-    private static final double CHANCE = 0.3;
-    private static final double MIN_FRAGMENT = 0.3;
-    private Random random;
-    private PolarBear polarBear;
+    private GameController gameController; //a gameController
+    private LevelTile[][] tiles; //a mezők
+    private Map<LevelTile, Tile> gameTiles = new HashMap<>(); // a játékban levő mezők
+    private List<IceSheet> iceSheets = new ArrayList<>(); //a jégmezők listája
+    private int rx; //a teljes pálya x sugara
+    private int ry; // a pálya y sugara
+    private int playerCount; // a játékosok száma
+    private static final double CHANCE = 0.3; //mekkora eséllyel generálódik tile
+    private static final double MIN_FRACTION = 0.3; //mennyi tile kell legalább
+    private Random random; //random érték
+    private PolarBear polarBear; //jegesmedve
 
     /**
      * Egy hexagonal tile-nak felel meg

@@ -1,7 +1,13 @@
 package jegmezo;
 
+/** Ez a tárgy a törékeny ásó, amivel a játékos ásni tud, de három használat után eltörik.
+ * Leszármazik az ásó osztályból
+ */
 public class BreakableShovel extends Shovel{
 
+    /**
+     * A törékeny ásó tűrőképességét jelölő int, minden használat után csökken egyel
+     */
     private int durability = 3;
 
     /** Beteszi egy Player Inventory-jába magát

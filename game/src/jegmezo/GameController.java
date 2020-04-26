@@ -5,12 +5,30 @@ import java.util.*;
 
 /** A játék lefolytatásáért felel, tratalmazza a játékosokat és a táblát*/
 public class GameController {
-	private Map<Integer, Tile> tiles = new HashMap<>(); // a játékban lévő mezőket tartalmazó map
-	private List<Player> players = new ArrayList<>(); //játékosokat tartalmazó list
-	private PolarBear polarBear = new PolarBear(this); //a játékban egy jegesmedve van
-	private GameState gameState = GameState.Creating; //a játék állapotát tároló enum
-	private boolean controlledRandomness = false; // a játékot lehet controlled és random módban is futtatni, ezt tárolja ez a bool
-	private Scanner scanner = new Scanner(System.in); //beolvasó
+	/**
+	 * a játékban lévő mezőket tartalmazó map
+	 */
+	private Map<Integer, Tile> tiles = new HashMap<>();
+	/**
+	 * játékosokat tartalmazó list
+	 */
+	private List<Player> players = new ArrayList<>();
+	/**
+	 * a játékban egy jegesmedve van
+	 */
+	private PolarBear polarBear = new PolarBear(this);
+	/**
+	 * a játék állapotát tároló enum
+	 */
+	private GameState gameState = GameState.Creating;
+	/**
+	 * a játékot lehet controlled és random módban is futtatni, ezt tárolja ez a bool
+	 */
+	private boolean controlledRandomness = false;
+	/**
+	 * beolvasó
+	 */
+	private Scanner scanner = new Scanner(System.in);
 
 	/** Ez a függvény visszaadja az összes játékos számát*/
 	public int getPlayerCount(){

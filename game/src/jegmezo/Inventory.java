@@ -5,15 +5,42 @@ import java.util.List;
 
 /**Minden játékoshoz tartozik egy Inventory, ebben van eltárolva, hogy melyik tárgyból mennyi van. A WinItemeken kívül mindenből csak egy lehet egy játékosnál */
 public class Inventory {
-	private GameController gameController; //a gameController
-	private List<Item> items = new ArrayList<>(); //a játékos tárgyait tároló list
-	private int countShovel; //a játékos shovel-einek a száma
-	private int countFood; // a játékos ételeinek a száma
-	private int countRope; //a játékos köteleinek a száma
-	private int countScubaGear; //a játékos búvárruháinak száma
-	private int countWinItem; //a játékos győzelmi tárgyainka száma
-	private int countBreakableShovel; // a játékos törékeny ásóinak száma
-	private int countTent; // a játékos sátrainak száma
+	/**
+	 * a gameController
+	 */
+	private GameController gameController;
+	/**
+	 * a játékos tárgyait tároló list
+	 */
+	private List<Item> items = new ArrayList<>();
+	/**
+	 * a játékos shovel-einek a száma
+	 */
+	private int countShovel;
+	/**
+	 * a játékos ételeinek a száma
+	 */
+	private int countFood;
+	/**
+	 * a játékos köteleinek a száma
+	 */
+	private int countRope;
+	/**
+	 * a játékos búvárruháinak száma
+	 */
+	private int countScubaGear;
+	/**
+	 * a játékos győzelmi tárgyainka száma
+	 */
+	private int countWinItem;
+	/**
+	 * a játékos törékeny ásóinak száma
+	 */
+	private int countBreakableShovel;
+	/**
+	 * a játékos sátrainak száma
+	 */
+	private int countTent;
 
 	/**
 	 * @param gameController GameController, ami scanner DI-ja miatt kell

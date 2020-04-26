@@ -2,7 +2,6 @@ package jegmezo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 /**Minden játékoshoz tartozik egy Inventory, ebben van eltárolva, hogy melyik tárgyból mennyi van. A WinItemeken kívül mindenből csak egy lehet egy játékosnál */
 public class Inventory {

@@ -2,7 +2,6 @@ package jegmezo;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 
 /**
  * A jegesmedve class, az Entity leszármazottja, minden kör végén átlép egy szomszédos mezőre.

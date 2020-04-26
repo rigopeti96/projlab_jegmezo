@@ -6,28 +6,42 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Nevesített paraméter map, amit a deserializáláshoz használunk
+ */
 public class DeserializedLine {
     private String name;
     private Map<String, String> parameters;
 
+    /**
+     * @return A neve
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @return A paraméter map
+     */
     public Map<String, String> getParameters() {
         return parameters;
     }
 
     /**
-     *
-     * @param name J
-     * @param parameters
+     * @param name A neve
+     * @param parameters A paramtéter map
      */
     public DeserializedLine(String name, Map<String, String> parameters) {
         this.name = name;
         this.parameters = parameters;
     }
 
+    /**
+     * Builder függvény, ami DeserializedLine-ra parseol egy sort
+     * @param line Sor amit parseol formátum: enty(param=value,param=value,...)
+     * @param entryNames Nevek, amik validak az elején
+     * @return Egy DeserializedLine instance
+     */
     public static DeserializedLine fromLine(String line, String[] entryNames) {
         Pattern regex = Pattern.compile("([\\-A-Za-z]*)\\(([^\\)]*)\\)");
         Matcher m = regex.matcher(line);

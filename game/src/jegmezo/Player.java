@@ -2,7 +2,6 @@ package jegmezo;
 
 
 import java.util.List;
-import java.util.Scanner;
 
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
 public abstract class Player extends Entity{

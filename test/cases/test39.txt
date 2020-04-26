@@ -1,0 +1,27 @@
+# Name
+A jegesmedve megtámadna igluban lévő embereket
+# Input
+load game
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+
+Tile-Tile(ID1=1,ID2=0)
+
+Eskimo(number=1,heat=4,tile=0)
+
+
+PolarBear(tile=1)
+
+pass
+pass
+pass
+use ability
+# Output
+Loaded map.
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [2 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [1 remaining]:
+Player 1 builds igloo on Sheet(ID=0).
+Polar bear moved to Sheet(ID=0)
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:

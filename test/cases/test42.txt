@@ -1,0 +1,37 @@
+# Name
+A sátor eltünik egy kör után
+# Input
+load game
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=false,snow=4,item=none,itemDiscovered=false,building=none)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=none,itemDiscovered=false,building=none)
+Sheet(ID=3,playerLimit=3,playerLimitDiscovered=false,snow=4,item=none,itemDiscovered=false,building=none)
+
+Tile-Tile(ID1=3,ID2=4)
+
+Eskimo(number=1,heat=4,tile=0)
+
+Player-Item(number=1,item=tent,count=1)
+
+PolarBear(tile=4)
+
+dig
+dig
+dig
+use-item
+tent
+# Output
+Loaded map.
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
+Player 1 removes 1 snow from Sheet(ID=0)
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
+Player 1 removes 1 snow from Sheet(ID=0)
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [2 remaining]:
+Player 1 removes 1 snow from Sheet(ID=0)
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [1 remaining]:
+Player 1’s items:
+1x tent
+Select item (<name>/cancel)
+Player 1 places a tent on Sheet(ID=0)
+Polar bear moved to Sheet(ID=3)
+All tents destroyed
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:

@@ -1,5 +1,5 @@
 # Name
-15. A játékos egy mezőn talál egy győzelmi itemet, már van neki egy győzelmi itemet.
+15. A játékos egy mezőn talál egy győzelmi itemet, már van neki egy győzelmi iteme.
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=flare gun,itemDiscovered=true,building=none)
@@ -16,7 +16,7 @@ pickup
 save game
 # Output
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
-Player 1 picks up flare gun from Sheet(ID=1)
+Player 1 picks up flare gun from Sheet(ID=1).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=true,building=none)
 Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
@@ -30,4 +30,3 @@ Player-Item(number=1,item=flare gun,count=1)
 PolarBear(tile=4)
 
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
-

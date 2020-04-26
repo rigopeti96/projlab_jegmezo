@@ -15,6 +15,7 @@ pickup
 save game
 # Output
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
+Player 1 picks up rope from Sheet(ID=1).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=true,building=none)
 Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
@@ -27,10 +28,3 @@ Player-Item(number=1,item=rope,count=1)
 PolarBear(tile=4)
 
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
-
-
-
-
-
-
-

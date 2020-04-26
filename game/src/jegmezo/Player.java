@@ -166,7 +166,7 @@ public abstract class Player extends Entity{
 			System.out.println("Player " + number + " picks up "+ item.getName() + " from "+ tile.toShortString() + ".");
 			return true;
 		}else{
-			System.out.println("Cant pick up "+ item.getName() + " (Already has too much.)");
+			System.out.println("Can't pick up "+ item.getName() + " (already has too much).");
 			return false;
 		}
 	}

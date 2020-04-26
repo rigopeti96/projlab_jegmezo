@@ -27,4 +27,3 @@ Eskimo(number=1,heat=1,tile=1)
 PolarBear(tile=4)
 
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
-

@@ -6,27 +6,75 @@ import java.util.*;
  * Pálya generálásért felelős (hexagonal)
  */
 public class LevelGenerator {
-    //TODO: Daninak
-    private GameController gameController; //a gameController
-    private LevelTile[][] tiles; //a mezők
-    private Map<LevelTile, Tile> gameTiles = new HashMap<>(); // a játékban levő mezők
-    private List<IceSheet> iceSheets = new ArrayList<>(); //a jégmezők listája
-    private int rx; //a teljes pálya x sugara
-    private int ry; // a pálya y sugara
-    private int playerCount; // a játékosok száma
-    private static final double CHANCE = 0.3; //mekkora eséllyel generálódik tile
-    private static final double MIN_FRACTION = 0.3; //mennyi tile kell legalább
-    private Random random; //random érték
-    private PolarBear polarBear; //jegesmedve
+    /**
+     * Játék kontroller, DI miatt kell
+     */
+    private GameController gameController;
+
+    /**
+     * Hexagonal grid mezői (nem játék Tile, hanem LevelTile, mivel ebben van geometriai információ)
+     */
+    private LevelTile[][] tiles;
+    /**
+     * A játék által használt mezők
+     */
+    private Map<LevelTile, Tile> gameTiles = new HashMap<>();
+    /**
+     * Legenerált IceSheet-ek, amiken még nincs item (ezekre lehet rakni)
+     */
+    private List<IceSheet> iceSheets = new ArrayList<>();
+    /**
+     * A hexagonal grid x tengelyű sugara
+     */
+    private int rx;
+    /**
+     * A hexagonal grid y tengelyű sugara
+     */
+    private int ry;
+    /**
+     * Játékosok száma
+     */
+    private int playerCount;
+    /**
+     * Az algoritmus által használt random threshold
+     */
+    private static final double CHANCE = 0.3;
+    /**
+     * Minimum része a pályának, ami IceSheet kell, hogy legyen (0-1-ig)
+     */
+    private static final double MIN_FRACTION = 0.3;
+    /**
+     * A level generáló által használt random
+     */
+    private Random random;
+    /**
+     * A generált jegesmedge
+     */
+    private PolarBear polarBear;
 
     /**
      * Egy hexagonal tile-nak felel meg
      */
     private class LevelTile {
+        /**
+         * X koordináta a hexagonal gridben
+         */
         private int x;
+        /**
+         * Y koordináta a hexagonal gridben
+         */
         private int y;
+        /**
+         * Ki van e választva sheet-nek
+         */
         private boolean selected = false;
+        /**
+         *  Ki van e választva hole-nak
+         */
         private boolean hole = false;
+        /**
+         * Nem újra kiválaszható (ha true)
+         */
         private boolean skipped = false;
 
         /**
@@ -135,7 +183,7 @@ public class LevelGenerator {
             if (this.isOpenable() && random.nextDouble() < CHANCE) {
                 openableList.add(this);
             } else {
-                this.skipped = true;
+                skip();
             }
         }
 
@@ -214,7 +262,7 @@ public class LevelGenerator {
             if (generated < min) {
                 for (int x = -rx; x <= rx; x++) {
                     for (int y = -ry; y <= ry; y++) {
-                        tiles[rx + x][ry + y].skipped = false;
+                        tiles[rx + x][ry + y].reset();
                     }
                 }
 

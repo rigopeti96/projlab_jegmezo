@@ -6,9 +6,17 @@ package jegmezo;
  * @param <T> Belső elem (element) típusa
  */
 public class Discoverable<T> {
-    //TODO: Daninak
+    /**
+     * Null esetén használt string (toString és toDisconveredString)-ben
+     */
     String nullString;
+    /**
+     * Fel van-e fedezve
+     */
     boolean discovered;
+    /**
+     * A belső elem
+     */
     T element;
 
     /**

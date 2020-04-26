@@ -1,7 +1,9 @@
 package jegmezo;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 /** Mező, amire a játékosok léphetnek. Hóréteg kerülhet rá, lehet rajta tárgy, iglu illetve játékosok. Hóvihar hatással lehet a mezőkre, ezen kívül minden viselkedésta
  *  specializált osztályok kezelnek le. Tárolja a szomszédait és a rajta álló Player-eket.*/

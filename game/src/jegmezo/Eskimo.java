@@ -1,7 +1,5 @@
 package jegmezo;
 
-import java.util.Scanner;
-
 /**A Player egy típusa, speciális képessége, hogy tud iglut építeni az aktuális mezőre (ha még nincs rajta iglu) */
 public class Eskimo extends Player {
 	public Eskimo(GameController gameController, int number) {

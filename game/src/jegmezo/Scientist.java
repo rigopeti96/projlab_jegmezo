@@ -1,7 +1,5 @@
 package jegmezo;
 
-import java.util.Scanner;
-
 /**A Player egy típusa, speciális képessége, hogy meg tudja határozni egy szomszédos mező bíróképességét (hány játékos állhat rajta beszakadás nélkül */
 public class Scientist extends Player {
 	public Scientist(GameController gameController, int number) {

@@ -75,13 +75,16 @@ public class Hole extends Tile {
 		return "Hole(ID=" + id + ",snow=" + snow + ")";
 	}
 
-
-	public void stepOnPolarBear(PolarBear pb, Tile prevTile){return;}
+	@Override
+	public void stepOnPolarBear(PolarBear pb, Tile prevTile){
+	}
 
 	@Override
-	public void destroyTent(){return;}
+	public void destroyTent(){
+	}
 
 	@Override
-	public void blizzard(){return;}
+	public void blizzard(){
+	}
 
 }

@@ -21,6 +21,10 @@ public class GameController {
 		return this.scanner;
 	}
 
+	public Tile getTileById(Integer id) {
+		return tiles.get(id);
+	}
+
 	/** Elindítja a játékot */
 	public void startGame() {
 		while (gameState == GameState.Creating) {

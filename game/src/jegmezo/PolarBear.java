@@ -47,11 +47,10 @@ public class PolarBear extends Entity{
             }
         }else{
             //ha van controlled randomness
-            System.out.println("Move Polarbear to new tile");
-            Tile hova=selectTile();
+            System.out.println("[controlled randomness] Polar bear moves to tile (<ID>):");
+            Tile hova = gameController.getTileById(gameController.getScanner().nextInt() );
             if(hova == null)
                 return false;
-
             hova.stepOnPolarBear(this, tile);
             return true;
         }

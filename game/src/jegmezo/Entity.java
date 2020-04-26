@@ -9,11 +9,17 @@ public abstract class Entity {
      * Ráteszi az entitást egy mezőre (kezdetben)
      * @param tile Mező, amire tesszük
      */
-    public abstract void spawnOnto(Tile tile);
+    public void spawnOnto(Tile tile) {
+        this.tile = tile;
+    }
 
     public abstract boolean move();
 
     public abstract Tile selectTile();
+
+    public void movedToTile(Tile tile) {
+        this.tile = tile;
+    }
 
     /**
      * Kiírja az entitás egy reprezentációját a standard outputra

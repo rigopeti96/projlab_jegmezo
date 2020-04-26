@@ -1,5 +1,5 @@
 # Name
-A mezőről egy sátor felvétele
+12. A mezőről egy sátor felvétele
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=tent,itemDiscovered=true,building=none)

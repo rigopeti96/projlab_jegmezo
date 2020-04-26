@@ -11,9 +11,10 @@ public class Hole extends Tile {
 
 	/** A játékos rálép a mezőre*/
 	public void stepOnto(Player player, Tile prevTile) {
-		System.out.println("Player "+player.getNumber()+" fell into "+this.toLongString());
+		discovered=true;
+		System.out.println("Player "+player.getNumber()+" fell into "+this.toShortString() + ".");
 		if(player.canSurvive()) {
-			System.out.println("Player "+player.getNumber()+" had Scuba Gear, survived, went back to the original Sheet");
+			System.out.println("Player "+player.getNumber()+" had Scuba Gear, survived and moved back to " + prevTile.toShortString() + ".");
 			return;
 		}
 		for(int i=0;i<neighbours.size();i++){
@@ -70,7 +71,7 @@ public class Hole extends Tile {
 	public String toLongString() {
 		if(!discovered)
 			return "Tile(ID="+id+")";
-		return "Hole(ID=" + id + ", snow=" + snow + ")";
+		return "Hole(ID=" + id + ",snow=" + snow + ")";
 	}
 
 

@@ -1,6 +1,5 @@
 # Name
-A mezőről egy győzelmi item felvétele
-
+8. A mezőről egy győzelmi item felvétele
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=flare,itemDiscovered=true,building=none)

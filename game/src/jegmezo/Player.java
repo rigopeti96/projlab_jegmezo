@@ -9,7 +9,6 @@ public abstract class Player extends Entity{
 	protected int bodyHeat;
 	protected int actions;
 	protected int number;
-	//protected Tile tile;
 	private Inventory inventory;
 
 	public Player(GameController gameController, int number) {
@@ -33,8 +32,8 @@ public abstract class Player extends Entity{
 	 */
 	@Override
 	public void spawnOnto(Tile tile) {
-		this.tile = tile;
-		this.tile.addPlayer(this);
+		super.spawnOnto(tile);
+		this.tile.stepOnto(this, null);
 	}
 
 	/**
@@ -97,7 +96,6 @@ public abstract class Player extends Entity{
 			return false;
 
 		hova.stepOnto(this, tile);
-		tile=hova;
 		return true;
 	}
 	
@@ -165,7 +163,7 @@ public abstract class Player extends Entity{
 		}
 		if (this.takeItem(item) ) {
 			this.tile.removeItem();
-			System.out.println("Player " + number + " picks up "+ item.getName() + " from "+ tile.toShortString() );
+			System.out.println("Player " + number + " picks up "+ item.getName() + " from "+ tile.toShortString() + ".");
 			return true;
 		}else{
 			System.out.println("Cant pick up "+ item.getName() + " (Already has too much.)");

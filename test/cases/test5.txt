@@ -1,6 +1,5 @@
 # Name
-Egy játékos instabil táblára lép, és így minden rajta álló a vízbe esik
-
+5.Egy játékos instabil táblára lép, és így minden rajta álló a vízbe esik
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=true,building=none)
@@ -8,6 +7,7 @@ Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=2,item=shovel,itemDisc
 Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
 
 Tile-Tile(ID1=1,ID2=2)
+Tile-Tile(ID1=2,ID2=1)
 
 Eskimo(number=1,heat=1,tile=1)
 Eskimo(number=2,heat=1,tile=2)

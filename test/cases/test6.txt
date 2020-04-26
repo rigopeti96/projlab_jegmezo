@@ -1,6 +1,5 @@
 # Name
-A mezőről egy adag étel felvétele
-
+6. A mezőről egy adag étel felvétele
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=food,itemDiscovered=true,building=none)

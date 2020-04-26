@@ -1,5 +1,5 @@
 # Name
-A játékos egy mezőn talál egy győzelmi itemet, már van neki egy győzelmi itemet.
+15. A játékos egy mezőn talál egy győzelmi itemet, már van neki egy győzelmi itemet.
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=flare gun,itemDiscovered=true,building=none)

@@ -1,6 +1,5 @@
 # Name
-A mezőről egy búvárruha felvétele
-
+10. A mezőről egy búvárruha felvétele
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=scuba gear,itemDiscovered=true,building=none)

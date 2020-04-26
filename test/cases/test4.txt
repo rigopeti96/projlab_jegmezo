@@ -1,5 +1,5 @@
 # Name
-Lyukba lépés ellenőrzése, megmenekülés kötél használatával
+4. Lyukba lépés ellenőrzése, megmenekülés kötél használatával
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=true,building=none)
@@ -7,6 +7,7 @@ Hole(ID=2,snow=2)
 Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
 
 Tile-Tile(ID1=1,ID2=2)
+Tile-Tile(ID1=2,ID2=1)
 
 Eskimo(number=1,heat=1,tile=1)
 Eskimo(number=2,heat=1,tile=1)
@@ -18,13 +19,15 @@ PolarBear(tile=4)
 move
 2
 save game
+exit
 # Output
-Player 1 select an action (move/dig/pickup/use item/trade/use ability) [4 remaining]: Neighbouring tiles:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
+Neighbouring tiles:
 Tile(ID=2)
 Select tile (<ID>/cancel):
-Player 1 fell into Tile(ID=2)
+Player 1 fell into Hole(ID=2).
 Someone on Sheet(ID=1) has a rope.
-Player 1 moved to Sheet(ID=1, snow=0, limit=?, item=none, building=none)
+Player 1 moved to Sheet(ID=1).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=true,building=none)
 Hole(ID=2,snow=2)
@@ -33,7 +36,7 @@ Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDisc
 Tile-Tile(ID1=1,ID2=2)
 Tile-Tile(ID1=2,ID2=1)
 
-Eskimo(number=1,heat=1,tile=2)
+Eskimo(number=1,heat=1,tile=1)
 Eskimo(number=2,heat=1,tile=1)
 
 Player-Item(number=2,item=rope,count=1)
@@ -41,6 +44,3 @@ Player-Item(number=2,item=rope,count=1)
 PolarBear(tile=4)
 
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
-
-
-

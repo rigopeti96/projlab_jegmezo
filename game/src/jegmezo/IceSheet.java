@@ -19,7 +19,7 @@ public class IceSheet extends Tile {
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
 		discovered=true;
-		System.out.println("Player "+player.getNumber()+" moved to "+toLongString());
+		if (prevTile != null) System.out.println("Player "+player.getNumber()+" moved to "+toShortString() + ".");
 		if(players.size()==playerLimit.getElement()){
 			System.out.println("Sheet "+id+" turned over.\nAll players on it drowned.");
 			gameController.gameOver();
@@ -30,9 +30,10 @@ public class IceSheet extends Tile {
 			return;
 		}
 		players.add(player);
-		prevTile.stepOff(player);
+		if (prevTile != null) prevTile.stepOff(player);
 
 
+		player.movedToTile(this);
 		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString()));
 	}
 
@@ -181,7 +182,7 @@ public class IceSheet extends Tile {
 	public String toLongString() {
 		if(!discovered)
 			return "Tile(ID="+id+")";
-		return "Sheet(ID=" + id + ", snow=" + snow + ", limit=" + playerLimit +
-				", item=" + item.toString() + ", building=" + building.toString() + ")";
+		return "Sheet(ID=" + id + ",snow=" + snow + ",limit=" + playerLimit +
+				",item=" + item.toString() + ",building=" + building.toString() + ")";
 	}
 }

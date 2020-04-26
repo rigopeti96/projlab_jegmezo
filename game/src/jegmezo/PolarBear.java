@@ -16,7 +16,7 @@ public class PolarBear extends Entity{
      */
     @Override
     public void spawnOnto(Tile tile) {
-        this.tile = tile;
+        super.spawnOnto(tile);
         tile.addPolarBear(this);
     }
 

@@ -1,5 +1,5 @@
 # Name
-A mezőről egy kötél felvétele
+9. A mezőről egy kötél felvétele
 # Input
 load game
 Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=rope,itemDiscovered=true,building=none)

@@ -11,6 +11,10 @@ public class WinItem implements Item {
 	 */
 	private String name;
 
+	/**
+	 * Win Item konstruktora, meg lehet adni a nevét
+	 * @param name - a neve a győzelmi tárgynak
+	 */
 	public WinItem(String name) {
 		this.name = name;
 	}

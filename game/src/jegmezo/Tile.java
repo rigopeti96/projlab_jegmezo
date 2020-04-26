@@ -64,15 +64,6 @@ public abstract class Tile {
 	public int getSnow() {return snow;}
 
 	/**
-	 * Hozzáad egy Player-t a players listához
-	 *
-	 * @param player Player amit hozzáad
-	 */
-	public void addPlayer(Player player) {
-		this.players.add(player);
-	}
-
-	/**
 	 * Beállítja a tile jegesmedvéjét (csak egy lehet)
 	 *
 	 * @param bear PolarBear amit hozzáad

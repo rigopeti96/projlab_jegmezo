@@ -15,6 +15,9 @@ public class Inventory {
 	private int countBreakableShovel;
 	private int countTent;
 
+	/**
+	 * @param gameController GameController, ami scanner DI-ja miatt kell
+	 */
 	public Inventory(GameController gameController){
 		this.gameController = gameController;
 		countShovel = 0;

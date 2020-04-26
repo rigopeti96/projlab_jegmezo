@@ -4,8 +4,13 @@ package jegmezo;
  * A játékban szereplő entitások (playerek, jegesmedve) ősosztálya
  */
 public abstract class Entity {
-
+    /**
+     * Az entitás aktuális tile-ja
+     */
     protected Tile tile;
+    /**
+     * a játékos gamecontrollere
+     */
     protected GameController gameController;
 
     /**

@@ -5,15 +5,38 @@ import java.util.List;
 
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
 public abstract class Player extends Entity{
+	/**
+	 * testhőmérséklet
+	 */
 	protected int bodyHeat;
+	/**
+	 * akciók száma
+	 */
 	protected int actions;
+	/**
+	 * játékos azonosítója
+	 */
 	protected int number;
+	/**
+	 * A játékos inventory-ja
+	 */
 	private Inventory inventory;
 
+	/**
+	 * Konstruktor automatikus létrehozáshoz
+	 * @param gameController GameController attribútum
+	 * @param number azonosító
+	 */
 	public Player(GameController gameController, int number) {
 		this(gameController, number, 4);
 	}
 
+	/**
+	 * Konstruktor kézi létrehozáshoz
+	 * @param gameController GameController attribútum
+	 * @param number azonosító
+	 * @param bodyHeat testhőmérséklet
+	 */
 	public Player(GameController gameController, int number, int bodyHeat) {
 		this.gameController = gameController;
 		this.inventory = new Inventory(gameController);

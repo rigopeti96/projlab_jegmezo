@@ -6,6 +6,9 @@ package jegmezo;
  *  akkor megnyerik a játékot
  * Implementálja az Item interfészt. */
 public class WinItem implements Item {
+	/**
+	 * Az item pontos neve
+	 */
 	private String name;
 
 	public WinItem(String name) {

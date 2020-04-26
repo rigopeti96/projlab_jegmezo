@@ -7,7 +7,10 @@ import java.util.Random;
  * A jegesmedve class, az Entity leszármazottja, minden kör végén átlép egy szomszédos mezőre.
  */
 public class PolarBear extends Entity{
-
+    /**
+     * Jegesmedve konstruktora
+     * @param gc GameController paraméter
+     */
     public PolarBear(GameController gc) {
         this.gameController = gc;
     }

@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
  * Nevesített paraméter map, amit a deserializáláshoz használunk
  */
 public class DeserializedLine {
+    //TODO:Daninak
     private String name;
     private Map<String, String> parameters;
 

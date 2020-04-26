@@ -6,6 +6,7 @@ package jegmezo;
  * @param <T> Belső elem (element) típusa
  */
 public class Discoverable<T> {
+    //TODO: Daninak
     String nullString;
     boolean discovered;
     T element;

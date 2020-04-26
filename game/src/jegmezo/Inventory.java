@@ -5,16 +5,46 @@ import java.util.List;
 
 /**Minden játékoshoz tartozik egy Inventory, ebben van eltárolva, hogy melyik tárgyból mennyi van. A WinItemeken kívül mindenből csak egy lehet egy játékosnál */
 public class Inventory {
+	/**
+	 * a gameController
+	 */
 	private GameController gameController;
+	/**
+	 * a játékos tárgyait tároló list
+	 */
 	private List<Item> items = new ArrayList<>();
+	/**
+	 * a játékos shovel-einek a száma
+	 */
 	private int countShovel;
+	/**
+	 * a játékos ételeinek a száma
+	 */
 	private int countFood;
+	/**
+	 * a játékos köteleinek a száma
+	 */
 	private int countRope;
+	/**
+	 * a játékos búvárruháinak száma
+	 */
 	private int countScubaGear;
+	/**
+	 * a játékos győzelmi tárgyainka száma
+	 */
 	private int countWinItem;
+	/**
+	 * a játékos törékeny ásóinak száma
+	 */
 	private int countBreakableShovel;
+	/**
+	 * a játékos sátrainak száma
+	 */
 	private int countTent;
 
+	/**
+	 * @param gameController GameController, ami scanner DI-ja miatt kell
+	 */
 	public Inventory(GameController gameController){
 		this.gameController = gameController;
 		countShovel = 0;
@@ -73,6 +103,11 @@ public class Inventory {
 		return true;
 	}
 
+	/**
+	 * Ez a függvény veszi fel a játékos tárgyai közé a törékeny ásót, ha a játékos felvesz egy törékeny ásót
+	 * @param item - a törékeny ásó
+	 * @return bool - azt jelzi, hogy a tárgy felvétele sikeres volt-e
+	 */
 	public boolean equipBreakableShovel(Item item) {
 		if (countShovel > 0 || countBreakableShovel > 0) return false;
 		items.add(item);
@@ -158,6 +193,10 @@ public class Inventory {
 		return true;
 	}
 
+	/**
+	 * Ez a függvény kiírja a játékos tárgyait
+	 * @param number - a játékos száma
+	 */
 	public void serialize(int number) {
 		if (countFood > 0) {
 			System.out.println("Player-Item(number=" + number + ",item=food,count=" + countFood +")");
@@ -167,6 +206,10 @@ public class Inventory {
 		}
 	}
 
+	/**
+	 * Ezzel a függvénnyel lehet kiválasztani egy tárgyat a tárgyak közül
+	 * @return item - a kiválasztott tárgy
+	 */
 	public Item selectItem() {
 		if (countFood > 0) {
 			System.out.println(countFood + "x food");

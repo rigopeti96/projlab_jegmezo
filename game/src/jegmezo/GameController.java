@@ -202,8 +202,6 @@ public class GameController {
 						System.out.println("Please type 'yes' for snowfall and 'no' for no snowfall."); // értesítjük erről a parancs kiadóját
 					}
 				}
-				if (blizzard_tiles == tiles.size()/2) //ha elértük a hóvihar súlytotta mezők számával a mezők számának felét, nem súlyt több mezőt hóvihar
-					break;
 			}
 		}
 

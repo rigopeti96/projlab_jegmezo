@@ -2,6 +2,9 @@ package jegmezo;
 
 import java.util.*;
 
+/**
+ * Pálya generálásért felelős (hexagonal)
+ */
 public class LevelGenerator {
     private GameController gameController;
     private LevelTile[][] tiles;
@@ -15,6 +18,9 @@ public class LevelGenerator {
     private Random random;
     private PolarBear polarBear;
 
+    /**
+     * Egy hexagonal tile-nak felel meg
+     */
     private class LevelTile {
         private int x;
         private int y;
@@ -22,36 +28,61 @@ public class LevelGenerator {
         private boolean hole = false;
         private boolean skipped = false;
 
+        /**
+         * @param x X koordináta hexagonal gridben
+         * @param y Y koordináta hexagonal gridben
+         */
         public LevelTile(int x, int y) {
             this.x = x;
             this.y = y;
         }
 
+        /**
+         * @return Ki van e választva sheet-nek
+         */
         public boolean isSelected() {
             return selected;
         }
 
+        /**
+         * @return Ki van e választva hole-nak
+         */
         public boolean isHole() {
             return hole;
         }
 
+        /**
+         * Kiválasztja sheet-nek
+         */
         public void select() {
             selected = true;
         }
 
+        /**
+         * Visszareseteli a tile-t, hogy újra kiválasztható legyen
+         */
         public void reset() {
             skipped = false;
         }
 
+        /**
+         * Skippeli a tile-t, hogy ne legyen újra kiválaszható
+         */
         public void skip() {
             skipped = true;
         }
 
+        /**
+         * Lyuknak jelöli a tile-t
+         */
         public void hole() {
             if (selected) return;
             hole = true;
         }
 
+        /**
+         * @return A szomszéd tile-ok listája
+         */
         public List<LevelTile> getNeighbours() {
             List<LevelTile> ret = new ArrayList<>();
             if (x > -rx) ret.add(tiles[x + rx - 1][y + ry]);
@@ -65,11 +96,17 @@ public class LevelGenerator {
             return ret;
         }
 
+        /**
+         * @return  Ki lehet e választani a tile-t
+         */
         public boolean isOpenable() {
             if (getNeighbours().size() < 6) return false;
             return !skipped && !selected;
         }
 
+        /**
+         * @return Van e kiválasztható szomszédja
+         */
         public boolean hasOpenable() {
             for (LevelTile tile: getNeighbours()) {
                 if (tile.isOpenable()) return true;
@@ -78,6 +115,9 @@ public class LevelGenerator {
             return false;
         }
 
+        /**
+         * @return Van e kiválasztott szomszédja
+         */
         public boolean hasSelected() {
             for (LevelTile tile: getNeighbours()) {
                 if (tile.selected) return true;
@@ -86,6 +126,10 @@ public class LevelGenerator {
             return false;
         }
 
+        /**
+         * Kiválasztja a tile-t és hozzáadja egy listához
+         * @param openableList Kiválasztottak, de még nem feldolgozottak listája
+         */
         public void open(List<LevelTile> openableList) {
             if (this.isOpenable() && random.nextDouble() < CHANCE) {
                 openableList.add(this);
@@ -94,6 +138,10 @@ public class LevelGenerator {
             }
         }
 
+        /**
+         * Kiválasztja a szomszédokat, akiket ki lehet és hozzáadja egy listához
+         * @param openableList Kiválasztottak, de még nem feldolgozottak listája
+         */
         public void openNeighbours(List<LevelTile> openableList) {
             for (LevelTile tile: this.getNeighbours()) {
                 tile.open(openableList);
@@ -101,6 +149,10 @@ public class LevelGenerator {
         }
     }
 
+    /**
+     * @param gameController Játék kontroller, DI miatt kell
+     * @param playerCount Játékosok száma
+     */
     public LevelGenerator(GameController gameController, int playerCount) {
         this.gameController = gameController;
         this.playerCount = playerCount;
@@ -110,6 +162,10 @@ public class LevelGenerator {
         tiles = new LevelTile[rx * 2 + 1][ry * 2 + 1];
     }
 
+    /**
+     * A játék Tile-ok legenerálása
+     * @return A játék tile-ok listája
+     */
     public List<Tile> generate() {
         generateLevelTiles();
         generateGameTiles();
@@ -120,10 +176,16 @@ public class LevelGenerator {
         return new ArrayList<>(gameTiles.values());
     }
 
+    /**
+     * @return A generált jegesmedge
+     */
     public PolarBear getPolarBear() {
         return polarBear;
     }
 
+    /**
+     * A hexagonal tile-ok legenerálása (nem game tile, hanem a geometriával rendelkező reprezentáció)
+     */
     private void generateLevelTiles() {
         for (int x = -rx; x <= rx; x++) {
             for (int y = -ry; y <= ry; y++) {
@@ -179,6 +241,9 @@ public class LevelGenerator {
         }
     }
 
+    /**
+     * A játék tileok legenerálása a level tileokból
+     */
     private void generateGameTiles() {
         int counter = 1;
         for (int x = -rx; x <= rx; x++) {
@@ -195,6 +260,9 @@ public class LevelGenerator {
         }
     }
 
+    /**
+     * A jegesmedve elhelyezése
+     */
     private void placePolarBear() {
         List<Tile> polarBearSpawns = new ArrayList<>();
 
@@ -214,10 +282,17 @@ public class LevelGenerator {
         }
     }
 
+    /**
+     * Random hószámhoz használt függvény
+     * @return 1-3 közötti random szám
+     */
     private int getSnowAmmount() {
         return random.nextInt(2) + 1;
     }
 
+    /**
+     * A játék tile kapcsolatok legenerálása a level tile geometriából
+     */
     private void generateGameTileConnections() {
         for (LevelTile tile: gameTiles.keySet()) {
             Tile gameTile = gameTiles.get(tile);
@@ -228,6 +303,9 @@ public class LevelGenerator {
         }
     }
 
+    /**
+     * Tárgyak legenerálása
+     */
     private void generateItems() {
         IceSheet picked = iceSheets.get(random.nextInt(iceSheets.size()));
         picked.setItem(new WinItem("cartridge"));

@@ -1,5 +1,5 @@
 # Name
-17. gy játékos szeretne egy tetszőleges itemet átadni, de a mezőn nincs másik játékos.
+17. Egy játékos szeretne egy tetszőleges itemet átadni, de a mezőn nincs másik játékos.
 # Input
 load game
 Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)

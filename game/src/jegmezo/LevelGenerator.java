@@ -6,6 +6,7 @@ import java.util.*;
  * Pálya generálásért felelős (hexagonal)
  */
 public class LevelGenerator {
+    //TODO: Daninak
     private GameController gameController; //a gameController
     private LevelTile[][] tiles; //a mezők
     private Map<LevelTile, Tile> gameTiles = new HashMap<>(); // a játékban levő mezők

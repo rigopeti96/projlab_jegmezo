@@ -31,6 +31,7 @@ public class Hole extends Tile {
 	/** A játékoslétszám lekérdezése
 	 * @return játékoslétszám*/
 	public int examinePlayerLimit() {
+		this.discovered = true;
 		return 0;
 	}
 
@@ -61,7 +62,7 @@ public class Hole extends Tile {
 	 */
 	@Override
 	public void serialize() {
-		System.out.println("Hole(ID=" + id + ",snow=" + snow + ")");
+		System.out.println("Hole(ID=" + id + ",snow=" + snow + ",discovered=" + (discovered ? "true" : "false") + ")");
 	}
 
 	@Override
@@ -74,13 +75,16 @@ public class Hole extends Tile {
 		return "Hole(ID=" + id + ",snow=" + snow + ")";
 	}
 
-
-	public void stepOnPolarBear(PolarBear pb, Tile prevTile){return;}
+	@Override
+	public void stepOnPolarBear(PolarBear pb, Tile prevTile){
+	}
 
 	@Override
-	public void destroyTent(){return;}
+	public void destroyTent(){
+	}
 
 	@Override
-	public void blizzard(){return;}
+	public void blizzard(){
+	}
 
 }

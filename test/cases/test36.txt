@@ -2,9 +2,9 @@
 Törékeny ásóval használata után az ásó eltörik
 # Input
 load game
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=6,item=shovel,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=6,item=shovel,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=2,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 Tile-Tile(ID1=2,ID2=4)
 

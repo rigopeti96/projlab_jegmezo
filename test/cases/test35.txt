@@ -2,9 +2,9 @@
 Törékeny ásóval ásás
 # Input
 load game
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=2,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 Tile-Tile(ID1=2,ID2=4)
 
@@ -24,9 +24,9 @@ Player 1's items:
 Select item (<name>/cancel)
 Player 1 removes 2 snow from Sheet(ID=1)
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=shovel,itemDiscovered=true,building=none)
-Sheet(ID=2,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=shovel,itemDiscovered=true,building=none,discovered=true)
+Sheet(ID=2,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 Tile-Tile(ID1=2,ID2=4)
 Tile-Tile(ID1=4,ID2=2)

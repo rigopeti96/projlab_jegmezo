@@ -2,8 +2,8 @@
 30. A tudós (Scientist) felméri a kiválasztott mező teherbírási képességét. (Positive)
 # Input
 load game
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=igloo)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=igloo,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 Tile-Tile(ID1=1,ID2=4)
 Tile-Tile(ID1=4,ID2=1)
@@ -24,8 +24,8 @@ Tile(ID=4)
 Select tile (<ID>/cancel):
 Player 1 checked the stability of Sheet(ID=4). It can take 3 players.
 Player 1 select an action (move/dig/pickup/use item/trade/examine) [3 remaining]:
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=igloo)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=true,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=igloo,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=true,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=true)
 
 Tile-Tile(ID1=1,ID2=4)
 Tile-Tile(ID1=4,ID2=1)

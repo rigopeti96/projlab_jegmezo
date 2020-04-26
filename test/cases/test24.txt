@@ -2,9 +2,9 @@
 24. A játékos használja a nála lévő  három győzelmi itemet a jelenlegi táblán úgy, hogy nincs minden játékos ott.
 # Input
 load game
-Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=4,tile=0)
@@ -29,9 +29,9 @@ Player 1's items:
 Select item (<name>/cancel):
 Player 1 can't assemble the flare gun (not all players present).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
-Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=4,tile=0)

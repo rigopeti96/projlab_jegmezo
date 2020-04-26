@@ -2,9 +2,9 @@
 A sátor eltünik egy kör után
 # Input
 load game
-Sheet(ID=0,playerLimit=3,playerLimitDiscovered=false,snow=4,item=none,itemDiscovered=false,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=none,itemDiscovered=false,building=none)
-Sheet(ID=3,playerLimit=3,playerLimitDiscovered=false,snow=4,item=none,itemDiscovered=false,building=none)
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=false,snow=4,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=none,itemDiscovered=false,building=none,discovered=false)
+Sheet(ID=3,playerLimit=3,playerLimitDiscovered=false,snow=4,item=none,itemDiscovered=false,building=none,discovered=false)
 
 Tile-Tile(ID1=3,ID2=4)
 

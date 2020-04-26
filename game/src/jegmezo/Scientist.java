@@ -3,10 +3,21 @@ package jegmezo;
 
 /**A Player egy típusa, speciális képessége, hogy meg tudja határozni egy szomszédos mező bíróképességét (hány játékos állhat rajta beszakadás nélkül */
 public class Scientist extends Player {
+	/**
+	 * Automatikus létrehozáshoz konstruktor
+	 * @param gameController GameController paraméter
+	 * @param number azonosító
+	 */
 	public Scientist(GameController gameController, int number) {
 		super(gameController, number);
 	}
 
+	/**
+	 * Kézi létrehozáshoz konstruktor
+	 * @param gameController GameController paraméter
+	 * @param number azonosító
+	 * @param bodyHeat testhőmérséklet
+	 */
 	public Scientist(GameController gameController, int number, int bodyHeat) {
 		super(gameController, number, bodyHeat);
 	}

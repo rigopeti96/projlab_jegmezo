@@ -3,10 +3,18 @@ package jegmezo;
 
 /** Jégtábla, tárol egy játékoslétszámot ami felet a jégtábla átfordul, van-e rajta igloo, és ha van rajta tárgy akkor azt is tárolja*/
 public class IceSheet extends Tile {
-
-	private Discoverable<Integer> playerLimit; //a limit, ami megadja, hogy mennyi játékost bír el a mező
-	private Discoverable<Item> item; //a tárgy, ami a mezőn van
-	protected Building building = Building.none; //egy enum, ami azt jelzi, van-e épület építve a mezőre és milyen
+	/**
+	 * a limit, ami megadja, hogy mennyi játékost bír el a mező
+	 */
+	private Discoverable<Integer> playerLimit;
+	/**
+	 * a tárgy, ami a mezőn van
+	 */
+	private Discoverable<Item> item;
+	/**
+	 * egy enum, ami azt jelzi, van-e épület építve a mezőre és milyen
+	 */
+	protected Building building = Building.none;
 
 	/**
 	 * Az IceSheet konstruktora, meg lehet adni

@@ -2,8 +2,8 @@
 18. Egy játékos szeretne egy tetszőleges itemet átadni egy másik játékosnak, aki az adott itemből már tárol egyet.
 # Input
 load game
-Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=4,tile=0)
@@ -29,8 +29,8 @@ Player 1's items:
 Select item (<name>/cancel):
 Player 1 can't trade their shovel to Player 2 (Player 2 can't take it).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
-Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=4,tile=0)

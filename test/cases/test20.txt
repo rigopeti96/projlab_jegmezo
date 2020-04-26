@@ -2,8 +2,8 @@
 20. A játékos használja a nála lévő étel itemet.
 # Input
 load game
-Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=4,tile=0)
@@ -24,8 +24,8 @@ Select item (<name>/cancel):
 Player 1 eats a food.
 Player 1's body heat increases by 1 to 5.
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
-Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none)
-Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none)
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=true,snow=0,item=none,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=2,playerLimit=1,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=5,tile=0)

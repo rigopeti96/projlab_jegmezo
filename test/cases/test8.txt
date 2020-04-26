@@ -2,8 +2,8 @@
 8. A mezőről egy győzelmi item felvétele
 # Input
 load game
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=flare,itemDiscovered=true,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=flare,itemDiscovered=true,building=none,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=1,tile=1)
@@ -17,8 +17,8 @@ save game
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
 Player 1 picks up flare from Sheet(ID=1).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=true,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=none,itemDiscovered=true,building=none,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=1,tile=1)

@@ -2,8 +2,8 @@
 A jegesmedve megtámadna igluban lévő embereket
 # Input
 load game
-Sheet(ID=0,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=0,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 Tile-Tile(ID1=1,ID2=0)
 

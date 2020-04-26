@@ -2,8 +2,8 @@
 14. A játékos egy mezőn talál egy itemet, de már van neki az itemből egy.
 # Input
 load game
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=shovel,itemDiscovered=true,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=shovel,itemDiscovered=true,building=none,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=1,tile=1)
@@ -18,8 +18,8 @@ save game
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
 Can't pick up shovel (already has too much).
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=shovel,itemDiscovered=true,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=0,item=shovel,itemDiscovered=true,building=none,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=1,tile=1)

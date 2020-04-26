@@ -5,7 +5,7 @@ import java.util.*;
 
 /** A játék lefolytatásáért felel, tratalmazza a játékosokat és a táblát*/
 public class GameController {
-	private  Map<Integer, Tile> tiles = new HashMap<>();
+	private Map<Integer, Tile> tiles = new HashMap<>();
 	private List<Player> players = new ArrayList<>();
 	private PolarBear polarBear = new PolarBear(this);
 	private GameState gameState = GameState.Creating;
@@ -135,6 +135,7 @@ public class GameController {
 	
 	/** A hóvihar lebonyolításáért felel*/
 	public void blizzard() {
+		System.out.println("Blizzard is coming.");
 		int blizzard_tiles = 0;
 		int isBlizzardOnTile;
 		Random r = new Random();
@@ -153,7 +154,7 @@ public class GameController {
 			for (Tile tile : tiles.values()) {
 				boolean sikeres_command = false;
 				while(!sikeres_command){
-					System.out.println("Snowfall on Tile(ID=" + tile.getId() + ") (yes/no):");
+					System.out.println("[controlled randomness] Snowfall on Tile(ID=" + tile.getId() + ") (yes/no):");
 					String isBlizzard = scanner.nextLine().toLowerCase();
 					if(isBlizzard.equals("yes")){
 						sikeres_command = true;
@@ -189,7 +190,7 @@ public class GameController {
 		} else {
 			boolean sikeres_command = false;
 			while(!sikeres_command){
-				System.out.println("Blizzard (yes / no)");
+				System.out.println("[controlled randomness] Blizzard (yes/no):");
 				String isBlizzard = scanner.nextLine().toLowerCase();
 				if(isBlizzard.equals("yes")){
 					blizzard();
@@ -314,6 +315,7 @@ public class GameController {
 	private void deserializeTile(DeserializedLine line) {
 		String idStr = line.getParameters().get("ID");
 		String snow = line.getParameters().get("snow");
+		String discoveredStr = line.getParameters().get("discovered");
 		try {
 			int id = Integer.parseInt(idStr);
 			if (line.getName().equals("Hole")) tiles.put(id, new Hole(this, id, Integer.parseInt(snow)));
@@ -330,6 +332,7 @@ public class GameController {
 				if (playerLimitDiscovered) sheet.discoverPlayerLimit();
 				if (building != Building.none) sheet.build(building);
 			}
+			if (discoveredStr != null) tiles.get(id).setDiscovered(discoveredStr.equals("true"));
 		}
 		catch (NumberFormatException e) {
 			System.out.println("Invalid input format (tile)!");

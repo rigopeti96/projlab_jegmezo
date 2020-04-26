@@ -2,9 +2,9 @@
 2. A játékos egy mezőt arrébb lép
 # Input
 load game
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
-Hole(ID=2,snow=2)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=true)
+Hole(ID=2,snow=2,discovered=false)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 Tile-Tile(ID1=1,ID2=2)
 Tile-Tile(ID1=2,ID2=1)

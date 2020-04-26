@@ -19,6 +19,9 @@ public abstract class Tile {
 		this.snow = snow;
 	}
 
+	/**
+	 * @return A Tile azonosítója
+	 */
 	public int getId() {
 		return id;
 	}
@@ -97,6 +100,13 @@ public abstract class Tile {
 	 * @return Visszadja a Tile-on lévő Item-et
 	 */
 	public abstract Item getItem();
+
+	/**
+	 * @param discovered Fel van e fedezve a Tile típusa
+	 */
+	public void setDiscovered(boolean discovered) {
+		this.discovered = discovered;
+	}
 
 	/**
 	 * Hóvihar hatása az adott Tile-re, plusz hóréteg sorsolása és a Player-ek megfagyasztása (testhő csökkentése eggyel)
@@ -199,5 +209,8 @@ public abstract class Tile {
 	 */
 	public abstract String toLongString();
 
+	/**
+	 * Leszedi a sátrat a Tile-ról (ha van rajta)
+	 */
 	public abstract void destroyTent();
 }

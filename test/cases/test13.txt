@@ -2,8 +2,8 @@
 13. A játékos egy hófedte mezőn próbál meg item-et felvenni
 # Input
 load game
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=1,item=shovel,itemDiscovered=false,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=1,item=shovel,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=1,tile=1)
@@ -17,8 +17,8 @@ save game
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
 Can't attempt to pick up item (Sheet is covered by snow.)
 Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
-Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=1,item=shovel,itemDiscovered=false,building=none)
-Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=1,item=shovel,itemDiscovered=false,building=none,discovered=true)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none,discovered=false)
 
 
 Eskimo(number=1,heat=1,tile=1)

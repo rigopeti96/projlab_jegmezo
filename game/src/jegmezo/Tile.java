@@ -8,13 +8,41 @@ import java.util.List;
 /** Mező, amire a játékosok léphetnek. Hóréteg kerülhet rá, lehet rajta tárgy, iglu illetve játékosok. Hóvihar hatással lehet a mezőkre, ezen kívül minden viselkedésta
  *  specializált osztályok kezelnek le. Tárolja a szomszédait és a rajta álló Player-eket.*/
 public abstract class Tile {
+	/**
+	 * hóréteg vastagsága
+	 */
 	protected int snow;
+	/**
+	 * Gamecontroller
+	 */
 	protected GameController gameController;
+	/**
+	 * szomszédok listája
+	 */
 	protected List<Tile> neighbours = new ArrayList<>();
+	/**
+	 * a tile-on tartózkodó játékosok
+	 */
 	protected List<Player> players = new ArrayList<>();
+	/**
+	 * a tile-on lévő jegesmedve
+	 */
 	protected PolarBear polarBear;
+	/**
+	 * a tile azonosítója
+	 */
 	protected int id;
+	/**
+	 * felfedezett-e már az adott tile
+	 */
 	protected boolean discovered=false;
+
+	/**
+	 * A tile konstruktora
+	 * @param gameController GameController változó
+	 * @param id azonosító
+	 * @param snow hóréteg
+	 */
 	public Tile(GameController gameController, int id, int snow) {
 		this.gameController = gameController;
 		this.id = id;

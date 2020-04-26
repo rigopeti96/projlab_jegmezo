@@ -1,0 +1,27 @@
+# Name
+A jegesmedve megtámad egy embert
+# Input
+load game
+Sheet(ID=1,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+Sheet(ID=4,playerLimit=3,playerLimitDiscovered=false,snow=2,item=shovel,itemDiscovered=false,building=none)
+
+Tile-Tile(ID1=1,ID2=4)
+
+Eskimo(number=1,heat=4,tile=1)
+
+
+PolarBear(tile=4)
+
+pass
+pass
+pass
+pass
+# Output
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [4 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [3 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [2 remaining]:
+Player 1 select an action (move/dig/pickup/use item/trade/build igloo) [1 remaining]:
+Polar bear moved to Sheet(ID=1)
+Player 1 was not in an igloo.
+Player 1 was eaten by the polar bear.
+Game over.

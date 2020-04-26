@@ -4,10 +4,17 @@ package jegmezo;
 /** Jégtábla, tárol egy játékoslétszámot ami felet a jégtábla átfordul, van-e rajta igloo, és ha van rajta tárgy akkor azt is tárolja*/
 public class IceSheet extends Tile {
 
-	private Discoverable<Integer> playerLimit;
-	private Discoverable<Item> item;
-	protected Building building = Building.none;
+	private Discoverable<Integer> playerLimit; //a limit, ami megadja, hogy mennyi játékost bír el a mező
+	private Discoverable<Item> item; //a tárgy, ami a mezőn van
+	protected Building building = Building.none; //egy enum, ami azt jelzi, van-e épület építve a mezőre és milyen
 
+	/**
+	 * Az IceSheet konstruktora, meg lehet adni
+	 * @param gameController - a gameControllert
+	 * @param id - a mező indexét
+	 * @param playerLimit - a limitet, amennyi játékost elbír az IceSheet
+	 * @param snow - a mezőn lévő hómennyiség
+	 */
 	public IceSheet(GameController gameController, int id, int playerLimit, int snow)
 	{
 		super(gameController, id, snow);
@@ -37,6 +44,11 @@ public class IceSheet extends Tile {
 		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString() + "."));
 	}
 
+	/**
+	 * Ez a függvény csökkenti a mezőn lévő hómennyiséget
+	 * @param amount Hóréteg szám, amennyit le kell szedni
+	 * @return ret (boolean) - ez a bool érték jelzi, hogy a hó eltávolítása sikeres volt-e vagy sem
+	 */
 	@Override
 	public boolean removeSnow(int amount) {
 		if (snow > 0) System.out.println(" removes " + amount + " snow from " + toShortString() + ".");
@@ -145,7 +157,7 @@ public class IceSheet extends Tile {
 	}
 
 	/**
-	 *
+	 * Ez a függvény kezeli le, ha egy medve rálép a mezőre
 	 * @param pb A medve
 	 * @param prevTile A medve előző Tile-ja
 	 */
@@ -178,9 +190,17 @@ public class IceSheet extends Tile {
 				+ ",discovered=" + (discovered ? "true" : "false") + ")");
 	}
 
+	/**
+	 * Ez a függvény visszaad egy string-et a mező id-jával
+	 * @return string - ezt tároló string
+	 */
 	@Override
 	public String toShortString() {	return "Sheet(ID=" + id + ")";	}
 
+	/**
+	 * Ez a függvény visszaad egy string-et a mező id-jával, a rajta levő hó mennyiségével, a limitjével, a rajta levő tárggyal és a rajta levő épülettel
+	 * @return string - ezeket az adatokat tároló string
+	 */
 	@Override
 	public String toLongString() {
 		if(!discovered)

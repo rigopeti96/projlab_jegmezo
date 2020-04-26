@@ -2,10 +2,21 @@ package jegmezo;
 
 /**A Player egy típusa, speciális képessége, hogy tud iglut építeni az aktuális mezőre (ha még nincs rajta iglu) */
 public class Eskimo extends Player {
+	/**
+	 * Konstruktor az automatikus létrehozáshoz
+	 * @param gameController GameController paraméter
+	 * @param number azonosító
+	 */
 	public Eskimo(GameController gameController, int number) {
 		super(gameController, number);
 	}
 
+	/**
+	 * Konstruktor a kézi létrehozáshoz
+	 * @param gameController GameController paraméter
+	 * @param number azonosító
+	 * @param bodyHeat testhőmérséklet
+	 */
 	public Eskimo(GameController gameController, int number, int bodyHeat) {
 		super(gameController, number, bodyHeat);
 	}

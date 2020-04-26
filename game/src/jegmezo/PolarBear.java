@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * A jegesmedve class, az Entity leszármazottja, minden kör végén átlép egy szomszédos mezőre.
+ */
 public class PolarBear extends Entity{
 
     public PolarBear(GameController gc) {
@@ -21,7 +24,8 @@ public class PolarBear extends Entity{
     }
 
     /**
-     * A medve átlép egy szpmszédos jégtáblára.
+     * A medve átlép egy véletlenszerű szomszédos jégtáblára minden kör végén.
+     * Ha a controlled randomness engedélyezve van, akkor a felhasználó lépteti és bármely mezőre
      * @return Sikerült e átlépni
      */
     @Override
@@ -84,6 +88,9 @@ public class PolarBear extends Entity{
         }
     }
 
+    /**
+     * A jegesmedve állapotának elmentése
+     */
     public void serialize() {
         System.out.println("PolarBear(tile=" + tile.getId() + ")");
     }

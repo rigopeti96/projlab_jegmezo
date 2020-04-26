@@ -1,7 +1,5 @@
 package jegmezo;
 
-import java.util.Scanner;
-
 /**A Player egy típusa, speciális képessége, hogy tud iglut építeni az aktuális mezőre (ha még nincs rajta iglu) */
 public class Eskimo extends Player {
 	public Eskimo(GameController gameController, int number) {
@@ -23,7 +21,7 @@ public class Eskimo extends Player {
 		return false;
 	}
 
-	/** Kiválaszja az akciót
+	/** Kiválaszja az akciót, amit végre akar hajtani
 	 *  @return bool - Sikerült-e akciót választani.  */
 	public boolean selectAction() {
 		System.out.println("Player " + number + " select an action (move/dig/pickup/use item/trade/build igloo) [" + actions + " remaining]:");

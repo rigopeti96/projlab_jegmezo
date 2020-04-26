@@ -1,6 +1,5 @@
 package jegmezo;
 
-import java.util.Scanner;
 
 /**A Player egy típusa, speciális képessége, hogy meg tudja határozni egy szomszédos mező bíróképességét (hány játékos állhat rajta beszakadás nélkül */
 public class Scientist extends Player {
@@ -24,7 +23,7 @@ public class Scientist extends Player {
 		return true;
 	}
 
-	/**Kiválaszja az akciót
+	/**Kiválaszja az akciót, amit végre akar hajtani
 	 *  @return bool - Sikerült-e akciót választani.  */
 	public boolean selectAction() {
 		System.out.println("Player " + number + " select an action (move/dig/pickup/use item/trade/examine) [" + actions + " remaining]:");

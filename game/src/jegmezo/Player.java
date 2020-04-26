@@ -22,6 +22,10 @@ public abstract class Player extends Entity{
 		this.bodyHeat = bodyHeat;
 	}
 
+	/**
+	 * Visszaadja a játékos számát.
+	 * @return a player száma
+	 */
 	public int getNumber() {
 		return number;
 	}
@@ -37,6 +41,7 @@ public abstract class Player extends Entity{
 	}
 
 	/**
+	 * Visszaadja a player inventoryját.
 	 * @return A Player Inventory-ja */
 	public Inventory getInventory(){
 		return inventory;

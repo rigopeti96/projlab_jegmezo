@@ -9,6 +9,6 @@ public class Program {
      * @param args program agrugmentumok (a program nem vár el illetve használ paramétert)
      */
     public static void main(String[] args) {
-        new GameController().startGame();
+        new GameWindow().start();
     }
 }

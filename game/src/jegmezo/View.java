@@ -2,6 +2,7 @@ package jegmezo;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +66,12 @@ public abstract class View {
 
     public void mouseMoved() {
 
+    }
+
+    public void mouseWheelMoved(MouseWheelEvent event) {
+        for (View child: children) {
+            child.mouseWheelMoved(event);
+        }
     }
 
     public void mouseEnter() {

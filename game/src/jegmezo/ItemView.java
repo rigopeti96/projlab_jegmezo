@@ -5,20 +5,30 @@ import javafx.scene.control.Tooltip;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.awt.image.BufferedImage;
 
 public class ItemView extends View {
     private ItemToolTipView toolTip;
     private Item item;
     private int x, y;
     private int toolTipX, toolTipY;
-    private boolean clicked = false;
+    private int itemCount;
+    private BufferedImage image;
 
-    ItemView(ImageManager imageManager, int x, int y, Item item) {
+    ItemView(ImageManager imageManager, int x, int y, Item item, int itemCount) {
         super(imageManager);
         this.x = x;
         this.y = y;
-        this.toolTip = new ItemToolTipView(imageManager, toolTipX, toolTipY, item.getDescription());
+        this.toolTip = new ItemToolTipView(imageManager, toolTipX, toolTipY, item.getName()); // item.getDescription());
         this.item = item;
+        this.itemCount = itemCount;
+
+        this.imageManager.loadImage(item.getName(), "Images/" + item.getName());
+        image = this.imageManager.getImage(item.getName());
+
+        if(itemCount == 0){
+           // image = imageManager.toGrayScale(image);
+        }
     }
 
     @Override
@@ -28,8 +38,8 @@ public class ItemView extends View {
 
     @Override
     public void mouseMoved(MouseEvent event) {
-        this.toolTipX = event.getX();
-        this.toolTipY = event.getY();
+        toolTip.setX(event.getX());
+        toolTip.setY(event.getY());
     }
 
     @Override
@@ -52,8 +62,14 @@ public class ItemView extends View {
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
         }
 
-        this.imageManager.loadImage(item.getName(), item.getFileName());
-        graphics.drawImage(this.imageManager.getImage(item.getName()), x+5, y+5, 40, 40, null);
+        graphics.drawImage(image, x, y, 40, 40, null);
+
+        if(item.getName().equals("winitem")|| item.getName().equals("food")){
+            graphics.setColor(Color.DARK_GRAY);
+            Font font = new Font("Calibri", Font.BOLD, 20);
+            graphics.setFont(font);
+            graphics.drawString(itemCount + "x", x+20, y+40);
+        }
 
         //hogy a későbbi rajzolásokba ne szóljon bele az előbbi opacity
         float opacity = 1.0f;

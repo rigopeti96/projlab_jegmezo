@@ -47,7 +47,7 @@ public class BreakableShovel extends Shovel{
      * @return A tárgy neve .
      */
     @Override
-    public String getName() { return "breakable shovel"; }
+    public String getName() { return "breakableshovel"; }
 
     /**
      * Meghívja a getName függvényt, hogy rendes nevet adjon vissza
@@ -59,11 +59,6 @@ public class BreakableShovel extends Shovel{
     @Override
     public String getDescription(){
         return "Törékeny Ásó:\n2 egység havat lapátolhatsz el vele.\nHárom használat után eltörik.";
-    }
-
-    @Override
-    public String getFileName(){
-        return "Ide be kell írni a fájl nevét majd!";
     }
 
     @Override

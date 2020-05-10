@@ -67,6 +67,9 @@ public class GameWindow {
         imageManager.loadImage("testImage", "test_texture.png");
         views.add(new TestView(imageManager, 50, 50));
         views.add( new TestView(imageManager, 200, 50));
+
+        Inventory inventory = new Inventory(new GameController());
+        views.add(new InventoryView(imageManager, 200, 200, inventory));
     }
 
     private void handleClick(MouseEvent event) {

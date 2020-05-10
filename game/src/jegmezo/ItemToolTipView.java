@@ -23,18 +23,26 @@ public class ItemToolTipView extends View {
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
-        if (overlay) return;
+        if (!overlay) return;
 
         graphics.setColor(Color.WHITE);
         float opacity = 0.8f;
         graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-        graphics.fillRect(x,y, 80, 65);
+        graphics.fillRect(x,y, 70, 30);
 
         graphics.setColor(Color.DARK_GRAY);
         opacity = 1.0f;
         graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-        Font font = new Font("Serif", Font.BOLD, 11);
+        Font font = new Font("Calibri", Font.BOLD, 11);
         graphics.setFont(font);
-        graphics.drawString(text,x+5,y+5);
+        graphics.drawString(text,x+5,y+16);
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y){
+        this.y = y;
     }
 }

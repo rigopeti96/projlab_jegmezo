@@ -2,13 +2,16 @@ package jegmezo;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.color.ColorSpace;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorConvertOp;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ImageManager {
-    Map<String, Image> imageMap = new HashMap<>();
+    Map<String, BufferedImage> imageMap = new HashMap<>();
     public void loadImage(String name, String fileName) {
         try {
             imageMap.put(name, ImageIO.read(Path.of(fileName).toFile()));
@@ -17,7 +20,16 @@ public class ImageManager {
         }
     }
 
-    public Image getImage(String name) {
+    public BufferedImage getImage(String name) {
         return imageMap.get(name);
+    }
+
+    public BufferedImage toGrayScale(BufferedImage master) {
+        BufferedImage gray = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
+
+        ColorConvertOp op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);
+        op.filter(master, gray);
+
+        return gray;
     }
 }

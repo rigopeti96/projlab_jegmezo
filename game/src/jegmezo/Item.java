@@ -30,7 +30,5 @@ public interface Item {
 
 	String getDescription();
 
-	String getFileName();
-
 	boolean isUseable();
 }

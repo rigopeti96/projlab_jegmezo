@@ -2,11 +2,12 @@ package jegmezo;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryView extends View {
 
-    protected List<ItemView> itemViews;
+    protected List<ItemView> itemViews = new ArrayList<>();
     private Inventory inventory;
     private int x, y;
 
@@ -15,6 +16,21 @@ public class InventoryView extends View {
         this.x = x;
         this.y = y;
         this.inventory = inventory;
+
+        children.add(new ItemView(imageManager, x+70*0+5, y+5, new ScubaGear(),inventory.getScubaCount()));
+
+        children.add(new ItemView(imageManager, x+70*1+5, y+5, new Rope(), inventory.getRopeCount()));
+
+        children.add(new ItemView(imageManager, x+70*2+5, y+5, new WinItem("winitem"), inventory.getWinItemCount()));
+
+        children.add(new ItemView(imageManager, x+70*3+5, y+5, new Tent(), inventory.getTentCount()));
+
+        if(inventory.getBreakableShovelCount() !=0)
+            children.add(new ItemView(imageManager, x+70*4+5, y+5, inventory.getItem("breakableshovel"), inventory.getBreakableShovelCount()));
+        else
+            children.add(new ItemView(imageManager, x+70*4+5, y+5, new Shovel(), inventory.getShovelCount()));
+
+        children.add(new ItemView(imageManager, x+70*5+5, y+5, new Food(), inventory.getFoodCount()));
     }
 
     @Override
@@ -39,25 +55,6 @@ public class InventoryView extends View {
         graphics.drawRect(x+70*4, y, 60, 50);
         graphics.drawRect(x+70*5, y, 60, 50);
 
-        if(inventory.getScubaCount()!=0)
-            itemViews.add(new ItemView(imageManager, x+5, y+5, inventory.getItem("scuba gear")));
 
-        if(inventory.getRopeCount()!=0)
-            itemViews.add(new ItemView(imageManager, x+5, y+5,inventory.getItem("rope") ));
-
-        if(inventory.getWinItemCount()!=0)
-            itemViews.add(new ItemView(imageManager, x+5, y+5, inventory.getItem("scuba gear")));
-
-        if(inventory.getTentCount()!=0)
-            itemViews.add(new ItemView(imageManager, x+5, y+5,inventory.getItem("scuba gear") ));
-
-        if(inventory.getShovelCount()!=0)
-            itemViews.add(new ItemView(imageManager, x+5, y+5,inventory.getItem("scuba gear")));
-
-        if(inventory.getBreakableShovelCount()!=0)
-            itemViews.add(new ItemView(imageManager, x+5, y+5, inventory.getItem("scuba gear")));
-
-        if(inventory.getFoodCount()!=0)
-            itemViews.add(new ItemView(imageManager, x+5, y+5, new Food()));
     }
 }

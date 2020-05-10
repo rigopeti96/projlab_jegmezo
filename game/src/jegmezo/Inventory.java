@@ -257,6 +257,6 @@ public class Inventory {
 		for (Item item: items) {
 			if (item.getName().equals(name)) return item;
 		}
-		return new Food();
+		return null;
 	}
 }

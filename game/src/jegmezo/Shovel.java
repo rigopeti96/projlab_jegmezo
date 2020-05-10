@@ -59,11 +59,6 @@ public class Shovel implements Item {
 	}
 
 	@Override
-	public String getFileName(){
-		return "Ide be kell írni a fájl nevét majd!";
-	}
-
-	@Override
 	public boolean isUseable(){
 		return true;
 	}

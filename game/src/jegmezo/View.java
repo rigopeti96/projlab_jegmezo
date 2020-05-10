@@ -28,7 +28,7 @@ public abstract class View {
     }
 
     private boolean helperClicked(MouseEvent event) {
-        return (event.getButton() == MouseEvent.BUTTON1 && clicked()) || (event.getButton() == MouseEvent.BUTTON2 && rightClicked());
+        return (event.getButton() == MouseEvent.BUTTON1 && clicked()) || (event.getButton() == MouseEvent.BUTTON3 && rightClicked());
     }
 
     public void handleMouseMove(MouseEvent event) {
@@ -58,9 +58,9 @@ public abstract class View {
         return false;
     }
 
-    public void windowClicked() {
+    public void windowClicked(MouseEvent event) {
         for (View child: children) {
-            child.windowClicked();
+            child.windowClicked(event);
         }
     }
 

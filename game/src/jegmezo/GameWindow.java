@@ -3,7 +3,8 @@ package jegmezo;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Random;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -20,8 +21,8 @@ public class GameWindow {
         }
     }
 
+    private List<View> views = new ArrayList<>();
     private ImageManager imageManager = new ImageManager();
-    private Random r = new Random();
 
     public void start() {
         JFrame frame= new JFrame();
@@ -31,7 +32,7 @@ public class GameWindow {
         frame.setContentPane(new GameCanvas());
         frame.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent event) {
+            public void mouseReleased(MouseEvent event) {
                 handleClick(event);
             }
         });
@@ -58,31 +59,45 @@ public class GameWindow {
         });
 
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(() -> {
-            frame.repaint();
-        }, 0, 16, TimeUnit.MILLISECONDS);
+        executor.scheduleAtFixedRate(frame::repaint, 0, 16, TimeUnit.MILLISECONDS);
+        initialize();
     }
 
     private void initialize() {
-
+        views.add(new TestView(imageManager, 50, 50));
+        views.add( new TestView(imageManager, 200, 50));
     }
 
     private void handleClick(MouseEvent event) {
+        for (View view: views) {
+            view.windowClicked(event);
+        }
 
+        for (View view: views) {
+            view.handleClick(event);
+        }
     }
 
     private void handleMouseMove(MouseEvent event) {
-
+        for (View view: views) {
+            view.handleMouseMove(event);
+        }
     }
 
     private void handleMouseWheelMove(MouseWheelEvent event) {
-
+        for (View view: views) {
+            view.mouseWheelMoved(event);
+        }
     }
 
     private void draw(Graphics2D graphics) {
-        Shape rootRect = graphics.getClipBounds();
-        graphics.setColor(new Color(r.nextInt(256),r.nextInt(256),r.nextInt(256),r.nextInt(256)));
-        graphics.fill(rootRect);
+        for (View view: views) {
+            view.draw(graphics, false);
+        }
+
+        for (View view: views) {
+            view.draw(graphics, true);
+        }
     }
 
     private void handleClose() {

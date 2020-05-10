@@ -58,4 +58,19 @@ public class WinItem implements Item {
 	 */
 	@Override
 	public String toString(){return getName();}
+
+	@Override
+	public String getDescription(){
+		return "Győzelmi tárgy:\nÖssze kell gyűjteni mind a hármat.\nHa egy mezőn álltok és elsütöd, nyertek.";
+	}
+
+	@Override
+	public String getFileName(){
+		return "Ide be kell írni a fájl nevét majd!";
+	}
+
+	@Override
+	public boolean isUseable(){
+		return true;
+	}
 }

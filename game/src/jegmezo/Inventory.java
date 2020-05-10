@@ -248,4 +248,15 @@ public class Inventory {
 	public int getWinItemCount(){
 		return countWinItem;
 	}
+
+	public int getTentCount(){return countTent;}
+	public int getShovelCount(){return countShovel;}
+	public int getBreakableShovelCount(){return countBreakableShovel;}
+	public int getFoodCount(){return countFood;}
+	public Item getItem(String name){
+		for (Item item: items) {
+			if (item.getName().equals(name)) return item;
+		}
+		return new Food();
+	}
 }

@@ -27,4 +27,10 @@ public interface Item {
 	 * @return A tárgy neve
 	 */
 	String getName();
+
+	String getDescription();
+
+	String getFileName();
+
+	boolean isUseable();
 }

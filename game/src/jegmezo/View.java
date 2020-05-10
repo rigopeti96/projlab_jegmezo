@@ -8,6 +8,11 @@ import java.util.List;
 public abstract class View {
     protected boolean hovered;
     protected List<View> children = new ArrayList<>();
+    protected ImageManager imageManager;
+
+    public View(ImageManager imageManager) {
+        this.imageManager = imageManager;
+    }
 
     public boolean handleClick(MouseEvent event) {
         if (isMouseOver(event.getX(), event.getY()) && helperClicked(event)) {

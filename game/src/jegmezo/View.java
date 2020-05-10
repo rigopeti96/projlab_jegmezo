@@ -28,19 +28,19 @@ public abstract class View {
     }
 
     private boolean helperClicked(MouseEvent event) {
-        return (event.getButton() == MouseEvent.BUTTON1 && clicked()) || (event.getButton() == MouseEvent.BUTTON3 && rightClicked());
+        return (event.getButton() == MouseEvent.BUTTON1 && clicked(event)) || (event.getButton() == MouseEvent.BUTTON3 && rightClicked(event));
     }
 
     public void handleMouseMove(MouseEvent event) {
         if (isMouseOver(event.getX(), event.getY())) {
             if (!hovered) {
-                mouseEnter();
+                mouseEnter(event);
                 hovered = true;
             }
-            mouseMoved();
+            mouseMoved(event);
         } else {
             if (hovered) {
-                mouseLeave();
+                mouseLeave(event);
                 hovered = false;
             }
         }
@@ -50,11 +50,11 @@ public abstract class View {
         }
     }
 
-    public boolean clicked() {
+    public boolean clicked(MouseEvent event) {
         return false;
     }
 
-    public boolean rightClicked() {
+    public boolean rightClicked(MouseEvent event) {
         return false;
     }
 
@@ -64,7 +64,7 @@ public abstract class View {
         }
     }
 
-    public void mouseMoved() {
+    public void mouseMoved(MouseEvent event) {
 
     }
 
@@ -74,11 +74,11 @@ public abstract class View {
         }
     }
 
-    public void mouseEnter() {
+    public void mouseEnter(MouseEvent event) {
 
     }
 
-    public void mouseLeave() {
+    public void mouseLeave(MouseEvent event) {
 
     }
 

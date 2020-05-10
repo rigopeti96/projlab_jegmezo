@@ -34,7 +34,6 @@ public class TestView extends View {
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
         if (overlay) return;
-        graphics.setColor(clicked ? Color.RED : Color.GREEN);
-        graphics.fill(new Rectangle(this.x, this.y, 100, 100));
+        graphics.drawImage(imageManager.getImage("testImage"), x, y, 100, 100, null);
     }
 }

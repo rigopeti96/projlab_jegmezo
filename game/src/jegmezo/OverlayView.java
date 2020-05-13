@@ -9,8 +9,9 @@ import java.io.IOException;
 //ezt az osztályt még tanácsos lenne szétszedni - Blizzard Overlay és GameOver Overlay
 public class OverlayView extends View{
     private String type;
-    public OverlayView(ImageManager imageManager) {
+    public OverlayView(ImageManager imageManager, String _type) {
         super(imageManager);
+        type = _type;
     }
 
     @Override

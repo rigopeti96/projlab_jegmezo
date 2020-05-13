@@ -2,6 +2,7 @@ package jegmezo;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 public abstract class TileView extends View{
     private int x,y;
@@ -31,7 +32,7 @@ public abstract class TileView extends View{
     }
 
     @Override
-    public void draw(Graphics2D graphics, boolean overlay) {
+    public void draw(Graphics2D graphics, boolean overlay) throws IOException {
         super.draw(graphics, overlay);
         if (overlay) return;
         graphics.drawImage(imageManager.getImage("testImage"), x, y, 100, 100, null);

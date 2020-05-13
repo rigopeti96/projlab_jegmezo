@@ -3,8 +3,10 @@ package jegmezo;
 import java.awt.*;
 
 public class ConsoleView extends View {
-    public ConsoleView(ImageManager imageManager) {
+    private Player activeplayer;
+    public ConsoleView(ImageManager imageManager, Player player) {
         super(imageManager);
+        activeplayer = player;
     }
 
     @Override
@@ -12,6 +14,7 @@ public class ConsoleView extends View {
         Font font = new Font("Serif", Font.BOLD, 11);
         graphics.setFont(font);
         graphics.drawString("Player X's turn", 600, 400); //ide még kell a getClipBound
+        graphics.drawString(activeplayer.actions + "step(s) remaining", 600, 400); //ide még kell a getClipBound
     }
 
     @Override

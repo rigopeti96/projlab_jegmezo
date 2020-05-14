@@ -3,7 +3,6 @@ package jegmezo;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,7 +88,7 @@ public abstract class View {
 
     public abstract boolean isMouseOver(int x, int y);
 
-    public void draw(Graphics2D graphics, boolean overlay) throws IOException {
+    public void draw(Graphics2D graphics, boolean overlay) {
         for (View child: children) {
             child.draw(graphics, overlay);
         }

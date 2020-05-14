@@ -1,7 +1,6 @@
 package jegmezo;
 
 import java.awt.*;
-import java.io.IOException;
 
 public class ItemToolTipView extends View {
     private int x, y;
@@ -22,7 +21,7 @@ public class ItemToolTipView extends View {
 
 
     @Override
-    public void draw(Graphics2D graphics, boolean overlay) throws IOException {
+    public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
         if (!overlay) return;
 

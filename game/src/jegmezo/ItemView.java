@@ -1,10 +1,7 @@
 package jegmezo;
 
-import javafx.scene.control.Tooltip;
-
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 
 public class ItemView extends View {
@@ -13,7 +10,6 @@ public class ItemView extends View {
     private int x, y;
     private int toolTipX, toolTipY;
     private int itemCount;
-    private BufferedImage image;
 
     ItemView(ImageManager imageManager, int x, int y, Item item, int itemCount) {
         super(imageManager);
@@ -22,13 +18,6 @@ public class ItemView extends View {
         this.toolTip = new ItemToolTipView(imageManager, toolTipX, toolTipY, item.getName()); // item.getDescription());
         this.item = item;
         this.itemCount = itemCount;
-
-        this.imageManager.loadImage(item.getName(), "Images/" + item.getName());
-        image = this.imageManager.getImage(item.getName());
-
-        if(itemCount == 0){
-           // image = imageManager.toGrayScale(image);
-        }
     }
 
     @Override
@@ -58,11 +47,13 @@ public class ItemView extends View {
         if (overlay) return;
 
         if(!item.isUseable()){
-            float opacity = 0.2f;
-            graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
+            graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
+            graphics.drawImage(imageManager.getImageGrayScale(item.getName()), x, y, 40, 40, null);
+            graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
         }
-
-        graphics.drawImage(image, x, y, 40, 40, null);
+        else {
+            graphics.drawImage(imageManager.getImage(item.getName()), x, y, 40, 40, null);
+        }
 
         if(item.getName().equals("winitem")|| item.getName().equals("food")){
             graphics.setColor(Color.DARK_GRAY);
@@ -70,9 +61,5 @@ public class ItemView extends View {
             graphics.setFont(font);
             graphics.drawString(itemCount + "x", x+20, y+40);
         }
-
-        //hogy a későbbi rajzolásokba ne szóljon bele az előbbi opacity
-        float opacity = 1.0f;
-        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
     }
 }

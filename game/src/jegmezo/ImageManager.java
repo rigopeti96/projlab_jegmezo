@@ -15,16 +15,22 @@ public class ImageManager {
     public void loadImage(String name, String fileName) {
         try {
             imageMap.put(name, ImageIO.read(Path.of(fileName).toFile()));
+            imageMap.put(name + "-grayscale", toGrayScale(ImageIO.read(Path.of(fileName).toFile())));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public BufferedImage getImage(String name) {
-        return imageMap.get(name);
+        return imageMap.containsKey(name) ? imageMap.get(name) :  this.getImage("missingTexture");
     }
 
-    public BufferedImage toGrayScale(BufferedImage master) {
+    public BufferedImage getImageGrayScale(String name) {
+        return imageMap.containsKey(name) ? imageMap.get(name + "-grayscale") :  this.getImage("missingTexture-grayscale");
+    }
+
+    private BufferedImage toGrayScale(BufferedImage master) {
+        if (master == null) master = this.getImage("missingTexture");
         BufferedImage gray = new BufferedImage(master.getWidth(), master.getHeight(), BufferedImage.TYPE_INT_ARGB);
 
         ColorConvertOp op = new ColorConvertOp(ColorSpace.getInstance(ColorSpace.CS_GRAY), null);

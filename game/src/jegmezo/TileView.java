@@ -2,13 +2,12 @@ package jegmezo;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
 
 public abstract class TileView extends View{
     private int x,y;
     private Tile tile;
     //private TileToolTipView tooltip;
-    private List<PlayerView> playerViews;
+    // private List<PlayerView> playerViews;
     private boolean clicked = false;
 
     public TileView(ImageManager imageManager,int x,int y) {
@@ -32,7 +31,7 @@ public abstract class TileView extends View{
     }
 
     @Override
-    public void draw(Graphics2D graphics, boolean overlay) throws IOException {
+    public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
         if (overlay) return;
         graphics.drawImage(imageManager.getImage("testImage"), x, y, 100, 100, null);

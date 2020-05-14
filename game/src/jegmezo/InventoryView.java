@@ -1,8 +1,6 @@
 package jegmezo;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class InventoryView extends View {
     }
 
     @Override
-    public void draw(Graphics2D graphics, boolean overlay) throws IOException {
+    public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
         if (overlay) return;
 

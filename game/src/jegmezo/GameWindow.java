@@ -64,6 +64,7 @@ public class GameWindow {
     }
 
     private void initialize() {
+        imageManager.loadImage("missingTexture", "missing_texture.png");
         imageManager.loadImage("testImage", "test_texture.png");
         views.add(new TestView(imageManager, 50, 50));
         views.add( new TestView(imageManager, 200, 50));

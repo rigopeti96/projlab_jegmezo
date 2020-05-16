@@ -12,9 +12,8 @@ public abstract class PlayerView extends View {
 
     protected TooltipView tooltip;
 
-    public PlayerView(GameWindow gameWindow, AssetManager assetManager, int x, int y) {
+    public PlayerView(GameWindow gameWindow, AssetManager assetManager) {
         super(gameWindow, assetManager);
-        this.x=x; this.y=y;
     }
 
     @Override
@@ -42,5 +41,13 @@ public abstract class PlayerView extends View {
     }
 
     public abstract void draw (Graphics2D graphics, boolean overlay);
+
+    public void setX(int x){
+        this.x = x;
+    }
+
+    public void setY(int y){
+        this.y =y;
+    }
 
 }

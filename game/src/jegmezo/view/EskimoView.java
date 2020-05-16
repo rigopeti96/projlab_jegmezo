@@ -8,8 +8,8 @@ import java.io.IOException;
 
 public class EskimoView extends PlayerView {
 
-    public EskimoView(GameWindow gameWindow, AssetManager assetManager, int x, int y) {
-        super(gameWindow, assetManager, x, y);
+    public EskimoView(GameWindow gameWindow, AssetManager assetManager) {
+        super(gameWindow, assetManager);
         tooltip = new TooltipView(gameWindow, assetManager, "Player " + player.getNumber() + " (Eskimo)");
     }
 

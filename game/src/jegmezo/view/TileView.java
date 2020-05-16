@@ -4,6 +4,7 @@ import jegmezo.model.Tile;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 
 public abstract class TileView extends View{
@@ -20,6 +21,11 @@ public abstract class TileView extends View{
         this.tile=tile;
         size=2;
         toolTip = gameWindow.getTooltipView();
+        ArrayList<MenuAction> actionList = new ArrayList<>();
+        actionList.add(new MenuAction("Step", () -> System.out.println("Should step")));
+        actionList.add(new MenuAction("Dig", () -> System.out.println("Should dig if on it")));
+        actionList.add(new MenuAction("Pick up", () -> System.out.println("Should pick up if has item and has no HOE")));
+        this.menu = new MenuView(gameWindow, assetManager, actionList);
     }
 
     @Override
@@ -42,8 +48,15 @@ public abstract class TileView extends View{
     }
 
     public void mouseLeave(MouseEvent event) {
-
         toolTip.setShow(false);
+    }
+
+    @Override
+    public boolean rightClicked(MouseEvent event) {
+        menu.setX(event.getX());
+        menu.setY(event.getY());
+        this.gameWindow.openMenu(menu);
+        return true;
     }
 
 

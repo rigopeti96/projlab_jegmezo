@@ -127,7 +127,6 @@ public class GameWindow {
         views.add(new IceSheetView(this, assetManager, 200,200, iceSheet));
         playerViews.add(eskimoView);
         views.add(eskimoView);
-        views.add(new ConsoleView(this,assetManager, eskimo));
     }
 
     private void handleClick(MouseEvent event) {

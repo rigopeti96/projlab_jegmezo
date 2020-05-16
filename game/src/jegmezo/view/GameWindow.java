@@ -19,17 +19,8 @@ public class GameWindow {
     public static int windowHeight = 480;
     TooltipView tooltipView;
 
-    public void setToolTipText(String text){
-        tooltipView.setText(text);
-    }
-    public void setToolTipX(int x){
-        tooltipView.setX(x);
-    }
-    public void setToolTipY(int y){
-        tooltipView.setY(y);
-    }
-    public void setToolTipShow(boolean show){
-        tooltipView.setShow(show);
+    public TooltipView getTooltipView(){
+        return tooltipView;
     }
 
     class GameCanvas extends JPanel

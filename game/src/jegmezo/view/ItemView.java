@@ -19,6 +19,7 @@ public class ItemView extends View {
         this.y = y;
        // this.toolTip = new TooltipView(gameWindow, assetManager, item.getDescription());
 
+        toolTip = gameWindow.getTooltipView();
         this.item = item;
         this.itemCount = itemCount;
         ArrayList<MenuAction> actionList = new ArrayList<>();
@@ -36,8 +37,8 @@ public class ItemView extends View {
 
     @Override
     public void mouseMoved(MouseEvent event) {
-        gameWindow.setToolTipX(event.getX());
-        gameWindow.setToolTipY(event.getY());
+       toolTip.setX(event.getX());
+       toolTip.setY(event.getY());
     }
 
     @Override
@@ -45,15 +46,15 @@ public class ItemView extends View {
 
         if (!this.children.contains(menu)) {
             //this.children.add(toolTip);
-            gameWindow.setToolTipText(item.getDescription());
-            gameWindow.setToolTipShow(true);
+            toolTip.setText(item.getDescription());
+            toolTip.setShow(true);
         }
     }
 
     @Override
     public void mouseLeave(MouseEvent event) {
         //this.children.remove(toolTip);
-        gameWindow.setToolTipShow(false);
+        toolTip.setShow(false);
     }
 
     public void setItemCount(int itemCount){

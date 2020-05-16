@@ -20,7 +20,7 @@ public class ItemView extends View {
         this.item = item;
         this.itemCount = itemCount;
         ArrayList<MenuAction> actionList = new ArrayList<>();
-        actionList.add(new MenuAction("Use", () -> System.out.println("Should use")));
+        if (item.isUseable()) actionList.add(new MenuAction("Use", () -> System.out.println("Should use")));
         actionList.add(new MenuAction("Trade", () -> System.out.println("Should trade")));
         this.menu = new MenuView(assetManager, actionList, () -> {
             removeChild(this.menu);
@@ -40,7 +40,7 @@ public class ItemView extends View {
 
     @Override
     public void mouseEnter(MouseEvent event) {
-        this.children.add(toolTip);
+        if (!this.children.contains(menu)) this.children.add(toolTip);
     }
 
     @Override
@@ -53,6 +53,7 @@ public class ItemView extends View {
         menu.setX(event.getX());
         menu.setY(event.getY());
         addChild(menu);
+        this.children.remove(toolTip);
         return true;
     }
 

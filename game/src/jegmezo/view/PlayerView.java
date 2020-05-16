@@ -19,7 +19,7 @@ public abstract class PlayerView extends View {
 
     @Override
     public boolean isMouseOver(int x, int y) {
-            return new Rectangle(this.x, this.y, 100, 100).contains(x, y);
+            return new Rectangle(this.x -20, this.y -20, 25, 25).contains(x, y);
     }
 
     @Override
@@ -39,11 +39,11 @@ public abstract class PlayerView extends View {
     public abstract void draw (Graphics2D graphics, boolean overlay);
 
     public void setX(int x){
-        this.x = 100;
+        this.x = x;
     }
 
     public void setY(int y){
-        this.y = 100;
+        this.y = y;
     }
 
     public void setPlayer(Player player){

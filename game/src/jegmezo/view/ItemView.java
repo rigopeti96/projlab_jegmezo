@@ -17,7 +17,6 @@ public class ItemView extends View {
         super(gameWindow, assetManager);
         this.x = x;
         this.y = y;
-       // this.toolTip = new TooltipView(gameWindow, assetManager, item.getDescription());
 
         toolTip = gameWindow.getTooltipView();
         this.item = item;
@@ -25,9 +24,7 @@ public class ItemView extends View {
         ArrayList<MenuAction> actionList = new ArrayList<>();
         if (item.isUseable()) actionList.add(new MenuAction("Use", () -> System.out.println("Should use")));
         actionList.add(new MenuAction("Trade", () -> System.out.println("Should trade")));
-        this.menu = new MenuView(gameWindow, assetManager, actionList, () -> {
-            removeChild(this.menu);
-        });
+        this.menu = new MenuView(gameWindow, assetManager, actionList);
     }
 
     @Override
@@ -43,9 +40,7 @@ public class ItemView extends View {
 
     @Override
     public void mouseEnter(MouseEvent event) {
-
         if (!this.children.contains(menu)) {
-            //this.children.add(toolTip);
             toolTip.setText(item.getDescription());
             toolTip.setShow(true);
         }
@@ -53,7 +48,6 @@ public class ItemView extends View {
 
     @Override
     public void mouseLeave(MouseEvent event) {
-        //this.children.remove(toolTip);
         toolTip.setShow(false);
     }
 
@@ -65,8 +59,7 @@ public class ItemView extends View {
     public boolean rightClicked(MouseEvent event) {
         menu.setX(event.getX());
         menu.setY(event.getY());
-        addChild(menu);
-        this.children.remove(toolTip);
+        this.gameWindow.openMenu(menu);
         return true;
     }
 

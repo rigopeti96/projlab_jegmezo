@@ -6,16 +6,14 @@ import java.util.ArrayList;
 
 public class MenuView extends View {
     private int x, y;
-    private Runnable closeCallback;
 
-    public MenuView(GameWindow gameWindow, AssetManager assetManager, ArrayList<MenuAction> items, Runnable closeCallback) {
+    public MenuView(GameWindow gameWindow, AssetManager assetManager, ArrayList<MenuAction> items) {
         super(gameWindow, assetManager);
-        this.closeCallback = closeCallback;
         int y = 0;
         for (MenuAction item : items) {
             children.add(new MenuItemView(gameWindow, assetManager, () -> new Point(x, this.y), 0, y, item.getText(), () -> {
                 item.getCallback().run();
-                closeCallback.run();
+                this.gameWindow.closeMenu();
             }));
             y += 30;
         }
@@ -32,9 +30,7 @@ public class MenuView extends View {
     @Override
     public void windowClicked(MouseEvent event) {
         super.windowClicked(event);
-        if (!hovered) {
-            this.closeCallback.run();
-        }
+        if (!hovered) this.gameWindow.closeMenu();
     }
 
     @Override

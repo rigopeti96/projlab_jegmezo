@@ -14,15 +14,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class GameWindow {
-
-    public static int windowWidth = 800;
-    public static int windowHeight = 480;
-    TooltipView tooltipView;
-
-    public TooltipView getTooltipView(){
-        return tooltipView;
-    }
-
     class GameCanvas extends JPanel
     {
         @Override
@@ -34,17 +25,36 @@ public class GameWindow {
         }
     }
 
+    public static int windowWidth = 800;
+    public static int windowHeight = 480;
+    TooltipView tooltipView;
+    MenuView menuView;
+
+    public TooltipView getTooltipView(){
+        return tooltipView;
+    }
+
+    public void openMenu(MenuView newMenu) {
+        views.remove(menuView);
+        views.add(newMenu);
+        menuView = newMenu;
+        views.remove(tooltipView);
+    }
+
+    public void closeMenu() {
+        views.remove(menuView);
+        views.add(tooltipView);
+    }
+
     private List<View> views = new ArrayList<>();
     private AssetManager assetManager = new AssetManager();
-
-
 
     public void start() {
         JFrame frame= new JFrame();
         frame.setTitle("Jégmező");
         frame.setSize(windowWidth, windowHeight);
-        frame.setVisible(true);
         frame.setContentPane(new GameCanvas());
+        frame.setVisible(true);
         frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent event) {
@@ -100,24 +110,24 @@ public class GameWindow {
 
     private void handleClick(MouseEvent event) {
         event = remapMouseEvent(event);
-        for (View view: views) {
+        for (View view: new ArrayList<>(views)) {
             view.windowClicked(event);
         }
 
-        for (View view: views) {
+        for (View view: new ArrayList<>(views)) {
             view.handleClick(event);
         }
     }
 
     private void handleMouseMove(MouseEvent event) {
         event = remapMouseEvent(event);
-        for (View view: views) {
+        for (View view: new ArrayList<>(views)) {
             view.handleMouseMove(event);
         }
     }
 
     private void handleMouseWheelMove(MouseWheelEvent event) {
-        for (View view: views) {
+        for (View view: new ArrayList<>(views)) {
             view.mouseWheelMoved(event);
         }
     }
@@ -127,11 +137,11 @@ public class GameWindow {
     }
 
     private void draw(Graphics2D graphics) {
-        for (View view: views) {
+        for (View view: new ArrayList<>(views)) {
             view.draw(graphics, false);
         }
 
-        for (View view: views) {
+        for (View view: new ArrayList<>(views)) {
             view.draw(graphics, true);
         }
     }

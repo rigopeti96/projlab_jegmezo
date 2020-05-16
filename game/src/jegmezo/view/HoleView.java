@@ -3,6 +3,7 @@ package jegmezo.view;
 import jegmezo.model.Tile;
 
 import java.awt.*;
+import java.awt.event.HierarchyBoundsAdapter;
 
 public class HoleView extends TileView {
 

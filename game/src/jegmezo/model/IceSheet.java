@@ -1,6 +1,8 @@
 package jegmezo.model;
 
 
+import jegmezo.view.*;
+
 /** Jégtábla, tárol egy játékoslétszámot ami felet a jégtábla átfordul, van-e rajta igloo, és ha van rajta tárgy akkor azt is tárolja*/
 public class IceSheet extends Tile {
 	/**
@@ -223,5 +225,9 @@ public class IceSheet extends Tile {
 			return "Tile(ID="+id+")";
 		return "Sheet(ID=" + id + "\nsnow=" + snow + "\nlimit=" + playerLimit +
 				"\nitem=" + item.toString() + "\nbuilding=" + building.toString() + ")";
+	}
+
+	public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile){
+		return new IceSheetView(gameWindow, assetManager, x, y, tile);
 	}
 }

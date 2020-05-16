@@ -1,6 +1,11 @@
 package jegmezo.model;
 
 
+import jegmezo.view.AssetManager;
+import jegmezo.view.GameWindow;
+import jegmezo.view.HoleView;
+import jegmezo.view.TileView;
+
 /**
  * A lyukat megvalósítítja meg. Ha beleesik egy játékos és nem tud magától vagy segítséggel kijönni, vége a játéknak.
  */
@@ -128,4 +133,7 @@ public class Hole extends Tile {
 		increaseSnow();
 	}
 
+	public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile){
+		return new HoleView(gameWindow, assetManager, x, y, tile);
+	}
 }

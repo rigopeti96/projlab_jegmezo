@@ -1,6 +1,10 @@
 package jegmezo.model;
 
 
+import jegmezo.view.AssetManager;
+import jegmezo.view.GameWindow;
+import jegmezo.view.TileView;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -241,4 +245,6 @@ public abstract class Tile {
 	public List<Player> getPlayers() {
 		return players;
 	}
+
+	abstract public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile);
 }

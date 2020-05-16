@@ -21,7 +21,6 @@ public class DrawUtils {
             y += bounds.getHeight() - stringBounds.getHeight();
         } else if (verticalAlignment == VerticalAlignment.Center) {
             y += bounds.getHeight() / 2.0f - stringBounds.getHeight() / 2.0f;
-            System.out.println(y - bounds.getY());
         }
 
         graphics.setFont(font);
@@ -34,8 +33,8 @@ public class DrawUtils {
                 x += bounds.getWidth() / 2 - stringBounds.getWidth() / 2;
             }
 
-            graphics.drawString(line, x, y);
             y += lineStep;
+            graphics.drawString(line, x, y);
         }
     }
 
@@ -46,7 +45,7 @@ public class DrawUtils {
         for (String line: lines) {
             Rectangle2D stringBounds = font.getStringBounds(line, frc);
             stringWidth = Math.max(stringWidth, (int) Math.round(stringBounds.getWidth()));
-            stringHeight += (int) Math.round(font.getSize() * lineHeight);
+            stringHeight += Math.round(font.getSize() * lineHeight);
         }
         return new Rectangle(0, 0, stringWidth, stringHeight);
     }

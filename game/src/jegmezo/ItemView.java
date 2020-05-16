@@ -14,7 +14,7 @@ public class ItemView extends View {
         super(assetManager);
         this.x = x;
         this.y = y;
-        this.toolTip = new ItemToolTipView(assetManager, item.getName()); // item.getDescription());
+        this.toolTip = new ItemToolTipView(assetManager, item.getDescription());
         this.item = item;
         this.itemCount = itemCount;
     }

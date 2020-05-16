@@ -15,7 +15,7 @@ public class EskimoView extends PlayerView {
 
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
-        graphics.drawImage(assetManager.getImage("eskimo"), x, y, 100, 100, null);
+        graphics.drawImage(assetManager.getImage("eskimo"), super.x, super.y, 100, 100, null);
     }
 
     public void mouseEnter(MouseEvent event){

@@ -32,14 +32,6 @@ public class IceSheetView extends TileView {
         graphics.setColor(Color.GRAY);
         graphics.drawPolygon(p);
 
-        //lekérjük az aktuális játékosok listáját akik a mezőn állnak
-        List<Player> players = tile.getPlayers();
-        //ezekhez player View-kat hozunk létre
-        for (Player player: players
-             ) {
-            gameWindow.setXYToPlayer(player.getNumber(), x, y);
-        }
-
         for (View child : children)
             child.draw(graphics, overlay);
     }

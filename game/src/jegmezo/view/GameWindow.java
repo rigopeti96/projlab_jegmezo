@@ -27,17 +27,7 @@ public class GameWindow {
     public static int windowHeight = 480;
     TooltipView tooltipView;
     MenuView menuView;
-    ArrayList<PlayerView> playerViews = new ArrayList<PlayerView>();
 
-    public void setXYToPlayer(int number, int x, int y){
-        for (PlayerView playerView: playerViews
-             ) {
-            if(playerView.getPlayer().getNumber() == number){
-                playerView.setX(x);
-                playerView.setY(y);
-            }
-        }
-    }
 
     public TooltipView getTooltipView(){
         return tooltipView;
@@ -116,7 +106,7 @@ public class GameWindow {
         Inventory inventory = new Inventory(new GameController());
         inventory.equipBreakableShovel(new BreakableShovel());
         views.add(new InventoryView(this, assetManager, inventory));
-        views.add(tooltipView);
+
         IceSheet iceSheet = new IceSheet(new GameController(), 0,3,0);
 
         //teszt játékosok
@@ -124,9 +114,13 @@ public class GameWindow {
         EskimoView eskimoView = new EskimoView(this, assetManager);
         eskimoView.setPlayer(eskimo);
         iceSheet.stepOnto(eskimo,iceSheet);
-        views.add(new IceSheetView(this, assetManager, 200,200, iceSheet));
-        playerViews.add(eskimoView);
+        IceSheetView iceSheetView = new IceSheetView(this, assetManager, 200,200, iceSheet);
+        views.add(iceSheetView);
+        eskimoView.setTileView(iceSheetView);
+
         views.add(eskimoView);
+
+        views.add(tooltipView);
     }
 
     private void handleClick(MouseEvent event) {

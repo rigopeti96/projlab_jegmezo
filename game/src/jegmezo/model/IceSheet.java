@@ -216,4 +216,12 @@ public class IceSheet extends Tile {
 		return "Sheet(ID=" + id + ",snow=" + snow + ",limit=" + playerLimit +
 				",item=" + item.toString() + ",building=" + building.toString() + ")";
 	}
+
+	@Override
+	public String getDescription() {
+		if(!discovered)
+			return "Tile(ID="+id+")";
+		return "Sheet(ID=" + id + "\nsnow=" + snow + "\nlimit=" + playerLimit +
+				"\nitem=" + item.toString() + "\nbuilding=" + building.toString() + ")";
+	}
 }

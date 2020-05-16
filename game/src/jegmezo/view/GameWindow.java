@@ -31,6 +31,7 @@ public class GameWindow {
     MenuView menuView;
     View overlayView;
     private GameController gameController;
+    ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
     public GameController getGameController() {
         return gameController;
@@ -90,7 +91,6 @@ public class GameWindow {
             }
         });
 
-        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(frame::repaint, 0, 16, TimeUnit.MILLISECONDS);
     }
 
@@ -128,6 +128,10 @@ public class GameWindow {
         views.add(consoleView);
         views.add(tooltipView);
         gameController.start();
+    }
+
+    public void schedule(Runnable runnable, int time) {
+        executor.schedule(runnable, time, TimeUnit.MILLISECONDS);
     }
 
     private void handleClick(MouseEvent event) {

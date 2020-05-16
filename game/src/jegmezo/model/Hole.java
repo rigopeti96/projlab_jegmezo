@@ -134,7 +134,7 @@ public class Hole extends Tile {
 		increaseSnow();
 	}
 
-	public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile){
-		return new HoleView(gameWindow, assetManager, x, y, tile);
+	public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y){
+		return new HoleView(gameWindow, assetManager, x, y, this);
 	}
 }

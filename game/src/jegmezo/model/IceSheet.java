@@ -228,7 +228,7 @@ public class IceSheet extends Tile {
 				"\nitem=" + item.toString() + "\nbuilding=" + building.toString() + ")";
 	}
 
-	public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile){
-		return new IceSheetView(gameWindow, assetManager, x, y, tile);
+	public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y){
+		return new IceSheetView(gameWindow, assetManager, x, y, this);
 	}
 }

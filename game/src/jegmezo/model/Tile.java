@@ -222,5 +222,5 @@ public abstract class Tile {
 		return players;
 	}
 
-	abstract public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile);
+	abstract public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y);
 }

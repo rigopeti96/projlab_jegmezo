@@ -100,6 +100,8 @@ public class GameWindow {
         assetManager.loadImage("blizzardOverlay2", "images/snow2.png");
         assetManager.loadImage("eskimo", "images/eskimo-003-512.png");
         assetManager.loadImage("scientist", "images/species-researcher-005-512.png");
+        assetManager.loadImage("gameOver", "images/lose.png");
+        assetManager.loadImage("gameWin", "images/win.png");
 
         tooltipView = new TooltipView(this, assetManager, "");
 
@@ -121,6 +123,7 @@ public class GameWindow {
         views.add(new IceSheetView(this, assetManager, 200,200, iceSheet));
         views.add(new HoleView(this,assetManager,300,300,new Hole(new GameController(),1,0)));
         views.add(eskimoView);
+        views.add(new EndOverlayView(this, assetManager));
 
         views.add(tooltipView);
     }

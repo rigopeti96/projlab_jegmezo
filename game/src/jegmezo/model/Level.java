@@ -9,6 +9,7 @@ public class Level {
      * a játékban lévő mezőket tartalmazó map
      */
     private Map<Integer, Tile> tiles = new HashMap<>();
+    private Map<Tile, LevelTile> levelTiles = new HashMap<>();
     /**
      * játékosokat tartalmazó list
      */
@@ -26,7 +27,7 @@ public class Level {
         tiles.clear(); //a játékosok számától fog függni a mezők száma
         this.players = players;
         LevelGenerator generator = new LevelGenerator(gameController, players.size()); //legeneráljuk a játékosok számától függően a pályát
-
+        this.levelTiles = generator.getLevelTiles();
         for (Tile tile: generator.generate()) {
             tiles.put(tile.getId(), tile); //legeneráljuk a mezőket
         }

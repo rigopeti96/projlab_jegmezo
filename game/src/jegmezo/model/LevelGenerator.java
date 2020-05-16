@@ -16,11 +16,12 @@ public class LevelGenerator {
     /**
      * Hexagonal grid mezői (nem játék Tile, hanem LevelTile, mivel ebben van geometriai információ)
      */
-    private LevelTile[][] tiles;
+    protected LevelTile[][] tiles;
     /**
      * A játék által használt mezők
      */
     private Map<LevelTile, Tile> gameTiles = new HashMap<>();
+
     /**
      * Játék mező - LevelTile mapping
      */
@@ -32,11 +33,11 @@ public class LevelGenerator {
     /**
      * A hexagonal grid x tengelyű sugara
      */
-    private int rx;
+    protected int rx;
     /**
      * A hexagonal grid y tengelyű sugara
      */
-    private int ry;
+    protected int ry;
     /**
      * Játékosok száma
      */
@@ -44,165 +45,19 @@ public class LevelGenerator {
     /**
      * Az algoritmus által használt random threshold
      */
-    private static final double CHANCE = 0.3;
+    protected static final double CHANCE = 0.3;
     /**
      * Minimum része a pályának, ami IceSheet kell, hogy legyen (0-1-ig)
      */
-    private static final double MIN_FRACTION = 0.3;
+    protected static final double MIN_FRACTION = 0.3;
     /**
      * A level generáló által használt random
      */
-    private Random random;
+    protected Random random;
     /**
      * A generált jegesmedge
      */
     private PolarBear polarBear;
-
-    /**
-     * Egy hexagonal tile-nak felel meg
-     */
-    private class LevelTile {
-        /**
-         * X koordináta a hexagonal gridben
-         */
-        private int x;
-        /**
-         * Y koordináta a hexagonal gridben
-         */
-        private int y;
-        /**
-         * Ki van e választva sheet-nek
-         */
-        private boolean selected = false;
-        /**
-         *  Ki van e választva hole-nak
-         */
-        private boolean hole = false;
-        /**
-         * Nem újra kiválaszható (ha true)
-         */
-        private boolean skipped = false;
-
-        /**
-         * @param x X koordináta hexagonal gridben
-         * @param y Y koordináta hexagonal gridben
-         */
-        public LevelTile(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        /**
-         * @return Ki van e választva sheet-nek
-         */
-        public boolean isSelected() {
-            return selected;
-        }
-
-        /**
-         * @return Ki van e választva hole-nak
-         */
-        public boolean isHole() {
-            return hole;
-        }
-
-        /**
-         * Kiválasztja sheet-nek
-         */
-        public void select() {
-            selected = true;
-        }
-
-        /**
-         * Visszareseteli a tile-t, hogy újra kiválasztható legyen
-         */
-        public void reset() {
-            skipped = false;
-        }
-
-        /**
-         * Skippeli a tile-t, hogy ne legyen újra kiválaszható
-         */
-        public void skip() {
-            skipped = true;
-        }
-
-        /**
-         * Lyuknak jelöli a tile-t
-         */
-        public void hole() {
-            if (selected) return;
-            hole = true;
-        }
-
-        /**
-         * @return A szomszéd tile-ok listája
-         */
-        public List<LevelTile> getNeighbours() {
-            List<LevelTile> ret = new ArrayList<>();
-            if (x > -rx) ret.add(tiles[x + rx - 1][y + ry]);
-            if (x < rx) ret.add(tiles[x + rx + 1][y + ry]);
-            if (y > -ry) ret.add(tiles[x + rx][y + ry - 1]);
-            if (y < ry) ret.add(tiles[x + rx][y + ry + 1]);
-            if (x % 2 == 0 && x > -rx && y < ry) ret.add(tiles[x + rx - 1][y + ry + 1]);
-            if (x % 2 == 0 && x < rx && y < ry) ret.add(tiles[x + rx + 1][y + ry + 1]);
-            if (Math.abs(x % 2) == 1 && x > -rx && y > -ry) ret.add(tiles[x + rx - 1][y + ry - 1]);
-            if (Math.abs(x % 2) == 1 && x < rx && y > -ry) ret.add(tiles[x + rx + 1][y + ry - 1]);
-            return ret;
-        }
-
-        /**
-         * @return  Ki lehet e választani a tile-t
-         */
-        public boolean isOpenable() {
-            if (getNeighbours().size() < 6) return false;
-            return !skipped && !selected;
-        }
-
-        /**
-         * @return Van e kiválasztható szomszédja
-         */
-        public boolean hasOpenable() {
-            for (LevelTile tile: getNeighbours()) {
-                if (tile.isOpenable()) return true;
-            }
-
-            return false;
-        }
-
-        /**
-         * @return Van e kiválasztott szomszédja
-         */
-        public boolean hasSelected() {
-            for (LevelTile tile: getNeighbours()) {
-                if (tile.selected) return true;
-            }
-
-            return false;
-        }
-
-        /**
-         * Kiválasztja a tile-t és hozzáadja egy listához
-         * @param openableList Kiválasztottak, de még nem feldolgozottak listája
-         */
-        public void open(List<LevelTile> openableList) {
-            if (this.isOpenable() && random.nextDouble() < CHANCE) {
-                openableList.add(this);
-            } else {
-                skip();
-            }
-        }
-
-        /**
-         * Kiválasztja a szomszédokat, akiket ki lehet és hozzáadja egy listához
-         * @param openableList Kiválasztottak, de még nem feldolgozottak listája
-         */
-        public void openNeighbours(List<LevelTile> openableList) {
-            for (LevelTile tile: this.getNeighbours()) {
-                tile.open(openableList);
-            }
-        }
-    }
 
     /**
      * @param gameController Játék kontroller, DI miatt kell
@@ -238,13 +93,17 @@ public class LevelGenerator {
         return polarBear;
     }
 
+    public Map<Tile, LevelTile> getLevelTiles() {
+        return levelTiles;
+    }
+
     /**
      * A hexagonal tile-ok legenerálása (nem game tile, hanem a geometriával rendelkező reprezentáció)
      */
     private void generateLevelTiles() {
         for (int x = -rx; x <= rx; x++) {
             for (int y = -ry; y <= ry; y++) {
-                tiles[rx + x][ry + y] = new LevelTile(x, y);
+                tiles[rx + x][ry + y] = new LevelTile(this, x, y);
             }
         }
 

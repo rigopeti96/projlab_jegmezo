@@ -123,7 +123,7 @@ public class GameWindow {
         LevelView levelView = new LevelView(this, assetManager, level);
         views.add(levelView);
 
-        views.add(new InventoryView(this, assetManager, inventory));
+        views.add(new InventoryView(this, assetManager, players.get(0).getInventory()));
         views.add(consoleView);
         views.add(tooltipView);
     }

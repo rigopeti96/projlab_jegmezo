@@ -5,8 +5,8 @@ import java.awt.*;
 public class PlayerStatusView extends View {
     private Player activeplayer;
 
-    public PlayerStatusView(ImageManager imageManager, Player player) {
-        super(imageManager);
+    public PlayerStatusView(AssetManager assetManager, Player player) {
+        super(assetManager);
         activeplayer = player;
     }
 

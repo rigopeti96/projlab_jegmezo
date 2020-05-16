@@ -9,10 +9,10 @@ import java.util.List;
 public abstract class View {
     protected boolean hovered;
     protected List<View> children = new ArrayList<>();
-    protected ImageManager imageManager;
+    protected AssetManager assetManager;
 
-    public View(ImageManager imageManager) {
-        this.imageManager = imageManager;
+    public View(AssetManager assetManager) {
+        this.assetManager = assetManager;
     }
 
     public boolean handleClick(MouseEvent event) {

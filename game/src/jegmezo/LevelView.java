@@ -2,8 +2,8 @@ package jegmezo;
 
 public class LevelView extends View {
 
-    public LevelView(ImageManager imageManager) {
-        super(imageManager);
+    public LevelView(AssetManager assetManager) {
+        super(assetManager);
     }
 
     @Override

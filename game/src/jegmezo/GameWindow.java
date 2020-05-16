@@ -26,7 +26,7 @@ public class GameWindow {
     }
 
     private List<View> views = new ArrayList<>();
-    private ImageManager imageManager = new ImageManager();
+    private AssetManager assetManager = new AssetManager();
 
     public void start() {
         JFrame frame= new JFrame();
@@ -68,22 +68,18 @@ public class GameWindow {
     }
 
     private void initialize() {
-        imageManager.loadImage("missingTexture", "missing_texture.png");
-        imageManager.loadImage("testImage", "test_texture.png");
-        imageManager.loadImage("rope", "Images/rope.jpg");
-        imageManager.loadImage("breakableshovel", "Images/breakableshovel.png");
-        imageManager.loadImage("food", "Images/food.jpg");
-        imageManager.loadImage("scubagear", "Images/scubagear.jpg");
-        imageManager.loadImage("shovel", "Images/shovel.jpg");
-        imageManager.loadImage("winitem", "Images/winitem.jpg");
-        imageManager.loadImage("tent", "Images/tent.png");
-
-        views.add(new TestView(imageManager, 50, 50));
-        views.add( new TestView(imageManager, 200, 50));
+        assetManager.loadImage("missingTexture", "images/missing_texture.png");
+        assetManager.loadImage("testImage", "images/test_texture.png");
+        assetManager.loadImage("rope", "images/rope.jpg");
+        assetManager.loadImage("breakableshovel", "images/breakableshovel.png");
+        assetManager.loadImage("food", "images/food.jpg");
+        assetManager.loadImage("scubagear", "images/scubagear.jpg");
+        assetManager.loadImage("shovel", "images/shovel.jpg");
+        assetManager.loadImage("winitem", "images/winitem.jpg");
+        assetManager.loadImage("tent", "images/tent.png");
 
         Inventory inventory = new Inventory(new GameController());
-        inventory.equipBreakableShovel(new BreakableShovel());
-        views.add(new InventoryView(imageManager,inventory));
+        views.add(new InventoryView(assetManager, 200, 200, inventory));
     }
 
     private void handleClick(MouseEvent event) {

@@ -4,8 +4,8 @@ import java.awt.*;
 
 public class ConsoleView extends View {
     private Player activeplayer;
-    public ConsoleView(ImageManager imageManager, Player player) {
-        super(imageManager);
+    public ConsoleView(AssetManager assetManager, Player player) {
+        super(assetManager);
         activeplayer = player;
     }
 

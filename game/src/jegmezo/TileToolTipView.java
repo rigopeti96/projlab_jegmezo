@@ -3,8 +3,8 @@ package jegmezo;
 public class TileToolTipView extends View {
     private String text;
 
-    public TileToolTipView(ImageManager imageManager) {
-        super(imageManager);
+    public TileToolTipView(AssetManager assetManager) {
+        super(assetManager);
     }
 
 

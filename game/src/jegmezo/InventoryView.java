@@ -10,10 +10,10 @@ public class InventoryView extends View {
     private Inventory inventory;
     private int x, y;
 
-    InventoryView(ImageManager imageManager, Inventory inventory) {
+    InventoryView(ImageManager imageManager, int x, int y, Inventory inventory) {
         super(imageManager);
-        this.x = GameWindow.windowWidth-430;
-        this.y = GameWindow.windowHeight-100;
+        this.x = x;
+        this.y = y;
         this.inventory = inventory;
 
         children.add(new ItemView(imageManager, x+70*0+5, y+5, new ScubaGear(),inventory.getScubaCount()));

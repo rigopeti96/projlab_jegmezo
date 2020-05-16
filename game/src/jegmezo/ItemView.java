@@ -3,21 +3,28 @@ package jegmezo;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class ItemView extends View {
     private ItemToolTipView toolTip;
     private Item item;
     private int x, y;
-    private int toolTipX, toolTipY;
     private int itemCount;
+    private MenuView menu;
 
-    ItemView(ImageManager imageManager, int x, int y, Item item, int itemCount) {
-        super(imageManager);
+    ItemView(AssetManager assetManager, int x, int y, Item item, int itemCount) {
+        super(assetManager);
         this.x = x;
         this.y = y;
-        this.toolTip = new ItemToolTipView(imageManager, toolTipX, toolTipY, item.getName()); // item.getDescription());
+        this.toolTip = new ItemToolTipView(assetManager, item.getDescription());
         this.item = item;
         this.itemCount = itemCount;
+        ArrayList<MenuAction> actionList = new ArrayList<>();
+        if (item.isUseable()) actionList.add(new MenuAction("Use", () -> System.out.println("Should use")));
+        actionList.add(new MenuAction("Trade", () -> System.out.println("Should trade")));
+        this.menu = new MenuView(assetManager, actionList, () -> {
+            removeChild(this.menu);
+        });
     }
 
     @Override
@@ -33,12 +40,25 @@ public class ItemView extends View {
 
     @Override
     public void mouseEnter(MouseEvent event) {
-        this.children.add(toolTip);
+        if (!this.children.contains(menu)) this.children.add(toolTip);
     }
 
     @Override
     public void mouseLeave(MouseEvent event) {
         this.children.remove(toolTip);
+    }
+
+    public void setItemCount(int itemCount){
+        this.itemCount = itemCount;
+    }
+
+    @Override
+    public boolean rightClicked(MouseEvent event) {
+        menu.setX(event.getX());
+        menu.setY(event.getY());
+        addChild(menu);
+        this.children.remove(toolTip);
+        return true;
     }
 
     @Override
@@ -48,17 +68,16 @@ public class ItemView extends View {
 
         if(!item.isUseable()){
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
-            graphics.drawImage(imageManager.getImageGrayScale(item.getName()), x, y, 40, 40, null);
+            graphics.drawImage(assetManager.getImageGrayScale(item.getName()), x + 5, y + 5, 40, 40, null);
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
         }
         else {
-            graphics.drawImage(imageManager.getImage(item.getName()), x, y, 40, 40, null);
+            graphics.drawImage(assetManager.getImage(item.getName()), x + 5, y + 5, 40, 40, null);
         }
 
-        if(item.getName().equals("winitem")|| item.getName().equals("food")){
+        if(item.getName().equals("Win item")|| item.getName().equals("Food")){
             graphics.setColor(Color.DARK_GRAY);
-            Font font = new Font("Calibri", Font.BOLD, 20);
-            graphics.setFont(font);
+            graphics.setFont(assetManager.getFont());
             graphics.drawString(itemCount + "x", x+20, y+40);
         }
     }

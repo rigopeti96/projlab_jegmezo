@@ -40,7 +40,7 @@ public class Rope implements Item {
 	 * @return A tárgy neve
 	 */
 	public String getName() {
-		return "rope";
+		return "Rope";
 	}
 
 	/**

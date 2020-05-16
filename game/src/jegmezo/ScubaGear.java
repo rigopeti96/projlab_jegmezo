@@ -44,7 +44,7 @@ public class ScubaGear implements Item {
 	 * @return A tárgy neve
 	 */
 	public String getName() {
-		return "scuba gear";
+		return "Scuba gear";
 	}
 
 	/**

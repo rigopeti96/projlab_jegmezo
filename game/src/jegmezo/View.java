@@ -3,17 +3,16 @@ package jegmezo;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class View {
     protected boolean hovered;
     protected List<View> children = new ArrayList<>();
-    protected ImageManager imageManager;
+    protected AssetManager assetManager;
 
-    public View(ImageManager imageManager) {
-        this.imageManager = imageManager;
+    public View(AssetManager assetManager) {
+        this.assetManager = assetManager;
     }
 
     public boolean handleClick(MouseEvent event) {
@@ -46,7 +45,7 @@ public abstract class View {
             }
         }
 
-        for (View child: children) {
+        for (View child: new ArrayList<>(children)) {
             child.handleMouseMove(event);
         }
     }
@@ -60,7 +59,7 @@ public abstract class View {
     }
 
     public void windowClicked(MouseEvent event) {
-        for (View child: children) {
+        for (View child: new ArrayList<>(children)) {
             child.windowClicked(event);
         }
     }
@@ -70,7 +69,7 @@ public abstract class View {
     }
 
     public void mouseWheelMoved(MouseWheelEvent event) {
-        for (View child: children) {
+        for (View child: new ArrayList<>(children)) {
             child.mouseWheelMoved(event);
         }
     }
@@ -89,8 +88,8 @@ public abstract class View {
 
     public abstract boolean isMouseOver(int x, int y);
 
-    public void draw(Graphics2D graphics, boolean overlay) throws IOException {
-        for (View child: children) {
+    public void draw(Graphics2D graphics, boolean overlay) {
+        for (View child: new ArrayList<>(children)) {
             child.draw(graphics, overlay);
         }
     }

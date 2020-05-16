@@ -1,6 +1,6 @@
 package jegmezo;
 
-/** Fel lehet venni, amivel beállítja a Player Inventory-ját, 
+/** Fel lehet venni, amivel beállítja a Player Inventory-ját,
  * el lehet dobni/elhasználni, amit szintén beállítja az Inventory-t lehet használni,
  *  illetve megmondja magáról, hogy meg lehet-e vele menteni másokat/magadat. */
 public interface Item {

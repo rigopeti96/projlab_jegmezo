@@ -38,7 +38,7 @@ public class Food implements Item {
 	 * @return A tárgy neve
 	 */
 	public String getName() {
-		return "food";
+		return "Food";
 	}
 
 	/**

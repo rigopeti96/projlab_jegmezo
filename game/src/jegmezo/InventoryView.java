@@ -7,29 +7,33 @@ import java.util.List;
 public class InventoryView extends View {
 
     protected List<ItemView> itemViews = new ArrayList<>();
-    private Inventory inventory;
     private int x, y;
+    Inventory inventory;
+    ItemView FoodView;
+    ItemView WinItemView;
 
-    InventoryView(ImageManager imageManager, int x, int y, Inventory inventory) {
-        super(imageManager);
-        this.x = x;
-        this.y = y;
+    InventoryView(AssetManager assetManager, Inventory inventory) {
+        super(assetManager);
+        this.x = GameWindow.windowWidth-430;
+        this.y = GameWindow.windowHeight-100;
         this.inventory = inventory;
 
-        children.add(new ItemView(imageManager, x+70*0+5, y+5, new ScubaGear(),inventory.getScubaCount()));
+        children.add(new ItemView(assetManager, x+70*0, y, new ScubaGear(),inventory.getScubaCount()));
 
-        children.add(new ItemView(imageManager, x+70*1+5, y+5, new Rope(), inventory.getRopeCount()));
+        children.add(new ItemView(assetManager, x+70*1, y, new Rope(), inventory.getRopeCount()));
 
-        children.add(new ItemView(imageManager, x+70*2+5, y+5, new WinItem("winitem"), inventory.getWinItemCount()));
+        WinItemView = new ItemView(assetManager, x+70*2, y, new WinItem("Win item"), inventory.getWinItemCount());
+        children.add(WinItemView);
 
-        children.add(new ItemView(imageManager, x+70*3+5, y+5, new Tent(), inventory.getTentCount()));
+        children.add(new ItemView(assetManager, x+70*3, y, new Tent(), inventory.getTentCount()));
 
         if(inventory.getBreakableShovelCount() !=0)
-            children.add(new ItemView(imageManager, x+70*4+5, y+5, inventory.getItem("breakableshovel"), inventory.getBreakableShovelCount()));
+            children.add(new ItemView(assetManager, x+70*4, y, inventory.getItem("Breakable shovel"), inventory.getBreakableShovelCount()));
         else
-            children.add(new ItemView(imageManager, x+70*4+5, y+5, new Shovel(), inventory.getShovelCount()));
+            children.add(new ItemView(assetManager, x+70*4, y, new Shovel(), inventory.getShovelCount()));
 
-        children.add(new ItemView(imageManager, x+70*5+5, y+5, new Food(), inventory.getFoodCount()));
+        FoodView = new ItemView(assetManager, x+70*5, y, new Food(), inventory.getFoodCount());
+        children.add(FoodView);
     }
 
     @Override
@@ -41,6 +45,9 @@ public class InventoryView extends View {
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
         if (overlay) return;
+
+        FoodView.setItemCount(inventory.getFoodCount());
+        WinItemView.setItemCount(inventory.getWinItemCount());
 
         graphics.setColor(Color.DARK_GRAY);
         float opacity = 1.0f;

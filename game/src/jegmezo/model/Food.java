@@ -1,8 +1,14 @@
 package jegmezo.model;
 
+import jegmezo.controller.GameController;
+
 /** Ha a Player ezt használja, akkor egyel több testhője lesz.
  * Implementálja az Item interfészt. */
-public class Food implements Item {
+public class Food extends Item {
+
+	public Food(GameController gameController) {
+		super(gameController);
+	}
 
 	/** beteszi egy Player Inventory-jába magát */
 	public boolean equip(Inventory inventory){
@@ -18,7 +24,7 @@ public class Food implements Item {
 	 * @param player Player, aki használja a tárgyat
 	 * @return true ha sikeres, false ha nem */
 	public boolean use(Player player) {
-		System.out.println("Player " + player.getNumber() + " eats a food.");
+		gameController.getConsoleView().writeLine("Player " + player.getNumber() + " eats a food.");
 		player.increaseBodyHeat();
 		return unequip(player.getInventory());
 	}

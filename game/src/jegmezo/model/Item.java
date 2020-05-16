@@ -1,34 +1,41 @@
 package jegmezo.model;
 
+import jegmezo.controller.GameController;
+
 /** Fel lehet venni, amivel beállítja a Player Inventory-ját,
  * el lehet dobni/elhasználni, amit szintén beállítja az Inventory-t lehet használni,
  *  illetve megmondja magáról, hogy meg lehet-e vele menteni másokat/magadat. */
-public interface Item {
-	
+public abstract class Item {
+
+	protected GameController gameController;
+	public Item(GameController gameController) {
+		this.gameController = gameController;
+	}
+
 	/** beteszi egy Player Inventory-jába magát */
-	boolean equip(Inventory inventory);
-	
+	public abstract boolean equip(Inventory inventory);
+
 	/** kiveszi egy Player Inventory-jából magát */
-	boolean unequip(Inventory inventory);
+	public abstract boolean unequip(Inventory inventory);
 	
 	/** a Player használja a tárgyat
 	 * @param player Player, aki használja a tárgyat
 	 * @return true ha sikeres, false ha nem */
-	boolean use(Player player);
+	public abstract boolean use(Player player);
 	
 	/** megnézi, hogy meg lehet-e menteni csapattársát ezzel a tárggyal*/
-	boolean canSave();
+	public abstract boolean canSave();
 	
 	/** megnézi, hogy túl lehet-e élni a lyukba esést ezzel a tárggyal*/
-	boolean canSurvive();
+	public abstract boolean canSurvive();
 
 	/**
 	 * Visszaadja a tárgy nevét
 	 * @return A tárgy neve
 	 */
-	String getName();
+	public abstract String getName();
 
-	String getDescription();
+	public abstract String getDescription();
 
-	boolean isUseable();
+	public abstract boolean isUseable();
 }

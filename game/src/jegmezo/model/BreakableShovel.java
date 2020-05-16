@@ -1,5 +1,7 @@
 package jegmezo.model;
 
+import jegmezo.controller.GameController;
+
 /** Ez a tárgy a törékeny ásó, amivel a játékos ásni tud, de három használat után eltörik.
  * Leszármazik az ásó osztályból
  */
@@ -9,6 +11,10 @@ public class BreakableShovel extends Shovel {
      * A törékeny ásó tűrőképességét jelölő int, minden használat után csökken egyel
      */
     private int durability = 3;
+
+    public BreakableShovel(GameController gameController) {
+        super(gameController);
+    }
 
     /** Beteszi egy Player Inventory-jába magát
      *  @param inventory - A Player inventoryja, amibe be kell tenni a Shovelt.

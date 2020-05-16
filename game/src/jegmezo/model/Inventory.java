@@ -1,5 +1,7 @@
 package jegmezo.model;
 
+import jegmezo.controller.GameController;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -203,32 +205,6 @@ public class Inventory {
 		}
 		for (Item item: items) {
 			System.out.println("Player-Item(number=" + number + ",item=" + item.getName() + ",count=1)");
-		}
-	}
-
-	/**
-	 * Ezzel a függvénnyel lehet kiválasztani egy tárgyat a tárgyak közül
-	 * @return item - a kiválasztott tárgy
-	 */
-	public Item selectItem() {
-		if (countFood > 0) {
-			System.out.println(countFood + "x food");
-		}
-		for (Item item: items) {
-			System.out.println("1x " + item.getName());
-		}
-
-		while (true) {
-			System.out.println("Select item (<name>/cancel):");
-			String line = gameController.getScanner().nextLine().trim();
-			if (line.equals("food")) return new Food();
-			else if (line.equals("cancel")) return null;
-
-			for (Item item: items) {
-				if (item.getName().equals(line)) return item;
-			}
-
-			System.out.println("No such item '" + line + "'.");
 		}
 	}
 

@@ -4,16 +4,9 @@ import java.awt.*;
 
 public class EndOverlayView extends View {
     private boolean win = false;
-    public EndOverlayView(GameWindow gameWindow, AssetManager assetManager) {
+    public EndOverlayView(GameWindow gameWindow, AssetManager assetManager, boolean win) {
         super(gameWindow, assetManager);
-    }
-
-    public void setWin(boolean hasWon){
-        win = hasWon;
-    }
-
-    public boolean getWin(){
-        return win;
+        this.win = win;
     }
 
     @Override

@@ -1,9 +1,15 @@
 package jegmezo.model;
 
+import jegmezo.controller.GameController;
+
 /**
  * Player megépítheti egy mezőn és védelmet nyújt a kör végéig
  * Implementálja az Item interfészt. */
-public class Tent implements Item{
+public class Tent extends Shovel {
+
+    public Tent(GameController gameController) {
+        super(gameController);
+    }
 
     /** Beteszi egy Player Inventory-jába magát
      * @param inventory - A Player inventoryja, amibe be kell tenni a Tent-et.

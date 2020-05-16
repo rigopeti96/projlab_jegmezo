@@ -1,6 +1,7 @@
 package jegmezo.model;
 
 
+import jegmezo.controller.GameController;
 import jegmezo.view.AssetManager;
 import jegmezo.view.GameWindow;
 import jegmezo.view.HoleView;
@@ -23,19 +24,19 @@ public class Hole extends Tile {
 	/** A játékos rálép a mezőre*/
 	public void stepOnto(Player player, Tile prevTile) {
 		discovered=true;
-		System.out.println("Player "+player.getNumber()+" fell into "+this.toShortString() + ".");
+		gameController.getConsoleView().writeLine("Player "+player.getNumber()+" fell into "+this.toShortString() + ".");
 		if(player.canSurvive()) {
-			System.out.println("Player "+player.getNumber()+" had Scuba Gear, survived and moved back to " + prevTile.toShortString() + ".");
+			gameController.getConsoleView().writeLine("Player "+player.getNumber()+" had Scuba Gear, survived and moved back to " + prevTile.toShortString() + ".");
 			return;
 		}
 		for(int i=0;i<neighbours.size();i++){
 			if(neighbours.get(i).canSave()) {
-				System.out.println("Someone on "+neighbours.get(i).toShortString()+" has a rope.");
+				gameController.getConsoleView().writeLine("Someone on "+neighbours.get(i).toShortString()+" has a rope.");
 				neighbours.get(i).stepOnto(player, prevTile);
 				return;
 			}
 		}
-		System.out.println("No neighbouring players with rope.");
+		gameController.getConsoleView().writeLine("No neighbouring players with rope.");
 		player.drown();
 	}
 	

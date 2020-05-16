@@ -1,6 +1,7 @@
 package jegmezo.model;
 
 
+import jegmezo.controller.GameController;
 import jegmezo.view.*;
 
 /** Jégtábla, tárol egy játékoslétszámot ami felet a jégtábla átfordul, van-e rajta igloo, és ha van rajta tárgy akkor azt is tárolja*/
@@ -36,10 +37,10 @@ public class IceSheet extends Tile {
 	@Override
 	public void stepOnto(Player player, Tile prevTile) {
 		discovered=true;
-		if (prevTile != null) System.out.println("Player "+player.getNumber()+" moved to "+toShortString() + ".");
+		if (prevTile != null) gameController.getConsoleView().writeLine("Player "+player.getNumber()+" moved to "+toShortString() + ".");
 		if(players.size()==playerLimit.getElement()){
-			System.out.println("Sheet "+id+" turned over.\nAll players on it drowned.");
-			gameController.gameOver();
+			gameController.getConsoleView().writeLine("Sheet "+id+" turned over.\nAll players on it drowned.");
+			gameController.lose();
 			return;
 		}
 		if(polarBear!=null && (building==Building.none ||building==Building.tent)) {
@@ -51,7 +52,7 @@ public class IceSheet extends Tile {
 
 
 		player.movedToTile(this);
-		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString() + "."));
+		if (snow == 0) item.discover(() -> gameController.getConsoleView().writeLine("Found item " + item.toDiscoveredString() + "."));
 	}
 
 	/**
@@ -61,10 +62,10 @@ public class IceSheet extends Tile {
 	 */
 	@Override
 	public boolean removeSnow(int amount) {
-		if (snow > 0) System.out.println(" removes " + amount + " snow from " + toShortString() + ".");
-		else System.out.println(" can't remove snow from " + toShortString() + ".");
+		if (snow > 0) gameController.getConsoleView().writeLine(" removes " + amount + " snow from " + toShortString() + ".");
+		else gameController.getConsoleView().writeLine(" can't remove snow from " + toShortString() + ".");
 		boolean ret = super.removeSnow(amount);
-		if (snow == 0) item.discover(() -> System.out.println("Found item " + item.toDiscoveredString() + "."));
+		if (snow == 0) item.discover(() -> gameController.getConsoleView().writeLine("Found item " + item.toDiscoveredString() + "."));
 		return ret;
 	}
 
@@ -162,7 +163,7 @@ public class IceSheet extends Tile {
 	public void destroyTent() {
 		if(this.building == Building.tent) {
 			this.building = Building.none;
-			System.out.println("All tents destroyed.");
+			gameController.getConsoleView().writeLine("All tents destroyed.");
 		}
 	}
 
@@ -172,10 +173,10 @@ public class IceSheet extends Tile {
 	 * @param prevTile A medve előző Tile-ja
 	 */
 	public void stepOnPolarBear(PolarBear pb, Tile prevTile) {
-		System.out.println("Polar bear moved to "+toShortString() + ".");
+		gameController.getConsoleView().writeLine("Polar bear moved to "+toShortString() + ".");
 		if((building==Building.none ||building==Building.tent)&&!players.isEmpty()){
 			for (Player player: players) {
-				System.out.println("Player "+player.getNumber()+" was not in an igloo.");
+				gameController.getConsoleView().writeLine("Player "+player.getNumber()+" was not in an igloo.");
 				player.eaten();
 			}
 			return;

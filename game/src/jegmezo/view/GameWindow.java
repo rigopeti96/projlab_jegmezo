@@ -1,5 +1,6 @@
 package jegmezo.view;
 
+import jegmezo.controller.GameController;
 import jegmezo.model.*;
 
 import javax.swing.*;
@@ -27,7 +28,13 @@ public class GameWindow {
     public static int windowHeight = 480;
     TooltipView tooltipView;
     MenuView menuView;
+    View overlayView;
+    private ConsoleView consoleView;
+    private GameController gameController;
 
+    public GameController getGameController() {
+        return gameController;
+    }
 
     public TooltipView getTooltipView(){
         return tooltipView;
@@ -103,25 +110,19 @@ public class GameWindow {
 
         tooltipView = new TooltipView(this, assetManager, "");
 
-        Inventory inventory = new Inventory(new GameController());
-        inventory.equipBreakableShovel(new BreakableShovel());
+        ConsoleView consoleView = new ConsoleView(this, assetManager);
+        Level level = new Level();
+        gameController = new GameController(this, consoleView, level);
+        ArrayList<Player> players = new ArrayList<>();
+        players.add(new Eskimo(gameController, 1));
+        players.add(new Scientist(gameController, 2));
+        players.add(new Eskimo(gameController, 3));
+        level.generate(gameController, players);
+        LevelView levelView = new LevelView(this, assetManager, level);
+        views.add(levelView);
+
         views.add(new InventoryView(this, assetManager, inventory));
-
-        IceSheet iceSheet = new IceSheet(new GameController(), 0,3,0);
-
-        //teszt játékosok
-        Eskimo eskimo = new Eskimo(new GameController(), 0, 4);
-        EskimoView eskimoView = new EskimoView(this, assetManager);
-        eskimoView.setPlayer(eskimo);
-        iceSheet.stepOnto(eskimo,iceSheet);
-        IceSheetView iceSheetView = new IceSheetView(this, assetManager, 200,200, iceSheet);
-        views.add(iceSheetView);
-        eskimoView.setTileView(iceSheetView);
-
-        views.add(new IceSheetView(this, assetManager, 200,200, iceSheet));
-        views.add(new HoleView(this,assetManager,300,300,new Hole(new GameController(),1,0)));
-        views.add(eskimoView);
-
+        views.add(consoleView);
         views.add(tooltipView);
     }
 
@@ -164,5 +165,21 @@ public class GameWindow {
     }
 
     private void handleClose() {
+    }
+
+    public void setOverlayType(OverlayType overlayType) {
+        if (this.overlayView != null) views.remove(this.overlayView);
+        if (overlayType == OverlayType.GameWin) {
+            overlayView = new EndOverlayView(this, assetManager, true);
+            views.add(overlayView);
+        } else if (overlayType == OverlayType.GameOver) {
+            overlayView = new EndOverlayView(this, assetManager, false);
+            views.add(overlayView);
+        } else if (overlayType == OverlayType.Blizzard) {
+            overlayView = new BlizzardOverlayView(this, assetManager);
+            views.add(overlayView);
+        } else {
+            overlayView = null;
+        }
     }
 }

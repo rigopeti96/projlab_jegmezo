@@ -1,5 +1,7 @@
 package jegmezo.model;
 
+import jegmezo.controller.GameController;
+
 import java.util.*;
 
 /**
@@ -19,6 +21,10 @@ public class LevelGenerator {
      * A játék által használt mezők
      */
     private Map<LevelTile, Tile> gameTiles = new HashMap<>();
+    /**
+     * Játék mező - LevelTile mapping
+     */
+    private Map<Tile, LevelTile> levelTiles = new HashMap<>();
     /**
      * Legenerált IceSheet-ek, amiken még nincs item (ezekre lehet rakni)
      */
@@ -300,10 +306,13 @@ public class LevelGenerator {
                 if (tiles[rx + x][ry + y].isSelected()) {
                     IceSheet sheet = new IceSheet(gameController, (x == 0 && y == 0) ? 0 : counter++, random.nextInt(playerCount) + 1, getSnowAmmount());
                     gameTiles.put(tiles[rx + x][ry + y], sheet);
+                    levelTiles.put(sheet, tiles[rx + x][ry + y]);
                     iceSheets.add(sheet);
                 }
                 else if (tiles[rx + x][ry + y].isHole()) {
-                    gameTiles.put(tiles[rx + x][ry + y], new Hole(gameController, counter++, getSnowAmmount()));
+                    Hole hole = new Hole(gameController, counter++, getSnowAmmount());
+                    gameTiles.put(tiles[rx + x][ry + y], hole);
+                    levelTiles.put(hole, tiles[rx + x][ry + y]);
                 }
             }
         }
@@ -357,15 +366,15 @@ public class LevelGenerator {
      */
     private void generateItems() {
         IceSheet picked = iceSheets.get(random.nextInt(iceSheets.size()));
-        picked.setItem(new WinItem("cartridge"));
+        picked.setItem(new WinItem(gameController, "Cartridge"));
         iceSheets.remove(picked);
 
         picked = iceSheets.get(random.nextInt(iceSheets.size()));
-        picked.setItem(new WinItem("flare"));
+        picked.setItem(new WinItem(gameController, "Flare"));
         iceSheets.remove(picked);
 
         picked = iceSheets.get(random.nextInt(iceSheets.size()));
-        picked.setItem(new WinItem("flare gun"));
+        picked.setItem(new WinItem(gameController, "Flare gun"));
         iceSheets.remove(picked);
 
         int count = random.nextInt((int)(iceSheets.size() / 4.0)) + (int)(iceSheets.size() / 2.0);
@@ -388,37 +397,37 @@ public class LevelGenerator {
 
         for (int i = 0; i < shovel; i++) {
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
-            picked.setItem(new Shovel());
+            picked.setItem(new Shovel(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < breakableShovel; i++) {
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
-            picked.setItem(new Shovel());
+            picked.setItem(new BreakableShovel(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < rope; i++) {
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
-            picked.setItem(new Shovel());
+            picked.setItem(new Rope(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < scubaGear; i++) {
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
-            picked.setItem(new Shovel());
+            picked.setItem(new ScubaGear(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < food; i++) {
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
-            picked.setItem(new Food());
+            picked.setItem(new Food(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < tent; i++) {
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
-            picked.setItem(new Tent());
+            picked.setItem(new Tent(gameController));
             iceSheets.remove(picked);
         }
     }

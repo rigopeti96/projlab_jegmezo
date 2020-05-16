@@ -1,10 +1,16 @@
 package jegmezo.model;
 
 
+import jegmezo.controller.GameController;
+
 /**Passzív tárgy, megmenti a vízbe esett gazdáját. Implementálja az Item interfészt.*/
-public class ScubaGear implements Item {
-	
-	/** Beteszi egy Player Inventory-jába magát 
+public class ScubaGear extends Item {
+
+	public ScubaGear(GameController gameController) {
+		super(gameController);
+	}
+
+	/** Beteszi egy Player Inventory-jába magát
 	 *  @param inventory - A Player inventoryja, amibe be kell tenni a ScubaGeart.
 	 *  @return bool - Sikerült-e betenni
 	 * */

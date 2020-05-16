@@ -1,6 +1,7 @@
 package jegmezo.model;
 
 
+import jegmezo.controller.GameController;
 import jegmezo.view.AssetManager;
 import jegmezo.view.GameWindow;
 import jegmezo.view.TileView;
@@ -178,35 +179,10 @@ public abstract class Tile {
 	}
 
 	/**
-	 * Egy Player-t lehet vele kiválasztani (előzőhöz egy kiválasztó menüt)
-	 *
-	 * @return Player amit választottak
-	 */
-	public Player selectPlayer(Player excluding) {
-		System.out.println("Close players:");
-		ArrayList<Player> sortedPlayers = new ArrayList<>(players);
-		sortedPlayers.sort(Comparator.comparingInt(Player::getNumber));
-		for (Player player: sortedPlayers) {
-			if (player != excluding) System.out.println("Player " + player.getNumber());
-		}
-		while (true) {
-			System.out.println("Select player (<number/cancel>):");
-			String line = gameController.getScanner().nextLine().trim();
-
-			if (line.equals("cancel")) return null;
-			for (Player player: sortedPlayers) {
-				if (player != excluding && (String.valueOf(player.getNumber()).equals(line) || ("player " + player.getNumber()).equals(line.toLowerCase()))) return player;
-			}
-
-			System.out.println("No player with number'" + line + "'.");
-		}
-	}
-
-	/**
 	 * @return true-t ad vissza, ha az összes játékos a mezőn tartózkodik, különben false-ot.
 	 */
 	public boolean hasAllPlayers() {
-		if(gameController.getPlayerCount() == players.size()) return true;
+		if(gameController.getLevel().getPlayerCount() == players.size()) return true;
 		return false;
 	}
 

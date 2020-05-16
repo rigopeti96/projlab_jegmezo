@@ -1,5 +1,6 @@
 package jegmezo.view;
 
+import jegmezo.model.Level;
 import jegmezo.model.Tile;
 
 import java.awt.*;
@@ -11,7 +12,7 @@ public class LevelView extends View {
     private List<TileView> tileViews=new ArrayList<>();
 
 
-    public LevelView(GameWindow gameWindow, AssetManager assetManager, PlayerStatusView playerStatusView, List<Tile> tiles) {
+    public LevelView(GameWindow gameWindow, AssetManager assetManager, Level level) {
         super(gameWindow, assetManager);
         this.tileViews = tileViews;
         for(TileView tv: tileViews){

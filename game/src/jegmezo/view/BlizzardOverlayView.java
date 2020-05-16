@@ -4,10 +4,8 @@ import java.awt.*;
 
 //ezt az osztályt még tanácsos lenne szétszedni - Blizzard Overlay és GameOver Overlay
 public class BlizzardOverlayView extends View {
-    private String type="Jön a HAV!";
-    public BlizzardOverlayView(GameWindow gameWindow, AssetManager assetManager, String type) {
+    public BlizzardOverlayView(GameWindow gameWindow, AssetManager assetManager) {
         super(gameWindow, assetManager);
-        this.type = type;
     }
 
     @Override
@@ -17,7 +15,7 @@ public class BlizzardOverlayView extends View {
         Font font = new Font("Serif", Font.BOLD, 70);
         graphics.setColor(Color.BLUE);
         graphics.setFont(font);
-        graphics.drawString(type, GameWindow.windowWidth/2-200, GameWindow.windowHeight/2-5);
+        graphics.drawString("Jön a HAV!", GameWindow.windowWidth/2-200, GameWindow.windowHeight/2-5);
     }
 
     @Override

@@ -1,11 +1,12 @@
 package jegmezo.model;
 
 
+import jegmezo.controller.GameController;
 
 /** Ha a Player ezt használja, nála van az összes győzelmi tárgy és az összes játékos egy helyen van,
  *  akkor megnyerik a játékot
  * Implementálja az Item interfészt. */
-public class WinItem implements Item {
+public class WinItem extends Shovel {
 	/**
 	 * Az item pontos neve
 	 */
@@ -15,7 +16,8 @@ public class WinItem implements Item {
 	 * Win Item konstruktora, meg lehet adni a nevét
 	 * @param name - a neve a győzelmi tárgynak
 	 */
-	public WinItem(String name) {
+	public WinItem(GameController gameController, String name) {
+		super(gameController);
 		this.name = name;
 	}
 

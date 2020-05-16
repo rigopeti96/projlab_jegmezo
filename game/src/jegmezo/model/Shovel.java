@@ -1,10 +1,16 @@
 package jegmezo.model;
 
 
+import jegmezo.controller.GameController;
+
 /** Ha a Player ezt használva ás, akkor 2 havat takarít el a választott mezõrõl.
  * Implementálja az Item interfészt. */
-public class Shovel implements Item {
-	
+public class Shovel extends Item {
+
+	public Shovel(GameController gameController) {
+		super(gameController);
+	}
+
 	/** Beteszi egy Player Inventory-jába magát
 	 *  @param inventory - A Player inventoryja, amibe be kell tenni a Shovelt.
 	 *  @return bool - Sikerült-e betenni.  */

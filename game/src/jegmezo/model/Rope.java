@@ -1,11 +1,15 @@
 package jegmezo.model;
 
 
-
+import jegmezo.controller.GameController;
 
 /** A Player ennek használatával ki tud menteni egy játékost egy szomszédos lyukból.
  * Implementálja az Item interfészt. */
-public class Rope implements Item {
+public class Rope extends Shovel {
+
+	public Rope(GameController gameController) {
+		super(gameController);
+	}
 
 	/** beteszi egy Player Inventory-jába magát */
 	public boolean equip(Inventory inventory){

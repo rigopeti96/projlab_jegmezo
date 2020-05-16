@@ -1,6 +1,8 @@
 package jegmezo.model;
 
 
+import jegmezo.controller.GameController;
+
 /**A Player egy típusa, speciális képessége, hogy meg tudja határozni egy szomszédos mező bíróképességét (hány játékos állhat rajta beszakadás nélkül */
 public class Scientist extends Player {
 	/**
@@ -24,24 +26,11 @@ public class Scientist extends Player {
 
 	/**A kutató kiválasztja, hogy melyik Tile-t vizsgálja, majd megkapja az eredményt
 	 */
-	public boolean examine() {
-		Tile examined = selectTile();
-		if(examined == null)
-			return false;
-		int limit = examined.examinePlayerLimit();
+	public boolean examine(Tile selectedTile) {
+		int limit = selectedTile.examinePlayerLimit();
 
-		System.out.println("Player "+ number + " checked the stability of "+ examined.toShortString() + ". It can take " + limit + " players.");
+		gameController.getConsoleView().writeLine("Player "+ number + " checked the stability of "+ selectedTile.toShortString() + ". It can take " + limit + " players.");
 		return true;
-	}
-
-	/**Kiválaszja az akciót, amit végre akar hajtani
-	 *  @return bool - Sikerült-e akciót választani.  */
-	public boolean selectAction() {
-		System.out.println("Player " + number + " select an action (move/dig/pickup/use item/trade/examine) [" + actions + " remaining]:");
-		String command = gameController.getScanner().nextLine().trim();
-		if (command.equals("examine")) {
-			return this.examine();
-		} else return this.selectActionCommon(command);
 	}
 
 	/**

@@ -1,6 +1,8 @@
 package jegmezo.model;
 
 
+import jegmezo.controller.GameController;
+
 import java.util.List;
 
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
@@ -68,30 +70,17 @@ public abstract class Player extends Entity{
 	public Inventory getInventory(){
 		return inventory;
 	}
-
-	/** A játékos körét kezeli le */
-	public void takeTurn() {
-		actions = 4;
-		while (actions > 0) {
-			if (selectAction()) actions--;
-			if (gameController.getGameState() != GameState.Running) return;
-		}
-	}
 	
 	/** A játékos egyik nála lévő tárgyat átadhatja egyik játékos társának
 	 * @return true ha sikeres, false ha nem */
-	public boolean trade() {
-		Player player = tile.selectPlayer(this);
-		if (player == null) return false;
-		System.out.println("Player " + number + "'s items:");
-		Item item = inventory.selectItem();
-		if (item == null) return false;
-		if (player.takeItem(item)) {
-			System.out.println("Player " + number + " traded their " + item.getName() + " to Player " + player.getNumber() + ".");
-			item.unequip(inventory);
+	public boolean trade(Item selectedItem, Player selectedPlayer) {
+		if (selectedPlayer.takeItem(selectedItem)) {
+			gameController.getConsoleView().writeLine("Player " + number + " traded their " + selectedItem.getName() + " to Player " + selectedPlayer.getNumber() + ".");
+			selectedItem.unequip(inventory);
 			return true;
 		} else {
-			System.out.println("Player " + number + " can't trade their " + item.getName() + " to Player " + player.getNumber() + " (Player " + player.getNumber() + " can't take it).");
+			gameController.getConsoleView().writeLine("Player " + number + " can't trade their " + selectedItem.getName() + " to Player " + selectedPlayer.getNumber()
+					+ " (Player " + selectedPlayer.getNumber() + " can't take it).");
 			return false;
 		}
 	}
@@ -106,51 +95,51 @@ public abstract class Player extends Entity{
 	 * @return ha minden alkatrész megvan és az összes játékos ugyanazon a mezőn van, akkor megnyerik a játékot és true-t ad vissza, amúgy false*/
 	public boolean useWinItems() {
 		if(tile.hasAllPlayers() && inventory.getWinItemCount()==3) {
-			System.out.println("Player " + number+ " assembles and uses the flare gun.");
+			gameController.getConsoleView().writeLine("Player " + number+ " assembles and uses the flare gun.");
 			gameController.win();
 			return true;
 		}
-		if(!tile.hasAllPlayers()) System.out.println("Player " + number+ " can't assemble the flare gun (not all players present).");
-		if(!(inventory.getWinItemCount()==3)) System.out.println("Player " + number+ " can't assemble the flare gun (parts missing).");
+		if(!tile.hasAllPlayers()) gameController.getConsoleView().writeLine("Player " + number+ " can't assemble the flare gun (not all players present).");
+		if(!(inventory.getWinItemCount()==3)) gameController.getConsoleView().writeLine("Player " + number+ " can't assemble the flare gun (parts missing).");
 		return false;
 	}
-	
+
+	public void loseAP() {
+		actions--;
+	}
+
 	/** A játékos mozog (tile-t választ és odamozog)
 	 * @return true has sikeres, false ha nem */
-	public boolean move() {
-		Tile hova=selectTile();
-		if(hova == null)
-			return false;
-
-		hova.stepOnto(this, tile);
+	public boolean move(Tile selectedTile) {
+		selectedTile.stepOnto(this, tile);
 		return true;
 	}
 	
 	/** Megnöveli a játékos testhőjét 1-gyel */
 	public void increaseBodyHeat() {
 		bodyHeat++;
-		System.out.println("Player " + number + "'s body heat increases by 1 to " + bodyHeat + ".");
+		gameController.getConsoleView().writeLine("Player " + number + "'s body heat increases by 1 to " + bodyHeat + ".");
 	}
 	
 	/** Lecsökkenti a játékos testhőjét 1-gyel */
 	public void decreaseBodyHeat() {
 		bodyHeat--;
-		System.out.println("Player " + number + "'s body heat decrease by 1 to " + bodyHeat + ".");
+		gameController.getConsoleView().writeLine("Player " + number + "'s body heat decrease by 1 to " + bodyHeat + ".");
 		if(bodyHeat == 0) {
-			gameController.gameOver();
+			gameController.lose();
 		}
 	}
 	
 	/** A játékos megfullad */
 	public void drown() {
-		System.out.println("Player "+number+" drowned");
-		gameController.gameOver();
+		gameController.getConsoleView().writeLine("Player "+ number +" drowned");
+		gameController.lose();
 	}
 
 	/** A játékost megette a medve*/
 	public void eaten(){
-		System.out.println("Player "+number+" was eaten by the polar bear.");
-		gameController.gameOver();
+		gameController.getConsoleView().writeLine("Player "+number+" was eaten by the polar bear.");
+		gameController.lose();
 	}
 	
 	/** A Player kézzel és és 1 egység havat takarít el a mezőjéről,
@@ -172,83 +161,21 @@ public abstract class Player extends Entity{
 	public boolean pickup() {
 		Item item;
 		if (tile.getSnow() != 0){
-			System.out.println("Can't attempt to pick up item (Sheet is covered by snow.)");
+			gameController.getConsoleView().writeLine("Can't attempt to pick up item (Sheet is covered by snow.)");
 			return false;
 		}
 		item= this.tile.getItem();
 		if(item == null) {
-			System.out.println("There is nothing to pick up");
+			gameController.getConsoleView().writeLine("There is nothing to pick up");
 			return false;
 		}
 		if (this.takeItem(item) ) {
 			this.tile.removeItem();
-			System.out.println("Player " + number + " picks up "+ item.getName() + " from "+ tile.toShortString() + ".");
+			gameController.getConsoleView().writeLine("Player " + number + " picks up "+ item.getName() + " from "+ tile.toShortString() + ".");
 			return true;
 		}else{
-			System.out.println("Can't pick up "+ item.getName() + " (already has too much).");
+			gameController.getConsoleView().writeLine("Can't pick up "+ item.getName() + " (already has too much).");
 			return false;
-		}
-	}
-
-	/** A játékos kiválaszthat egy mezőt, amire lépni fog, vagy megnézi sarkkutatóval (menüt dob fel)
-	 * @return kiválasztott tile (tile.getNeighbours eleme)
-	 * visszalépés esetén null-lal tér vissza*/
-	public Tile selectTile() {
-		System.out.println("Neighbouring tiles:");
-		List<Tile> neighbourTiles = this.tile.getNeighbours();
-		for (Tile tile: neighbourTiles) {
-			System.out.println(tile.toLongString() );
-		}
-
-		while (true){
-			System.out.println("Select tile (<ID>/cancel):");
-			String line = gameController.getScanner().nextLine().trim();
-
-			if(line.equals("cancel")) return null;
-			for (Tile tile : neighbourTiles) {
-				if (String.valueOf(tile.getId()).equals(line)) {
-					return tile;
-				}
-			}
-			System.out.println("No tile with " + line + " ID.");
-		}
-	}
-	
-	/** A játékos kiválaszt egy tárgyat, amelyet használ (menüt dob fel)
-	 * @return true ha sikeres, false nem */
-	public boolean useItem() {
-		System.out.println("Player " + number + "'s items:");
-		Item item = inventory.selectItem();
-		if (item == null) return false;
-		return item.use(this);
-	}
-	
-	/** A játékos választ egy akciót, true-val tér vissza
-	 * @return true ha az akció sikeres, false ha nem vagy a játékos nem választott akciót */
-	public abstract boolean selectAction();
-
-	/**
-	 * A többi játékos implementáció hívja, a közös akciókat implementálja
-	 * @param command Parancs
-	 * @return true ha az akció sikeres, false ha nem vagy a játékos nem választott akciót
-	 */
-	protected boolean selectActionCommon(String command) {
-		switch (command) {
-			case "pass":
-				return true;
-			case "trade":
-				return this.trade();
-			case "use item":
-				return this.useItem();
-			case "dig":
-				return this.digWithHands();
-			case "pickup":
-				return pickup();
-			case "move":
-				return move();
-			default:
-				gameController.handleControlCommand(command);
-				return false;
 		}
 	}
 
@@ -278,10 +205,10 @@ public abstract class Player extends Entity{
 	 */
 	public boolean buildTent() {
 		if(tile.build(Building.tent)){
-			System.out.println("Player "+number+" places a tent on " + tile.toShortString() + ".");
+			gameController.getConsoleView().writeLine("Player "+number+" places a tent on " + tile.toShortString() + ".");
 			return true;
 		}
-		System.out.println("Player "+number+" can't place a tent " + tile.toShortString() + " already has one.");
+		gameController.getConsoleView().writeLine("Player "+number+" can't place a tent " + tile.toShortString() + " already has one.");
 		return false;
 	}
 

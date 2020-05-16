@@ -1,5 +1,7 @@
 package jegmezo.model;
 
+import jegmezo.controller.GameController;
+
 /**
  * A játékban szereplő entitások (playerek, jegesmedve) ősosztálya
  */
@@ -9,7 +11,7 @@ public abstract class Entity {
      */
     protected Tile tile;
     /**
-     * a játékos gamecontrollere
+     * A game controller
      */
     protected GameController gameController;
 
@@ -20,18 +22,6 @@ public abstract class Entity {
     public void spawnOnto(Tile tile) {
         this.tile = tile;
     }
-
-    /**
-     * Az entitás átlép egy szomszédos mezőre
-     * @return Sikerült-e a lépés
-     */
-    public abstract boolean move();
-
-    /**
-     * Kiválaszt egy szomszédos tile-t
-     * @return a kiválasztott tile vagy cancel esetén NULL
-     */
-    public abstract Tile selectTile();
 
     /**
      * Beállitja a tile-t, amin az entity áll.

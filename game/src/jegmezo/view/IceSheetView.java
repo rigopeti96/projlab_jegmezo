@@ -37,7 +37,6 @@ public class IceSheetView extends TileView {
         //ezekhez player View-kat hozunk létre
         for (Player player: players
              ) {
-            gameWindow.setXYToPlayer(player.getNumber(), x, y);
         }
 
         for (View child : children)

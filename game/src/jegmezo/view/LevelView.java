@@ -1,11 +1,15 @@
 package jegmezo.view;
 
+
+import jegmezo.model.Level;
+
 import java.awt.*;
 import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LevelView extends View {
+    Level level;
     private List<TileView> tileViews=new ArrayList<>();
 
 

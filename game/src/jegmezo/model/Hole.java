@@ -97,6 +97,13 @@ public class Hole extends Tile {
 		return "Hole(ID=" + id + ",snow=" + snow + ")";
 	}
 
+	@Override
+	public String getDescription() {
+		if(!discovered)
+			return "Tile(ID="+id+")";
+		return "Hole(ID=" + id + "\nsnow=" + snow + ")";
+	}
+
 	/**
 	 * A medve a Hole-ra lép. (a medve sosem lép a hole-ra)
 	 * @param pb A medve

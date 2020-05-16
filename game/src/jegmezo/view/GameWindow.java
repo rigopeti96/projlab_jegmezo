@@ -110,15 +110,15 @@ public class GameWindow {
         IceSheet iceSheet = new IceSheet(new GameController(), 0,3,0);
 
         //teszt játékosok
-        Eskimo eskimo = new Eskimo(new GameController(), 0, 4);
-        EskimoView eskimoView = new EskimoView(this, assetManager);
-        eskimoView.setPlayer(eskimo);
-        iceSheet.stepOnto(eskimo,iceSheet);
+        Scientist scientist = new Scientist(new GameController(), 0, 4);
+        ScientistView sView = new ScientistView(this, assetManager);
+        sView.setPlayer(scientist);
+        iceSheet.stepOnto(scientist,iceSheet);
         IceSheetView iceSheetView = new IceSheetView(this, assetManager, 200,200, iceSheet);
         views.add(iceSheetView);
-        eskimoView.setTileView(iceSheetView);
+        sView.setTileView(iceSheetView);
 
-        views.add(eskimoView);
+        views.add(sView);
 
         views.add(tooltipView);
     }

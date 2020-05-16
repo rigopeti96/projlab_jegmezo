@@ -230,6 +230,9 @@ public abstract class Tile {
 	 */
 	public abstract String toLongString();
 
+	public abstract String getDescription();
+
+
 	/**
 	 * Leszedi a sátrat a Tile-ról (ha van rajta)
 	 */

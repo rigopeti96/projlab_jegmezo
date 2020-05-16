@@ -116,7 +116,7 @@ public class GameWindow {
         Inventory inventory = new Inventory(new GameController());
         inventory.equipBreakableShovel(new BreakableShovel());
         views.add(new InventoryView(this, assetManager, inventory));
-        views.add(tooltipView);
+
         IceSheet iceSheet = new IceSheet(new GameController(), 0,3,0);
 
         //teszt játékosok
@@ -127,6 +127,8 @@ public class GameWindow {
         views.add(new IceSheetView(this, assetManager, 200,200, iceSheet));
         playerViews.add(eskimoView);
         views.add(eskimoView);
+
+        views.add(tooltipView);
     }
 
     private void handleClick(MouseEvent event) {

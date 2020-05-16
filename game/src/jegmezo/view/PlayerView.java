@@ -9,11 +9,11 @@ public abstract class PlayerView extends View {
 
     protected Player player;
     protected int x,y;
-
-    protected TooltipView tooltip;
+    protected TooltipView toolTip;
 
     public PlayerView(GameWindow gameWindow, AssetManager assetManager) {
         super(gameWindow, assetManager);
+        toolTip = gameWindow.getTooltipView();
     }
 
     @Override
@@ -24,8 +24,8 @@ public abstract class PlayerView extends View {
 
     @Override
     public void mouseMoved(MouseEvent event) {
-        tooltip.setX(event.getX());
-        tooltip.setY(event.getY());
+        toolTip.setX(event.getX());
+        toolTip.setY(event.getY());
     }
 
     public boolean clicked(MouseEvent event){
@@ -33,11 +33,7 @@ public abstract class PlayerView extends View {
     }
 
     public void mouseLeave(MouseEvent event){
-        this.children.remove(tooltip);
-    }
-
-    public void mouseEnter(MouseEvent event){
-        this.children.add(tooltip);
+        toolTip.setShow(false);
     }
 
     public abstract void draw (Graphics2D graphics, boolean overlay);

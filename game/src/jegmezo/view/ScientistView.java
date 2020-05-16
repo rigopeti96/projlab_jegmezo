@@ -1,16 +1,12 @@
 package jegmezo.view;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class ScientistView extends PlayerView{
 
     public ScientistView(GameWindow gameWindow, AssetManager assetManager) {
         super(gameWindow, assetManager);
-        tooltip = new TooltipView(gameWindow, assetManager, "Player " + player.getNumber() + " (Scientist)");
+        toolTip = new TooltipView(gameWindow, assetManager, "Player " + player.getNumber() + " (Scientist)");
     }
 
     @Override

@@ -45,6 +45,6 @@ public class MenuItemView extends View {
     @Override
     public boolean isMouseOver(int x, int y) {
         Point parentPoint = this.parentPointGetter.get();
-        return new Rectangle((int)parentPoint.getX() + x, (int)parentPoint.getY() + y, 100, 30).contains(x, y);
+        return new Rectangle((int)parentPoint.getX() + this.x, (int)parentPoint.getY() + this.y, 100, 30).contains(x, y);
     }
 }

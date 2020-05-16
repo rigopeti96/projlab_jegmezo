@@ -1,6 +1,7 @@
 package jegmezo;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class PlayerStatusView extends View {
     private Player activeplayer;
@@ -11,7 +12,7 @@ public class PlayerStatusView extends View {
     }
 
     @Override
-    public void draw(Graphics2D graphics, boolean overlay) {
+    public void draw(Graphics2D graphics, boolean overlay) throws IOException {
         super.draw(graphics, overlay);
         Font font = new Font("Serif", Font.BOLD, 11);
         graphics.setFont(font);

@@ -322,4 +322,17 @@ public class Level {
     public LevelTile getLevelTileFor(Tile tile) {
         return levelTiles.get(tile);
     }
+
+    public Collection<Tile> getTiles(){
+        return tiles.values();
+    }
+
+    public int getLevelTileX(LevelTile levelTile){
+        return levelTile.x;
+    }
+
+    public int getLevelTileY(LevelTile levelTile){
+        return levelTile.y;
+    }
+
 }

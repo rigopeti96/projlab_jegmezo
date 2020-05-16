@@ -35,8 +35,7 @@ public class IceSheetView extends TileView {
         //lekérjük az aktuális játékosok listáját akik a mezőn állnak
         List<Player> players = tile.getPlayers();
         //ezekhez player View-kat hozunk létre
-        for (Player player: players
-             ) {
+        for (Player player: players) {
         }
 
         for (View child : children)

@@ -1,5 +1,7 @@
 package jegmezo;
 
+import jegmezo.view.GameWindow;
+
 /**
  * A program
  */

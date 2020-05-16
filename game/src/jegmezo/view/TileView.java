@@ -68,4 +68,12 @@ public abstract class TileView extends View{
             for (View child : children)
                 child.draw(graphics, overlay);
     }
+
+    public int getX(){
+        return x;
+    }
+
+    public int getY(){
+        return y;
+    }
 }

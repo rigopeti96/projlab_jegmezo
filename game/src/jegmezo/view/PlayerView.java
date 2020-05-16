@@ -10,6 +10,7 @@ public abstract class PlayerView extends View {
     protected Player player;
     protected int x,y;
     protected TooltipView toolTip;
+    protected TileView tileView;
 
     public PlayerView(GameWindow gameWindow, AssetManager assetManager) {
         super(gameWindow, assetManager);
@@ -19,7 +20,6 @@ public abstract class PlayerView extends View {
     @Override
     public boolean isMouseOver(int x, int y) {
             return new Rectangle(this.x, this.y, 100, 100).contains(x, y);
-
     }
 
     @Override
@@ -39,7 +39,7 @@ public abstract class PlayerView extends View {
     public abstract void draw (Graphics2D graphics, boolean overlay);
 
     public void setX(int x){
-        this.x = 200;
+        this.x = x;
     }
 
     public void setY(int y){
@@ -52,6 +52,12 @@ public abstract class PlayerView extends View {
 
     public Player getPlayer(){
         return player;
+    }
+
+    public void setTileView(TileView tileView){
+        this.tileView = tileView;
+        this.x = tileView.getX();
+        this.y = tileView.getY();
     }
 
 }

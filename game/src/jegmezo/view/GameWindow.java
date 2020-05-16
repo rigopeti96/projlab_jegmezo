@@ -27,19 +27,7 @@ public class GameWindow {
     public static int windowHeight = 480;
     TooltipView tooltipView;
     MenuView menuView;
-    ArrayList<PlayerView> playerViews = new ArrayList<PlayerView>();
 
-    public void setXYToPlayer(int number, int x, int y){
-        System.out.println(playerViews.size());
-        for(int i = 0; i <playerViews.size();i++){
-            System.out.println(playerViews.get(i).getPlayer().getNumber());
-            System.out.println(number);
-            if(playerViews.get(i).getPlayer().getNumber() == number){
-                playerViews.get(i).setX(x);
-                playerViews.get(i).setY(y);
-            }
-        }
-    }
 
     public TooltipView getTooltipView(){
         return tooltipView;
@@ -118,18 +106,23 @@ public class GameWindow {
         Inventory inventory = new Inventory(new GameController());
         inventory.equipBreakableShovel(new BreakableShovel());
         views.add(new InventoryView(this, assetManager, inventory));
-        views.add(tooltipView);
+
         IceSheet iceSheet = new IceSheet(new GameController(), 0,3,0);
 
         //teszt játékosok
         Eskimo eskimo = new Eskimo(new GameController(), 0, 4);
         EskimoView eskimoView = new EskimoView(this, assetManager);
         eskimoView.setPlayer(eskimo);
-        playerViews.add(eskimoView);
         iceSheet.stepOnto(eskimo,iceSheet);
+        IceSheetView iceSheetView = new IceSheetView(this, assetManager, 200,200, iceSheet);
+        views.add(iceSheetView);
+        eskimoView.setTileView(iceSheetView);
+
         views.add(new IceSheetView(this, assetManager, 200,200, iceSheet));
         views.add(new HoleView(this,assetManager,300,300,new Hole(new GameController(),1,0)));
         views.add(eskimoView);
+
+        views.add(tooltipView);
     }
 
     private void handleClick(MouseEvent event) {

@@ -37,17 +37,15 @@ public class GameController {
         playerIndex = 0;
         activePlayer = this.level.getPlayer(playerIndex);
         activePlayer.resetActions();
-        getConsoleView().writeLine("Game started bitch 1!");
-        getConsoleView().writeLine("Game started bitch 2!");
-        getConsoleView().writeLine("Game started bitch 3!");
-        getConsoleView().writeLine("Game started bitch 4!");
+        gameState = GameState.Select;
         setOverlayType(OverlayType.Blizzard);
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        setOverlayType(OverlayType.None);
+        setOverlayType(OverlayType.GameOver);
+        gameState = GameState.Over;
     }
 
     public void tradeRequest(Player activePlayer, Item selectedItem) {

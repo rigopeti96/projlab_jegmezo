@@ -23,26 +23,23 @@ public class Level {
      */
 
     public void generate(GameController gameController, List<Player> players) {
-        players.clear(); // a játékosok számát most fogjuk bekérni
         tiles.clear(); //a játékosok számától fog függni a mezők száma
         this.players = players;
         LevelGenerator generator = new LevelGenerator(gameController, players.size()); //legeneráljuk a játékosok számától függően a pályát
-        this.levelTiles = generator.getLevelTiles();
         for (Tile tile: generator.generate()) {
             tiles.put(tile.getId(), tile); //legeneráljuk a mezőket
         }
+        this.levelTiles = generator.getLevelTiles();
         for (Player player: players) {
             player.spawnOnto(tiles.get(0)); // a játékosokat a nullás mezőre helyezzük
         }
         polarBear = generator.getPolarBear(); //legeneráljuk a jegesmedvét
 
         //minden játékos kap két food itemet, hogy könnyebb legyen a játék
-        players.get(0).takeItem(new Food(gameController));
-        players.get(0).takeItem(new Food(gameController));
-        players.get(1).takeItem(new Food(gameController));
-        players.get(1).takeItem(new Food(gameController));
-        players.get(2).takeItem(new Food(gameController));
-        players.get(2).takeItem(new Food(gameController));
+        for (Player player: players) {
+            player.takeItem(new Food(gameController));
+            player.takeItem(new Food(gameController));
+        }
     }
 
     /**

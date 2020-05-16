@@ -163,7 +163,7 @@ public class LevelGenerator {
         for (int x = -rx; x <= rx; x++) {
             for (int y = -ry; y <= ry; y++) {
                 if (tiles[rx + x][ry + y].isSelected()) {
-                    IceSheet sheet = new IceSheet(gameController, (x == 0 && y == 0) ? 0 : counter++, random.nextInt(playerCount) + 1, getSnowAmmount());
+                    IceSheet sheet = new IceSheet(gameController, (x == 0 && y == 0) ? 0 : counter++, x == 0 && y == 0 ? playerCount :  random.nextInt(playerCount) + 1, getSnowAmmount());
                     gameTiles.put(tiles[rx + x][ry + y], sheet);
                     levelTiles.put(sheet, tiles[rx + x][ry + y]);
                     iceSheets.add(sheet);

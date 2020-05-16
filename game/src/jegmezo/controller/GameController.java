@@ -14,6 +14,7 @@ public class GameController {
 
     private Level level;
     private int playerIndex = 0;
+
     private Player activePlayer;
     private Item selectedItem;
     private Random random = new Random();
@@ -32,52 +33,58 @@ public class GameController {
         return this.gameState;
     }
 
-    void tradeRequest(Player activePlayer, Item selectedItem) {
+    public void start() {
+        playerIndex = 0;
+        activePlayer = this.level.getPlayer(playerIndex);
+        activePlayer.resetActions();
+    }
+
+    public void tradeRequest(Player activePlayer, Item selectedItem) {
         this.gameState = GameState.Trade;
         this.activePlayer = activePlayer;
         this.selectedItem = selectedItem;
     }
 
-    void tradeFinish(Player selectedPlayer) {
+    public void tradeFinish(Player selectedPlayer) {
         this.activePlayer.trade(selectedItem, selectedPlayer);
         this.gameState = GameState.Select;
     }
 
-    void cancel() {
+    public void cancel() {
         this.activePlayer = null;
         this.selectedItem = null;
         this.gameState = GameState.Select;
     }
 
-    void useItem(Player activePlayer, Item selectedItem) {
+    public void useItem(Player activePlayer, Item selectedItem) {
         if (selectedItem.use(activePlayer)) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();
         }
     }
 
-    void move(Player activePlayer, Tile selectedTile) {
+    public void move(Player activePlayer, Tile selectedTile) {
         if (activePlayer.move(selectedTile)) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();
         }
     }
 
-    void examine(Scientist activePlayer, Tile selectedTile) {
+    public void examine(Scientist activePlayer, Tile selectedTile) {
         if (activePlayer.examine(selectedTile)) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();
         }
     }
 
-    void buildIgloo(Eskimo activePlayer) {
+    public void buildIgloo(Eskimo activePlayer) {
         if (activePlayer.buildIgloo()) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();
         }
     }
 
-    void dig(Player activePlayer) {
+    public void dig(Player activePlayer) {
         if (activePlayer.digWithHands()) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();
@@ -98,6 +105,10 @@ public class GameController {
         }
         level.movePolarBear();
         level.destroyTiles();
+        playerIndex++;
+        if (playerIndex >= this.level.getPlayerCount()) playerIndex = 0;
+        activePlayer = this.level.getPlayer(playerIndex);
+        activePlayer.resetActions();
         gameState = GameState.Select;
     }
 
@@ -121,5 +132,9 @@ public class GameController {
 
     public Random getRandom() {
         return random;
+    }
+
+    public Player getActivePlayer() {
+        return activePlayer;
     }
 }

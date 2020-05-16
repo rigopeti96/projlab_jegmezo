@@ -46,6 +46,10 @@ public abstract class Player extends Entity{
 		this.bodyHeat = bodyHeat;
 	}
 
+	public void resetActions() {
+		this.actions = 4;
+	}
+
 	/**
 	 * Visszaadja a játékos számát.
 	 * @return a player száma

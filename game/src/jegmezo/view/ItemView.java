@@ -51,6 +51,10 @@ public class ItemView extends View {
         toolTip.setShow(false);
     }
 
+    public void setItem(Item item){
+        this.item = item;
+    }
+
     public void setItemCount(int itemCount){
         this.itemCount = itemCount;
     }
@@ -74,13 +78,15 @@ public class ItemView extends View {
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
         }
         else {
-            graphics.drawImage(assetManager.getImage(item.getName()), x + 5, y + 5, 40, 40, null);
+            graphics.drawImage(itemCount > 0 ? assetManager.getImage(item.getName()) : assetManager.getImageGrayScale(item.getName()), x + 5, y + 5, 40, 40, null);
         }
 
         if(item.getName().equals("Win item")|| item.getName().equals("Food")){
+            DrawUtils du = new DrawUtils(graphics);
+            String lines = itemCount + "x";
             graphics.setColor(Color.DARK_GRAY);
-            graphics.setFont(assetManager.getFont());
-            graphics.drawString(itemCount + "x", x+20, y+40);
+            Rectangle rectangle = new Rectangle(x, y, 60, 50);
+            du.drawStringRectangle(lines, assetManager.getFont(), 1.2f, du.padding(rectangle, 4), VerticalAlignment.Bottom, HorizontalAlignment.Right);
         }
     }
 }

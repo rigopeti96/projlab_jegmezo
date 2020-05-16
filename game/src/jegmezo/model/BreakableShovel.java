@@ -41,7 +41,7 @@ public class BreakableShovel extends Shovel {
             durability--;
             if(durability == 0) {
                 unequip(player.getInventory());
-                System.out.println("The shovel breaks.");
+                gameController.getConsoleView().writeLine("The shovel breaks.");
             }
             return true;
         }

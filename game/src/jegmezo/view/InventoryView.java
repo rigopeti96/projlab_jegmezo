@@ -8,34 +8,39 @@ import java.util.List;
 
 public class InventoryView extends View {
 
-    protected List<ItemView> itemViews = new ArrayList<>();
     private int x, y;
-    Inventory inventory;
-    ItemView FoodView;
-    ItemView WinItemView;
+    ItemView scubaView;
+    ItemView ropeView;
+    ItemView tentView;
+    ItemView foodView;
+    ItemView winItemView;
+    ItemView shovelView;
+
+    private Shovel viewShovel;
 
     InventoryView(GameWindow gameWindow, AssetManager assetManager, Inventory inventory) {
         super(gameWindow, assetManager);
         this.x = GameWindow.windowWidth-430;
         this.y = GameWindow.windowHeight-100;
-        this.inventory = inventory;
+        viewShovel = new Shovel(gameWindow.getGameController());
 
-        children.add(new ItemView(gameWindow, assetManager, x+70*0, y, new ScubaGear(),inventory.getScubaCount()));
+        scubaView = new ItemView(gameWindow, assetManager, x+70*0, y, new ScubaGear(gameWindow.getGameController()), 0);
+        children.add(scubaView);
 
-        children.add(new ItemView(gameWindow, assetManager, x+70*1, y, new Rope(), inventory.getRopeCount()));
+        ropeView = new ItemView(gameWindow, assetManager, x+70*1, y, new Rope(gameWindow.getGameController()), 0);
+        children.add(ropeView);
 
-        WinItemView = new ItemView(gameWindow, assetManager, x+70*2, y, new WinItem("Win item"), inventory.getWinItemCount());
-        children.add(WinItemView);
+        winItemView = new ItemView(gameWindow, assetManager, x+70*2, y, new WinItem(gameWindow.getGameController(), "Win item"), 0);
+        children.add(winItemView);
 
-        children.add(new ItemView(gameWindow, assetManager, x+70*3, y, new Tent(), inventory.getTentCount()));
+        tentView = new ItemView(gameWindow, assetManager, x+70*3, y, new Tent(gameWindow.getGameController()), 0);
+        children.add(tentView);
 
-        if(inventory.getBreakableShovelCount() !=0)
-            children.add(new ItemView(gameWindow, assetManager, x+70*4, y, inventory.getItem("Breakable shovel"), inventory.getBreakableShovelCount()));
-        else
-            children.add(new ItemView(gameWindow, assetManager, x+70*4, y, new Shovel(), inventory.getShovelCount()));
+        shovelView = new ItemView(gameWindow, assetManager, x+70*4, y, viewShovel, 0);
+        children.add(shovelView);
 
-        FoodView = new ItemView(gameWindow, assetManager, x+70*5, y, new Food(), inventory.getFoodCount());
-        children.add(FoodView);
+        foodView = new ItemView(gameWindow, assetManager, x+70*5, y, new Food(gameWindow.getGameController()), 0);
+        children.add(foodView);
     }
 
     @Override
@@ -48,12 +53,18 @@ public class InventoryView extends View {
         super.draw(graphics, overlay);
         if (overlay) return;
 
-        FoodView.setItemCount(inventory.getFoodCount());
-        WinItemView.setItemCount(inventory.getWinItemCount());
+        Inventory inventory = gameWindow.getGameController().getActivePlayer().getInventory();
+        foodView.setItemCount(inventory.getFoodCount());
+        winItemView.setItemCount(inventory.getWinItemCount());
+        Item shovel = inventory.getItem("Breakable shovel");
+        if (shovel == null) shovel = viewShovel;
+        shovelView.setItem(shovel);
+        shovelView.setItemCount(inventory.getShovelCount());
+        tentView.setItemCount(inventory.getTentCount());
+        ropeView.setItemCount(inventory.getRopeCount());
+        scubaView.setItemCount(inventory.getScubaCount());
 
         graphics.setColor(Color.DARK_GRAY);
-        float opacity = 1.0f;
-        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
         Stroke stroke = new BasicStroke(2f);
         graphics.setStroke(stroke);
         graphics.drawRect(x+70*0, y, 60, 50);

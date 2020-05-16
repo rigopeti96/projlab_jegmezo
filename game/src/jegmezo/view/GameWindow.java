@@ -24,8 +24,8 @@ public class GameWindow {
         }
     }
 
-    public static int windowWidth = 800;
-    public static int windowHeight = 480;
+    public static int windowWidth = 1600;
+    public static int windowHeight = 900;
     TooltipView tooltipView;
     MenuView menuView;
     View overlayView;
@@ -60,6 +60,7 @@ public class GameWindow {
         frame.setTitle("Jégmező");
         frame.setSize(windowWidth, windowHeight);
         frame.setContentPane(new GameCanvas());
+        initialize();
         frame.setVisible(true);
         frame.addMouseListener(new MouseAdapter() {
             @Override
@@ -91,7 +92,6 @@ public class GameWindow {
 
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(frame::repaint, 0, 16, TimeUnit.MILLISECONDS);
-        initialize();
     }
 
     private void initialize() {
@@ -108,7 +108,7 @@ public class GameWindow {
         assetManager.loadImage("eskimo", "images/eskimo-003-512.png");
         assetManager.loadImage("scientist", "images/species-researcher-005-512.png");
         assetManager.loadImage("gameOver", "images/lose.png");
-        assetManager.loadImage("gameWin", "images/win.png");
+        assetManager.loadImage("gameWin", "images/win.jpg");
 
         tooltipView = new TooltipView(this, assetManager, "");
 
@@ -124,8 +124,10 @@ public class GameWindow {
         views.add(levelView);
 
         views.add(new InventoryView(this, assetManager, players.get(0).getInventory()));
+        views.add(new PlayerStatusView(this, assetManager));
         views.add(consoleView);
         views.add(tooltipView);
+        gameController.start();
     }
 
     private void handleClick(MouseEvent event) {

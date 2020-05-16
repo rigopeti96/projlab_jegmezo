@@ -49,4 +49,9 @@ public class Eskimo extends Player {
 	public void serialize() {
 		System.out.println("Eskimo(number=" + number + ",heat=" + bodyHeat + ",tile=" + tile.getId() + ")");
 	}
+
+	@Override
+	public String getName(){
+		return "Eskimo";
+	}
 }

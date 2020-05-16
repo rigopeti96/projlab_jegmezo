@@ -288,5 +288,7 @@ public abstract class Player extends Entity{
 	public int getActions() {
 		return this.actions;
 	}
+
+	abstract public String getName();
 }
 

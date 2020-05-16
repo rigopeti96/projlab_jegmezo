@@ -1,8 +1,10 @@
 package jegmezo.view;
 
+import jegmezo.model.Player;
 import jegmezo.model.Tile;
 
 import java.awt.*;
+import java.util.List;
 
 public class IceSheetView extends TileView {
 
@@ -29,6 +31,16 @@ public class IceSheetView extends TileView {
                     (int) (y + 50 *size* Math.sin(i * 2 * Math.PI / 6)));
         graphics.setColor(Color.GRAY);
         graphics.drawPolygon(p);
+
+        //lekérjük az aktuális játékosok listáját akik a mezőn állnak
+        List<Player> players = tile.getPlayers();
+        //ezekhez player View-kat hozunk létre
+        for (Player player: players
+             ) {
+            if(player.getName().equals("Eskimo")) children.add(new EskimoView(gameWindow, assetManager));
+            if(player.getName().equals("Scientist")) children.add(new ScientistView(gameWindow, assetManager));
+
+        }
 
         for (View child : children)
             child.draw(graphics, overlay);

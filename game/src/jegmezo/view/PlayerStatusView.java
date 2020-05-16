@@ -11,9 +11,12 @@ public class PlayerStatusView extends View {
         super(gameWindow, assetManager);
         activePlayer = player;
     }
+    //todo:
 
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
+        if(!overlay)
+            return;
         super.draw(graphics, overlay);
         Font font = new Font("Calibri", Font.BOLD, 11);
         graphics.setFont(font);

@@ -43,7 +43,7 @@ public abstract class TileView extends View{
     public void mouseEnter(MouseEvent event) {
 
         if (!this.children.contains(menu)) {
-            toolTip.setText(tile.toLongString());
+            toolTip.setText(tile.getDescription());
             toolTip.setShow(true);
         }
     }

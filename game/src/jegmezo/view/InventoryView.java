@@ -14,27 +14,27 @@ public class InventoryView extends View {
     ItemView FoodView;
     ItemView WinItemView;
 
-    InventoryView(AssetManager assetManager, Inventory inventory) {
-        super(assetManager);
+    InventoryView(GameWindow gameWindow, AssetManager assetManager, Inventory inventory) {
+        super(gameWindow, assetManager);
         this.x = GameWindow.windowWidth-430;
         this.y = GameWindow.windowHeight-100;
         this.inventory = inventory;
 
-        children.add(new ItemView(assetManager, x+70*0, y, new ScubaGear(),inventory.getScubaCount()));
+        children.add(new ItemView(gameWindow, assetManager, x+70*0, y, new ScubaGear(),inventory.getScubaCount()));
 
-        children.add(new ItemView(assetManager, x+70*1, y, new Rope(), inventory.getRopeCount()));
+        children.add(new ItemView(gameWindow, assetManager, x+70*1, y, new Rope(), inventory.getRopeCount()));
 
-        WinItemView = new ItemView(assetManager, x+70*2, y, new WinItem("Win item"), inventory.getWinItemCount());
+        WinItemView = new ItemView(gameWindow, assetManager, x+70*2, y, new WinItem("Win item"), inventory.getWinItemCount());
         children.add(WinItemView);
 
-        children.add(new ItemView(assetManager, x+70*3, y, new Tent(), inventory.getTentCount()));
+        children.add(new ItemView(gameWindow, assetManager, x+70*3, y, new Tent(), inventory.getTentCount()));
 
         if(inventory.getBreakableShovelCount() !=0)
-            children.add(new ItemView(assetManager, x+70*4, y, inventory.getItem("Breakable shovel"), inventory.getBreakableShovelCount()));
+            children.add(new ItemView(gameWindow, assetManager, x+70*4, y, inventory.getItem("Breakable shovel"), inventory.getBreakableShovelCount()));
         else
-            children.add(new ItemView(assetManager, x+70*4, y, new Shovel(), inventory.getShovelCount()));
+            children.add(new ItemView(gameWindow, assetManager, x+70*4, y, new Shovel(), inventory.getShovelCount()));
 
-        FoodView = new ItemView(assetManager, x+70*5, y, new Food(), inventory.getFoodCount());
+        FoodView = new ItemView(gameWindow, assetManager, x+70*5, y, new Food(), inventory.getFoodCount());
         children.add(FoodView);
     }
 

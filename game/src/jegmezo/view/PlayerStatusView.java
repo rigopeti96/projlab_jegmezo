@@ -7,8 +7,8 @@ import java.awt.*;
 public class PlayerStatusView extends View {
     private Player activePlayer;
 
-    public PlayerStatusView(AssetManager assetManager, Player player) {
-        super(assetManager);
+    public PlayerStatusView(GameWindow gameWindow, AssetManager assetManager, Player player) {
+        super(gameWindow, assetManager);
         activePlayer = player;
     }
 

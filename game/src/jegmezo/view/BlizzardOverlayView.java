@@ -5,8 +5,8 @@ import java.awt.*;
 //ezt az osztályt még tanácsos lenne szétszedni - Blizzard Overlay és GameOver Overlay
 public class BlizzardOverlayView extends View {
     private String type;
-    public BlizzardOverlayView(AssetManager assetManager, String type) {
-        super(assetManager);
+    public BlizzardOverlayView(GameWindow gameWindow, AssetManager assetManager, String type) {
+        super(gameWindow, assetManager);
         this.type = type;
     }
 

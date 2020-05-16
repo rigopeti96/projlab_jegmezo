@@ -13,17 +13,18 @@ public class ItemView extends View {
     private int itemCount;
     private MenuView menu;
 
-    ItemView(AssetManager assetManager, int x, int y, Item item, int itemCount) {
-        super(assetManager);
+    ItemView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Item item, int itemCount) {
+        super(gameWindow, assetManager);
         this.x = x;
         this.y = y;
-        this.toolTip = new TooltipView(assetManager, item.getDescription());
+       // this.toolTip = new TooltipView(gameWindow, assetManager, item.getDescription());
+
         this.item = item;
         this.itemCount = itemCount;
         ArrayList<MenuAction> actionList = new ArrayList<>();
         if (item.isUseable()) actionList.add(new MenuAction("Use", () -> System.out.println("Should use")));
         actionList.add(new MenuAction("Trade", () -> System.out.println("Should trade")));
-        this.menu = new MenuView(assetManager, actionList, () -> {
+        this.menu = new MenuView(gameWindow, assetManager, actionList, () -> {
             removeChild(this.menu);
         });
     }
@@ -35,18 +36,24 @@ public class ItemView extends View {
 
     @Override
     public void mouseMoved(MouseEvent event) {
-        toolTip.setX(event.getX());
-        toolTip.setY(event.getY());
+        gameWindow.setToolTipX(event.getX());
+        gameWindow.setToolTipY(event.getY());
     }
 
     @Override
     public void mouseEnter(MouseEvent event) {
-        if (!this.children.contains(menu)) this.children.add(toolTip);
+
+        if (!this.children.contains(menu)) {
+            //this.children.add(toolTip);
+            gameWindow.setToolTipText(item.getDescription());
+            gameWindow.setToolTipShow(true);
+        }
     }
 
     @Override
     public void mouseLeave(MouseEvent event) {
-        this.children.remove(toolTip);
+        //this.children.remove(toolTip);
+        gameWindow.setToolTipShow(false);
     }
 
     public void setItemCount(int itemCount){

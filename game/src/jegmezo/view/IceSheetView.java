@@ -7,8 +7,8 @@ import java.awt.*;
 public class IceSheetView extends TileView {
 
 
-    public IceSheetView(AssetManager assetManager, int x, int y, Tile tile) {
-        super(assetManager,x,y,tile);
+    public IceSheetView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile) {
+        super(gameWindow, assetManager,x,y,tile);
     }
 
 

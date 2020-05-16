@@ -10,8 +10,10 @@ public abstract class View {
     protected boolean hovered;
     protected List<View> children = new ArrayList<>();
     protected AssetManager assetManager;
+    GameWindow gameWindow;
 
-    public View(AssetManager assetManager) {
+    public View(GameWindow gameWindow, AssetManager assetManager) {
+        this.gameWindow = gameWindow;
         this.assetManager = assetManager;
     }
 

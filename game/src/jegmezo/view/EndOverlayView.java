@@ -3,8 +3,8 @@ package jegmezo.view;
 import java.awt.*;
 
 public class EndOverlayView extends View {
-    public EndOverlayView(AssetManager assetManager) {
-        super(assetManager);
+    public EndOverlayView(GameWindow gameWindow, AssetManager assetManager) {
+        super(gameWindow, assetManager);
     }
 
     @Override

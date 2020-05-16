@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class ConsoleView extends View {
     private Player activeplayer;
-    public ConsoleView(AssetManager assetManager, Player player) {
-        super(assetManager);
+    public ConsoleView(GameWindow gameWindow, AssetManager assetManager, Player player) {
+        super(gameWindow, assetManager);
         activeplayer = player;
     }
 

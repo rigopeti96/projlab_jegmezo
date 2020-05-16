@@ -10,8 +10,8 @@ public class MenuItemView extends View {
     private String text;
     Runnable callback;
 
-    public MenuItemView(AssetManager assetManager, Supplier<Point> parentPointGetter, int x, int y, String text, Runnable  callback) {
-        super(assetManager);
+    public MenuItemView(GameWindow gameWindow, AssetManager assetManager, Supplier<Point> parentPointGetter, int x, int y, String text, Runnable  callback) {
+        super(gameWindow, assetManager);
         this.parentPointGetter = parentPointGetter;
         this.x = x;
         this.y = y;

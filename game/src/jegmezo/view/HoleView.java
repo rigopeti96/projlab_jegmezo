@@ -6,8 +6,8 @@ import java.awt.*;
 
 public class HoleView extends TileView {
 
-    public HoleView(AssetManager assetManager, int x, int y, Tile tile) {
-        super(assetManager, x, y, tile);
+    public HoleView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile) {
+        super(gameWindow, assetManager, x, y, tile);
     }
 
     @Override

@@ -8,12 +8,12 @@ public class MenuView extends View {
     private int x, y;
     private Runnable closeCallback;
 
-    public MenuView(AssetManager assetManager, ArrayList<MenuAction> items, Runnable closeCallback) {
-        super(assetManager);
+    public MenuView(GameWindow gameWindow, AssetManager assetManager, ArrayList<MenuAction> items, Runnable closeCallback) {
+        super(gameWindow, assetManager);
         this.closeCallback = closeCallback;
         int y = 0;
         for (MenuAction item : items) {
-            children.add(new MenuItemView(assetManager, () -> new Point(x, this.y), 0, y, item.getText(), () -> {
+            children.add(new MenuItemView(gameWindow, assetManager, () -> new Point(x, this.y), 0, y, item.getText(), () -> {
                 item.getCallback().run();
                 closeCallback.run();
             }));

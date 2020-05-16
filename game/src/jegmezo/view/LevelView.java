@@ -9,8 +9,8 @@ public class LevelView extends View {
     private List<TileView> tileViews=new ArrayList<>();
 
 
-    public LevelView(AssetManager assetManager, PlayerStatusView playerStatusView, List<TileView> tileViews) {
-            super(assetManager);
+    public LevelView(GameWindow gameWindow, AssetManager assetManager, PlayerStatusView playerStatusView, List<TileView> tileViews) {
+            super(gameWindow, assetManager);
         this.tileViews = tileViews;
         for(TileView tv: tileViews){
             children.add(tv);

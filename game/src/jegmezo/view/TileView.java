@@ -11,13 +11,13 @@ public abstract class TileView extends View{
     private TooltipView tooltip;
     private boolean clicked = false;
 
-    public TileView(AssetManager assetManager, int x, int y, Tile tile) {
-        super(assetManager);
+    public TileView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile) {
+        super(gameWindow, assetManager);
         this.x=x;
         this.y=y;
         this.tile=tile;
         size=2;
-        tooltip= new TooltipView(assetManager, tile.toLongString());
+        tooltip= new TooltipView(gameWindow, assetManager, tile.toLongString());
     }
 
     @Override

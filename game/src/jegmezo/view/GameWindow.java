@@ -17,6 +17,20 @@ public class GameWindow {
 
     public static int windowWidth = 800;
     public static int windowHeight = 480;
+    TooltipView tooltipView;
+
+    public void setToolTipText(String text){
+        tooltipView.setText(text);
+    }
+    public void setToolTipX(int x){
+        tooltipView.setX(x);
+    }
+    public void setToolTipY(int y){
+        tooltipView.setY(y);
+    }
+    public void setToolTipShow(boolean show){
+        tooltipView.setShow(show);
+    }
 
     class GameCanvas extends JPanel
     {
@@ -31,6 +45,8 @@ public class GameWindow {
 
     private List<View> views = new ArrayList<>();
     private AssetManager assetManager = new AssetManager();
+
+
 
     public void start() {
         JFrame frame= new JFrame();
@@ -83,9 +99,12 @@ public class GameWindow {
         assetManager.loadImage("blizzardOverlay1", "images/snow1.png");
         assetManager.loadImage("blizzardOverlay2", "images/snow2.png");
 
+        tooltipView = new TooltipView(this, assetManager, "");
+
         Inventory inventory = new Inventory(new GameController());
         inventory.equipBreakableShovel(new BreakableShovel());
-        views.add(new InventoryView(assetManager, inventory));
+        views.add(new InventoryView(this, assetManager, inventory));
+        views.add(tooltipView);
     }
 
     private void handleClick(MouseEvent event) {

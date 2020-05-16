@@ -8,9 +8,9 @@ import java.io.IOException;
 
 public class ScientistView extends PlayerView{
 
-    public ScientistView(AssetManager assetManager) {
-        super(assetManager);
-        tooltip = new TooltipView(assetManager, "Player " + player.getNumber() + " (Scientist)");
+    public ScientistView(GameWindow gameWindow, AssetManager assetManager) {
+        super(gameWindow, assetManager);
+        tooltip = new TooltipView(gameWindow, assetManager, "Player " + player.getNumber() + " (Scientist)");
     }
 
     @Override

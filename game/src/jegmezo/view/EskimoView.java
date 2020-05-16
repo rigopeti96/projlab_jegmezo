@@ -8,9 +8,9 @@ import java.io.IOException;
 
 public class EskimoView extends PlayerView {
 
-    public EskimoView(AssetManager assetManager) {
-        super(assetManager);
-        tooltip = new TooltipView(assetManager, "Player " + player.getNumber() + " (Eskimo)");
+    public EskimoView(GameWindow gameWindow, AssetManager assetManager) {
+        super(gameWindow, assetManager);
+        tooltip = new TooltipView(gameWindow, assetManager, "Player " + player.getNumber() + " (Eskimo)");
     }
 
     @Override

@@ -5,8 +5,8 @@ import java.awt.*;
 public class TestView extends View {
     private int x, y;
 
-    TestView(ImageManager imageManager, int x, int y) {
-        super(imageManager);
+    TestView(AssetManager assetManager, int x, int y) {
+        super(assetManager);
         this.x = x;
         this.y = y;
     }

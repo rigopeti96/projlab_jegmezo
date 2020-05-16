@@ -3,8 +3,8 @@ package jegmezo;
 public class IceSheetView extends View {
 
 
-    public IceSheetView(ImageManager imageManager) {
-        super(imageManager);
+    public IceSheetView(AssetManager assetManager) {
+        super(assetManager);
     }
 
     @Override

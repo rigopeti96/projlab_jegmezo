@@ -2,7 +2,6 @@ package jegmezo;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 
 public class ItemView extends View {
     private ItemToolTipView toolTip;
@@ -11,11 +10,11 @@ public class ItemView extends View {
     private int toolTipX, toolTipY;
     private int itemCount;
 
-    ItemView(ImageManager imageManager, int x, int y, Item item, int itemCount) {
-        super(imageManager);
+    ItemView(AssetManager assetManager, int x, int y, Item item, int itemCount) {
+        super(assetManager);
         this.x = x;
         this.y = y;
-        this.toolTip = new ItemToolTipView(imageManager, toolTipX, toolTipY, item.getName()); // item.getDescription());
+        this.toolTip = new ItemToolTipView(assetManager, toolTipX, toolTipY, item.getName()); // item.getDescription());
         this.item = item;
         this.itemCount = itemCount;
     }
@@ -48,11 +47,11 @@ public class ItemView extends View {
 
         if(!item.isUseable()){
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
-            graphics.drawImage(imageManager.getImageGrayScale(item.getName()), x, y, 40, 40, null);
+            graphics.drawImage(assetManager.getImageGrayScale(item.getName()), x, y, 40, 40, null);
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
         }
         else {
-            graphics.drawImage(imageManager.getImage(item.getName()), x, y, 40, 40, null);
+            graphics.drawImage(assetManager.getImage(item.getName()), x, y, 40, 40, null);
         }
 
         if(item.getName().equals("winitem")|| item.getName().equals("food")){

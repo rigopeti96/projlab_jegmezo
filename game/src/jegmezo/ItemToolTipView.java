@@ -6,8 +6,8 @@ public class ItemToolTipView extends View {
     private int x, y;
     private String text;
 
-    ItemToolTipView(ImageManager imageManager, int x, int y, String text) {
-        super(imageManager);
+    ItemToolTipView(AssetManager assetManager, int x, int y, String text) {
+        super(assetManager);
         this.x = x;
         this.y = y;
         this.text = text;
@@ -33,8 +33,7 @@ public class ItemToolTipView extends View {
         graphics.setColor(Color.DARK_GRAY);
         opacity = 1.0f;
         graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-        Font font = new Font("Calibri", Font.BOLD, 11);
-        graphics.setFont(font);
+        graphics.setFont(assetManager.getFont());
         graphics.drawString(text,x+5,y+16);
     }
 

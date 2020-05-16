@@ -10,8 +10,8 @@ public abstract class TileView extends View{
     // private List<PlayerView> playerViews;
     private boolean clicked = false;
 
-    public TileView(ImageManager imageManager,int x,int y) {
-        super(imageManager);
+    public TileView(AssetManager assetManager, int x, int y) {
+        super(assetManager);
     }
 
     @Override
@@ -34,6 +34,6 @@ public abstract class TileView extends View{
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
         if (overlay) return;
-        graphics.drawImage(imageManager.getImage("testImage"), x, y, 100, 100, null);
+        graphics.drawImage(assetManager.getImage("testImage"), x, y, 100, 100, null);
     }
 }

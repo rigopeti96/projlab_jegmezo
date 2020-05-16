@@ -22,7 +22,7 @@ public class GameWindow {
     }
 
     private List<View> views = new ArrayList<>();
-    private ImageManager imageManager = new ImageManager();
+    private AssetManager assetManager = new AssetManager();
 
     public void start() {
         JFrame frame= new JFrame();
@@ -64,13 +64,13 @@ public class GameWindow {
     }
 
     private void initialize() {
-        imageManager.loadImage("missingTexture", "missing_texture.png");
-        imageManager.loadImage("testImage", "test_texture.png");
-        views.add(new TestView(imageManager, 50, 50));
-        views.add( new TestView(imageManager, 200, 50));
+        assetManager.loadImage("missingTexture", "missing_texture.png");
+        assetManager.loadImage("testImage", "test_texture.png");
+        views.add(new TestView(assetManager, 50, 50));
+        views.add( new TestView(assetManager, 200, 50));
 
         Inventory inventory = new Inventory(new GameController());
-        views.add(new InventoryView(imageManager, 200, 200, inventory));
+        views.add(new InventoryView(assetManager, 200, 200, inventory));
     }
 
     private void handleClick(MouseEvent event) {

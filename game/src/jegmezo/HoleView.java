@@ -2,8 +2,8 @@ package jegmezo;
 
 public class HoleView extends View {
 
-    public HoleView(ImageManager imageManager) {
-        super(imageManager);
+    public HoleView(AssetManager assetManager) {
+        super(assetManager);
     }
 
     @Override

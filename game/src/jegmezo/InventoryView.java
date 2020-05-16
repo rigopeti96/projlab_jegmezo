@@ -10,26 +10,26 @@ public class InventoryView extends View {
     private Inventory inventory;
     private int x, y;
 
-    InventoryView(ImageManager imageManager, int x, int y, Inventory inventory) {
-        super(imageManager);
+    InventoryView(AssetManager assetManager, int x, int y, Inventory inventory) {
+        super(assetManager);
         this.x = x;
         this.y = y;
         this.inventory = inventory;
 
-        children.add(new ItemView(imageManager, x+70*0+5, y+5, new ScubaGear(),inventory.getScubaCount()));
+        children.add(new ItemView(assetManager, x+70*0+5, y+5, new ScubaGear(),inventory.getScubaCount()));
 
-        children.add(new ItemView(imageManager, x+70*1+5, y+5, new Rope(), inventory.getRopeCount()));
+        children.add(new ItemView(assetManager, x+70*1+5, y+5, new Rope(), inventory.getRopeCount()));
 
-        children.add(new ItemView(imageManager, x+70*2+5, y+5, new WinItem("winitem"), inventory.getWinItemCount()));
+        children.add(new ItemView(assetManager, x+70*2+5, y+5, new WinItem("winitem"), inventory.getWinItemCount()));
 
-        children.add(new ItemView(imageManager, x+70*3+5, y+5, new Tent(), inventory.getTentCount()));
+        children.add(new ItemView(assetManager, x+70*3+5, y+5, new Tent(), inventory.getTentCount()));
 
         if(inventory.getBreakableShovelCount() !=0)
-            children.add(new ItemView(imageManager, x+70*4+5, y+5, inventory.getItem("breakableshovel"), inventory.getBreakableShovelCount()));
+            children.add(new ItemView(assetManager, x+70*4+5, y+5, inventory.getItem("breakableshovel"), inventory.getBreakableShovelCount()));
         else
-            children.add(new ItemView(imageManager, x+70*4+5, y+5, new Shovel(), inventory.getShovelCount()));
+            children.add(new ItemView(assetManager, x+70*4+5, y+5, new Shovel(), inventory.getShovelCount()));
 
-        children.add(new ItemView(imageManager, x+70*5+5, y+5, new Food(), inventory.getFoodCount()));
+        children.add(new ItemView(assetManager, x+70*5+5, y+5, new Food(), inventory.getFoodCount()));
     }
 
     @Override

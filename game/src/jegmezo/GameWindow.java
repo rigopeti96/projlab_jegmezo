@@ -70,7 +70,9 @@ public class GameWindow {
         views.add( new TestView(imageManager, 200, 50));
 
         Inventory inventory = new Inventory(new GameController());
-        views.add(new InventoryView(imageManager, 200, 200, inventory));
+        //views.add(new InventoryView(imageManager, 200, 200, inventory));
+        views.add(new IceSheetView(imageManager,150,200,new IceSheet(new GameController(),1,1,0)) );
+        views.add(new HoleView(imageManager,400,200,new Hole(new GameController(),1,1)));
     }
 
     private void handleClick(MouseEvent event) {

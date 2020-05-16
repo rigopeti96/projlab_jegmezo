@@ -38,14 +38,6 @@ public class GameController {
         activePlayer = this.level.getPlayer(playerIndex);
         activePlayer.resetActions();
         gameState = GameState.Select;
-        setOverlayType(OverlayType.Blizzard);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        setOverlayType(OverlayType.GameOver);
-        gameState = GameState.Over;
     }
 
     public void tradeRequest(Player activePlayer, Item selectedItem) {
@@ -107,18 +99,16 @@ public class GameController {
             setOverlayType(OverlayType.Blizzard);
             gameState = GameState.Idle;
         }
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        level.movePolarBear();
-        level.destroyTiles();
-        playerIndex++;
-        if (playerIndex >= this.level.getPlayerCount()) playerIndex = 0;
-        activePlayer = this.level.getPlayer(playerIndex);
-        activePlayer.resetActions();
-        gameState = GameState.Select;
+        gameWindow.schedule(() -> {
+            setOverlayType(OverlayType.None);
+            level.movePolarBear();
+            level.destroyTiles();
+            playerIndex++;
+            if (playerIndex >= this.level.getPlayerCount()) playerIndex = 0;
+            activePlayer = this.level.getPlayer(playerIndex);
+            activePlayer.resetActions();
+            gameState = GameState.Select;
+        }, 3000);
     }
 
     public void win() {

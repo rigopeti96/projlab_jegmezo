@@ -26,6 +26,8 @@ public class ConsoleView extends View {
 
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
+        if(!overlay)
+            return;
         DrawUtils du = new DrawUtils(graphics);
         String lines = text[0] + "\n" + text[1] + "\n" + text[2] + "\n";
         Rectangle rectangle = du.calculateStringBounds(lines.split("\n"), assetManager.getFont(), 1.2f);

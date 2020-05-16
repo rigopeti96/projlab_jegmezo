@@ -1,4 +1,4 @@
-package jegmezo.view;
+package jegmezo.controller;
 
 public class MenuAction {
     private String text;

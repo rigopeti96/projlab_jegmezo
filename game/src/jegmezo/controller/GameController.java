@@ -37,6 +37,17 @@ public class GameController {
         playerIndex = 0;
         activePlayer = this.level.getPlayer(playerIndex);
         activePlayer.resetActions();
+        getConsoleView().writeLine("Game started bitch 1!");
+        getConsoleView().writeLine("Game started bitch 2!");
+        getConsoleView().writeLine("Game started bitch 3!");
+        getConsoleView().writeLine("Game started bitch 4!");
+        setOverlayType(OverlayType.Blizzard);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        setOverlayType(OverlayType.None);
     }
 
     public void tradeRequest(Player activePlayer, Item selectedItem) {
@@ -56,35 +67,35 @@ public class GameController {
         this.gameState = GameState.Select;
     }
 
-    public void useItem(Player activePlayer, Item selectedItem) {
+    public void useItem(Item selectedItem) {
         if (selectedItem.use(activePlayer)) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();
         }
     }
 
-    public void move(Player activePlayer, Tile selectedTile) {
+    public void move(Tile selectedTile) {
         if (activePlayer.move(selectedTile)) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();
         }
     }
 
-    public void examine(Scientist activePlayer, Tile selectedTile) {
-        if (activePlayer.examine(selectedTile)) {
+    public void examine(Tile selectedTile) {
+        if (((Scientist)activePlayer).examine(selectedTile)) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();
         }
     }
 
-    public void buildIgloo(Eskimo activePlayer) {
-        if (activePlayer.buildIgloo()) {
+    public void buildIgloo() {
+        if (((Eskimo)activePlayer).buildIgloo()) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();
         }
     }
 
-    public void dig(Player activePlayer) {
+    public void dig() {
         if (activePlayer.digWithHands()) {
             activePlayer.loseAP();
             if (activePlayer.getActions() == 0) turnEnd();

@@ -16,9 +16,10 @@ public class PlayerStatusView extends View {
         if(!overlay) return;
         Player activePlayer = gameWindow.getGameController().getActivePlayer();
         DrawUtils du = new DrawUtils(graphics);
+        graphics.setColor(Color.DARK_GRAY);
         String lines = "Player " + activePlayer.getNumber() + "'s turn\n" + activePlayer.getActions() + " step" + (activePlayer.getActions() == 1 ? "" : "s") + " remaining";
         Rectangle rectangle = new Rectangle(GameWindow.windowWidth - 330, 0, 300, 40);
-        du.drawStringRectangle(lines, assetManager.getFont(), 1.2f, du.padding(rectangle, 4), VerticalAlignment.Top, HorizontalAlignment.Right);
+        du.drawStringRectangle(lines, assetManager.getFont(24), 1.2f, du.padding(rectangle, 4), VerticalAlignment.Top, HorizontalAlignment.Right);
     }
 
     @Override

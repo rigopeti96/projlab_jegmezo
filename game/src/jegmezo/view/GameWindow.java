@@ -30,7 +30,6 @@ public class GameWindow {
     TooltipView tooltipView;
     MenuView menuView;
     View overlayView;
-    private ConsoleView consoleView;
     private GameController gameController;
 
     public GameController getGameController() {

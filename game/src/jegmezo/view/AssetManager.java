@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class AssetManager {
     Font font = new Font("Calibri", Font.BOLD, 14);
+    Font blizzardFont = new Font("Serif", Font.BOLD, 70);
     Map<String, BufferedImage> imageMap = new HashMap<>();
     public void loadImage(String name, String fileName) {
         try {
@@ -29,6 +30,8 @@ public class AssetManager {
     public Font getFont(float size) {
         return font.deriveFont(size);
     }
+
+    public Font getBlizzardFont() { return blizzardFont; }
 
     public BufferedImage getImage(String name) {
         return imageMap.containsKey(name) ? imageMap.get(name) :  this.getImage("missingTexture");

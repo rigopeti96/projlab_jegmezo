@@ -107,6 +107,8 @@ public class GameWindow {
         assetManager.loadImage("blizzardOverlay2", "images/snow2.png");
         assetManager.loadImage("eskimo", "images/eskimo-003-512.png");
         assetManager.loadImage("scientist", "images/species-researcher-005-512.png");
+        assetManager.loadImage("gameOver", "images/lose.png");
+        assetManager.loadImage("gameWin", "images/win.png");
 
         tooltipView = new TooltipView(this, assetManager, "");
 

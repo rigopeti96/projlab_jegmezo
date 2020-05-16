@@ -7,6 +7,11 @@ import java.awt.font.FontRenderContext;
 public class MenuItemView extends View {
     private int x, y;
     private String text;
+
+    public MenuItemView(AssetManager assetManager) {
+        super(assetManager);
+    }
+
     @Override
     public boolean clicked(MouseEvent event) {
         return super.clicked(event);
@@ -29,6 +34,6 @@ public class MenuItemView extends View {
 
     @Override
     public boolean isMouseOver(int x, int y) {
-
+        return false;
     }
 }

@@ -11,17 +11,7 @@ public class DrawUtils {
         this.graphics = graphics;
     }
 
-    public void drawImage(BufferedImage image, Rectangle rectangle) {
-        drawImage(image, rectangle, 1);
-    }
-
-    public void drawImage(BufferedImage image, Rectangle rectangle, float opacity) {
-        if (opacity != 1) graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-        graphics.drawImage(image, (int)rectangle.getX(), (int)rectangle.getY(), (int)rectangle.getWidth(), (int)rectangle.getHeight(), null);
-        if (opacity != 1) graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
-    }
-
-    public void drawStringRectangle(String text, Font font, Rectangle bounds, VerticalAlignment verticalAlignment, HorizontalAlignment horizontalAlignment, float lineHeight) {
+    public void drawStringRectangle(String text, Font font, float lineHeight, Rectangle bounds, VerticalAlignment verticalAlignment, HorizontalAlignment horizontalAlignment) {
         String[] lines = text.split("\n");
         Rectangle stringBounds = calculateStringBounds(lines, font, lineHeight);
         float y = (float)(bounds.getY() + Math.round(font.getSize() * (lineHeight - 1) / 2));
@@ -30,7 +20,8 @@ public class DrawUtils {
         if (verticalAlignment == VerticalAlignment.Bottom) {
             y += bounds.getHeight() - stringBounds.getHeight();
         } else if (verticalAlignment == VerticalAlignment.Center) {
-            y += bounds.getHeight() / 2 - stringBounds.getHeight() / 2;
+            y += bounds.getHeight() / 2.0f - stringBounds.getHeight() / 2.0f;
+            System.out.println(y - bounds.getY());
         }
 
         graphics.setFont(font);
@@ -44,6 +35,7 @@ public class DrawUtils {
             }
 
             graphics.drawString(line, x, y);
+            y += lineStep;
         }
     }
 

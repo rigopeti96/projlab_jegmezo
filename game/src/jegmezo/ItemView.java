@@ -8,14 +8,13 @@ public class ItemView extends View {
     private ItemToolTipView toolTip;
     private Item item;
     private int x, y;
-    private int toolTipX, toolTipY;
     private int itemCount;
 
     ItemView(AssetManager assetManager, int x, int y, Item item, int itemCount) {
         super(assetManager);
         this.x = x;
         this.y = y;
-        this.toolTip = new ItemToolTipView(assetManager, toolTipX, toolTipY, item.getName()); // item.getDescription());
+        this.toolTip = new ItemToolTipView(assetManager, item.getName()); // item.getDescription());
         this.item = item;
         this.itemCount = itemCount;
     }
@@ -48,17 +47,16 @@ public class ItemView extends View {
 
         if(!item.isUseable()){
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
-            graphics.drawImage(assetManager.getImageGrayScale(item.getName()), x, y, 40, 40, null);
+            graphics.drawImage(assetManager.getImageGrayScale(item.getName()), x + 5, y + 5, 40, 40, null);
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
         }
         else {
-            graphics.drawImage(assetManager.getImage(item.getName()), x, y, 40, 40, null);
+            graphics.drawImage(assetManager.getImage(item.getName()), x + 5, y + 5, 40, 40, null);
         }
 
-        if(item.getName().equals("winitem")|| item.getName().equals("food")){
+        if(item.getName().equals("Win item")|| item.getName().equals("Food")){
             graphics.setColor(Color.DARK_GRAY);
-            Font font = new Font("Calibri", Font.BOLD, 20);
-            graphics.setFont(font);
+            graphics.setFont(assetManager.getFont());
             graphics.drawString(itemCount + "x", x+20, y+40);
         }
     }

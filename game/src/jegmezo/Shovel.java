@@ -43,7 +43,7 @@ public class Shovel implements Item {
 	 * @return A tárgy neve
 	 */
 	public String getName() {
-		return "shovel";
+		return "Shovel";
 	}
 
 	/**

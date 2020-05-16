@@ -43,7 +43,7 @@ public class Tent implements Item{
      * @return A tárgy neve
      */
     public String getName() {
-        return "tent";
+        return "Tent";
     }
 
     /**

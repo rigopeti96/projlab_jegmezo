@@ -47,7 +47,7 @@ public class BreakableShovel extends Shovel{
      * @return A tárgy neve .
      */
     @Override
-    public String getName() { return "breakableshovel"; }
+    public String getName() { return "Breakable shovel"; }
 
     /**
      * Meghívja a getName függvényt, hogy rendes nevet adjon vissza

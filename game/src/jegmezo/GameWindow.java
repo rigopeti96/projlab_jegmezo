@@ -70,19 +70,21 @@ public class GameWindow {
     private void initialize() {
         assetManager.loadImage("missingTexture", "images/missing_texture.png");
         assetManager.loadImage("testImage", "images/test_texture.png");
-        assetManager.loadImage("rope", "images/rope.jpg");
-        assetManager.loadImage("breakableshovel", "images/breakableshovel.png");
-        assetManager.loadImage("food", "images/food.jpg");
-        assetManager.loadImage("scubagear", "images/scubagear.jpg");
-        assetManager.loadImage("shovel", "images/shovel.jpg");
-        assetManager.loadImage("winitem", "images/winitem.jpg");
-        assetManager.loadImage("tent", "images/tent.png");
+        assetManager.loadImage("Rope", "images/rope.jpg");
+        assetManager.loadImage("Breakable shovel", "images/breakableshovel.png");
+        assetManager.loadImage("Food", "images/food.jpg");
+        assetManager.loadImage("Scuba gear", "images/scubagear.jpg");
+        assetManager.loadImage("Shovel", "images/shovel.jpg");
+        assetManager.loadImage("Win item", "images/winitem.jpg");
+        assetManager.loadImage("Tent", "images/tent.png");
 
         Inventory inventory = new Inventory(new GameController());
-        views.add(new InventoryView(assetManager, 200, 200, inventory));
+        inventory.equipBreakableShovel(new BreakableShovel());
+        views.add(new InventoryView(assetManager, inventory));
     }
 
     private void handleClick(MouseEvent event) {
+        event = remapMouseEvent(event);
         for (View view: views) {
             view.windowClicked(event);
         }
@@ -93,6 +95,7 @@ public class GameWindow {
     }
 
     private void handleMouseMove(MouseEvent event) {
+        event = remapMouseEvent(event);
         for (View view: views) {
             view.handleMouseMove(event);
         }
@@ -102,6 +105,10 @@ public class GameWindow {
         for (View view: views) {
             view.mouseWheelMoved(event);
         }
+    }
+
+    private MouseEvent remapMouseEvent(MouseEvent event) {
+        return new MouseEvent(event.getComponent(), event.getID(), event.getWhen(), event.getModifiersEx(), event.getX() - 8, event.getY() - 32, event.getClickCount(), false, event.getButton());
     }
 
     private void draw(Graphics2D graphics) {

@@ -6,10 +6,8 @@ public class ItemToolTipView extends View {
     private int x, y;
     private String text;
 
-    ItemToolTipView(ImageManager imageManager, int x, int y, String text) {
-        super(imageManager);
-        this.x = x;
-        this.y = y;
+    ItemToolTipView(AssetManager assetManager, String text) {
+        super(assetManager);
         this.text = text;
     }
 
@@ -25,17 +23,14 @@ public class ItemToolTipView extends View {
         super.draw(graphics, overlay);
         if (!overlay) return;
 
+        DrawUtils drawUtils = new DrawUtils(graphics);
         graphics.setColor(Color.WHITE);
-        float opacity = 0.8f;
-        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-        graphics.fillRect(x,y, 70, 30);
+        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
+        graphics.fillRect(x, y, 100, 30);
 
         graphics.setColor(Color.DARK_GRAY);
-        opacity = 1.0f;
-        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
-        Font font = new Font("Calibri", Font.BOLD, 11);
-        graphics.setFont(font);
-        graphics.drawString(text,x+5,y+16);
+        graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+        drawUtils.drawStringRectangle(text, assetManager.getFont(), 1.2f, drawUtils.padding(new Rectangle(x, y, 100, 30), 4), VerticalAlignment.Center, HorizontalAlignment.Left);
     }
 
     public void setX(int x) {

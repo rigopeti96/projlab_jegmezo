@@ -131,6 +131,8 @@ public class GameWindow {
     }
 
     private void handleClick(MouseEvent event) {
+        if(gameController.getGameState() == GameState.Idle)
+            return;
         event = remapMouseEvent(event);
         for (View view: new ArrayList<>(views)) {
             view.windowClicked(event);

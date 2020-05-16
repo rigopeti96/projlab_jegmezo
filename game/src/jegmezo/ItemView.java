@@ -48,6 +48,10 @@ public class ItemView extends View {
         this.children.remove(toolTip);
     }
 
+    public void setItemCount(int itemCount){
+        this.itemCount = itemCount;
+    }
+
     @Override
     public boolean rightClicked(MouseEvent event) {
         menu.setX(event.getX());

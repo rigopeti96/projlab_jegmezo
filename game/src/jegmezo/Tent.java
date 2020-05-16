@@ -1,5 +1,7 @@
 package jegmezo;
 
+import java.util.ArrayList;
+
 /**
  * Player megépítheti egy mezőn és védelmet nyújt a kör végéig
  * Implementálja az Item interfészt. */
@@ -55,7 +57,7 @@ public class Tent implements Item{
 
     @Override
     public String getDescription(){
-        return "Sátor:\nHa felépíted, megvéd a hóvihar ellen.\nA kör végén eltűnik.";
+        return "Sátor:\nHa felépíted, megvéd\na hóvihar ellen.\nA kör végén eltűnik.";
     }
 
     @Override

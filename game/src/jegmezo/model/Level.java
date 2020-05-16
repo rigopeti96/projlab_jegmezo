@@ -321,4 +321,8 @@ public class Level {
             tile.destroyTent();
         }
     }
+
+    public LevelTile getLevelTileFor(Tile tile) {
+        return levelTiles.get(tile);
+    }
 }

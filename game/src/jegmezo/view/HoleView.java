@@ -17,8 +17,8 @@ public class HoleView extends TileView {
 
         Polygon p = new Polygon();
         for (int i = 0; i < 6; i++)
-            p.addPoint((int) (x + 50*size * Math.cos(i * 2 * Math.PI / 6)),
-                    (int) (y + 50*size * Math.sin(i * 2 * Math.PI / 6)));
+            p.addPoint((int) (x + 50 * Math.cos(i * 2 * Math.PI / 6)),
+                    (int) (y + 50 * Math.sin(i * 2 * Math.PI / 6)));
         if(this.tile.getSnow()==0)
             graphics.setColor(Color.BLUE);
         else{
@@ -26,8 +26,8 @@ public class HoleView extends TileView {
         }
         graphics.fillPolygon(p);
         for (int i = 0; i < 6; i++)
-            p.addPoint((int)( x + 50*size * Math.cos(i * 2 * Math.PI / 6)),
-                    (int) (y + 50*size * Math.sin(i * 2 * Math.PI / 6)));
+            p.addPoint((int)( x + 50 * Math.cos(i * 2 * Math.PI / 6)),
+                    (int) (y + 50 * Math.sin(i * 2 * Math.PI / 6)));
         graphics.setColor(Color.GRAY);
         graphics.drawPolygon(p);
         for (View child : children)

@@ -5,6 +5,7 @@ import jegmezo.model.Tile;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+
 public abstract class TileView extends View{
     protected int x,y, size;
     protected Tile tile;
@@ -23,7 +24,7 @@ public abstract class TileView extends View{
 
     @Override
     public boolean isMouseOver(int x, int y) {
-        return new Rectangle(this.x-27, this.y, 60*size, 60*size).contains(x, y);
+        return new Rectangle(this.x-30,this.y-40,60,70).contains(x,y);
     }
 
     @Override

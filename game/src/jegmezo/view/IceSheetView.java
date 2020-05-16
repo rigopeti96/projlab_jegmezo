@@ -22,13 +22,13 @@ public class IceSheetView extends TileView {
 
         Polygon p = new Polygon();
         for (int i = 0; i < 6; i++)
-            p.addPoint((int) (x + 50 *size* Math.cos(i * 2 * Math.PI / 6)),
-                    (int) (y + 50 * size*Math.sin(i * 2 * Math.PI / 6)));
+            p.addPoint((int) (x + 50 * Math.cos(i * 2 * Math.PI / 6)),
+                    (int) (y + 50 *Math.sin(i * 2 * Math.PI / 6)));
         graphics.setColor(Color.WHITE);
         graphics.fillPolygon(p);
         for (int i = 0; i < 6; i++)
-            p.addPoint((int) (x + 50*size * Math.cos(i * 2 * Math.PI / 6)),
-                    (int) (y + 50 *size* Math.sin(i * 2 * Math.PI / 6)));
+            p.addPoint((int) (x + 50 * Math.cos(i * 2 * Math.PI / 6)),
+                    (int) (y + 50 * Math.sin(i * 2 * Math.PI / 6)));
         graphics.setColor(Color.GRAY);
         graphics.drawPolygon(p);
 

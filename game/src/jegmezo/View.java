@@ -45,7 +45,7 @@ public abstract class View {
             }
         }
 
-        for (View child: children) {
+        for (View child: new ArrayList<>(children)) {
             child.handleMouseMove(event);
         }
     }
@@ -59,7 +59,7 @@ public abstract class View {
     }
 
     public void windowClicked(MouseEvent event) {
-        for (View child: children) {
+        for (View child: new ArrayList<>(children)) {
             child.windowClicked(event);
         }
     }
@@ -69,7 +69,7 @@ public abstract class View {
     }
 
     public void mouseWheelMoved(MouseWheelEvent event) {
-        for (View child: children) {
+        for (View child: new ArrayList<>(children)) {
             child.mouseWheelMoved(event);
         }
     }
@@ -89,7 +89,7 @@ public abstract class View {
     public abstract boolean isMouseOver(int x, int y);
 
     public void draw(Graphics2D graphics, boolean overlay) {
-        for (View child: children) {
+        for (View child: new ArrayList<>(children)) {
             child.draw(graphics, overlay);
         }
     }

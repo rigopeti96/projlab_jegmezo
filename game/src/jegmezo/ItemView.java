@@ -3,12 +3,14 @@ package jegmezo;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class ItemView extends View {
     private ItemToolTipView toolTip;
     private Item item;
     private int x, y;
     private int itemCount;
+    private MenuView menu;
 
     ItemView(AssetManager assetManager, int x, int y, Item item, int itemCount) {
         super(assetManager);
@@ -17,6 +19,12 @@ public class ItemView extends View {
         this.toolTip = new ItemToolTipView(assetManager, item.getDescription());
         this.item = item;
         this.itemCount = itemCount;
+        ArrayList<MenuAction> actionList = new ArrayList<>();
+        actionList.add(new MenuAction("Use", () -> System.out.println("Should use")));
+        actionList.add(new MenuAction("Trade", () -> System.out.println("Should trade")));
+        this.menu = new MenuView(assetManager, actionList, () -> {
+            removeChild(this.menu);
+        });
     }
 
     @Override
@@ -38,6 +46,14 @@ public class ItemView extends View {
     @Override
     public void mouseLeave(MouseEvent event) {
         this.children.remove(toolTip);
+    }
+
+    @Override
+    public boolean rightClicked(MouseEvent event) {
+        menu.setX(event.getX());
+        menu.setY(event.getY());
+        addChild(menu);
+        return true;
     }
 
     @Override

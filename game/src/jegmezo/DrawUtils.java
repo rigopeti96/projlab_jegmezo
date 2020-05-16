@@ -20,7 +20,7 @@ public class DrawUtils {
         if (verticalAlignment == VerticalAlignment.Bottom) {
             y += bounds.getHeight() - stringBounds.getHeight();
         } else if (verticalAlignment == VerticalAlignment.Center) {
-            y += bounds.getHeight() / 2.0f - stringBounds.getHeight() / 2.0f;
+            y += bounds.getHeight() / 2.0f - stringBounds.getHeight() / 2.0f - lineStep / 4;
         }
 
         graphics.setFont(font);

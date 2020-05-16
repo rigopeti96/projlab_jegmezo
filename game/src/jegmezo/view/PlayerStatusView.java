@@ -15,10 +15,10 @@ public class PlayerStatusView extends View {
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
-        Font font = new Font("Serif", Font.BOLD, 11);
+        Font font = new Font("Calibri", Font.BOLD, 11);
         graphics.setFont(font);
-        graphics.drawString("Player X's turn", 600, 400); //ide még kell a getClipBound
-        graphics.drawString(activePlayer.getActions() + "step(s) remaining", 600, 400); //ide még kell a getClipBound
+        graphics.drawString("Player X's turn", 250, 200); //ide még kell a getClipBound
+        graphics.drawString(activePlayer.getActions() + "step(s) remaining", 300, 200); //ide még kell a getClipBound
     }
 
     @Override

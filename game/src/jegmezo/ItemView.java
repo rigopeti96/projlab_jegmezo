@@ -48,11 +48,11 @@ public class ItemView extends View {
 
         if(!item.isUseable()){
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
-            graphics.drawImage(imageManager.getImageGrayScale(item.getName()), x, y, 40, 40, null);
+            graphics.drawImage(imageManager.getImageGrayScale("images/"+item.getName()), x, y, 40, 40, null);
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
         }
         else {
-            graphics.drawImage(imageManager.getImage(item.getName()), x, y, 40, 40, null);
+            graphics.drawImage(imageManager.getImage("images/"+item.getName()), x, y, 40, 40, null);
         }
 
         if(item.getName().equals("winitem")|| item.getName().equals("food")){

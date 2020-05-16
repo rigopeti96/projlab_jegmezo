@@ -10,7 +10,7 @@ public class EskimoView extends PlayerView {
 
     public EskimoView(GameWindow gameWindow, AssetManager assetManager) {
         super(gameWindow, assetManager);
-        tooltip = new TooltipView(gameWindow, assetManager, "Player " + player.getNumber() + " (Eskimo)");
+       // tooltip = new TooltipView(gameWindow, assetManager, "Player " + player.getNumber() + " (Eskimo)");
     }
 
     @Override

@@ -1,9 +1,6 @@
 package jegmezo.view;
 
-import jegmezo.model.BreakableShovel;
-import jegmezo.model.GameController;
-import jegmezo.model.IceSheet;
-import jegmezo.model.Inventory;
+import jegmezo.model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,6 +27,17 @@ public class GameWindow {
     public static int windowHeight = 480;
     TooltipView tooltipView;
     MenuView menuView;
+    ArrayList<PlayerView> playerViews;
+
+    public void setXYToPlayer(int idx, int x, int y){
+        for (PlayerView playerView: playerViews
+             ) {
+            if(playerView.getPlayer().getNumber() == idx){
+                playerViews.get(idx).setX(x);
+                playerViews.get(idx).setY(y);
+            }
+        }
+    }
 
     public TooltipView getTooltipView(){
         return tooltipView;
@@ -109,7 +117,16 @@ public class GameWindow {
         inventory.equipBreakableShovel(new BreakableShovel());
         views.add(new InventoryView(this, assetManager, inventory));
         views.add(tooltipView);
-        views.add(new IceSheetView(this, assetManager, 200,200, new IceSheet(new GameController(), 0,3,0)));
+        IceSheet iceSheet = new IceSheet(new GameController(), 0,3,0);
+
+        //teszt játékosok
+        Eskimo eskimo = new Eskimo(new GameController(), 0, 4);
+        EskimoView eskimoView = new EskimoView(this, assetManager);
+        eskimoView.setPlayer(eskimo);
+        iceSheet.stepOnto(eskimo,iceSheet);
+        views.add(new IceSheetView(this, assetManager, 200,200, iceSheet));
+        playerViews.add(eskimoView);
+        views.add(eskimoView);
     }
 
     private void handleClick(MouseEvent event) {

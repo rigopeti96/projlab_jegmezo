@@ -50,4 +50,12 @@ public abstract class PlayerView extends View {
         this.y =y;
     }
 
+    public void setPlayer(Player player){
+        this.player = player;
+    }
+
+    public Player getPlayer(){
+        return player;
+    }
+
 }

@@ -21,7 +21,7 @@ public class Eskimo extends Player {
 		super(gameController, number, bodyHeat);
 	}
 
-	/** Meghívja az Tile buildIgloo függvényét
+    /** Meghívja az Tile buildIgloo függvényét
 	 *  @return bool - Sikerült-e építeni.  */
 	public boolean buildIgloo() {
 		if(tile.build(Building.igloo)) {

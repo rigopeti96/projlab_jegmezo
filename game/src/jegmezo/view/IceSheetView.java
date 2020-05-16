@@ -37,9 +37,7 @@ public class IceSheetView extends TileView {
         //ezekhez player View-kat hozunk létre
         for (Player player: players
              ) {
-            if(player.getName().equals("Eskimo")) children.add(new EskimoView(gameWindow, assetManager));
-            if(player.getName().equals("Scientist")) children.add(new ScientistView(gameWindow, assetManager));
-
+            gameWindow.setXYToPlayer(player.getNumber(), x, y);
         }
 
         for (View child : children)

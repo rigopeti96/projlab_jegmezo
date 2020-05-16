@@ -2,6 +2,7 @@ package jegmezo.view;
 
 import jegmezo.model.BreakableShovel;
 import jegmezo.model.GameController;
+import jegmezo.model.IceSheet;
 import jegmezo.model.Inventory;
 
 import javax.swing.*;
@@ -106,6 +107,7 @@ public class GameWindow {
         inventory.equipBreakableShovel(new BreakableShovel());
         views.add(new InventoryView(this, assetManager, inventory));
         views.add(tooltipView);
+        views.add(new IceSheetView(this, assetManager, 200,200, new IceSheet(new GameController(), 0,3,0)));
     }
 
     private void handleClick(MouseEvent event) {

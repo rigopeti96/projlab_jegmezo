@@ -8,8 +8,9 @@ import java.awt.event.MouseEvent;
 public abstract class TileView extends View{
     protected int x,y, size;
     protected Tile tile;
-    private TooltipView tooltip;
+    private TooltipView toolTip;
     private boolean clicked = false;
+    private MenuView menu;
 
     public TileView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile) {
         super(gameWindow, assetManager);
@@ -17,7 +18,7 @@ public abstract class TileView extends View{
         this.y=y;
         this.tile=tile;
         size=2;
-        tooltip= new TooltipView(gameWindow, assetManager, tile.toLongString());
+        toolTip = gameWindow.getTooltipView();
     }
 
     @Override
@@ -27,16 +28,21 @@ public abstract class TileView extends View{
 
     @Override
     public void mouseMoved(MouseEvent event) {
-        tooltip.setX(event.getX());
-        tooltip.setY(event.getY());
+        toolTip.setX(event.getX());
+        toolTip.setY(event.getY());
     }
 
     public void mouseEnter(MouseEvent event) {
-        this.children.add(tooltip);
+
+        if (!this.children.contains(menu)) {
+            toolTip.setText(tile.toLongString());
+            toolTip.setShow(true);
+        }
     }
 
     public void mouseLeave(MouseEvent event) {
-        this.children.remove(tooltip);
+
+        toolTip.setShow(false);
     }
 
 

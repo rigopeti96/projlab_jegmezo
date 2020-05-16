@@ -6,9 +6,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 //ezt az osztályt még tanácsos lenne szétszedni - Blizzard Overlay és GameOver Overlay
-public class OverlayView extends View{
+public class BlizzardOverlayView extends View{
     private String type;
-    public OverlayView(ImageManager imageManager, String _type) {
+    public BlizzardOverlayView(ImageManager imageManager, String _type) {
         super(imageManager);
         type = _type;
     }

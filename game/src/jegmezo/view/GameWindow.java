@@ -27,14 +27,14 @@ public class GameWindow {
     public static int windowHeight = 480;
     TooltipView tooltipView;
     MenuView menuView;
-    ArrayList<PlayerView> playerViews;
+    ArrayList<PlayerView> playerViews = new ArrayList<PlayerView>();
 
-    public void setXYToPlayer(int idx, int x, int y){
+    public void setXYToPlayer(int number, int x, int y){
         for (PlayerView playerView: playerViews
              ) {
-            if(playerView.getPlayer().getNumber() == idx){
-                playerViews.get(idx).setX(x);
-                playerViews.get(idx).setY(y);
+            if(playerView.getPlayer().getNumber() == number){
+                playerView.setX(x);
+                playerView.setY(y);
             }
         }
     }

@@ -1,5 +1,7 @@
 package jegmezo.view;
 
+import jegmezo.controller.MenuAction;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;

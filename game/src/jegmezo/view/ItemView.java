@@ -1,5 +1,6 @@
 package jegmezo.view;
 
+import jegmezo.controller.MenuAction;
 import jegmezo.model.Item;
 
 import java.awt.*;
@@ -22,7 +23,13 @@ public class ItemView extends View {
         this.item = item;
         this.itemCount = itemCount;
         ArrayList<MenuAction> actionList = new ArrayList<>();
-        if (item.isUseable()) actionList.add(new MenuAction("Use", () -> System.out.println("Should use")));
+        if (item.isUseable()) actionList.add(new MenuAction("Use", () -> {
+            if (this.itemCount > 0) {
+                gameWindow.getGameController().useItem(this.item);
+            } else {
+                gameWindow.getGameController().getConsoleView().writeLine("You have no " + this.item.getName() + ".");
+            }
+        }));
         actionList.add(new MenuAction("Trade", () -> System.out.println("Should trade")));
         this.menu = new MenuView(gameWindow, assetManager, actionList);
     }

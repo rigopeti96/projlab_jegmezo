@@ -12,9 +12,9 @@ public class BlizzardOverlayView extends View {
     public void draw(Graphics2D graphics, boolean overlay) {
         graphics.drawImage(assetManager.getImage("blizzardOverlay1"), 0, 0, GameWindow.windowWidth, GameWindow.windowHeight, null);
         graphics.drawImage(assetManager.getImage("blizzardOverlay2"), 0, 0, GameWindow.windowWidth, GameWindow.windowHeight, null);
-        Font font = new Font("Serif", Font.BOLD, 70);
+
         graphics.setColor(Color.BLUE);
-        graphics.setFont(font);
+        graphics.setFont(assetManager.getBlizzardFont());
         graphics.drawString("Jön a HAV!", GameWindow.windowWidth/2-200, GameWindow.windowHeight/2-5);
     }
 

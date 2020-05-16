@@ -234,4 +234,8 @@ public abstract class Tile {
 	 * Leszedi a sátrat a Tile-ról (ha van rajta)
 	 */
 	public abstract void destroyTent();
+
+	public List<Player> getPlayers() {
+		return players;
+	}
 }

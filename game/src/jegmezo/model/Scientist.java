@@ -51,4 +51,9 @@ public class Scientist extends Player {
 	public void serialize() {
 		System.out.println("Scientist(number=" + number + ",heat=" + bodyHeat + ",tile=" + tile.getId() + ")");
 	}
+
+	@Override
+	public String getName(){
+		return "Scientist";
+	}
 }

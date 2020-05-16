@@ -10,6 +10,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class GameWindow {
+
+    public static int windowWidth = 800;
+    public static int windowHeight = 480;
+
     class GameCanvas extends JPanel
     {
         @Override
@@ -27,7 +31,7 @@ public class GameWindow {
     public void start() {
         JFrame frame= new JFrame();
         frame.setTitle("Jégmező");
-        frame.setSize(800, 480);
+        frame.setSize(windowWidth, windowHeight);
         frame.setVisible(true);
         frame.setContentPane(new GameCanvas());
         frame.addMouseListener(new MouseAdapter() {
@@ -66,11 +70,20 @@ public class GameWindow {
     private void initialize() {
         imageManager.loadImage("missingTexture", "missing_texture.png");
         imageManager.loadImage("testImage", "test_texture.png");
+        imageManager.loadImage("rope", "Images/rope.jpg");
+        imageManager.loadImage("breakableshovel", "Images/breakableshovel.png");
+        imageManager.loadImage("food", "Images/food.jpg");
+        imageManager.loadImage("scubagear", "Images/scubagear.jpg");
+        imageManager.loadImage("shovel", "Images/shovel.jpg");
+        imageManager.loadImage("winitem", "Images/winitem.jpg");
+        imageManager.loadImage("tent", "Images/tent.png");
+
         views.add(new TestView(imageManager, 50, 50));
         views.add( new TestView(imageManager, 200, 50));
 
         Inventory inventory = new Inventory(new GameController());
-        views.add(new InventoryView(imageManager, 200, 200, inventory));
+        inventory.equipBreakableShovel(new BreakableShovel());
+        views.add(new InventoryView(imageManager,inventory));
     }
 
     private void handleClick(MouseEvent event) {

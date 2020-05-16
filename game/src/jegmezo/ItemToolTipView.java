@@ -34,7 +34,8 @@ public class ItemToolTipView extends View {
         opacity = 1.0f;
         graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, opacity));
         Font font = new Font("Calibri", Font.BOLD, 11);
-        graphics.setFont(font);
+        //graphics.setFont(AssetManager.getFont());
+        graphics.setFont(font); // TODO: fontot AssetManager-ből leszedni
         graphics.drawString(text,x+5,y+16);
     }
 

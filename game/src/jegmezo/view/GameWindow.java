@@ -30,11 +30,13 @@ public class GameWindow {
     ArrayList<PlayerView> playerViews = new ArrayList<PlayerView>();
 
     public void setXYToPlayer(int number, int x, int y){
-        for (PlayerView playerView: playerViews
-             ) {
-            if(playerView.getPlayer().getNumber() == number){
-                playerView.setX(x);
-                playerView.setY(y);
+        System.out.println(playerViews.size());
+        for(int i = 0; i <playerViews.size();i++){
+            System.out.println(playerViews.get(i).getPlayer().getNumber());
+            System.out.println(number);
+            if(playerViews.get(i).getPlayer().getNumber() == number){
+                playerViews.get(i).setX(x);
+                playerViews.get(i).setY(y);
             }
         }
     }
@@ -123,9 +125,10 @@ public class GameWindow {
         Eskimo eskimo = new Eskimo(new GameController(), 0, 4);
         EskimoView eskimoView = new EskimoView(this, assetManager);
         eskimoView.setPlayer(eskimo);
+        playerViews.add(eskimoView);
         iceSheet.stepOnto(eskimo,iceSheet);
         views.add(new IceSheetView(this, assetManager, 200,200, iceSheet));
-        playerViews.add(eskimoView);
+        views.add(new HoleView(this,assetManager,300,300,new Hole(new GameController(),1,0)));
         views.add(eskimoView);
     }
 

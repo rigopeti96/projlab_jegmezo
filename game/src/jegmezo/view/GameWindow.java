@@ -1,6 +1,7 @@
 package jegmezo.view;
 
 import jegmezo.controller.GameController;
+import jegmezo.controller.GameState;
 import jegmezo.model.*;
 
 import javax.swing.*;
@@ -139,6 +140,8 @@ public class GameWindow {
         for (View view: new ArrayList<>(views)) {
             view.handleClick(event);
         }
+        if(gameController.getGameState() == GameState.Over)
+            System.exit(0);
     }
 
     private void handleMouseMove(MouseEvent event) {

@@ -30,13 +30,21 @@ public class HoleView extends TileView {
                 graphics.setColor(assetManager.getColor("Snow"));
             }
             graphics.fillPolygon(p);
+            if(tile.isDiscovered()) {
+                p.reset();
+                graphics.setColor(assetManager.getColor("Sea"));
+                for (int i = 0; i < 6; i++)
+                    p.addPoint((int) (x + 25 * Math.cos(i * 2 * Math.PI / 6)),
+                            (int) (y + 25 * Math.sin(i * 2 * Math.PI / 6)));
+                graphics.fillPolygon(p);
+            }
+            p.reset();
             for (int i = 0; i < 6; i++)
                 p.addPoint((int) (x + 50 * Math.cos(i * 2 * Math.PI / 6)),
                         (int) (y + 50 * Math.sin(i * 2 * Math.PI / 6)));
             graphics.setColor(Color.GRAY);
             graphics.drawPolygon(p);
         }
-
         super.draw(graphics,overlay);
     }
 

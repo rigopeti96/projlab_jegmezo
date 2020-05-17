@@ -31,9 +31,6 @@ public class IceSheetView extends TileView {
             graphics.setStroke(new BasicStroke(1f));
         }
         if (!overlay) {
-            //graphics.drawImage(imageManager.getImage("testImage"), this.x, this.y, 200, 100, null);
-
-
             graphics.setColor(assetManager.getColor("Snow"));
             graphics.fillPolygon(p);
             for (int i = 0; i < 6; i++)

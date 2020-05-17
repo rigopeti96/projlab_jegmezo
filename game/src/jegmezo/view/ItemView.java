@@ -6,16 +6,52 @@ import jegmezo.model.Item;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/**
+ * Az itemek nézetét valósítja meg
+ */
 public class ItemView extends View {
+    /**
+     * az itemhez tartozó tooltip
+     */
     private TooltipView toolTip;
+    /**
+     * a item, amihez a view tartozik
+     */
     private Item item;
+    /**
+     * x és y koordináta
+     */
     private int x, y;
+    /**
+     * az itemek száma
+     */
     private int itemCount;
+    /**
+     * az itemhez tartozó menü
+     */
     private MenuView menu;
+    /**
+     * az x hossza
+     */
     private int size_x = 40;
+    /**
+     * az y hossza
+     */
     private int size_y = 40;
+    /**
+     * kirajzolja a bordert
+     */
     private boolean showBorder = true;
 
+    /**
+     * konstruktor
+     * @param gameWindow játékablak
+     * @param assetManager képkirajzoló
+     * @param x x koordináta
+     * @param y y koordináta
+     * @param item az item
+     * @param itemCount az itemek száma
+     */
     ItemView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Item item, int itemCount) {
         super(gameWindow, assetManager);
         this.x = x;
@@ -27,22 +63,40 @@ public class ItemView extends View {
         this.menu = new MenuView(gameWindow, assetManager);
     }
 
+    /**
+     * Az egérrel ráklikkeltek
+     * @param x x koordináta
+     * @param y y koordináta
+     * @return ha volt klikkelés, akkor true, egyébként false
+     */
     @Override
     public boolean isMouseOver(int x, int y) {
         return new Rectangle(this.x, this.y, 60, 50).contains(x, y);
     }
 
+    /**
+     * Történt-e transzformáció - mindig false
+     * @return mindig false
+     */
     @Override
     public boolean isAffectedByTransformation() {
         return false;
     }
 
+    /**
+     * Az egér mozgását vizsgálja
+     * @param event egérevent
+     */
     @Override
     public void mouseMoved(MouseEvent event) {
        toolTip.setX(event.getX());
        toolTip.setY(event.getY());
     }
 
+    /**
+     * Az egér belépett a szükséges területre
+     * @param event egérevent
+     */
     @Override
     public void mouseEnter(MouseEvent event) {
         if (!this.children.contains(menu)) {
@@ -51,19 +105,36 @@ public class ItemView extends View {
         }
     }
 
+    /**
+     * az egér elhagyta a kijelölt területet
+     * @param event egérevent
+     */
     @Override
     public void mouseLeave(MouseEvent event) {
         toolTip.setShow(false);
     }
 
+    /**
+     * Item-setter
+     * @param item beállítandó item
+     */
     public void setItem(Item item){
         this.item = item;
     }
 
+    /**
+     * itemszám setter
+     * @param itemCount az itemek száma
+     */
     public void setItemCount(int itemCount){
         this.itemCount = itemCount;
     }
 
+    /**
+     * jobbklikk event
+     * @param event event
+     * @return ha történt jobbklikk, akkor true, egyébként false
+     */
     @Override
     public boolean rightClicked(MouseEvent event) {
         menu.setX(event.getX());
@@ -73,11 +144,20 @@ public class ItemView extends View {
         return true;
     }
 
+    /**
+     * méret beállítása
+     * @param x x tengelyen való állítás
+     * @param y y tengelyen való állítás
+     */
     public void setSize(int x, int y){
         size_x = x;
         size_y = y;
     }
 
+    /**
+     * border setter
+     * @param show beállítandó érték
+     */
     public void setShow(boolean show){
         this.showBorder = show;
     }
@@ -86,6 +166,11 @@ public class ItemView extends View {
         this.y = y;
     }
 
+    /**
+     * A kirajzolást végzá függvény
+     * @param graphics a grafikát megvalósítő osztály
+     * @param overlay ha átfedésben van, akkor visszatér, ha nincs, akkor rajzol ki bármit
+     */
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);

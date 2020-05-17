@@ -9,9 +9,25 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
+/**
+ * A térképet megvalósító osztály
+ */
 public class LevelView extends View {
+    /**
+     * a pálya változó
+     */
     private Level level;
+    /**
+     * egy pálya szomszédjai
+     */
     Map<Tile, TileView> tiles =new HashMap<>();
+
+    /**
+     * Konstruktor
+     * @param gameWindow játékablak
+     * @param assetManager képkirajzoló
+     * @param level pálya
+     */
     public LevelView(GameWindow gameWindow, AssetManager assetManager, Level level) {
         super(gameWindow, assetManager);
         this.level = level;
@@ -31,6 +47,12 @@ public class LevelView extends View {
         children.addAll(this.tiles.values());
     }
 
+    /**
+     * visszaadja, hogy szomszédos-e két tile
+     * @param a egyik tile
+     * @param b másik tile
+     * @return Ha szomszédosak, akkor true, egyébként false
+     */
     public boolean isTileNeighbourOf(Tile a, Tile b) {
         LevelTile la = level.getLevelTileFor(a);
         LevelTile lb = level.getLevelTileFor(b);
@@ -43,20 +65,39 @@ public class LevelView extends View {
         }
     }
 
+    /**
+     * hozzácsatol egy playerview-t a megfelelő playerhez
+     * @param playerView a csatolandó nézet
+     */
     public void attachPlayerViewToOwner(PlayerView playerView) {
         tiles.get(playerView.getPlayer().getTile()).attachPlayerView(playerView);
     }
 
+    /**
+     * rajta van-e az egér - nem releváns
+     * @param x x koordináta
+     * @param y y koordináta
+     * @return mindig false
+     */
     @Override
     public boolean isMouseOver(int x, int y) {
         return false;
     }
 
+    /**
+     * Történt-e transzformáció - mindig false
+     * @return mindig false
+     */
     @Override
     public boolean isAffectedByTransformation() {
         return true;
     }
 
+    /**
+     * A kirajzolást végzá függvény
+     * @param graphics a grafikát megvalósítő osztály
+     * @param overlay ha átfedésben van, akkor visszatér, ha nincs, akkor rajzol ki bármit
+     */
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics,overlay);

@@ -220,9 +220,21 @@ public class Inventory {
 		return countWinItem;
 	}
 
+	/**
+	 * visszaadja a tentek számát
+	 * @return - int */
 	public int getTentCount(){return countTent;}
+	/**
+	 * visszaadja a shovelek számát
+	 * @return - int */
 	public int getShovelCount(){ return countShovel; }
+	/**
+	 * visszaadja a foodok számát
+	 * @return - int */
 	public int getFoodCount(){return countFood;}
+	/**
+	 * visszaadja a kiválasztott item-et
+	 * @return - Item */
 	public Item getItem(String name){
 		for (Item item: items) {
 			if (item.getName().equals(name)) return item;

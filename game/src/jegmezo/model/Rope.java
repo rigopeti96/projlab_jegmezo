@@ -6,7 +6,10 @@ import jegmezo.controller.GameController;
 /** A Player ennek használatával ki tud menteni egy játékost egy szomszédos lyukból.
  * Implementálja az Item interfészt. */
 public class Rope extends Shovel {
-
+	/**
+	 * a kötélnek
+	 * @param gameController
+	 */
 	public Rope(GameController gameController) {
 		super(gameController);
 	}

@@ -7,12 +7,23 @@ import java.util.List;
  * Egy hexagonal tile-nak felel meg
  */
 public class LevelTile {
+    /**
+     * a levelgenerátor
+     */
     private final LevelGenerator levelGenerator;
 
+    /**
+     * visszaadja a leveltile x koordinátáját
+     * @return - int, az x koordináta
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * visszaadja a leveltile y koordinátáját
+     * @return - int, az y koordináta
+     */
     public int getY() {
         return y;
     }

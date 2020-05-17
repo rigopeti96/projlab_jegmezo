@@ -62,11 +62,19 @@ public class BreakableShovel extends Shovel {
     @Override
     public String toString(){return getName();}
 
+    /**
+     * Visszaadja a törékeny ásó leírását
+     * @return - a leírás string-je
+     */
     @Override
     public String getDescription(){
         return "Törékeny Ásó:\n2 egység havat lapátolhatsz el vele.\nHárom használat után eltörik.";
     }
 
+    /**
+     * visszaadja, hogy a törékenyásó használható-e vagy sem
+     * @return - bool ami azt jelzi, hogy használható-e
+     */
     @Override
     public boolean isUseable(){
         return true;

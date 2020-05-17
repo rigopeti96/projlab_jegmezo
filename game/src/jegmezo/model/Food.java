@@ -5,7 +5,10 @@ import jegmezo.controller.GameController;
 /** Ha a Player ezt használja, akkor egyel több testhője lesz.
  * Implementálja az Item interfészt. */
 public class Food extends Item {
-
+	/**
+	 * a food konstruktora
+	 * @param gameController - a gamecontrollerre szüksége van az item-nek
+	 */
 	public Food(GameController gameController) {
 		super(gameController);
 	}
@@ -54,11 +57,19 @@ public class Food extends Item {
 	@Override
 	public String toString(){return getName();}
 
+	/**
+	 * visszaadja a food leírását
+	 * @return - a leírás stringje
+	 */
 	@Override
 	public String getDescription(){
 		return "Étel:\nHa megeszed, megnő a testhőd.";
 	}
 
+	/**
+	 * visszaadja, hogy használható-e a food
+	 * @return - bool, ennek a jelzésére
+	 */
 	@Override
 	public boolean isUseable(){
 		return true;

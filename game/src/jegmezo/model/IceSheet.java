@@ -79,6 +79,10 @@ public class IceSheet extends Tile {
 		return playerLimit.getElement();
 	}
 
+	/**
+	 * visszaadja, hogy hány játékost bír el
+	 * @return - int, ennek az értéke
+	 */
 	public int getPlayerLimit() {
 		return playerLimit.getElement();
 	}
@@ -225,6 +229,10 @@ public class IceSheet extends Tile {
 				",item=" + item.toString() + ",building=" + building.toString() + ")";
 	}
 
+	/**
+	 * visszaadja az icesheet leírását
+	 * @return - ezt a leírást tartalmazó string
+	 */
 	@Override
 	public String getDescription() {
 		if(!discovered)
@@ -233,10 +241,23 @@ public class IceSheet extends Tile {
 				"\nItem: " + item.toString() + "\nBuilding: " + building.toString();
 	}
 
+	/**
+	 * createView függvény azért felel, hogy létrehozzá a hozzá tartozó view-t
+	 * @param gameWindow - a viewnak van szüksége a gameWindowra
+	 * @param assetManager - a viewnak van szüksége az assetManagerbe
+	 * @param levelView - a viewnak van szüksége a levelViewra
+	 * @param x - a view helye
+	 * @param y - a view helye
+	 * @return - a view, amit létrehoz
+	 */
 	public TileView createView(GameWindow gameWindow, AssetManager assetManager,  LevelView levelView, int x, int y){
 		return new IceSheetView(gameWindow, assetManager, levelView, x, y, this);
 	}
 
+	/**
+	 * visszaadja a medvéjét
+	 * @return - a medve
+	 */
 	@Override
 	public PolarBear getPolarBear() {
 		return polarBear;

@@ -67,8 +67,8 @@ public class LevelGenerator {
         this.gameController = gameController;
         this.playerCount = playerCount;
         random = new Random();
-        rx = playerCount * 2;
-        ry = playerCount;
+        rx = playerCount * 3;
+        ry = playerCount * 2;
         tiles = new LevelTile[rx * 2 + 1][ry * 2 + 1];
     }
 

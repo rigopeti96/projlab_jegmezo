@@ -135,14 +135,14 @@ public class GameController {
     public void win() {
         gameWindow.schedule(() -> {
             gameState = GameState.Over;
-        }, 1000);
+        }, 100);
         setOverlayType(OverlayType.GameWin);
     }
 
     public void lose() {
         gameWindow.schedule(() -> {
             gameState = GameState.Over;
-        }, 1000);
+        }, 100);
         setOverlayType(OverlayType.GameOver);
     }
 

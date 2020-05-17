@@ -42,8 +42,6 @@ public abstract class PlayerView extends View {
         toolTip.setShow(false);
     }
 
-    public abstract void draw (Graphics2D graphics, boolean overlay);
-
     public void setX(int x){
         this.x = x;
     }

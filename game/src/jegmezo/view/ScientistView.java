@@ -1,6 +1,5 @@
 package jegmezo.view;
 
-import jegmezo.model.Player;
 import jegmezo.model.Scientist;
 
 import java.awt.*;
@@ -14,6 +13,7 @@ public class ScientistView extends PlayerView{
 
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
+        if (overlay) return;
         graphics.drawImage(assetManager.getImage("scientist"), x-20, y-20, 25, 25, null);
     }
 

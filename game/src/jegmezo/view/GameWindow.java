@@ -2,13 +2,16 @@ package jegmezo.view;
 
 import jegmezo.controller.GameController;
 import jegmezo.controller.GameState;
-import jegmezo.model.*;
+import jegmezo.model.Eskimo;
+import jegmezo.model.Level;
+import jegmezo.model.Player;
+import jegmezo.model.Scientist;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -165,6 +168,8 @@ public class GameWindow {
     }
 
     private void handleMouseMove(MouseEvent event) {
+        if(gameController.getGameState() == GameState.Over)
+            return;
         event = remapMouseEvent(event);
         for (View view: new ArrayList<>(views)) {
             view.handleMouseMove(event);
@@ -184,10 +189,10 @@ public class GameWindow {
     private void draw(Graphics2D graphics) {
         graphics.setColor(assetManager.getColor("Sea"));
         graphics.fill(graphics.getClipBounds());
+
         for (View view: new ArrayList<>(views)) {
             view.draw(graphics, false);
         }
-
         for (View view: new ArrayList<>(views)) {
             view.draw(graphics, true);
         }

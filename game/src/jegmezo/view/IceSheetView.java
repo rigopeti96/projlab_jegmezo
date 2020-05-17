@@ -12,11 +12,19 @@ public class IceSheetView extends TileView {
         super(gameWindow, assetManager, levelView, x, y, tile);
     }
 
+    /**
+     * @return érintette-e transzformáció
+     */
     @Override
     public boolean isAffectedByTransformation() {
         return true;
     }
 
+    /**
+     * Kirajzolja a mezőt
+     * @param graphics a grafikát megvalósítő osztály
+     * @param overlay ha átfedésben van, akkor visszatér, ha nincs, akkor rajzol ki bármit
+     */
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         Polygon p = new Polygon();

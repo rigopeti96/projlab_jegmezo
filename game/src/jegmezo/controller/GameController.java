@@ -113,11 +113,11 @@ public class GameController {
         if (playerIndex >= this.level.getPlayerCount()) {
             int blizzard_is_coming = random.nextInt(2); //random sorsoljuk, hogy egyáltalán jön-e hóvihar bárhova vagy sem
             if (blizzard_is_coming == 1) {
-                level.blizzard(this);
                 setOverlayType(OverlayType.Blizzard);
                 gameState = GameState.Idle;
                 gameWindow.schedule(() -> {
                     setOverlayType(OverlayType.None);
+                    level.blizzard(this);
                     level.movePolarBear();
                     level.destroyTiles();
                     playerIndex = 0;

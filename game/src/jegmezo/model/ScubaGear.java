@@ -60,11 +60,20 @@ public class ScubaGear extends Item {
 	@Override
 	public String toString(){return getName();}
 
+
+	/**
+	 * Visszaadja a tárgy leírását
+	 * @return A tárgyhoz tatrozó leírás
+	 */
 	@Override
 	public String getDescription(){
 		return "Búvárruha:\nHa lyukba esel, ezzel túléled.";
 	}
 
+	/**
+	 * Visszaadja, hogy a tárgy használható-e
+	 * @return Ennek értéke
+	 */
 	@Override
 	public boolean isUseable(){
 		return false;

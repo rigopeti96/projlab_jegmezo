@@ -59,11 +59,20 @@ public class Tent extends Shovel {
     @Override
     public String toString(){return getName();}
 
+
+    /**
+     * Visszaadja a tárgy leírását
+     * @return A tárgyhoz tatrozó leírás
+     */
     @Override
     public String getDescription(){
         return "Sátor:\nHa felépíted, megvéd\na hóvihar ellen.\nA kör végén eltűnik.";
     }
 
+    /**
+     * Visszaadja, hogy a tárgy használható-e
+     * @return Ennek értéke
+     */
     @Override
     public boolean isUseable(){
         return true;

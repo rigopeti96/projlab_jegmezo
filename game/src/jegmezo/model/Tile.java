@@ -92,6 +92,9 @@ public abstract class Tile {
 	 */
 	public abstract int examinePlayerLimit();
 
+	/**
+	 * @return A mező játékos limitjét
+	 */
 	public abstract int getPlayerLimit();
 
 	/**
@@ -138,6 +141,9 @@ public abstract class Tile {
 		this.discovered = discovered;
 	}
 
+	/**
+	 * @return Az adott mező fel van-é fedezve
+	 */
 	public boolean isDiscovered() {
 		return discovered;
 	}
@@ -218,6 +224,9 @@ public abstract class Tile {
 	 */
 	public abstract String toLongString();
 
+	/**
+	 * @return A mező leírása
+	 */
 	public abstract String getDescription();
 
 
@@ -226,11 +235,26 @@ public abstract class Tile {
 	 */
 	public abstract void destroyTent();
 
+	/**
+	 * @return A mezőn lévő játékosok
+	 */
 	public List<Player> getPlayers() {
 		return players;
 	}
 
+	/**
+	 * Elkészíti a mezőhöz tartozó nézet elkészítése
+	 * @param gameWindow a játék ablak
+	 * @param assetManager a viewnak szüksége lesz az assetManagerre
+	 * @param levelView a játék pályának tárolója
+	 * @param x a mező x koordinátája
+	 * @param y a mező y koordinátája
+	 * @return A létrehozott mező nézet
+	 */
 	abstract public TileView createView(GameWindow gameWindow, AssetManager assetManager, LevelView levelView, int x, int y);
 
+	/**
+	 * @return A mezőn lévő jegesmedve, ha van ilyen
+	 */
 	public abstract PolarBear getPolarBear();
 }

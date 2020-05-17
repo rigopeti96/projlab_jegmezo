@@ -12,6 +12,9 @@ public class ItemView extends View {
     private int x, y;
     private int itemCount;
     private MenuView menu;
+    private int size_x = 40;
+    private int size_y = 40;
+    private boolean showBorder = true;
 
     ItemView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Item item, int itemCount) {
         super(gameWindow, assetManager);
@@ -70,6 +73,19 @@ public class ItemView extends View {
         return true;
     }
 
+    public void setSize(int x, int y){
+        size_x = x;
+        size_y = y;
+    }
+
+    public void setShow(boolean show){
+        this.showBorder = show;
+    }
+    public void setXY(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
@@ -77,14 +93,17 @@ public class ItemView extends View {
 
         Rectangle rectangle = new Rectangle(x, y, 60, 50);
         graphics.setColor(Color.WHITE);
-        graphics.fill(rectangle);
+        if(showBorder){
+            graphics.fill(rectangle);
+        }
+
 
         if(itemCount > 0){
-            graphics.drawImage(assetManager.getImage(item.getName()), x + 5, y + 5, 40, 40, null);
+            graphics.drawImage(assetManager.getImage(item.getName()), x + 5, y + 5, size_x, size_y, null);
         }
         else {
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
-            graphics.drawImage(assetManager.getImageGrayScale(item.getName()), x + 5, y + 5, 40, 40, null);
+            graphics.drawImage(assetManager.getImageGrayScale(item.getName()), x + 5, y + 5, size_x, size_y, null);
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
 
         }
@@ -99,7 +118,9 @@ public class ItemView extends View {
         graphics.setColor((gameWindow.getGameController().getSelectedItem() != null && gameWindow.getGameController().getSelectedItem().getName() == item.getName())
                 ? assetManager.getColor("highlight") :  Color.DARK_GRAY);
         graphics.setStroke(new BasicStroke(2f));
-        graphics.draw(rectangle);
+        if(showBorder){
+            graphics.draw(rectangle);
+        }
         graphics.setStroke(new BasicStroke(1f));
     }
 }

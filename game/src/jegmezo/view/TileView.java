@@ -16,6 +16,7 @@ public abstract class TileView extends View{
     protected LevelView levelView;
     private MenuView menu;
     private List<PlayerView> playerViews = new ArrayList<>();
+    protected ItemView itemView;
 
     public TileView(GameWindow gameWindow, AssetManager assetManager, LevelView levelView, int x, int y, Tile tile) {
         super(gameWindow, assetManager);
@@ -26,6 +27,12 @@ public abstract class TileView extends View{
         size=2;
         toolTip = gameWindow.getTooltipView();
         this.menu = new MenuView(gameWindow, assetManager);
+        if(tile.getItem() != null){
+            this.itemView = new ItemView(gameWindow, assetManager, this.x, this.y, tile.getItem(), 1);
+            itemView.setSize(20,20);
+            itemView.setShow(false);
+        }
+
     }
 
     @Override
@@ -105,6 +112,17 @@ public abstract class TileView extends View{
                 graphics.drawImage(assetManager.getImage("fog"), x - 50, y - 80, 100, 100, null);
                 graphics.drawImage(assetManager.getImage("fog"), x - 50, y - 20, 100, 100, null);
             }
+
+            //rajta levő tárgy kirajzolása
+           /* if(tile.isDiscovered()){
+                if(tile.getSnow() == 0){
+                    if(tile.getItem() != null){
+                        itemView.setXY(this.x, this.y);
+                        children.add(itemView);
+                    }
+                    else children.remove(itemView);
+                }
+            }*/
         }
     }
 

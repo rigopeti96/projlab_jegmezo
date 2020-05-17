@@ -29,7 +29,7 @@ public class GameWindow {
         }
     }
 
-    public static int windowWidth = 1600;
+    public static int windowWidth = 1440;
     public static int windowHeight = 900;
     TooltipView tooltipView;
     MenuView menuView;

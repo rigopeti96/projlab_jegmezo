@@ -57,11 +57,18 @@ public class Rope extends Shovel {
 	@Override
 	public String toString(){return getName();}
 
+
+	/**
+	 * @return A kötél leírása
+	 */
 	@Override
 	public String getDescription(){
 		return "Kötél:\nHa melletted lyukba esik valaki, ezzel kihúzod.";
 	}
 
+	/**
+	 * @return Használható
+	 */
 	@Override
 	public boolean isUseable(){
 		return false;

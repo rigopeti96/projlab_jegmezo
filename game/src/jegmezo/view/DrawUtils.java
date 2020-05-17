@@ -4,12 +4,32 @@ import java.awt.*;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * A DrawUtils osztály, a kirajzoláshoz szükséges dolgokat valósítja meg
+ */
 public class DrawUtils {
+    /**
+     * a graphics a kirajzoláshoz
+     */
     Graphics2D graphics;
+
+    /**
+     * az osztály konstruktora
+     * @param graphics - a graphics
+     */
     public DrawUtils(Graphics2D graphics) {
         this.graphics = graphics;
     }
 
+    /**
+     * ez a függvény szöveget rajzol ki
+     * @param text - a szöveg
+     * @param font - a betűtípus
+     * @param lineHeight - a magassága
+     * @param bounds - a bounds
+     * @param verticalAlignment - az függőleges igazítás
+     * @param horizontalAlignment - az vízszintes igazítás
+     */
     public void drawStringRectangle(String text, Font font, float lineHeight, Rectangle bounds, VerticalAlignment verticalAlignment, HorizontalAlignment horizontalAlignment) {
         String[] lines = text.split("\n");
         Rectangle stringBounds = calculateStringBounds(lines, font, lineHeight);
@@ -37,6 +57,13 @@ public class DrawUtils {
         }
     }
 
+    /**
+     * kiszámolja a szöveghez tartozó bound-ot
+     * @param lines - egy sor
+     * @param font - a betűtípus
+     * @param lineHeight - a sor magassága
+     * @return - a kiszámolt rectangle
+     */
     public Rectangle calculateStringBounds(String[] lines, Font font, float lineHeight) {
         FontRenderContext frc = new FontRenderContext(null, true, true);
         int stringWidth = 0;
@@ -49,6 +76,12 @@ public class DrawUtils {
         return new Rectangle(0, 0, stringWidth, stringHeight);
     }
 
+    /**
+     * a padding-et számoló függvény
+     * @param original - az eredeti rectangle
+     * @param padding - a padding mérete
+     * @return - a padding-elt rectangle
+     */
     public Rectangle padding(Rectangle original, int padding) {
         return new Rectangle((int)original.getX() + padding, (int)original.getY() + padding, (int)original.getWidth() - 2 * padding, (int)original.getHeight() - 2 * padding);
     }

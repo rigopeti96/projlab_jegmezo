@@ -143,6 +143,15 @@ public class Hole extends Tile {
 		if (increaseSnow) increaseSnow();
 	}
 
+	/**
+	 * Létrehozza a lyukhoz tartozó nézetet
+	 * @param gameWindow a játék ablak
+	 * @param assetManager a viewnak szüksége lesz az assetManagerre
+	 * @param levelView a játék pályának tárolója
+	 * @param x a mező x koordinátája
+	 * @param y a mező y koordinátája
+	 * @return
+	 */
 	public TileView createView(GameWindow gameWindow, AssetManager assetManager, LevelView levelView, int x, int y){
 		return new HoleView(gameWindow, assetManager, levelView, x, y, this);
 	}

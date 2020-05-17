@@ -2,34 +2,75 @@ package jegmezo.view;
 
 import java.awt.*;
 
+/**
+ * Az eszközök esetében, ha a kép fölé mozgatjuk az egeret, látható, hogy mire való
+ */
 public class TooltipView extends View {
+    /**
+     * az egér pozíciója
+     */
     private int x, y;
+    /**
+     * A tooltip szövege
+     */
     private String text;
+    /**
+     * kimutassa-e a tooltipet - default: nem
+     */
     boolean show = false;
 
+    /**
+     * Konstruktor
+     * @param gameWindow játékablak
+     * @param assetManager képkirajzoló
+     * @param text kiírandó szöveg
+     */
     TooltipView(GameWindow gameWindow, AssetManager assetManager, String text) {
         super(gameWindow, assetManager);
         this.text = text;
     }
 
+    /**
+     * Beállítja a szöveget
+     * @param text kiírandó szöveg
+     */
     void setText(String text){
         this.text = text;
     }
+
+    /**
+     * Beállítja, hogy mutassa-e a tooltipet
+     * @param show beállítandó érték
+     */
     void setShow(boolean show){
         this.show = show;
     }
 
+    /**
+     *Rajta van-e az egér - ennél az osztálynál nem releváns, mindig false értékkel tér vissza
+     * @param x x koordináta
+     * @param y x koordináta
+     * @return mindig false
+     */
     @Override
     public boolean isMouseOver(int x, int y) {
         return false;
     }
 
+    /**
+     * Történt-e transzformáció - mindig false
+     * @return mindig false
+     */
     @Override
     public boolean isAffectedByTransformation() {
         return false;
     }
 
-
+    /**
+     * A kirajzolást végzá függvény
+     * @param graphics a grafikát megvalósítő osztály
+     * @param overlay ha átfedésben van, akkor visszatér, ha nincs, akkor rajzol ki bármit
+     */
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         if(show){
@@ -51,10 +92,18 @@ public class TooltipView extends View {
         }
     }
 
+    /**
+     * Beállítja az x értékét
+     * @param x beállítandó érték
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     * Beállítja az y értékét
+     * @param y beállítandó érték
+     */
     public void setY(int y){
         this.y = y;
     }

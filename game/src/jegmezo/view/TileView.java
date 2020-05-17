@@ -8,15 +8,44 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
-
+/**
+ * A mező nézete
+ */
 public abstract class TileView extends View{
+    /**
+     * a koordináták és a méret
+     */
     protected int x,y, size;
+    /**
+     * a kirajzolandő mező
+     */
     protected Tile tile;
+    /**
+     * a mezőhöz tartozó tooltip
+     */
     private TooltipView toolTip;
+    /**
+     * A mezőhöz tartozó level nézet
+     */
     protected LevelView levelView;
+    /**
+     * A mezőre klikkeléskor kirajzolandó menü
+     */
     private MenuView menu;
+    /**
+     * A mezőn álló játékosok listája
+     */
     private List<PlayerView> playerViews = new ArrayList<>();
 
+    /**
+     * Konstruktor
+     * @param gameWindow játékablak
+     * @param assetManager képkirajzoló
+     * @param levelView pályanézet
+     * @param x x koordináat
+     * @param y y koordináta
+     * @param tile kirajzolandó mező
+     */
     public TileView(GameWindow gameWindow, AssetManager assetManager, LevelView levelView, int x, int y, Tile tile) {
         super(gameWindow, assetManager);
         this.levelView = levelView;
@@ -28,19 +57,37 @@ public abstract class TileView extends View{
         this.menu = new MenuView(gameWindow, assetManager);
     }
 
+    /**
+     * A klikkeléskor kirajzolást valósítja meg
+     * @param x x koordináta
+     * @param y y koordináta
+     * @return visszatér a kirajzolással (true esetén kirajzolt valamit, egyébként false)
+     */
     @Override
     public boolean isMouseOver(int x, int y) {
         return new Rectangle(this.x-30,this.y-40,60,70).contains(x,y);
     }
 
+    /**
+     * visszaadja, hogy az adott tile-on van-e aktív játékos
+     * @return True, ha van aktív játékos, egyébként false
+     */
     protected boolean hasActivePlayer() {
         return tile.getPlayers().contains(gameWindow.getGameController().getActivePlayer());
     }
 
+    /**
+     * Visszadja, hogy a mező aktív játékos mellett van-e
+     * @return TRUE ha igen, egyébként false
+     */
     protected boolean isNeighbourOfActivePlayer() {
         return levelView.isTileNeighbourOf(tile, gameWindow.getGameController().getActivePlayer().getTile());
     }
 
+    /**
+     * Az egér mozgásához tartozó függvény
+     * @param event esemény
+     */
     @Override
     public void mouseMoved(MouseEvent event) {
         for (View child: children) {
@@ -54,14 +101,25 @@ public abstract class TileView extends View{
         toolTip.setShow(true);
     }
 
-    public void mouseEnter(MouseEvent event) {
+    /**
+     * Az egér belépésekor
+     * @param event egéresemény
+     */
+    //public void mouseEnter(MouseEvent event) { }
 
-    }
-
+    /**
+     * A mező elhagyásakor a tooltip eltűnik
+     * @param event esemény
+     */
     public void mouseLeave(MouseEvent event) {
         toolTip.setShow(false);
     }
 
+    /**
+     * A jobb-klikk esemény kezelőfüggvénye
+     * @param event egéresemény
+     * @return visszaadja az eseményt: Történt esemény - TRUE, egyébként FALSE
+     */
     @Override
     public boolean rightClicked(MouseEvent event) {
         Point transformed = new Point();
@@ -78,14 +136,27 @@ public abstract class TileView extends View{
         return true;
     }
 
+    /**
+     * Visszaadja az x értékét
+     * @return x értéke
+     */
     public int getX(){
         return x;
     }
 
+    /**
+     * Visszaadja az y értékét
+     * @return y értéke
+     */
     public int getY(){
         return y;
     }
 
+    /**
+     * A kirajzolást végzá függvény
+     * @param graphics a grafikát megvalósítő osztály
+     * @param overlay ha átfedésben van, akkor visszatér, ha nincs, akkor rajzol ki bármit
+     */
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
@@ -108,6 +179,10 @@ public abstract class TileView extends View{
         }
     }
 
+    /**
+     * hozzákapcsol a playerhez egy playerview-t
+     * @param playerView a kapcsolandó view
+     */
     public void attachPlayerView(PlayerView playerView) {
         children.add(playerView);
         playerViews.add(playerView);

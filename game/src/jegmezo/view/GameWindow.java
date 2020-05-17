@@ -215,6 +215,9 @@ public class GameWindow {
     }
 
     private void draw(Graphics2D graphics) {
+        if (gameController.getGameState() != GameState.Select) {
+            closeMenu();
+        }
         transform.translate(panVelocity.getX(), panVelocity.getY());
         graphics.setColor(assetManager.getColor("Sea"));
         graphics.fill(graphics.getClipBounds());

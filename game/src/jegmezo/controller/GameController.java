@@ -116,16 +116,23 @@ public class GameController {
                 level.blizzard(this);
                 setOverlayType(OverlayType.Blizzard);
                 gameState = GameState.Idle;
+                gameWindow.schedule(() -> {
+                    setOverlayType(OverlayType.None);
+                    level.movePolarBear();
+                    level.destroyTiles();
+                    playerIndex = 0;
+                    activePlayer = this.level.getPlayers().get(playerIndex);
+                    activePlayer.resetActions();
+                    gameState = GameState.Select;
+                }, 3000);
+                return;
             }
-            gameWindow.schedule(() -> {
-                setOverlayType(OverlayType.None);
-                level.movePolarBear();
-                level.destroyTiles();
-                activePlayer = this.level.getPlayers().get(playerIndex);
-                activePlayer.resetActions();
-                gameState = GameState.Select;
-            }, 3000);
+
+            level.movePolarBear();
+            level.destroyTiles();
             playerIndex = 0;
+            activePlayer = this.level.getPlayers().get(playerIndex);
+            activePlayer.resetActions();
             return;
         }
         activePlayer = this.level.getPlayers().get(playerIndex);

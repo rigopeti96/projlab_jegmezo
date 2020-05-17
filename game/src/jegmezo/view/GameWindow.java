@@ -102,9 +102,14 @@ public class GameWindow {
         Level level = new Level();
         gameController = new GameController(this, consoleView, level);
         ArrayList<Player> players = new ArrayList<>();
-        players.add(new Eskimo(gameController, 1));
-        players.add(new Scientist(gameController, 2));
-        players.add(new Eskimo(gameController, 3));
+        int playerCount = getPlayerCountPopup();
+        for (int i = 1; i <= playerCount; i++) {
+            if (getPlayerClassPopup(i).equals("eskimo")) {
+                players.add(new Eskimo(gameController, i));
+            } else {
+                players.add(new Scientist(gameController, i));
+            }
+        }
         level.generate(gameController, players);
         LevelView levelView = new LevelView(this, assetManager, level);
         views.add(levelView);
@@ -114,6 +119,28 @@ public class GameWindow {
         views.add(consoleView);
         views.add(tooltipView);
         gameController.start();
+    }
+
+    private int getPlayerCountPopup() {
+        while (true) {
+            try {
+                String playerCount = JOptionPane.showInputDialog("How many players (3-8)?");
+                if (playerCount == null) System.exit(0);
+                int count = Integer.parseInt(playerCount);
+                if (count >= 3 && count <= 8) return count;
+            } catch (NumberFormatException ignored) {
+
+            }
+        }
+    }
+
+    private String getPlayerClassPopup(int number) {
+        while (true) {
+            String playerClass = JOptionPane.showInputDialog("Player " + number + "'s class (Eskimo/Scientist)");
+            if (playerClass == null) System.exit(0);
+            playerClass = playerClass.toLowerCase();
+            if (playerClass.equals("eskimo") || playerClass.equals("scientist")) return playerClass;
+        }
     }
 
     public void schedule(Runnable runnable, int time) {

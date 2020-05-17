@@ -6,6 +6,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * InventoryView osztály, azért felel, hogy a játékos inventory-ját megjelenítse
+ */
 public class InventoryView extends View {
 
     private int x, y;

@@ -61,11 +61,17 @@ public class WinItem extends Shovel {
 	@Override
 	public String toString(){return getName();}
 
+	/**
+	 * @return A tárgyhoz tatrozó leírás
+	 */
 	@Override
 	public String getDescription(){
 		return "Győzelmi tárgy:\nÖssze kell gyűjteni mind a hármat.\nHa egy mezőn álltok és elsütöd, nyertek.";
 	}
 
+	/**
+	 * @return Használható-e a tárgy
+	 */
 	@Override
 	public boolean isUseable(){
 		return true;

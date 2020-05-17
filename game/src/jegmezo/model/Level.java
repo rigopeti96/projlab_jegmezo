@@ -9,6 +9,9 @@ public class Level {
      * a játékban lévő mezőket tartalmazó map
      */
     private Map<Integer, Tile> tiles = new HashMap<>();
+    /**
+     * levelTile-okat és a Tile-okat tartalmazó map
+     */
     private Map<Tile, LevelTile> levelTiles = new HashMap<>();
     /**
      * játékosokat tartalmazó list
@@ -18,10 +21,12 @@ public class Level {
      * a játékban egy jegesmedve van
      */
     private PolarBear polarBear;
-    /**
-     * a játék controller
-     */
 
+    /**
+     * a generáló függvény
+     * @param gameController - a gameController
+     * @param players - a játékosok
+     */
     public void generate(GameController gameController, List<Player> players) {
         tiles.clear(); //a játékosok számától fog függni a mezők száma
         this.players = players;
@@ -285,14 +290,26 @@ public class Level {
         }
     }
 
+    /**
+     * a játékosok számát adja vissza
+     * @return - int, ez az érték
+     */
     public int getPlayerCount() {
         return players.size();
     }
 
+    /**
+     * a játékosokat adja vissza
+     * @return - lista, a játékosokat tartalmazza
+     */
     public List<Player> getPlayers() {
         return players;
     }
 
+    /**
+     * a blizzard-ot lebonyolító függvény
+     * @param gameController - a gamecontroller
+     */
     public void blizzard(GameController gameController) {
         int blizzard_tiles = 0; //a hóvihar súlytotta mezők számát tároló számláló
         int isBlizzardOnTile; //azt tárolja, hogy az aktuális mezőn jön-e a hóvihar
@@ -310,20 +327,35 @@ public class Level {
         }
     }
 
+    /**
+     * a jegesmedvét léptető függvény
+     */
     public void movePolarBear() {
         this.polarBear.move();
     }
 
+    /**
+     * a sátrakat összedöntő függvény
+     */
     public void destroyTiles() {
         for(Tile tile: tiles.values()){
             tile.destroyTent();
         }
     }
 
+    /**
+     * visszaadja a tile-hoz tartozó leveltile-t
+     * @param tile - a tile, amihez keressük a leveltile-t
+     * @return - a leveltile
+     */
     public LevelTile getLevelTileFor(Tile tile) {
         return levelTiles.get(tile);
     }
 
+    /**
+     * a tile-okat visszaadja
+     * @return - a tile-ok
+     */
     public Collection<Tile> getTiles(){
         return tiles.values();
     }

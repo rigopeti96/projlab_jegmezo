@@ -45,6 +45,10 @@ public class Hole extends Tile {
 		return 0;
 	}
 
+	/**
+	 * a limitet adja vissza, hogy mennyi játékost bír el
+	 * @return - int, ennek az értéke
+	 */
 	public int getPlayerLimit() {
 		return 0;
 	}
@@ -104,6 +108,10 @@ public class Hole extends Tile {
 		return "Hole(ID=" + id + ",snow=" + snow + ")";
 	}
 
+	/**
+	 * adja a hole leírását
+	 * @return - a leírást tartalmazó string
+	 */
 	@Override
 	public String getDescription() {
 		if(!discovered)
@@ -139,6 +147,10 @@ public class Hole extends Tile {
 		return new HoleView(gameWindow, assetManager, levelView, x, y, this);
 	}
 
+	/**
+	 * visszaadná a polarbeart, de null-t ad vissza, mert ez egy lyuk
+	 * @return
+	 */
 	@Override
 	public PolarBear getPolarBear() {
 		return null;

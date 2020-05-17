@@ -93,6 +93,10 @@ public class LevelGenerator {
         return polarBear;
     }
 
+    /**
+     * visszaadja a leveltiles-okat
+     * @return - a tile-okat és a leveltile-okat tartalmazó map
+     */
     public Map<Tile, LevelTile> getLevelTiles() {
         return levelTiles;
     }

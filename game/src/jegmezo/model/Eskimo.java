@@ -30,6 +30,12 @@ public class Eskimo extends Player {
 		super(gameController, number, bodyHeat);
 	}
 
+	/**
+	 * createView függvény azért felel, hogy az eskimo-hoz tartozó view-t létrehozza
+	 * @param gameWindow - a gameWindowra is szüksége van
+	 * @param assetManager - és az assetManagerre is hogy átadja a view-nak
+	 * @return - playerview, ami az eskimoview lesz
+	 */
 	@Override
 	public PlayerView createView(GameWindow gameWindow, AssetManager assetManager) {
 		return new EskimoView(gameWindow, assetManager, this);
@@ -46,6 +52,10 @@ public class Eskimo extends Player {
 		return false;
 	}
 
+	/**
+	 * az akciók lekérdezéséért felelős függvény
+	 * @return - listába visszaadott akciók
+	 */
 	public List<NamedAction> getActions() {
 		List<NamedAction> list = super.getActions();
 		list.add(new NamedAction("Build igloo", () -> gameController.buildIgloo()));
@@ -60,6 +70,10 @@ public class Eskimo extends Player {
 		System.out.println("Eskimo(number=" + number + ",heat=" + bodyHeat + ",tile=" + tile.getId() + ")");
 	}
 
+	/**
+	 * Visszaadja a nevét a játékosnak
+	 * @return - a játékos neve
+	 */
 	@Override
 	public String getName(){
 		return "Eskimo";

@@ -31,6 +31,13 @@ public class Scientist extends Player {
 		super(gameController, number, bodyHeat);
 	}
 
+
+	/**
+	 * Létrehozza a kutatóhoz tartozó View-t
+	 * @param gameWindow - a viewnak szüksége lesz a gameWindowra
+	 * @param assetManager - a viewnak szüksége lesz az assetManagerre
+	 * @return Az elkészült PlayerView
+	 */
 	@Override
 	public PlayerView createView(GameWindow gameWindow, AssetManager assetManager) {
 		return new ScientistView(gameWindow, assetManager, this);
@@ -45,6 +52,11 @@ public class Scientist extends Player {
 		return true;
 	}
 
+	/**
+	 * Visszaadja a tudós akcióit.
+	 * @param selectedTile - megkapja a kiválasztott tile-t
+	 * @return A játékos akciója
+	 */
 	public List<NamedAction> getTileActions(Tile selectedTile) {
 		List<NamedAction> list = super.getTileActions(selectedTile);
 		list.add(new NamedAction("Examine", () -> gameController.examine(selectedTile)));
@@ -59,6 +71,11 @@ public class Scientist extends Player {
 		System.out.println("Scientist(number=" + number + ",heat=" + bodyHeat + ",tile=" + tile.getId() + ")");
 	}
 
+
+	/**
+	 * Visszaadja a játékos szerepét
+	 * @return A játék szerepe
+	 */
 	@Override
 	public String getName(){
 		return "Scientist";

@@ -59,11 +59,19 @@ public class Shovel extends Item {
 	@Override
 	public String toString(){return getName();}
 
+	/**
+	 * Visszaadja a tárgy leírását
+	 * @return A tárgyhoz tatrozó leírás
+	 */
 	@Override
 	public String getDescription(){
 		return "Ásó:\n2 egység havat lapátolhatsz el vele.";
 	}
 
+	/**
+	 * Visszaadja, hogy a tárgy használható-e
+	 * @return Ennek értéke
+	 */
 	@Override
 	public boolean isUseable(){
 		return true;

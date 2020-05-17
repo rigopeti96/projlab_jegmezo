@@ -31,6 +31,10 @@ public abstract class Entity {
         this.tile = tile;
     }
 
+    /**
+     * visszaadja a tile-t
+     * @return a tile
+     */
     public Tile getTile() {
         return tile;
     }

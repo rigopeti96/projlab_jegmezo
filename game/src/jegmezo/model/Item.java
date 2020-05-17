@@ -6,8 +6,13 @@ import jegmezo.controller.GameController;
  * el lehet dobni/elhasználni, amit szintén beállítja az Inventory-t lehet használni,
  *  illetve megmondja magáról, hogy meg lehet-e vele menteni másokat/magadat. */
 public abstract class Item {
-
+	/** a gameController */
 	protected GameController gameController;
+
+	/**
+	 * az Item konstruktora
+	 * @param gameController - a gameController
+	 */
 	public Item(GameController gameController) {
 		this.gameController = gameController;
 	}
@@ -35,7 +40,15 @@ public abstract class Item {
 	 */
 	public abstract String getName();
 
+	/**
+	 * az item leírása, absztrakt függvény, minden item felülírja
+	 * @return - a leírást tartalmazó string
+	 */
 	public abstract String getDescription();
 
+	/**
+	 * visszaadja, hogy az item használható-e vagy sem, absztrakt, minden item felülírja
+	 * @return - ezt jelző bool
+	 */
 	public abstract boolean isUseable();
 }

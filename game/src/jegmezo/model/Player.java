@@ -51,6 +51,9 @@ public abstract class Player extends Entity {
 		this.bodyHeat = bodyHeat;
 	}
 
+	/**
+	 * visszaállítja a játékos lépéseinek a számát 4-re
+	 */
 	public void resetActions() {
 		this.actions = 4;
 	}
@@ -113,6 +116,9 @@ public abstract class Player extends Entity {
 		return false;
 	}
 
+	/**
+	 * a játékos lépéseinek a számát csökkenti
+	 */
 	public void loseAP() {
 		actions--;
 	}
@@ -221,12 +227,26 @@ public abstract class Player extends Entity {
 		return false;
 	}
 
+	/**
+	 * createView függvény feladata, hogy létrehozza a hozzátartozó view-t, absztrakt függvény, minden player felülírja
+	 * @param gameWindow - a viewnak szüksége lesz a gameWindowra
+	 * @param assetManager - a viewnak szüksége lesz az assetManagerre
+	 * @return - a létrejött view
+	 */
 	public abstract PlayerView createView(GameWindow gameWindow, AssetManager assetManager);
 
+	/**
+	 * visszaadja az akciók számát
+	 * @return
+	 */
 	public int getAP() {
 		return this.actions;
 	}
 
+	/**
+	 * visszaadja az akciókat
+	 * @return - lista, az akciókat tárolja
+	 */
 	public List<NamedAction> getActions() {
 		ArrayList<NamedAction> list = new ArrayList<>();
 		list.add(new NamedAction("Pass", () -> gameController.pass()));
@@ -235,12 +255,23 @@ public abstract class Player extends Entity {
 		return list;
 	}
 
+	/**
+	 * a tile akciókat adja vissza egy listában
+	 * @param selectedTile - megkapja a kiválasztott tile-t
+	 * @return - az akciók listája
+	 */
 	public List<NamedAction> getTileActions(Tile selectedTile) {
 		ArrayList<NamedAction> list = new ArrayList<>();
 		list.add(new NamedAction("Step", () -> gameController.move(selectedTile)));
 		return list;
 	}
 
+	/**
+	 * visszaadja a tárgyhoz tartozó akciókat
+	 * @param selectedItem - a kiválaszott tárgy
+	 * @param selectedItemCount - a kiválaszott tárgy száma
+	 * @return - az akciók listája
+	 */
 	public List<NamedAction> getItemActions(Item selectedItem, int selectedItemCount) {
 		ArrayList<NamedAction> list = new ArrayList<>();
 		if (selectedItem.isUseable()) list.add(new NamedAction("Use", () -> {
@@ -257,8 +288,16 @@ public abstract class Player extends Entity {
 		return list;
 	}
 
+	/**
+	 * visszaadja a játékos nevét
+	 * @return - string, a név
+	 */
 	abstract public String getName();
 
+	/**
+	 * visszadja a játékos testhőjét
+	 * @return - int, a testhő
+	 */
 	public int getHeat() {
 		return this.bodyHeat;
 	}

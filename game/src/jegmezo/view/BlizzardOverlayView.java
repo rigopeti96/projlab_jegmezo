@@ -14,7 +14,7 @@ public class BlizzardOverlayView extends View {
         graphics.drawImage(assetManager.getImage("blizzardOverlay2"), 0, 0, GameWindow.windowWidth, GameWindow.windowHeight, null);
 
         graphics.setColor(Color.BLUE);
-        graphics.setFont(assetManager.getBlizzardFont());
+        graphics.setFont(assetManager.getFont("Blizzard"));
         graphics.drawString("Jön a HAV!", GameWindow.windowWidth/2-200, GameWindow.windowHeight/2-5);
     }
 

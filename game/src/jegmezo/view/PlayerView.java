@@ -1,5 +1,6 @@
 package jegmezo.view;
 
+import jegmezo.controller.GameState;
 import jegmezo.model.Player;
 
 import java.awt.*;
@@ -12,8 +13,9 @@ public abstract class PlayerView extends View {
     protected TooltipView toolTip;
     protected TileView tileView;
 
-    public PlayerView(GameWindow gameWindow, AssetManager assetManager) {
+    public PlayerView(GameWindow gameWindow, AssetManager assetManager, Player player) {
         super(gameWindow, assetManager);
+        this.player = player;
         toolTip = gameWindow.getTooltipView();
     }
 
@@ -24,12 +26,16 @@ public abstract class PlayerView extends View {
 
     @Override
     public void mouseMoved(MouseEvent event) {
+        toolTip.setShow(true);
         toolTip.setX(event.getX());
         toolTip.setY(event.getY());
     }
 
     public boolean clicked(MouseEvent event){
-        return false;
+        if (gameWindow.getGameController().getGameState() == GameState.Trade && player != gameWindow.getGameController().getActivePlayer()) {
+            gameWindow.getGameController().tradeFinish(player);
+        }
+        return true;
     }
 
     public void mouseLeave(MouseEvent event){
@@ -44,10 +50,6 @@ public abstract class PlayerView extends View {
 
     public void setY(int y){
         this.y =y;
-    }
-
-    public void setPlayer(Player player){
-        this.player = player;
     }
 
     public Player getPlayer(){

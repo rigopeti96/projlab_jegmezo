@@ -95,21 +95,7 @@ public class GameWindow {
     }
 
     private void initialize() {
-        assetManager.loadImage("missingTexture", "images/missing_texture.png");
-        assetManager.loadImage("Rope", "images/rope.jpg");
-        assetManager.loadImage("Breakable shovel", "images/breakableshovel.png");
-        assetManager.loadImage("Food", "images/food.jpg");
-        assetManager.loadImage("Scuba gear", "images/scubagear.jpg");
-        assetManager.loadImage("Shovel", "images/shovel.jpg");
-        assetManager.loadImage("Win item", "images/winitem.jpg");
-        assetManager.loadImage("Tent", "images/tent.png");
-        assetManager.loadImage("blizzardOverlay1", "images/snow1.png");
-        assetManager.loadImage("blizzardOverlay2", "images/snow2.png");
-        assetManager.loadImage("eskimo", "images/eskimo-003-512.png");
-        assetManager.loadImage("scientist", "images/species-researcher-005-512.png");
-        assetManager.loadImage("gameOver", "images/lose.png");
-        assetManager.loadImage("gameWin", "images/win.jpg");
-
+        assetManager.loadAssets();
         tooltipView = new TooltipView(this, assetManager, "");
 
         ConsoleView consoleView = new ConsoleView(this, assetManager);
@@ -147,6 +133,8 @@ public class GameWindow {
         }
         if(gameController.getGameState() == GameState.Over)
             System.exit(0);
+        if(gameController.getGameState() == GameState.Trade)
+            gameController.tradeCancel();
     }
 
     private void handleMouseMove(MouseEvent event) {
@@ -167,6 +155,8 @@ public class GameWindow {
     }
 
     private void draw(Graphics2D graphics) {
+        graphics.setColor(assetManager.getColor("Sea"));
+        graphics.fill(graphics.getClipBounds());
         for (View view: new ArrayList<>(views)) {
             view.draw(graphics, false);
         }

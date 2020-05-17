@@ -63,17 +63,5 @@ public class InventoryView extends View {
         tentView.setItemCount(inventory.getTentCount());
         ropeView.setItemCount(inventory.getRopeCount());
         scubaView.setItemCount(inventory.getScubaCount());
-
-        graphics.setColor(Color.DARK_GRAY);
-        Stroke stroke = new BasicStroke(2f);
-        graphics.setStroke(stroke);
-        graphics.drawRect(x+70*0, y, 60, 50);
-        graphics.drawRect(x+70*1, y, 60, 50);
-        graphics.drawRect(x+70*2, y, 60, 50);
-        graphics.drawRect(x+70*3, y, 60, 50);
-        graphics.drawRect(x+70*4, y, 60, 50);
-        graphics.drawRect(x+70*5, y, 60, 50);
-
-
     }
 }

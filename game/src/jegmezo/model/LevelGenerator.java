@@ -67,8 +67,8 @@ public class LevelGenerator {
         this.gameController = gameController;
         this.playerCount = playerCount;
         random = new Random();
-        rx = playerCount * 3;
-        ry = playerCount * 2;
+        rx = playerCount * 2;
+        ry = playerCount;
         tiles = new LevelTile[rx * 2 + 1][ry * 2 + 1];
     }
 
@@ -224,18 +224,22 @@ public class LevelGenerator {
      * Tárgyak legenerálása
      */
     private void generateItems() {
+        if (iceSheets.size() == 0) return;
         IceSheet picked = iceSheets.get(random.nextInt(iceSheets.size()));
         picked.setItem(new WinItem(gameController, "Cartridge"));
         iceSheets.remove(picked);
 
+        if (iceSheets.size() == 0) return;
         picked = iceSheets.get(random.nextInt(iceSheets.size()));
         picked.setItem(new WinItem(gameController, "Flare"));
         iceSheets.remove(picked);
 
+        if (iceSheets.size() == 0) return;
         picked = iceSheets.get(random.nextInt(iceSheets.size()));
         picked.setItem(new WinItem(gameController, "Flare gun"));
         iceSheets.remove(picked);
 
+        if ((int)(iceSheets.size() / 4.0) == 0) return;
         int count = random.nextInt((int)(iceSheets.size() / 4.0)) + (int)(iceSheets.size() / 2.0);
 
         int shovel = 0; // 2/16
@@ -255,36 +259,42 @@ public class LevelGenerator {
         }
 
         for (int i = 0; i < shovel; i++) {
+            if (iceSheets.size() == 0) return;
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
             picked.setItem(new Shovel(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < breakableShovel; i++) {
+            if (iceSheets.size() == 0) return;
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
             picked.setItem(new BreakableShovel(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < rope; i++) {
+            if (iceSheets.size() == 0) return;
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
             picked.setItem(new Rope(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < scubaGear; i++) {
+            if (iceSheets.size() == 0) return;
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
             picked.setItem(new ScubaGear(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < food; i++) {
+            if (iceSheets.size() == 0) return;
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
             picked.setItem(new Food(gameController));
             iceSheets.remove(picked);
         }
 
         for (int i = 0; i < tent; i++) {
+            if (iceSheets.size() == 0) return;
             picked = iceSheets.get(random.nextInt(iceSheets.size()));
             picked.setItem(new Tent(gameController));
             iceSheets.remove(picked);

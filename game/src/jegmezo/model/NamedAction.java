@@ -1,10 +1,10 @@
-package jegmezo.controller;
+package jegmezo.model;
 
-public class MenuAction {
+public class NamedAction {
     private String text;
     private Runnable callback;
 
-    public MenuAction(String text, Runnable callback) {
+    public NamedAction(String text, Runnable callback) {
         this.text = text;
         this.callback = callback;
     }

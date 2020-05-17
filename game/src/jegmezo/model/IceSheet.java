@@ -14,6 +14,7 @@ public class IceSheet extends Tile {
 	 * a tárgy, ami a mezőn van
 	 */
 	private Discoverable<Item> item;
+
 	/**
 	 * egy enum, ami azt jelzi, van-e épület építve a mezőre és milyen
 	 */
@@ -78,6 +79,10 @@ public class IceSheet extends Tile {
 		return playerLimit.getElement();
 	}
 
+	public int getPlayerLimit() {
+		return playerLimit.getElement();
+	}
+
 
 	/** A mezőn található tárgy lekérdezése
 	 * @return a mezőn lévő tárgy vagy null, ha nincs*/
@@ -137,13 +142,13 @@ public class IceSheet extends Tile {
 
 	/** A hóvihar lefolytatása*/
 	@Override
-	public void blizzard(){
+	public void blizzard(boolean increaseSnow){
 		if(this.building == Building.none) {
-			for (Player player : super.players) {
+			for (Player player : players) {
 				player.decreaseBodyHeat();
 			}
 		}
-		increaseSnow();
+		if (increaseSnow) increaseSnow();
 	}
 
 	/**
@@ -206,7 +211,7 @@ public class IceSheet extends Tile {
 	 * @return string - ezt tároló string
 	 */
 	@Override
-	public String toShortString() {	return "Sheet(ID=" + id + ")";	}
+	public String toShortString() {	return "Sheet";	}
 
 	/**
 	 * Ez a függvény visszaad egy string-et a mező id-jával, a rajta levő hó mennyiségével, a limitjével, a rajta levő tárggyal és a rajta levő épülettel
@@ -223,12 +228,17 @@ public class IceSheet extends Tile {
 	@Override
 	public String getDescription() {
 		if(!discovered)
-			return "Tile(ID="+id+")";
-		return "Sheet(ID=" + id + "\nsnow=" + snow + "\nlimit=" + playerLimit +
-				"\nitem=" + item.toString() + "\nbuilding=" + building.toString() + ")";
+			return "Tile";
+		return "Sheet\nSnow: " + snow + "\nPlayer limit: " + playerLimit +
+				"\nItem: " + item.toString() + "\nBuilding: " + building.toString();
 	}
 
-	public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y){
-		return new IceSheetView(gameWindow, assetManager, x, y, this);
+	public TileView createView(GameWindow gameWindow, AssetManager assetManager,  LevelView levelView, int x, int y){
+		return new IceSheetView(gameWindow, assetManager, levelView, x, y, this);
+	}
+
+	@Override
+	public PolarBear getPolarBear() {
+		return polarBear;
 	}
 }

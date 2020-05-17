@@ -10,14 +10,15 @@ public class ConsoleView extends View {
     }
 
     public void write(String string){
-        text[0] = text[0] + string;
+        text[0] += string;
     }
 
     public void writeLine(String string){
+        text[0] += string;
         for(int i = this.text.length - 2; i >= 0; i--){
             text[i+1] = text[i];
         }
-        text[0] = string;
+        text[0] = "";
     }
 
     @Override

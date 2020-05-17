@@ -36,10 +36,6 @@ public class Inventory {
 	 */
 	private int countWinItem;
 	/**
-	 * a játékos törékeny ásóinak száma
-	 */
-	private int countBreakableShovel;
-	/**
 	 * a játékos sátrainak száma
 	 */
 	private int countTent;
@@ -54,7 +50,6 @@ public class Inventory {
 		countRope = 0;
 		countScubaGear = 0;
 		countWinItem = 0;
-		countBreakableShovel= 0;
 		countTent = 0;
 	}
 
@@ -79,7 +74,7 @@ public class Inventory {
 	 *  @param item Item, amit felveszünk
 	 *  @return bool - Sikerült-e felvenni az itemet  */
 	public boolean equipShovel(Shovel item) {
-		if (countShovel > 0 || countBreakableShovel > 0) return false;
+		if (countShovel > 0) return false;
 		items.add(item);
 		countShovel++;
 		return true;
@@ -111,9 +106,9 @@ public class Inventory {
 	 * @return bool - azt jelzi, hogy a tárgy felvétele sikeres volt-e
 	 */
 	public boolean equipBreakableShovel(Item item) {
-		if (countShovel > 0 || countBreakableShovel > 0) return false;
+		if (countShovel > 0) return false;
 		items.add(item);
-		countBreakableShovel++;
+		countShovel++;
 		return true;
 	}
 
@@ -179,9 +174,9 @@ public class Inventory {
 	 * @param item - BreakableShovel
 	 * @return bool - Sikerült-e kivenni az itemet az Inventory-ból. */
 	public boolean unequipBreakableShovel(Item item) {
-		if (countBreakableShovel < 1) return false;
+		if (countShovel < 1) return false;
 		items.remove(item);
-		countBreakableShovel--;
+		countShovel--;
 		return true;
 	}
 
@@ -226,8 +221,7 @@ public class Inventory {
 	}
 
 	public int getTentCount(){return countTent;}
-	public int getShovelCount(){return countShovel;}
-	public int getBreakableShovelCount(){return countBreakableShovel;}
+	public int getShovelCount(){ return countShovel; }
 	public int getFoodCount(){return countFood;}
 	public Item getItem(String name){
 		for (Item item: items) {

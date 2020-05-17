@@ -2,11 +2,16 @@ package jegmezo.model;
 
 
 import jegmezo.controller.GameController;
+import jegmezo.view.AssetManager;
+import jegmezo.view.GameWindow;
+import jegmezo.view.PlayerView;
 
+import javax.naming.Name;
+import java.util.ArrayList;
 import java.util.List;
 
 /** Játékos, lehet eszkimó és kutató. Birtokolhat tárgyat, használhatja azt a tárgyat és átadhatja másik játékosnak. át tud lépni szomszédos mezőre. */
-public abstract class Player extends Entity{
+public abstract class Player extends Entity {
 	/**
 	 * testhőmérséklet
 	 */
@@ -149,14 +154,14 @@ public abstract class Player extends Entity{
 	/** A Player kézzel és és 1 egység havat takarít el a mezőjéről,
 	 * @return true ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithHands() {
-		System.out.print("Player " + number);
+		gameController.getConsoleView().write("Player " + number);
 		return tile.removeSnow(1);
 	}
 
 	/** A Player ásóval és és 2 egység havat takarít el a mezőjéről,
 	 * @return True ha sikeres, false ha a nem tud egyet sem akkor false-t ad vissza */
 	public boolean digWithShovel() {
-		System.out.print("Player " + number);
+		gameController.getConsoleView().write("Player " + number);
 		return tile.removeSnow(2);
 	}
 	
@@ -216,10 +221,46 @@ public abstract class Player extends Entity{
 		return false;
 	}
 
-	public int getActions() {
+	public abstract PlayerView createView(GameWindow gameWindow, AssetManager assetManager);
+
+	public int getAP() {
 		return this.actions;
 	}
 
+	public List<NamedAction> getActions() {
+		ArrayList<NamedAction> list = new ArrayList<>();
+		list.add(new NamedAction("Pass", () -> gameController.pass()));
+		list.add(new NamedAction("Dig", () -> gameController.dig()));
+		list.add(new NamedAction("Pick up", () -> gameController.pickup()));
+		return list;
+	}
+
+	public List<NamedAction> getTileActions(Tile selectedTile) {
+		ArrayList<NamedAction> list = new ArrayList<>();
+		list.add(new NamedAction("Step", () -> gameController.move(selectedTile)));
+		return list;
+	}
+
+	public List<NamedAction> getItemActions(Item selectedItem, int selectedItemCount) {
+		ArrayList<NamedAction> list = new ArrayList<>();
+		if (selectedItem.isUseable()) list.add(new NamedAction("Use", () -> {
+			if (selectedItemCount > 0) {
+				gameController.useItem(selectedItem);
+			} else {
+				gameController.getConsoleView().writeLine("You have no " + selectedItem.getName() + ".");
+			}
+		}));
+		list.add(new NamedAction("Trade", () -> {
+			if (selectedItemCount > 0) gameController.tradeRequest(selectedItem);
+			else gameController.getConsoleView().writeLine("You have no " + selectedItem.getName() + ".");
+		}));
+		return list;
+	}
+
 	abstract public String getName();
+
+	public int getHeat() {
+		return this.bodyHeat;
+	}
 }
 

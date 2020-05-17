@@ -289,23 +289,24 @@ public class Level {
         return players.size();
     }
 
-    public Player getPlayer(int index) {
-        return players.get(index);
+    public List<Player> getPlayers() {
+        return players;
     }
 
     public void blizzard(GameController gameController) {
-        gameController.getConsoleView().writeLine("Blizzard is coming."); //kiírja, hogy jön a hóvihar
         int blizzard_tiles = 0; //a hóvihar súlytotta mezők számát tároló számláló
         int isBlizzardOnTile; //azt tárolja, hogy az aktuális mezőn jön-e a hóvihar
+        boolean canSnow = true;
         for (Tile tile : tiles.values()) { //végigmegy az összes mezőn
             isBlizzardOnTile = gameController.getRandom().nextInt(2); //véletlenszerűen sorsolja, hogy a mezőn lesz-e hóvihar vagy sem
-            if (isBlizzardOnTile == 1) { //ha 1 az értéke, akkor jön hóvihar a mezőre
-                tile.blizzard(); //ekkor meghívjuk az aktuális mezőn a mező blizzard függvényét
-                gameController.getConsoleView().writeLine("Snowfall on Tile(ID=" + tile.getId() + ")."); //ekkor kiírjuk, hogy hóvihar jön az aktuális mezőre
+            if (canSnow && isBlizzardOnTile == 1) { //ha 1 az értéke, akkor jön hóvihar a mezőre
+                tile.blizzard(true); //ekkor meghívjuk az aktuális mezőn a mező blizzard függvényét
                 blizzard_tiles++; //növeljük a hóvihar súlytotta mezők számát tároló számlálót
+            } else {
+                tile.blizzard(false);
             }
             if (blizzard_tiles == tiles.size() / 2) // ha a hóvihar által súlytott mezők száma elérte a mezők számának felét, akkor nem súlyt több mezőt hóvihar
-                break;
+                canSnow = false;
         }
     }
 
@@ -325,14 +326,6 @@ public class Level {
 
     public Collection<Tile> getTiles(){
         return tiles.values();
-    }
-
-    public int getLevelTileX(LevelTile levelTile){
-        return levelTile.x;
-    }
-
-    public int getLevelTileY(LevelTile levelTile){
-        return levelTile.y;
     }
 
 }

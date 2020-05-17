@@ -35,89 +35,114 @@ public class GameController {
 
     public void start() {
         playerIndex = 0;
-        activePlayer = this.level.getPlayer(playerIndex);
+        activePlayer = this.level.getPlayers().get(playerIndex);
         activePlayer.resetActions();
         gameState = GameState.Select;
     }
 
-    public void tradeRequest(Player activePlayer, Item selectedItem) {
-        this.gameState = GameState.Trade;
-        this.activePlayer = activePlayer;
-        this.selectedItem = selectedItem;
+    public void tradeRequest(Item selectedItem) {
+        gameWindow.schedule(() -> {
+            this.gameState = GameState.Trade;
+            this.selectedItem = selectedItem;
+        }, 100);
     }
 
     public void tradeFinish(Player selectedPlayer) {
-        this.activePlayer.trade(selectedItem, selectedPlayer);
+        if (this.activePlayer.trade(selectedItem, selectedPlayer)) {
+            activePlayer.loseAP();
+            if (activePlayer.getAP() == 0) turnEnd();
+        }
+        this.selectedItem = null;
         this.gameState = GameState.Select;
     }
 
-    public void cancel() {
-        this.activePlayer = null;
+    public void tradeCancel() {
         this.selectedItem = null;
         this.gameState = GameState.Select;
+    }
+
+    public void pass() {
+        activePlayer.loseAP();
+        if (activePlayer.getAP() == 0) turnEnd();
     }
 
     public void useItem(Item selectedItem) {
         if (selectedItem.use(activePlayer)) {
             activePlayer.loseAP();
-            if (activePlayer.getActions() == 0) turnEnd();
+            if (activePlayer.getAP() == 0) turnEnd();
         }
     }
 
     public void move(Tile selectedTile) {
         if (activePlayer.move(selectedTile)) {
             activePlayer.loseAP();
-            if (activePlayer.getActions() == 0) turnEnd();
+            if (activePlayer.getAP() == 0) turnEnd();
         }
     }
 
     public void examine(Tile selectedTile) {
         if (((Scientist)activePlayer).examine(selectedTile)) {
             activePlayer.loseAP();
-            if (activePlayer.getActions() == 0) turnEnd();
+            if (activePlayer.getAP() == 0) turnEnd();
         }
     }
 
     public void buildIgloo() {
         if (((Eskimo)activePlayer).buildIgloo()) {
             activePlayer.loseAP();
-            if (activePlayer.getActions() == 0) turnEnd();
+            if (activePlayer.getAP() == 0) turnEnd();
         }
     }
 
     public void dig() {
         if (activePlayer.digWithHands()) {
             activePlayer.loseAP();
-            if (activePlayer.getActions() == 0) turnEnd();
+            if (activePlayer.getAP() == 0) turnEnd();
+        }
+    }
+
+    public void pickup() {
+        if (activePlayer.pickup()) {
+            activePlayer.loseAP();
+            if (activePlayer.getAP() == 0) turnEnd();
         }
     }
 
     public void turnEnd() {
-        int blizzard_is_coming = random.nextInt(2); //random sorsoljuk, hogy egyáltalán jön-e hóvihar bárhova vagy sem
-        if (blizzard_is_coming == 1) {
-            level.blizzard(this);
-            setOverlayType(OverlayType.Blizzard);
-            gameState = GameState.Idle;
+        playerIndex++;
+        if (playerIndex >= this.level.getPlayerCount()) {
+            int blizzard_is_coming = random.nextInt(2); //random sorsoljuk, hogy egyáltalán jön-e hóvihar bárhova vagy sem
+            if (blizzard_is_coming == 1) {
+                level.blizzard(this);
+                setOverlayType(OverlayType.Blizzard);
+                gameState = GameState.Idle;
+            }
+            gameWindow.schedule(() -> {
+                setOverlayType(OverlayType.None);
+                level.movePolarBear();
+                level.destroyTiles();
+                activePlayer = this.level.getPlayers().get(playerIndex);
+                activePlayer.resetActions();
+                gameState = GameState.Select;
+            }, 3000);
+            playerIndex = 0;
+            return;
         }
-        gameWindow.schedule(() -> {
-            setOverlayType(OverlayType.None);
-            level.movePolarBear();
-            level.destroyTiles();
-            playerIndex++;
-            if (playerIndex >= this.level.getPlayerCount()) playerIndex = 0;
-            activePlayer = this.level.getPlayer(playerIndex);
-            activePlayer.resetActions();
-            gameState = GameState.Select;
-        }, 3000);
+        activePlayer = this.level.getPlayers().get(playerIndex);
+        activePlayer.resetActions();
     }
 
     public void win() {
-        gameState = GameState.Over;
+        gameWindow.schedule(() -> {
+            gameState = GameState.Over;
+        }, 1000);
         setOverlayType(OverlayType.GameWin);
     }
 
     public void lose() {
-        gameState = GameState.Over;
+        gameWindow.schedule(() -> {
+            gameState = GameState.Over;
+        }, 1000);
         setOverlayType(OverlayType.GameOver);
     }
 
@@ -136,4 +161,6 @@ public class GameController {
     public Player getActivePlayer() {
         return activePlayer;
     }
+
+    public Item getSelectedItem() { return selectedItem; }
 }

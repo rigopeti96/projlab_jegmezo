@@ -2,6 +2,13 @@ package jegmezo.model;
 
 
 import jegmezo.controller.GameController;
+import jegmezo.view.AssetManager;
+import jegmezo.view.GameWindow;
+import jegmezo.view.PlayerView;
+import jegmezo.view.ScientistView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**A Player egy típusa, speciális képessége, hogy meg tudja határozni egy szomszédos mező bíróképességét (hány játékos állhat rajta beszakadás nélkül */
 public class Scientist extends Player {
@@ -24,6 +31,11 @@ public class Scientist extends Player {
 		super(gameController, number, bodyHeat);
 	}
 
+	@Override
+	public PlayerView createView(GameWindow gameWindow, AssetManager assetManager) {
+		return new ScientistView(gameWindow, assetManager, this);
+	}
+
 	/**A kutató kiválasztja, hogy melyik Tile-t vizsgálja, majd megkapja az eredményt
 	 */
 	public boolean examine(Tile selectedTile) {
@@ -31,6 +43,12 @@ public class Scientist extends Player {
 
 		gameController.getConsoleView().writeLine("Player "+ number + " checked the stability of "+ selectedTile.toShortString() + ". It can take " + limit + " players.");
 		return true;
+	}
+
+	public List<NamedAction> getTileActions(Tile selectedTile) {
+		List<NamedAction> list = super.getTileActions(selectedTile);
+		list.add(new NamedAction("Examine", () -> gameController.examine(selectedTile)));
+		return list;
 	}
 
 	/**

@@ -1,26 +1,25 @@
 package jegmezo.view;
 
-import javax.imageio.ImageIO;
+import jegmezo.model.Eskimo;
+import jegmezo.model.Player;
+
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class EskimoView extends PlayerView {
 
-    public EskimoView(GameWindow gameWindow, AssetManager assetManager) {
-        super(gameWindow, assetManager);
+    public EskimoView(GameWindow gameWindow, AssetManager assetManager, Eskimo player) {
+        super(gameWindow, assetManager, player);
     }
 
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
-        graphics.drawImage(assetManager.getImage("eskimo"), super.x -20, super.y -20, 25, 25, null);
+        graphics.drawImage(assetManager.getImage("eskimo"), x -20, y -20, 25, 25, null);
     }
 
-    public void mouseEnter(MouseEvent event){
-        toolTip.setText("Player " + player.getNumber() + " (Eskimo)");
-        toolTip.setShow(true);
+    public void mouseMoved(MouseEvent event){
+        super.mouseMoved(event);
+        toolTip.setText("Player " + player.getNumber() + " (Eskimo)\nBody heat: " + player.getHeat());
     }
 
 }

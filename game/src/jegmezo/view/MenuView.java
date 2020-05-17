@@ -1,18 +1,22 @@
 package jegmezo.view;
 
-import jegmezo.controller.MenuAction;
+import jegmezo.model.NamedAction;
 
+import java.util.List;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class MenuView extends View {
     private int x, y;
 
-    public MenuView(GameWindow gameWindow, AssetManager assetManager, ArrayList<MenuAction> items) {
+    public MenuView(GameWindow gameWindow, AssetManager assetManager) {
         super(gameWindow, assetManager);
+    }
+
+    public void setActionList(List<NamedAction> items) {
         int y = 0;
-        for (MenuAction item : items) {
+        children.clear();
+        for (NamedAction item : items) {
             children.add(new MenuItemView(gameWindow, assetManager, () -> new Point(x, this.y), 0, y, item.getText(), () -> {
                 item.getCallback().run();
                 this.gameWindow.closeMenu();

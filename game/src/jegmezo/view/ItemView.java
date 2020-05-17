@@ -1,11 +1,10 @@
 package jegmezo.view;
 
-import jegmezo.controller.MenuAction;
+import java.util.List;
 import jegmezo.model.Item;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 public class ItemView extends View {
     private TooltipView toolTip;
@@ -22,16 +21,7 @@ public class ItemView extends View {
         toolTip = gameWindow.getTooltipView();
         this.item = item;
         this.itemCount = itemCount;
-        ArrayList<MenuAction> actionList = new ArrayList<>();
-        if (item.isUseable()) actionList.add(new MenuAction("Use", () -> {
-            if (this.itemCount > 0) {
-                gameWindow.getGameController().useItem(this.item);
-            } else {
-                gameWindow.getGameController().getConsoleView().writeLine("You have no " + this.item.getName() + ".");
-            }
-        }));
-        actionList.add(new MenuAction("Trade", () -> System.out.println("Should trade")));
-        this.menu = new MenuView(gameWindow, assetManager, actionList);
+        this.menu = new MenuView(gameWindow, assetManager);
     }
 
     @Override
@@ -70,6 +60,7 @@ public class ItemView extends View {
     public boolean rightClicked(MouseEvent event) {
         menu.setX(event.getX());
         menu.setY(event.getY());
+        menu.setActionList(gameWindow.getGameController().getActivePlayer().getItemActions(this.item, this.itemCount));
         this.gameWindow.openMenu(menu);
         return true;
     }
@@ -78,6 +69,10 @@ public class ItemView extends View {
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
         if (overlay) return;
+
+        Rectangle rectangle = new Rectangle(x, y, 60, 50);
+        graphics.setColor(Color.WHITE);
+        graphics.fill(rectangle);
 
         if(!item.isUseable()){
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
@@ -92,8 +87,13 @@ public class ItemView extends View {
             DrawUtils du = new DrawUtils(graphics);
             String lines = itemCount + "x";
             graphics.setColor(Color.DARK_GRAY);
-            Rectangle rectangle = new Rectangle(x, y, 60, 50);
             du.drawStringRectangle(lines, assetManager.getFont(), 1.2f, du.padding(rectangle, 4), VerticalAlignment.Bottom, HorizontalAlignment.Right);
         }
+
+        graphics.setColor((gameWindow.getGameController().getSelectedItem() != null && gameWindow.getGameController().getSelectedItem().getName() == item.getName())
+                ? assetManager.getColor("highlight") :  Color.DARK_GRAY);
+        graphics.setStroke(new BasicStroke(2f));
+        graphics.draw(rectangle);
+        graphics.setStroke(new BasicStroke(1f));
     }
 }

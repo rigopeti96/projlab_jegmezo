@@ -4,6 +4,7 @@ package jegmezo.model;
 import jegmezo.controller.GameController;
 import jegmezo.view.AssetManager;
 import jegmezo.view.GameWindow;
+import jegmezo.view.LevelView;
 import jegmezo.view.TileView;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public abstract class Tile {
 	 * a tile azonosítója
 	 */
 	protected int id;
+
 	/**
 	 * felfedezett-e már az adott tile
 	 */
@@ -90,6 +92,8 @@ public abstract class Tile {
 	 */
 	public abstract int examinePlayerLimit();
 
+	public abstract int getPlayerLimit();
+
 	/**
 	 * Visszaadja a mezőn lévő hóréteg számát.
 	 * @return A hóréteg száma
@@ -134,10 +138,14 @@ public abstract class Tile {
 		this.discovered = discovered;
 	}
 
+	public boolean isDiscovered() {
+		return discovered;
+	}
+
 	/**
 	 * Hóvihar hatása az adott Tile-re, plusz hóréteg sorsolása és a Player-ek megfagyasztása (testhő csökkentése eggyel)
 	 */
-	public abstract void blizzard();
+	public abstract void blizzard(boolean increaseSnow);
 
 	/**
 	 * Leszed egy bizonyos mennyiségű hóréteget a Tile-ról
@@ -222,5 +230,7 @@ public abstract class Tile {
 		return players;
 	}
 
-	abstract public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y);
+	abstract public TileView createView(GameWindow gameWindow, AssetManager assetManager, LevelView levelView, int x, int y);
+
+	public abstract PolarBear getPolarBear();
 }

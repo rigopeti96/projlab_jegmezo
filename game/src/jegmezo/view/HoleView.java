@@ -7,8 +7,8 @@ import java.awt.event.HierarchyBoundsAdapter;
 
 public class HoleView extends TileView {
 
-    public HoleView(GameWindow gameWindow, AssetManager assetManager, int x, int y, Tile tile) {
-        super(gameWindow, assetManager, x, y, tile);
+    public HoleView(GameWindow gameWindow, AssetManager assetManager, LevelView levelView, int x, int y, Tile tile) {
+        super(gameWindow, assetManager, levelView, x, y, tile);
     }
 
     @Override
@@ -21,9 +21,9 @@ public class HoleView extends TileView {
             p.addPoint((int) (x + 50 * Math.cos(i * 2 * Math.PI / 6)),
                     (int) (y + 50 * Math.sin(i * 2 * Math.PI / 6)));
         if(this.tile.getSnow()==0)
-            graphics.setColor(Color.BLUE);
+            graphics.setColor(assetManager.getColor(tile.isDiscovered() ? "Sea" : "Snow"));
         else{
-            graphics.setColor(Color.WHITE);
+            graphics.setColor(assetManager.getColor("Snow"));
         }
         graphics.fillPolygon(p);
         for (int i = 0; i < 6; i++)
@@ -31,8 +31,6 @@ public class HoleView extends TileView {
                     (int) (y + 50 * Math.sin(i * 2 * Math.PI / 6)));
         graphics.setColor(Color.GRAY);
         graphics.drawPolygon(p);
-        for (View child : children)
-            child.draw(graphics, overlay);
     }
 
 }

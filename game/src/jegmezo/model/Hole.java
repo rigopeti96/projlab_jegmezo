@@ -2,10 +2,7 @@ package jegmezo.model;
 
 
 import jegmezo.controller.GameController;
-import jegmezo.view.AssetManager;
-import jegmezo.view.GameWindow;
-import jegmezo.view.HoleView;
-import jegmezo.view.TileView;
+import jegmezo.view.*;
 
 /**
  * A lyukat megvalósítítja meg. Ha beleesik egy játékos és nem tud magától vagy segítséggel kijönni, vége a játéknak.
@@ -45,6 +42,10 @@ public class Hole extends Tile {
 	 */
 	public int examinePlayerLimit() {
 		this.discovered = true;
+		return 0;
+	}
+
+	public int getPlayerLimit() {
 		return 0;
 	}
 
@@ -89,7 +90,7 @@ public class Hole extends Tile {
 	 * @return A kiírandó String
 	 */
 	@Override
-	public String toShortString() { return "Hole(ID=" + id + ")"; }
+	public String toShortString() { return "Hole"; }
 
 	/**
 	 * Visszaadja a Hole-t és az adatait Stringként (kiíráshoz)
@@ -106,8 +107,8 @@ public class Hole extends Tile {
 	@Override
 	public String getDescription() {
 		if(!discovered)
-			return "Tile(ID="+id+")";
-		return "Hole(ID=" + id + "\nsnow=" + snow + ")";
+			return "Tile";
+		return "Hole\nSnow: " + snow;
 	}
 
 	/**
@@ -130,11 +131,16 @@ public class Hole extends Tile {
 	 * A hole-on vihar tör ki
 	 */
 	@Override
-	public void blizzard(){
-		increaseSnow();
+	public void blizzard(boolean increaseSnow){
+		if (increaseSnow) increaseSnow();
 	}
 
-	public TileView createView(GameWindow gameWindow, AssetManager assetManager, int x, int y){
-		return new HoleView(gameWindow, assetManager, x, y, this);
+	public TileView createView(GameWindow gameWindow, AssetManager assetManager, LevelView levelView, int x, int y){
+		return new HoleView(gameWindow, assetManager, levelView, x, y, this);
+	}
+
+	@Override
+	public PolarBear getPolarBear() {
+		return null;
 	}
 }

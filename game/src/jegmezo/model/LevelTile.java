@@ -6,8 +6,17 @@ import java.util.List;
 /**
  * Egy hexagonal tile-nak felel meg
  */
-class LevelTile {
+public class LevelTile {
     private final LevelGenerator levelGenerator;
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
     /**
      * X koordináta a hexagonal gridben
      */

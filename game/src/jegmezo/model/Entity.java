@@ -31,6 +31,10 @@ public abstract class Entity {
         this.tile = tile;
     }
 
+    public Tile getTile() {
+        return tile;
+    }
+
     /**
      * Kiírja az entitás egy reprezentációját a standard outputra
      */

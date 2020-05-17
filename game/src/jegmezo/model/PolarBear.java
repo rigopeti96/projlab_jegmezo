@@ -39,7 +39,7 @@ public class PolarBear extends Entity{
 
         while( true ){
             int random_mezo = rand.nextInt(neighbourTiles.size() );
-            if (neighbourTiles.get(random_mezo).examinePlayerLimit() ==0){
+            if (neighbourTiles.get(random_mezo).getPlayerLimit() ==0){
                 neighbourTiles.remove(random_mezo);
                 if ( neighbourTiles.isEmpty() ){
                      return false;

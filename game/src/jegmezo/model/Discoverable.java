@@ -78,7 +78,7 @@ public class Discoverable<T> {
      * @param callback Ha még nem volt felfedezve illetve volt mit, akkor meghívodik
      */
     public void discover(Runnable callback) {
-        if (discovered || element == null) return;
+        if (discovered) return;
         callback.run();
         discover();
     }

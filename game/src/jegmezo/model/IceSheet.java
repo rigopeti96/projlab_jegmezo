@@ -40,7 +40,7 @@ public class IceSheet extends Tile {
 		discovered=true;
 		if (prevTile != null) gameController.getConsoleView().writeLine("Player "+player.getNumber()+" moved to "+toShortString() + ".");
 		if(players.size()==playerLimit.getElement()){
-			gameController.getConsoleView().writeLine("Sheet "+id+" turned over.\nAll players on it drowned.");
+			gameController.getConsoleView().writeLine("Sheet turned over.\nAll players on it drowned.");
 			gameController.lose();
 			return;
 		}
@@ -66,7 +66,7 @@ public class IceSheet extends Tile {
 		if (snow > 0) gameController.getConsoleView().writeLine(" removes " + amount + " snow from " + toShortString() + ".");
 		else gameController.getConsoleView().writeLine(" can't remove snow from " + toShortString() + ".");
 		boolean ret = super.removeSnow(amount);
-		if (snow == 0) item.discover(() -> gameController.getConsoleView().writeLine("Found item " + item.toDiscoveredString() + "."));
+		if (snow == 0) item.discover(() -> gameController.getConsoleView().writeLine(item.getElement() != null ? "Found item " + item.toDiscoveredString() + "." : "Found no item."));
 		return ret;
 	}
 

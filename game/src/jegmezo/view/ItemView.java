@@ -74,13 +74,14 @@ public class ItemView extends View {
         graphics.setColor(Color.WHITE);
         graphics.fill(rectangle);
 
-        if(!item.isUseable()){
+        if(itemCount > 0){
+            graphics.drawImage(assetManager.getImage(item.getName()), x + 5, y + 5, 40, 40, null);
+        }
+        else {
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
             graphics.drawImage(assetManager.getImageGrayScale(item.getName()), x + 5, y + 5, 40, 40, null);
             graphics.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
-        }
-        else {
-            graphics.drawImage(itemCount > 0 ? assetManager.getImage(item.getName()) : assetManager.getImageGrayScale(item.getName()), x + 5, y + 5, 40, 40, null);
+
         }
 
         if(item.getName().equals("Win item")|| item.getName().equals("Food")){

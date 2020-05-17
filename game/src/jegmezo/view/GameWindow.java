@@ -231,6 +231,7 @@ public class GameWindow {
     }
 
     private void handleClose() {
+        System.exit(0);
     }
 
     public void setOverlayType(OverlayType overlayType) {

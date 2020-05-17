@@ -23,4 +23,9 @@ public class EskimoView extends PlayerView {
         toolTip.setText("Player " + player.getNumber() + " (Eskimo)\nBody heat: " + player.getHeat());
     }
 
+    @Override
+    public boolean isAffectedByTransformation() {
+        return true;
+    }
+
 }

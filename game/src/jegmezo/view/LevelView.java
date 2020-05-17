@@ -53,6 +53,11 @@ public class LevelView extends View {
     }
 
     @Override
+    public boolean isAffectedByTransformation() {
+        return true;
+    }
+
+    @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics,overlay);
     }

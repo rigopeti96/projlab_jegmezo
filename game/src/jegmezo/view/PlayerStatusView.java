@@ -26,4 +26,9 @@ public class PlayerStatusView extends View {
     public boolean isMouseOver(int x, int y) {
         return false;
     }
+
+    @Override
+    public boolean isAffectedByTransformation() {
+        return false;
+    }
 }

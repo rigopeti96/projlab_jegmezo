@@ -10,6 +10,7 @@ import jegmezo.model.Scientist;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -167,10 +168,32 @@ public class GameWindow {
             gameController.tradeCancel();
     }
 
+    private Point panVelocity = new Point(0, 0);
+
     private void handleMouseMove(MouseEvent event) {
+
         if(gameController.getGameState() == GameState.Over)
             return;
         event = remapMouseEvent(event);
+        if (event.getX() < 32) {
+            panVelocity.setLocation(16, panVelocity.getY());
+        }
+        else if (event.getX() > windowWidth - 32) {
+            panVelocity.setLocation(-16, panVelocity.getY());
+        }
+        else {
+            panVelocity.setLocation(0, panVelocity.getY());
+        }
+        if (event.getY() < 32) {
+            panVelocity.setLocation(panVelocity.getX(), 16);
+        }
+        else if (event.getY() > windowHeight - 64) {
+            panVelocity.setLocation(panVelocity.getX(), -16);
+        }
+        else {
+            panVelocity.setLocation(panVelocity.getX(), 0);
+        }
+
         for (View view: new ArrayList<>(views)) {
             view.handleMouseMove(event);
         }
@@ -186,7 +209,13 @@ public class GameWindow {
         return new MouseEvent(event.getComponent(), event.getID(), event.getWhen(), event.getModifiersEx(), event.getX() - 8, event.getY() - 32, event.getClickCount(), false, event.getButton());
     }
 
+    AffineTransform transform =  new AffineTransform();
+    public AffineTransform getTransformation() {
+        return transform;
+    }
+
     private void draw(Graphics2D graphics) {
+        transform.translate(panVelocity.getX(), panVelocity.getY());
         graphics.setColor(assetManager.getColor("Sea"));
         graphics.fill(graphics.getClipBounds());
 

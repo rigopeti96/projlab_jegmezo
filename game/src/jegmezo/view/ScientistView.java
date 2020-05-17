@@ -21,4 +21,9 @@ public class ScientistView extends PlayerView{
         super.mouseMoved(event);
         toolTip.setText("Player " + player.getNumber() + " (Scientist)\nBody heat: " + player.getHeat());
     }
+
+    @Override
+    public boolean isAffectedByTransformation() {
+        return true;
+    }
 }

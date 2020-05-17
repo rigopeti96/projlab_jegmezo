@@ -30,6 +30,11 @@ public class ItemView extends View {
     }
 
     @Override
+    public boolean isAffectedByTransformation() {
+        return false;
+    }
+
+    @Override
     public void mouseMoved(MouseEvent event) {
        toolTip.setX(event.getX());
        toolTip.setY(event.getY());
@@ -68,7 +73,7 @@ public class ItemView extends View {
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
-        if (overlay) return;
+        if (!overlay) return;
 
         Rectangle rectangle = new Rectangle(x, y, 60, 50);
         graphics.setColor(Color.WHITE);

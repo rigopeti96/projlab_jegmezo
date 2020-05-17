@@ -3,6 +3,8 @@ package jegmezo.view;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.NoninvertibleTransformException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +20,14 @@ public abstract class View {
     }
 
     public boolean handleClick(MouseEvent event) {
+        MouseEvent originalEvent = event;
+        event = remapMouseEvent(event);
         if (isMouseOver(event.getX(), event.getY()) && helperClicked(event)) {
             return true;
         }
 
         for (View child: children) {
-            if (child.handleClick(event)) return true;
+            if (child.handleClick(originalEvent)) return true;
         }
 
         return false;
@@ -34,6 +38,8 @@ public abstract class View {
     }
 
     public void handleMouseMove(MouseEvent event) {
+        MouseEvent originalEvent = event;
+        event = remapMouseEvent(event);
         if (isMouseOver(event.getX(), event.getY())) {
             if (!hovered) {
                 mouseEnter(event);
@@ -48,8 +54,20 @@ public abstract class View {
         }
 
         for (View child: new ArrayList<>(children)) {
-            child.handleMouseMove(event);
+            child.handleMouseMove(originalEvent);
         }
+    }
+
+    private MouseEvent remapMouseEvent(MouseEvent event) {
+        Point transformed = new Point(event.getX(), event.getY());
+        if (isAffectedByTransformation()) {
+            try {
+                gameWindow.getTransformation().inverseTransform(new Point(event.getX(), event.getY()), transformed);
+            } catch (NoninvertibleTransformException e) {
+
+            }
+        }
+        return new MouseEvent(event.getComponent(), event.getID(), event.getWhen(), event.getModifiersEx(), (int)transformed.getX(), (int)transformed.getY(), event.getClickCount(), false, event.getButton());
     }
 
     public boolean clicked(MouseEvent event) {
@@ -90,7 +108,11 @@ public abstract class View {
 
     public abstract boolean isMouseOver(int x, int y);
 
+    public abstract boolean isAffectedByTransformation();
+
     public void draw(Graphics2D graphics, boolean overlay) {
+        if (isAffectedByTransformation()) graphics.setTransform(gameWindow.getTransformation());
+        else graphics.setTransform(new AffineTransform());
         for (View child: new ArrayList<>(children)) {
             child.draw(graphics, overlay);
         }

@@ -48,4 +48,9 @@ public class MenuView extends View {
     public boolean isMouseOver(int x, int y) {
         return new Rectangle(this.x, this.y, 100, children.size() * 30).contains(x, y);
     }
+
+    @Override
+    public boolean isAffectedByTransformation() {
+        return false;
+    }
 }

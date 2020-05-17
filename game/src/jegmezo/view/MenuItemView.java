@@ -47,4 +47,9 @@ public class MenuItemView extends View {
         Point parentPoint = this.parentPointGetter.get();
         return new Rectangle((int)parentPoint.getX() + this.x, (int)parentPoint.getY() + this.y, 100, 30).contains(x, y);
     }
+
+    @Override
+    public boolean isAffectedByTransformation() {
+        return false;
+    }
 }

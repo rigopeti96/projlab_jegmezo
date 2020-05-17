@@ -49,9 +49,14 @@ public class InventoryView extends View {
     }
 
     @Override
+    public boolean isAffectedByTransformation() {
+        return false;
+    }
+
+    @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         super.draw(graphics, overlay);
-        if (overlay) return;
+        if (!overlay) return;
 
         Inventory inventory = gameWindow.getGameController().getActivePlayer().getInventory();
         foodView.setItemCount(inventory.getFoodCount());

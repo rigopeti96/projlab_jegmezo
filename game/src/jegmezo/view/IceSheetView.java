@@ -13,6 +13,11 @@ public class IceSheetView extends TileView {
     }
 
     @Override
+    public boolean isAffectedByTransformation() {
+        return true;
+    }
+
+    @Override
     public void draw(Graphics2D graphics, boolean overlay) {
         Polygon p = new Polygon();
         for (int i = 0; i < 6; i++)

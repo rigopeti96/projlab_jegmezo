@@ -2,7 +2,6 @@ package jegmezo.view;
 
 import java.awt.*;
 
-//ezt az osztályt még tanácsos lenne szétszedni - Blizzard Overlay és GameOver Overlay
 public class BlizzardOverlayView extends View {
     public BlizzardOverlayView(GameWindow gameWindow, AssetManager assetManager) {
         super(gameWindow, assetManager);
@@ -20,6 +19,11 @@ public class BlizzardOverlayView extends View {
 
     @Override
     public boolean isMouseOver(int x, int y) {
+        return false;
+    }
+
+    @Override
+    public boolean isAffectedByTransformation() {
         return false;
     }
 }

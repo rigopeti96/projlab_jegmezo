@@ -27,8 +27,10 @@ public abstract class PlayerView extends View {
     @Override
     public void mouseMoved(MouseEvent event) {
         toolTip.setShow(true);
-        toolTip.setX(event.getX());
-        toolTip.setY(event.getY());
+        Point transformed = new Point();
+        gameWindow.getTransformation().transform(new Point(event.getX(), event.getY()), transformed);
+        toolTip.setX((int)transformed.getX());
+        toolTip.setY((int)transformed.getY());
     }
 
     public boolean clicked(MouseEvent event){

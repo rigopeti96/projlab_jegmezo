@@ -24,6 +24,11 @@ public class TooltipView extends View {
         return false;
     }
 
+    @Override
+    public boolean isAffectedByTransformation() {
+        return false;
+    }
+
 
     @Override
     public void draw(Graphics2D graphics, boolean overlay) {

@@ -46,8 +46,10 @@ public abstract class TileView extends View{
         for (View child: children) {
             if (child.isHovered()) return;
         }
-        toolTip.setX(event.getX());
-        toolTip.setY(event.getY());
+        Point transformed = new Point();
+        gameWindow.getTransformation().transform(new Point(event.getX(), event.getY()), transformed);
+        toolTip.setX((int)transformed.getX());
+        toolTip.setY((int)transformed.getY());
         toolTip.setText(tile.getDescription());
         toolTip.setShow(true);
     }
@@ -62,8 +64,10 @@ public abstract class TileView extends View{
 
     @Override
     public boolean rightClicked(MouseEvent event) {
-        menu.setX(event.getX());
-        menu.setY(event.getY());
+        Point transformed = new Point();
+        gameWindow.getTransformation().transform(new Point(event.getX(), event.getY()), transformed);
+        menu.setX((int)transformed.getX());
+        menu.setY((int)transformed.getY());
         if (isNeighbourOfActivePlayer()) {
             menu.setActionList(gameWindow.getGameController().getActivePlayer().getTileActions(tile));
         } else if (hasActivePlayer()) {

@@ -17,10 +17,19 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * A GameWindow osztálya
+ */
 public class GameWindow {
+    /**
+     * leszármazik a JPanelből
+     */
     class GameCanvas extends JPanel
     {
+        /**
+         * a felüldefiniált paintComponent
+         * @param g - az ahhoz szükséges graphics paraméter
+         */
         @Override
         public void paintComponent(Graphics g)
         {
@@ -30,22 +39,55 @@ public class GameWindow {
         }
     }
 
+    /**
+     * az ablak szélessége
+     */
     public static int windowWidth = 1440;
+    /**
+     * az ablak magassága
+     */
     public static int windowHeight = 900;
+    /**
+     * az ablakhoz tartozó egyetlen toolTipView, ezt fogja minden változtatni, ami toolTip-et akar megjeleníteni
+     */
     TooltipView tooltipView;
+    /**
+     * az egyetlen MenuView, ezt fogja minden változtatni, ami Menut-et akar megjeleníteni
+     */
     MenuView menuView;
+    /**
+     * az egyetlen overlayView
+     */
     View overlayView;
+    /**
+     * A gameController
+     */
     private GameController gameController;
+    /**
+     * az executor
+     */
     ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
 
+    /**
+     * a gameController getterje
+     * @return - gameController
+     */
     public GameController getGameController() {
         return gameController;
     }
 
+    /**
+     * a toolTipView getterje
+     * @return - toolTipView
+     */
     public TooltipView getTooltipView(){
         return tooltipView;
     }
 
+    /**
+     * a menüt megnyitó függvény
+     * @param newMenu
+     */
     public void openMenu(MenuView newMenu) {
         views.remove(menuView);
         views.add(newMenu);
@@ -53,14 +95,26 @@ public class GameWindow {
         views.remove(tooltipView);
     }
 
+    /**
+     * a menüt bezáró függvény
+     */
     public void closeMenu() {
         views.remove(menuView);
         views.add(tooltipView);
     }
 
+    /**
+     * a view-k listája
+     */
     private List<View> views = new ArrayList<>();
+    /**
+     * az assetmanager
+     */
     private AssetManager assetManager = new AssetManager();
 
+    /**
+     * a játék indítását megjelenítő függvény
+     */
     public void start() {
         JFrame frame= new JFrame();
         frame.setTitle("Jégmező");
@@ -99,6 +153,9 @@ public class GameWindow {
         executor.scheduleAtFixedRate(frame::repaint, 0, 16, TimeUnit.MILLISECONDS);
     }
 
+    /**
+     * a játék inicializálását megjelenítő függvény
+     */
     private void initialize() {
         assetManager.loadAssets();
         tooltipView = new TooltipView(this, assetManager, "");
@@ -126,6 +183,10 @@ public class GameWindow {
         gameController.start();
     }
 
+    /**
+     * a játékos számot kérdezi meg
+     * @return - a játékos szám
+     */
     private int getPlayerCountPopup() {
         while (true) {
             try {
@@ -139,6 +200,11 @@ public class GameWindow {
         }
     }
 
+    /**
+     * a játékosok típusát kérdezi meg
+     * @param number - játékosszám
+     * @return - a játékos típusa
+     */
     private String getPlayerClassPopup(int number) {
         while (true) {
             String playerClass = JOptionPane.showInputDialog("Player " + number + "'s class (Eskimo/Scientist)");
@@ -148,10 +214,19 @@ public class GameWindow {
         }
     }
 
+    /**
+     * időzítés
+     * @param runnable - a runnable
+     * @param time - az időzítés mértéke
+     */
     public void schedule(Runnable runnable, int time) {
         executor.schedule(runnable, time, TimeUnit.MILLISECONDS);
     }
 
+    /**
+     * a klikkelést kezeli le
+     * @param event - az event
+     */
     private void handleClick(MouseEvent event) {
         if(gameController.getGameState() == GameState.Idle)
             return;
@@ -169,8 +244,15 @@ public class GameWindow {
             gameController.tradeCancel();
     }
 
+    /**
+     * a pan-elés gyorsasága
+     */
     private Point panVelocity = new Point(0, 0);
 
+    /**
+     * az egér mozgását lekezelő függvény
+     * @param event - az event
+     */
     private void handleMouseMove(MouseEvent event) {
 
         if(gameController.getGameState() == GameState.Over)
@@ -200,21 +282,42 @@ public class GameWindow {
         }
     }
 
+    /**
+     * az egér görgőjét lekezelő függvény
+     * @param event - az event
+     */
     private void handleMouseWheelMove(MouseWheelEvent event) {
         for (View view: new ArrayList<>(views)) {
             view.mouseWheelMoved(event);
         }
     }
 
+    /**
+     * az egér eseményből csinál újat
+     * @param event - az event
+     * @return - az újabb event
+     */
     private MouseEvent remapMouseEvent(MouseEvent event) {
         return new MouseEvent(event.getComponent(), event.getID(), event.getWhen(), event.getModifiersEx(), event.getX() - 8, event.getY() - 32, event.getClickCount(), false, event.getButton());
     }
 
+    /**
+     * a transzformáció
+     */
     AffineTransform transform =  new AffineTransform();
+
+    /**
+     * visszaadja a transzformációt
+     * @return - a transzformáció
+     */
     public AffineTransform getTransformation() {
         return transform;
     }
 
+    /**
+     * a kirajzolást lebonyolító függvény
+     * @param graphics - a kirajzoláshoz szükséges graphics
+     */
     private void draw(Graphics2D graphics) {
         if (gameController.getGameState() != GameState.Select) {
             closeMenu();
@@ -231,10 +334,17 @@ public class GameWindow {
         }
     }
 
+    /**
+     * a bezárást kezelő függvény
+     */
     private void handleClose() {
         System.exit(0);
     }
 
+    /**
+     * az overlaytípust beállító függvény
+     * @param overlayType - az overlay típus
+     */
     public void setOverlayType(OverlayType overlayType) {
         if (this.overlayView != null) views.remove(this.overlayView);
         if (overlayType == OverlayType.GameWin) {

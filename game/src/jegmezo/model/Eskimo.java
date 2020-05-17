@@ -17,7 +17,7 @@ public class Eskimo extends Player {
 	 * @param number azonosító
 	 */
 	public Eskimo(GameController gameController, int number) {
-		super(gameController, number);
+		super(gameController, number, 5);
 	}
 
 	/**

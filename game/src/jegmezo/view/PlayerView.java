@@ -35,7 +35,9 @@ public abstract class PlayerView extends View {
 
     public boolean clicked(MouseEvent event){
         if (gameWindow.getGameController().getGameState() == GameState.Trade && player != gameWindow.getGameController().getActivePlayer()) {
-            gameWindow.getGameController().tradeFinish(player);
+            if(player.getTile() == gameWindow.getGameController().getActivePlayer().getTile()){
+                gameWindow.getGameController().tradeFinish(player);
+            }
         }
         return true;
     }
